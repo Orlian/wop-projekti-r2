@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit user</title>
+</head>
+<body>
+<div class="container">
+<main>
+    <div class="edit-user-wrapper">
+        <form id="edit-user-form">
+            <img src="#" alt="user-picture">
+            <button>Add picture</button>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" pattern="(?=.*[A-Z]).{8,}" required>
+            <textarea name="desc" placeholder="Description" style="resize: none" rows="8" cols="40"></textarea>
+            <button type="submit" id="save-button">Save changes</button>
+            <button type="reset" id="cancel-button">Cancel</button>
+        </form>
+    </div>
+</main>
+</div>
+</body>
+</html>
