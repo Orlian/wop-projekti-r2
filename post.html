@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+</head>
+<body>
+<div class="container">
+    <div class="post-wrapper">
+        <form>
+            <label><strong>Add image</strong></label>
+            <button id="add-image-button"><!-- TODO Laita plussa symboli tänne --></button>
+            <textarea name="caption" rows="15" cols="40" placeholder="Add caption (optional)"></textarea>
+            <section class="genre-selection genres">
+                <h2>Choose genres (1 required)</h2>
+                <!-- TODO Korjaile genret oikeiksi, kunhan ne päätetään -->
+                <input type="checkbox" id="genre1" name="genre1" value="joku">
+                <label for="genre1">Joku</label>
+                <input type="checkbox" id="genre2" name="genre2" value="joku">
+                <label for="genre2">Joku</label>
+                <input type="checkbox" id="genre3" name="genre3" value="joku">
+                <label for="genre3">Joku</label>
+                <input type="checkbox" id="genre4" name="genre4" value="joku">
+                <label for="genre4">Joku</label>
+            </section>
+            <button type="submit" id="post-button">Publish</button>
+            <button type="submit" id="cancel-button">Cancel</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
