@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register user</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="register-wrapper">
+        <form>
+            <img src="#" alt="Chosen profile picture" id="register-profile-pic">
+            <button>Add picture</button>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" pattern=".{8,}" required>
+            <input type="password" name="confirm-password" placeholder="Retype password" onkeyup="checkMatch();" required>
+            <textarea name="description" placeholder="Describe yourself (optional)" cols="40" rows="12" style="resize: none"></textarea>
+            <button type="submit" id="register-button">Create User</button>
+            <button type="submit" id="cancel-button">Cancel</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
