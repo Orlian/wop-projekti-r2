@@ -78,13 +78,32 @@ const imagesArray = [
 const bgGallery = document.getElementById('background');
 const width = window.outerWidth;
 
-
-if (width < 1000) {
-  for (let i = 0; i < 4; i++) {
+if (width < 1000 && width >= 750) {
+  for (let i = 0; i < 9; i++) {
     bgGallery.innerHTML += `<div class="image-container">
                             <img src="${imagesArray[i].img}" class="image" alt=" Background Image">
 </div>`;
   }
+} else if (width < 1050 && width >= 1000) {
+  for (let i = 0; i < 12; i++) {
+    bgGallery.innerHTML += `<div class="image-container">
+                            <img src="${imagesArray[i].img}" class="image" alt=" Background Image">
+</div>`;
+  }
+
+} else if (width < 1400 && width >= 1050) {
+  for (let i = 0; i < 6; i++) {
+    bgGallery.innerHTML += `<div class="image-container">
+                            <img src="${imagesArray[i].img}" class="image" alt=" Background Image">
+</div>`;
+  }
+} else if (width < 1600 && width >= 1400) {
+  for (let i = 0; i < 8; i++) {
+    bgGallery.innerHTML += `<div class="image-container">
+                            <img src="${imagesArray[i].img}" class="image" alt=" Background Image">
+</div>`;
+  }
+
 } else {
 
   for (let i = 0; i < imagesArray.length; i++) {
