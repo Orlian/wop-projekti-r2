@@ -76,10 +76,10 @@ const imagesArray = [
 
 'use strict';
 const bgGallery = document.getElementById('background');
-const width = window.innerWidth;
-const height = window.innerHeight;
+const width = window.outerWidth;
 
-if (width < 700) {
+
+if (width < 1000) {
   for (let i = 0; i < 4; i++) {
     bgGallery.innerHTML += `<div class="image-container">
                             <img src="${imagesArray[i].img}" class="image" alt=" Background Image">
@@ -92,7 +92,6 @@ if (width < 700) {
                             <img src="${imagesArray[i].img}" class="image" alt=" Background Image">
 </div>`;
   }
-
 }
 
 

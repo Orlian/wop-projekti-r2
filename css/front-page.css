@@ -19,7 +19,7 @@
 }
 
 .login-wrapper {
-    position: absolute;
+    position: fixed;
     background: #2c2ce5;
     top: 50%;
     left: 50%;
@@ -36,8 +36,9 @@
     }
 }
 
-@media only screen and (max-width: 700px) {
-    #background {
-
+@media only screen and (max-width: 999px) {
+    .image {
+        max-height: 150px;
+        max-width: 150px;
     }
 }
