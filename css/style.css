@@ -18,7 +18,7 @@ main{
     border-radius: 3%;
     box-shadow: 5px 10px 18px #888888;
 }
-.edit-user-wrapper, .register-wrapper{
+.edit-user-wrapper, .register-wrapper, .post-wrapper{
     display: flex;
     flex-wrap: wrap;
     max-width: 50vh;
@@ -39,6 +39,13 @@ img{
     border-radius: 50%;
     border: 0.1em solid black;
 }
+#art-img{
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0;
+    border-radius: 5%;
+    border: 0.1em solid black;
+}
 button{
     margin: 0.5em;
 }
@@ -56,14 +63,26 @@ input:active, input:focus{
 }
 textarea{
     margin: 0.5em;
+    border: 0.1em solid black;
     width: 100%;
 }
-ion-icon{
-    font-size: 3em;
-    color: green;
+
+h2{
+    font-size: 1.3em;
 }
-ion-icon:hover{
-    color: darkgreen;
+section{
+    font-size: 1em;
+    margin: 0.5em;
+}
+label{
+    width: 90%;
+}
+input[type='checkbox']{
+    width: 10%;
+}
+.check{
+    text-align: center;
+    margin: 0.2em;
 }
 button{
     padding: 0.5em 2em;
@@ -95,6 +114,14 @@ button:focus{
     top: 1.2em;
     opacity: 0;
 }
+ion-icon{
+    font-size: 3em;
+    color: green;
+    z-index: 2;
+}
+ion-icon:hover{
+    color: darkgreen;
+}
 @media only screen and (max-width: 500px){
     body{
         background-image: none;
@@ -103,5 +130,10 @@ button:focus{
         border: none;
         border-radius: 0;
         box-shadow: none;
+    }
+}
+@media only screen and (max-width: 400px){
+    h2{
+        font-size: 1.1em;
     }
 }
