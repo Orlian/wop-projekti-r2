@@ -21,7 +21,8 @@ main{
 .edit-user-wrapper, .register-wrapper{
     display: flex;
     flex-wrap: wrap;
-    width: 50vh;
+    max-width: 50vh;
+    height: auto;
 }
 form{
     margin: auto;
@@ -32,12 +33,11 @@ form{
 
 }
 img{
+    max-width: 100%;
+    height: auto;
     margin-bottom: 1em;
     border-radius: 50%;
     border: 0.1em solid black;
-}
-#user-image{
-    all: unset;
 }
 button{
     margin: 0.5em;
@@ -94,4 +94,14 @@ button:focus{
     left: 2.7em;
     top: 1.2em;
     opacity: 0;
+}
+@media only screen and (max-width: 500px){
+    body{
+        background-image: none;
+    }
+    main{
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
 }
