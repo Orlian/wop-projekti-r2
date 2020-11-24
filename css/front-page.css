@@ -7,6 +7,7 @@
 
 body {
     background: whitesmoke;
+    font-family: "Montserrat", sans-serif;
 }
 
 header {
@@ -24,6 +25,7 @@ header {
     color: whitesmoke;
     transition:all 0.3s ease;
     z-index: 9999;
+    font-family: "Lobster Two", sans-serif;
 }
 
 @keyframes swing {
@@ -61,6 +63,10 @@ header > a > ion-icon{
 
 header > a > ion-icon:hover {
 color: palevioletred;
+}
+
+header > p {
+    font-size: 1.2em;
 }
 
 
@@ -205,7 +211,7 @@ button:hover {
     }
 
     header > p{
-        font-size: 0.5em;
+        font-size: 0.75em;
     }
 
     main {
