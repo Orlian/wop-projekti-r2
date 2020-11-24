@@ -5,14 +5,76 @@
     box-sizing: border-box;
 }
 
+body {
+    background: whitesmoke;
+}
+
+header {
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    background: slateblue;
+    height: 8em;
+    width: 8em;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+    transition:all 0.3s ease;
+    z-index: 9999;
+}
+
+@keyframes swing {
+    15% {
+        transform: translateY(5px);
+    }
+    30% {
+        transform: translateY(-5px);
+    }
+    50% {
+        transform: translateY(3px);
+    }
+    65% {
+
+        transform: translateY(-3px);
+    }
+    80% {
+        transform: translateY(2px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+header:hover
+{
+    animation: swing 1s ease;
+    animation-iteration-count: 1;
+}
+
+
+
+header > a > ion-icon{
+    color: whitesmoke;
+}
+
+header > a > ion-icon:hover {
+color: palevioletred;
+}
 
 
 #background {
+    margin-top: 1em;
+    overflow-x: hidden;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    opacity: 0.7;
+    opacity: 0.8;
+}
 
+#background:hover {
+    opacity: 1;
 }
 
 .image-container {
@@ -23,7 +85,8 @@
 .image {
     height: 340px;
     width: 340px;
-    border-radius: 15px;
+    border-radius: 1em;
+    border: none;
 }
 
 main {
@@ -31,7 +94,62 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 15px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40em;
+    width: 30em;
+}
+
+.login-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.main-title {
+    text-align: center;
+
+}
+
+.main-title > h2, h5 {
+    color: #1e1e1e;
+    margin: 0.5em 0 1em 0;
+}
+
+.main-logo > ion-icon {
+    color: slateblue;
+}
+
+form {
+    display: flex;
+    height: auto;
+}
+
+form > a {
+    color: #1e1e1e;
+}
+
+form > a:hover {
+    color: slateblue;
+}
+
+input {
+    background: rgba(150, 150, 150, 0.1);
+    padding: 1em;
+    border: 0.1em solid darkgrey;
+    border-radius: 1em;
+    margin: 1em;
+    box-shadow: 2px 5px 5px lightgray;
+}
+
+input:hover {
+    border: 0.1em solid slateblue;
 
 }
 
@@ -39,24 +157,35 @@ main:hover {
     background: rgba(255, 255, 255, 1);
 }
 
-
-.login-wrapper {
-    height: 30em;
-    width: 20em;
-    display: flex;
-    flex-direction: column;
-}
-
 .logo {
     position: fixed;
 }
 
+button {
+    height: 3em;
+    width: 10em;
+    margin: 3em 0 2em 0;
+    color: whitesmoke;
+    border: none;
+    border-radius: 2.5em;
+    background-image: linear-gradient(to bottom right, mediumslateblue, palevioletred);
+    box-shadow: 3px 7px 7px lightgray;
+}
 
+button:hover {
+    background: slateblue;
+    cursor: pointer;
+}
 
-@media only screen and (max-width: 450px) {
-    #background {
-        display: none;
+@media only screen and (max-width: 500px) {
+    #background
+    .image {
+        max-height: 440px;
+        max-width: 440px;
+        object-fit: cover;
+
     }
+
 }
 
 @media only screen and (max-width: 1049px) {
@@ -64,4 +193,25 @@ main:hover {
         max-height: 240px;
         max-width: 240px;
     }
+
+    header {
+        height: 5em;
+        width: 5em;
+    }
+
+    header > a > ion-icon{
+        height: 0.5em;
+        width: 0.5em;
+    }
+
+    header > p{
+        font-size: 0.5em;
+    }
+
+    main {
+        height: 30em;
+        width: 20em;
+    }
+
+
 }
