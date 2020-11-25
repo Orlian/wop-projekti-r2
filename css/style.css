@@ -25,6 +25,7 @@ main{
     height: auto;
 }
 form{
+    height: 80vh;
     margin: auto;
     padding: 0.8em 3em;
     display: flex;
@@ -35,7 +36,6 @@ form{
 img{
     max-width: 100%;
     height: auto;
-    margin-bottom: 1em;
     border-radius: 50%;
     border: 0.1em solid black;
 }
@@ -45,9 +45,6 @@ img{
     margin-bottom: 0;
     border-radius: 5%;
     border: 0.1em solid black;
-}
-button{
-    margin: 0.5em;
 }
 input{
     margin: 0.25em;
@@ -68,7 +65,7 @@ textarea{
 }
 
 h2{
-    font-size: 1.3em;
+    font-size: 0.8em;
 }
 section{
     font-size: 1em;
@@ -85,7 +82,8 @@ input[type='checkbox']{
     margin: 0.2em;
 }
 button{
-    padding: 0.5em 2em;
+    margin: 0.5em;
+    padding: 0.2em 1em;
     background-image: linear-gradient(to bottom right, red, #2c2ce5);
     border: 0.1em solid black;
     border-radius: 1em;
@@ -96,28 +94,29 @@ button:hover{
 button:focus{
     outline: none;
 }
+
 .upload-btn-wrapper {
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
     display: inline-block;
 }
 .btn, .btn:hover {
     border: none;
     background-color: white;
     background-image: none;
+    margin-bottom: 0;
 }
 .upload-btn-wrapper input[type=file] {
     width: 2em;
     height: 2em;
     position: absolute;
-    left: 2.7em;
-    top: 1.2em;
+    left: 1.4em;
+    top: 0.6em;
     opacity: 0;
 }
 ion-icon{
-    font-size: 3em;
+    font-size: 2.25em;
     color: green;
-    z-index: 2;
 }
 ion-icon:hover{
     color: darkgreen;
@@ -132,8 +131,5 @@ ion-icon:hover{
         box-shadow: none;
     }
 }
-@media only screen and (max-width: 400px){
-    h2{
-        font-size: 1.1em;
-    }
+@media only screen and (max-width: 424px){
 }

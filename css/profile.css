@@ -1,0 +1,162 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: sans-serif;
+    font-size: 16px;
+}
+nav{
+    padding: 0px 15px;
+    background: #201F21;
+}
+.menu, .submenu{
+    list-style-type: none;
+    color: white;
+}
+.logo{
+    font-size: 20px;
+    display: flex;
+    padding: 7.5px 10px 7.5px 0;
+}
+#add-pic-button, #profile-button {
+    padding: 9px 5px;
+}
+#add-pic-button a:hover, #profile-button a:hover, #add-pic-button a:hover::after, #profile-button a:hover::after{
+    color: #ccc;
+}
+ion-icon{
+    font-size: 20px;
+    cursor: pointer;
+}
+#logo-img{
+    font-size: 40px;
+}
+
+/* Mobile menu */
+.menu{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu li a{
+    display: block;
+    padding: 15px 5px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+.menu li.subitem a{
+    padding: 15px;
+}
+.toggle{
+    order:1;
+    font-size: 20px;
+}
+.item{
+    width: 100%;
+    text-align: center;
+    order: 2;
+    display: none;
+}
+.active .item{
+    display: block;
+}
+.submenu{
+    display: none;
+}
+.submenu-active .submenu{
+    display: block;
+}
+
+ion-icon[name='chevron-down-outline']{
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 900;
+    padding-left: 5px;
+}
+
+.subitem a {
+    padding: 10px 15px;
+}
+
+.submenu-active{
+    background-color: #111;
+    border-radius: 3px;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+}
+form input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    background: #f1f1f1;
+}
+
+form button {
+    padding: 7.5px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #0b7dda;
+}
+
+form input:focus{
+    outline: none;
+}
+form button:focus{
+    outline: none;
+}
+
+form::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/*Tablet menu*/
+
+@media only screen and (min-width: 769px){
+    .menu{
+        justify-content: center;
+    }
+    .logo{
+        flex: 1;
+    }
+    .item{
+        display: block;
+        width: auto;
+        order: 1;
+        position: relative;
+    }
+    .submenu-active .submenu{
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 66px;
+        background: #111;
+    }
+    .toggle{
+        display: none;
+    }
+    .submenu-active{
+        border-radius: 0;
+    }
+}
+
+
+/*Desktop*/
+@media only screen and (min-width: 960px){
+
+}
