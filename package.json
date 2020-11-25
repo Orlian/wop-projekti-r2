@@ -1,0 +1,23 @@
+{
+  "name": "wopprojekti",
+  "version": "1.0.0",
+  "description": "Wop projekti",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Orlian/wop-projekti-r2.git"
+  },
+  "author": "Joonas Lehtoranta, Irina Konovalova, Oskari Piiroinen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Orlian/wop-projekti-r2/issues"
+  },
+  "homepage": "https://github.com/Orlian/wop-projekti-r2#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node": "^15.2.1"
+  }
+}
