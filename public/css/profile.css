@@ -160,3 +160,34 @@ form::after {
 @media only screen and (min-width: 960px){
 
 }
+
+/*muuta kuin navbar*/
+section{
+ display: flex;
+ flex-direction: column;
+}
+img{
+    margin: 1em auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    border: 0.1em solid black;
+}
+section h2, .desc{
+    text-align: center;
+    padding: 0.2em;
+}
+
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+.grid-item img{
+    margin: 4em;
+    max-width: 100%;
+    height: auto;
+    border: 0.1em solid black;
+    border-radius: 0;
+}
