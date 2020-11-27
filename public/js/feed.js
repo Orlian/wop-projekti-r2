@@ -17,10 +17,6 @@ const imagesArray = [
   },
 
   {
-    img: 'images/front-page/placeholder4.jpg',
-  },
-
-  {
     img: 'images/front-page/placeholder5.jpg',
   },
 
@@ -76,18 +72,83 @@ const imagesArray = [
     img: 'images/front-page/placeholder18.jpg',
   },
 
+  {
+    img: 'images/front-page/placeholder19.jpg',
+  },
+
+  {
+    img: 'images/front-page/placeholder20.jpg',
+  },
+
+  {
+    img: 'images/front-page/placeholder21.jpg',
+  },
+
+  {
+    img: 'images/front-page/placeholder22.jpg',
+  },
+
+  {
+    img: 'images/front-page/placeholder23.jpg',
+  },
+
+  {
+    img: 'images/front-page/placeholder24.jpg',
+  },
+
+  {
+    img: 'images/front-page/placeholder25.jpg',
+  },
+
+  {
+    img: 'images/front-page/placeholder26.jpg',
+  },
+
+  {
+    img: 'images/front-page/placeholder27.jpg',
+  },
+
+  {
+    img: 'images/front-page/placeholder28.jpg',
+  },
+
+  {
+    img: 'images/front-page/placeholder29.jpg',
+  },
+
+  {
+    img: 'images/front-page/placeholder30.jpg',
+  },
+
 ];
 
 'use strict';
 const imageFeed = document.querySelector('.card-container');
+const imagesOnLoad = 7;
+let loadedImgN = 0;
 
-for (let i = 0; i < imagesArray.length; i++) {
-  imageFeed.innerHTML += `<div class="card">
-                            <img src="${imagesArray[i].img}" class="image" alt="User post">
+const loadImages = () => {
+  while (loadedImgN < imagesArray.length) {
+    imageFeed.innerHTML += `<div class="card">
+                            <img src="${imagesArray[loadedImgN].img}" class="image" alt="User post">
                             <div class="img-caption"><p>Caption from db</p></div>
-                           
+                          
 </div>`;
-}
+    loadedImgN++;
+    if (loadedImgN % imagesOnLoad === 0) {
+      break;
+    }
+  }
+};
+
+loadImages();
+
+window.addEventListener('scroll', () => {
+  let scrollHeight = document.documentElement.scrollHeight;
+  if (window.scrollY + window.innerHeight > scrollHeight - 100) {
+    loadImages();
+  }
+});
 
 const topBtn = document.querySelector('.top-btn');
 
