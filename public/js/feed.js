@@ -123,6 +123,7 @@ const imagesArray = [
 ];
 
 'use strict';
+/**Loading 7 images on scroll, for as long as all images in the array are loaded**/
 const imageFeed = document.querySelector('.card-container');
 const imagesOnLoad = 7;
 let loadedImgN = 0;
@@ -150,6 +151,8 @@ window.addEventListener('scroll', () => {
   }
 });
 
+
+/**Back to top button reveal and disappear on scroll**/
 const topBtn = document.querySelector('.top-btn');
 
 window.addEventListener('scroll', () => {
