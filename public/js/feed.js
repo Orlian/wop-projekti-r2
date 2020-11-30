@@ -132,7 +132,28 @@ const loadImages = () => {
   while (loadedImgN < imagesArray.length) {
     imageFeed.innerHTML += `<div class="card">
                             <img src="${imagesArray[loadedImgN].img}" class="image" alt="User post">
-                            <div class="img-caption"><p>Caption from db</p></div>
+                            <div class="aside">
+                                <div class="comments-container">
+                                    <div class="img-caption"><p>Caption from db</p></div>
+                                    <div class="likes">
+                                        <p>N Likes</p>
+                                    </div>
+                                    <h4>Comments</h4>
+                                    <ul class="comments">
+                                        <li>Comment</li>
+                                        <li>Comment2</li>
+                                        <li>Comment3</li>
+                                    </ul>
+                                 </div>
+                                 <form>
+                                    <textarea name="comment" placeholder="Write a comment" cols="56" rows="5"
+                                    ></textarea>
+                                    <div class="btn-container">
+                                    <button type="submit" class="like-btn"><ion-icon name="heart-outline"></ion-icon> </button>
+                                    <button type="submit" class="comment-btn">Comment</button> 
+                                    </div>
+                                </form>
+                            </div>
                           
 </div>`;
     loadedImgN++;
@@ -150,7 +171,6 @@ window.addEventListener('scroll', () => {
     loadImages();
   }
 });
-
 
 /**Back to top button reveal and disappear on scroll**/
 const topBtn = document.querySelector('.top-btn');
