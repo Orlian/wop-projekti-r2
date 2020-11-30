@@ -5,14 +5,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 //TODO Tänne lisää require lauseita sitä mukaan kun tarvetta tulee
 
-const app = express();
+const app2 = express();
 const port = 3001; //Huomaa porttinumero
 
-app.use(cors());
-app.use(express.static('public'));
+app2.use(cors());
+app2.use(express.static('public'));
 
 //TODO Tänne autentikointi hommat sun muut use-lauseet
 
 
 
-app.listen(port, () => console.log(`App listening on port ${port}...`));
+app2.listen(port, () => console.log(`App listening on port ${port}...`));
