@@ -15,7 +15,7 @@ const getAllUsers = async () => {
 const getUser = async (email) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT email, username, desc, user_img FROM user WHERE email = ?',
+        'SELECT email, username, description, userimg, birthdate FROM user WHERE email = ?',
         [email]);
     return rows;
   } catch (err) {
@@ -27,7 +27,7 @@ const addUser = async (params) => {
   try {
     //TODO Varmista sql-lauseen toimivuus valinnaisen datan kanssa
     const [rows] = await promisePool.execute(
-        'INSERT INTO user (email, password, birthdate, user_img, desc, username) VALUES (?, ?, ?, ?, ?, ?)',
+        'INSERT INTO user (email, password, birthdate, userimg, description, username) VALUES (?, ?, ?, ?, ?, ?)',
         params);
     return rows;
   } catch (err) {
@@ -38,7 +38,7 @@ const addUser = async (params) => {
 const updateUser = async (params) => {
   try {
     const [rows] = promisePool.execute(
-        'UPDATE user SET password = ?, user_img = ?, desc = ?, username = ? WHERE email = ?',
+        'UPDATE user SET password = ?, userimg = ?, description = ?, username = ? WHERE email = ?',
         params);
     return rows;
   } catch (err) {

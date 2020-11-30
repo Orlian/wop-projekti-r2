@@ -7,7 +7,8 @@ const promisePool = pool.promise();
 const getSearchResult = async (input) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT * FROM post WHERE desc LIKE "%?%"', [input]); //TODO Tee oleellinen sql haku
+        'SELECT postid, imgfile, caption, timestamp FROM post WHERE caption LIKE "%?%" UNION SELECT userimg, description, username FROM user WHERE username LIKE "%?%" UNION SELECT imgfile, caption, email, timestamp FROM post INNER JOIN categorise ON post.postid = categorise.postid INNER JOIN category ON category.categoryid = categorise.categoryid WHERE categoryname LIKE "%?%"',
+        [input]);
     return rows;
   } catch (err) {
     console.log('SearchModel error', err.message);
