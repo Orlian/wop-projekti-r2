@@ -2,6 +2,14 @@
 const toggle = document.querySelector('.toggle');
 const menu = document.querySelector('.menu');
 const items = document.querySelectorAll('.item');
+const postModal = document.getElementById("post-modal");
+const editModal = document.getElementById('edit-user-modal');
+const postButton = document.getElementById("add-pic-button");
+const span1 = document.getElementsByClassName("close")[0];
+const span2 = document.getElementsByClassName("close")[1];
+const editLink = document.getElementById('edit-link');
+const userPicture = document.getElementById('user-picture');
+const postPicture = document.getElementById('art-img');
 
 function toggleMenu() {
   if (menu.classList.contains('active')) {
@@ -43,5 +51,46 @@ function closeSubmenu(e) {
   }
 }
 
+postButton.onclick = function() {
+  postModal.style.display = "flex";
+}
+
+span1.onclick = function() {
+  postModal.style.display = "none";
+}
+
+editLink.onclick = function() {
+  editModal.style.display = "flex";
+}
+
+span2.onclick = function() {
+  editModal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target === editModal || event.target === postModal) {
+    editModal.style.display = "none";
+    //userPicture.src = ; //TODO hae tietokannasta käyttäjän profiilikuva oletuksena
+    postModal.style.display = "none";
+    postPicture.src = "http://placekitten.com/200/200";
+  }
+}
+
 
 document.addEventListener('click', closeSubmenu, false);
+
+function previewImage(event) {
+
+  const reader = new FileReader();
+
+  reader.onload = function() {
+
+    if(reader.readyState === 2){
+      userPicture.src = reader.result;
+      postPicture.src = reader.result;
+    }
+  }
+
+  reader.readAsDataURL(event.target.files[0]);
+
+}
