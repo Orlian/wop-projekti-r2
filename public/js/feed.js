@@ -125,7 +125,7 @@ const imagesArray = [
 'use strict';
 /**Loading 7 images on scroll, for as long as all images in the array are loaded**/
 const imageFeed = document.querySelector('.card-container');
-const imagesOnLoad = 7;
+const imagesOnLoad = 3;
 let loadedImgN = 0;
 
 const loadImages = () => {

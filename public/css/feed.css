@@ -38,12 +38,22 @@ nav {
 
 .card {
     height: auto;
-    max-width: 50em;
+    width: 70em;
     margin: 0 0 1em 1em;
     padding: 1em;
     border: 1px solid lightgray;
     border-radius: 1em;
     box-shadow: 2px 5px 5px lightgray;
+    display: flex;
+}
+
+.card > img {
+    flex: 1;
+}
+
+.card > div {
+    flex: 1;
+    padding-left: 1em;
 }
 
 .card-container > div:last-child {
@@ -133,5 +143,15 @@ nav {
     font-size: 1em;
 }
 
+@media only screen and (max-width: 900px) {
+    .card {
+        flex-direction: column;
+    }
 
+    .card > img {
+        width: 100%;
+        max-width: 640px;
+        align-self: center;
+    }
+}
 
