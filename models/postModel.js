@@ -6,7 +6,7 @@ const promisePool = pool.promise();
 const getAllPosts = async () => {
   try {
     const [rows] = await promisePool.query(
-        'SELECT post_id, img_file, caption, email FROM post');
+        'SELECT postid, imgfile, caption, email, timestamp FROM post');
     return rows;
   } catch (err) {
     console.log('postModel error', err.message);
@@ -16,7 +16,7 @@ const getAllPosts = async () => {
 const getPost = async (postId) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT img_file, caption, email FROM post WHERE post_id = ?',
+        'SELECT imgfile, caption, email, timestamp FROM post WHERE postid = ?',
         [postId]);
     return rows;
   } catch (err) {
@@ -27,7 +27,7 @@ const getPost = async (postId) => {
 const getUserPosts = async (email) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT post_id, img_file, caption FROM post WHERE email = ?', [email]);
+        'SELECT postid, imgfile, caption, timestamp FROM post WHERE email = ?', [email]);
     return rows;
   } catch (err) {
     console.log('postModel error', err.message);
@@ -37,7 +37,7 @@ const getUserPosts = async (email) => {
 const addPost = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'INSERT INTO post (post_id, img_file, caption, email) VALUES (?, ?, ?, ?)',
+        'INSERT INTO post (imgfile, caption, email, timestamp) VALUES (?, ?, ?, NOW())',
         params);
     return rows;
   } catch (err) {
@@ -48,7 +48,7 @@ const addPost = async (params) => {
 const updatePost = async (params) => {
   try {
     const [rows] = promisePool.execute(
-        'UPDATE post SET caption = ? WHERE post_id = ?',
+        'UPDATE post SET caption = ? WHERE postid = ?',
         params);
     return rows;
   } catch (err) {
@@ -58,7 +58,7 @@ const updatePost = async (params) => {
 
 const deletePost = async (postId) => {
   try {
-    await promisePool.execute('DELETE FROM post WHERE post_id = ?', [postId]);
+    await promisePool.execute('DELETE FROM post WHERE postid = ?', [postId]);
   } catch (err) {
     console.log('postModel error', err.message);
   }
