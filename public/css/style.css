@@ -35,7 +35,8 @@ form{
 }
 img{
     max-width: 100%;
-    height: auto;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     border: 0.1em solid black;
 }

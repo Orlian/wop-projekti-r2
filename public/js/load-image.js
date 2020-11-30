@@ -1,5 +1,6 @@
 'use strict';
-
+const userPicture = document.getElementById('user-picture');
+const postPicture = document.getElementById('art-img');
 const uploadButton = document.querySelector('input[type="file"]');
 
 uploadButton.addEventListener("mouseover", () =>{

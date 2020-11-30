@@ -8,8 +8,7 @@ const postButton = document.getElementById("add-pic-button");
 const span1 = document.getElementsByClassName("close")[0];
 const span2 = document.getElementsByClassName("close")[1];
 const editLink = document.getElementById('edit-link');
-const userPicture = document.getElementById('user-picture');
-const postPicture = document.getElementById('art-img');
+
 
 function toggleMenu() {
   if (menu.classList.contains('active')) {

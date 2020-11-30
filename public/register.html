@@ -11,10 +11,10 @@
     <main>
         <div class="register-wrapper">
             <form>
-                <img src="http://placekitten.com/200/200" alt="Chosen profile picture" id="register-profile-pic">
+                <img src="http://placekitten.com/200/200" alt="Chosen profile picture" id="user-picture">
                 <div class="upload-btn-wrapper">
                     <button class="btn"><ion-icon name="add-circle-sharp"></ion-icon></button>
-                    <input type="file" name="user-image" accept="image/*">
+                    <input type="file" name="user-image" accept="image/*" onchange="previewImage(event)">
                 </div>
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="email" name="email" placeholder="Email" required>
