@@ -79,18 +79,3 @@ window.onclick = function(event) {
 
 document.addEventListener('click', closeSubmenu, false);
 
-function previewImage(event) {
-
-  const reader = new FileReader();
-
-  reader.onload = function() {
-
-    if(reader.readyState === 2){
-      userPicture.src = reader.result;
-      postPicture.src = reader.result;
-    }
-  }
-
-  reader.readAsDataURL(event.target.files[0]);
-
-}
