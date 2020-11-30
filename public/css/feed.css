@@ -54,13 +54,75 @@ nav {
 
 }
 
-.card > div {
-    flex: 1;
-    padding-left: 1em;
-}
-
 .card-container > div:last-child {
     justify-content: flex-start;
+}
+
+.aside {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex: 1;
+    padding-left: 1em;
+
+}
+
+.comments-container> h4 {
+    padding-top: 1em;
+}
+
+
+.likes {
+    padding-top: 1em;
+}
+
+.comments {
+
+    background-color: whitesmoke;
+    padding-top: 1em;
+    list-style: none;
+    box-shadow: 2px 5px 5px lightgray;
+    overflow-y: scroll;
+}
+
+.comments > li {
+    padding: 0 0 0.5em 1em;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.like-btn {
+    border: none;
+    background-color: whitesmoke;
+    outline: none;
+    cursor: pointer;
+}
+
+.comment-btn {
+    border: none;
+    background-image: linear-gradient(to bottom right, mediumslateblue, palevioletred);
+    border-radius: 2em;
+    padding: 0.5em;
+    outline: none;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    color: whitesmoke;
+}
+
+.comment-btn:hover {
+    background: slateblue;
+}
+
+.like-btn > ion-icon {
+    font-size: 2em;
+}
+
+textarea {
+    border: 1px solid lightgrey;
 }
 
 .top-btn {
