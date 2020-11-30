@@ -8,6 +8,8 @@ const searchResultsFor = document.querySelector('#search-results-for');
 
 // Search result kentän täyttäminen
 const fillSearchList = (hits) => {
+  searchResultsFor.innerHTML = '';
+  searchResultsFor.innerHTML = `Search results for "${searchInput.value}"`
   searchList.innerHTML = '';
   hits.forEach((hit) => {
     const li = document.createElement('li');

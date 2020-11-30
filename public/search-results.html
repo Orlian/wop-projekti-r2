@@ -4,28 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Search results</title>
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/profile.css" rel="stylesheet">
+    <link href="css/search-results.css" rel="stylesheet">
 </head>
 <body>
-<header>
-    <nav>
-        <img src="#" class="logo" alt="Logo of the app">
-        <!-- TODO Search toiminnallisuus tänne -->
-        <form id="search-form">
-            <input id="search-bar" type="text" name="search-data">
-            <label for="search-bar"><!-- TODO Tänne suurennuslasi-ikoni --></label>
-        </form>
-
-    </nav>
-</header>
 <div class="container">
-    <h2 id="search-results-for">Search results for</h2> <!-- Js:llä sisältö + hakutermi -->
+    <header>
+        <nav>
+            <ul class="menu">
+                <li class="logo">
+                    <ion-icon id="logo-img" name="color-palette-outline"></ion-icon>
+                    <h1 class="logo-caption">Artgram</h1>
+                </li>
+                <li class="item" id="search-field">
+                    <form>
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                    </form>
+                </li>
+                <li class="item" id="add-pic-button">
+                    <a href="#">Add picture</a>
+                </li>
+                <li class="item item-has-submenu" id="profile-button">
+                    <a tabindex="0" style="outline: none">Profile
+                        <ion-icon name="chevron-down-outline"></ion-icon>
+                    </a>
+                    <ul class="submenu">
+                        <li class="subitem"><a href="#">View</a></li>
+                        <li class="subitem"><a href="#">Edit</a></li>
+                        <li class="subitem"><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+                <li class="toggle"><a href="#">
+                    <ion-icon id="menu-img" name="menu-outline"></ion-icon>
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="search-result-header">
+        <h2 id="search-results-for">Search results for</h2> <!-- Js:llä sisältö + hakutermi -->
+    </section>
     <!-- TODO Tänne joku grid-systeemi hakua vastaavien kuvien näyttämiselle -->
-    <div class="search-result-wrapper">
-        <ul class="search-result-list"><!-- Täytetään js:llä --></ul>
-    </div>
+    <section class="search-result-wrapper">
+        <div class="grid-item">
+            <img src="http://placekitten.com/200/200" alt="thumbnail">
+        </div>
+        <div class="grid-item">
+            <img src="http://placekitten.com/200/200" alt="thumbnail">
+        </div>
+        <div class="grid-item">
+            <img src="http://placekitten.com/200/200" alt="thumbnail">
+        </div>
+        <div class="grid-item">
+            <img src="http://placekitten.com/200/200" alt="thumbnail">
+        </div>
+        <div class="grid-item">
+            <img src="http://placekitten.com/200/200" alt="thumbnail">
+        </div>
+        <div class="grid-item">
+            <img src="http://placekitten.com/200/200" alt="thumbnail">
+        </div>
+        <div class="grid-item">
+            <img src="http://placekitten.com/200/200" alt="thumbnail">
+        </div>
+        <div class="grid-item">
+            <img src="http://placekitten.com/200/200" alt="thumbnail">
+        </div>
+    </section>
 </div>
 <div class="loader-ripple"><div></div><div></div></div>
+<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+<script src="js/navbar.js"></script>
 <script src="js/search-results.js"></script>
 </body>
 </html>

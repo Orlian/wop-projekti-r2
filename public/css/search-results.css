@@ -1,0 +1,16 @@
+.search-result-header {
+    display: flex;
+    margin: 1em auto;
+}
+
+.search-result-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 1em;
+    padding: 2em;
+}
+
+.grid-item {
+
+}
