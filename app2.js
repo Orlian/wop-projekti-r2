@@ -17,8 +17,8 @@ app2.use(express.static('public'));
 app2.use(bodyParser.urlencoded({extended: false}));
 app2.use(bodyParser.json());
 
-app2.use('/auth', authRoute);
-app2.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
+//app2.use('/auth', authRoute);
+//app2.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 //TODO Tänne autentikointi hommat sun muut use-lauseet
 
 
