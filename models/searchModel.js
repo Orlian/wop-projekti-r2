@@ -7,7 +7,7 @@ const promisePool = pool.promise();
 const getSearchResult = async (input) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT postid, imgfile, caption, timestamp FROM post WHERE caption LIKE "%?%" UNION SELECT userimg, description, username FROM user WHERE username LIKE "%?% UNION SELECT categoryid FROM category WHERE categoryname LIKE "%?%',
+        'SELECT postid, imgfile, caption, timestamp FROM post WHERE caption LIKE "%?%" UNION SELECT userimg, description, username FROM user WHERE username LIKE "%?%" UNION SELECT categoryid FROM category WHERE categoryname LIKE "%?%"',
         [input]);
     return rows;
   } catch (err) {
