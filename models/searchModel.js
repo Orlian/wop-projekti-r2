@@ -7,7 +7,7 @@ const promisePool = pool.promise();
 const getSearchResult = async (input) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT * FROM post WHERE desc LIKE ?', [input]); //TODO Tee oleellinen sql haku
+        'SELECT * FROM post WHERE desc LIKE "%?%"', [input]); //TODO Tee oleellinen sql haku
     return rows;
   } catch (err) {
     console.log('SearchModel error', err.message);
