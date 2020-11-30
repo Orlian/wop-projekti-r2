@@ -91,7 +91,7 @@ form{
     display: flex;
     justify-content: center;
 }
-form input[type=text] {
+form input[name=search] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
@@ -125,6 +125,134 @@ form::after {
     display: table;
 }
 
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+}
+.content-modal {
+    margin: auto;
+    background: white;
+    border: 0.1em solid black;
+    border-radius: 3%;
+    box-shadow: 5px 10px 18px #888888;
+}
+.close {
+    color: #aaaaaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 1em;
+    top:1em;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.edit-user-wrapper, .register-wrapper, .post-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 50vh;
+    height: auto;
+    justify-content: center;
+}
+.content-modal>form{
+    height: 39em;
+    width: 30em;
+    max-width: 90vw;
+    margin: auto;
+    padding: 0.8em 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.upload-btn-wrapper {
+    position: relative;
+    /*overflow: hidden;*/
+    display: inline-block;
+}
+.btn, .btn:hover {
+    border: none;
+    background-color: white;
+    background-image: none;
+    margin-bottom: 0;
+}
+.upload-btn-wrapper input[type=file] {
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    left: 1.0em;
+    top: 0.9em;
+    opacity: 0;
+}
+.modal-button{
+    margin: 0.5em;
+    padding: 0.2em 1em;
+    background-image: linear-gradient(to bottom right, red, #2c2ce5);
+    border: 0.1em solid black;
+    border-radius: 1em;
+}
+.modal-button:hover{
+    background-image: linear-gradient(to bottom right, #ea6969, #4646c9);
+}
+.modal-button:focus{
+    outline: none;
+}
+textarea{
+    margin: 1.0em;
+    border: 0.1em solid black;
+    width: 100%;
+}
+
+.genre-selection h2{
+    font-size: 0.8em;
+}
+.genre-selection{
+    font-size: 1em;
+    margin: 0.5em;
+}
+label{
+    width: 90%;
+}
+input[type='checkbox']{
+    width: 10%;
+}
+.edit-user-wrapper input{
+    margin: 0.6em;
+    width: 100%;
+    border: none;
+    border-bottom: 0.1em solid black;
+}
+.edit-user-wrapper input::placeholder, .edit-user-wrapper textarea::placeholder{
+    text-align: center;
+}
+.edit-user-wrapper input:active, .edit-user-wrapper input:focus{
+    outline: none;
+}
+.check{
+    text-align: center;
+    margin: 0.2em;
+}
+#plus-icon{
+    font-size: 2.25em;
+    color: green;
+}
+#plus-icon:hover{
+    color: darkgreen;
+}
 /*Tablet menu*/
 
 @media only screen and (min-width: 769px){
@@ -169,7 +297,8 @@ section{
 img{
     margin: 1em auto;
     max-width: 100%;
-    height: auto;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     border: 0.1em solid black;
 }

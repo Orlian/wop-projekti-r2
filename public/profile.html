@@ -33,7 +33,7 @@
                     </a>
                     <ul class="submenu">
                         <li class="subitem"><a href="#">View</a></li>
-                        <li class="subitem"><a href="#">Edit</a></li>
+                        <li class="subitem"><a href="#" id="edit-link">Edit</a></li>
                         <li class="subitem"><a href="#">Logout</a></li>
                     </ul>
                 </li>
@@ -77,8 +77,77 @@
             <img src="http://placekitten.com/200/200" alt="thumbnail">
         </div>
     </section>
+    <aside>
+        <div class="modal" id="post-modal">
+            <div class="post-wrapper">
+                <div class="content-modal">
+                    <form>
+                        <span class="close">&times;</span>
+                        <img src="http://placekitten.com/200/200" alt="art-img" id="art-img">
+                        <div class="upload-btn-wrapper">
+                            <button class="btn">
+                                <ion-icon name="add-circle-sharp" id="plus-icon"></ion-icon>
+                            </button>
+                            <input type="file" name="user-image" accept="image/*" onchange="previewImage(event)">
+                        </div>
+                        <textarea name="caption" style="resize: none" rows="8" cols="40"
+                                  placeholder="Add caption (optional)"></textarea>
+                        <section class="genre-selection genres">
+                            <h2>Choose genres (1 required)</h2>
+                            <!-- TODO Korjaile genret oikeiksi, kunhan ne päätetään -->
+                            <div class="check">
+                                <label for="genre1">Photographing</label>
+                                <input type="checkbox" id="genre1" name="genre1" value="joku">
+                            </div>
+                            <div class="check">
+                                <label for="genre2">Painting</label>
+                                <input type="checkbox" id="genre2" name="genre2" value="joku">
+                            </div>
+                            <div class="check">
+                                <label for="genre3">Drawing</label>
+                                <input type="checkbox" id="genre3" name="genre3" value="joku">
+                            </div>
+                            <div class="check">
+                                <label for="genre4">Other</label>
+                                <input type="checkbox" id="genre4" name="genre4" value="joku">
+                            </div>
+                        </section>
+                        <button type="submit" class="modal-button" id="post-button">Publish</button>
+                        <button type="submit" class="modal-button" id="cancel-button">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <aside>
+        <div class="modal" id="edit-user-modal">
+            <div class="edit-user-wrapper">
+                <div class="content-modal">
+                    <form id="edit-user-form">
+                        <span class="close">&times;</span>
+                        <img src="http://placekitten.com/200/200" alt="user-picture" id="user-picture">
+                        <div class="upload-btn-wrapper">
+                            <button class="btn">
+                                <ion-icon name="add-circle-sharp" id="plus-icon"></ion-icon>
+                            </button>
+                            <input type="file" name="user-image" accept="image/*" id="user-picture-input" onchange="previewImage(event)">
+                        </div>
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="password" name="password" placeholder="Password" pattern="(?=.*[A-Z]).{8,}"
+                               required>
+                        <textarea name="desc" placeholder="Description" style="resize: none" rows="8"
+                                  cols="40"></textarea>
+                        <button type="submit" class="modal-button" id="save-button">Save changes</button>
+                        <button type="reset" class="modal-button">Cancel</button>
+                        <button type="reset" class="modal-button" id="delete-button">Delete user</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </aside>
 </div>
 <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 <script src="js/navbar.js"></script>
+<script src="js/load-image.js"></script>
 </body>
 </html>
