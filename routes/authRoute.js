@@ -18,7 +18,7 @@ const upload = multer({dest: './uploads/', fileFilter}); //app.js suhteen
 
 const injectFile = (req, res, next) => {
   if (req.file) {
-    req.body.file = req.file.mimetype;
+    req.body.user_image = req.file.mimetype;
   }
   next();
 };
@@ -29,6 +29,7 @@ router.get('/logout', authController.logout);
 
 router.post('/register', upload.single('user_image'), injectFile,
     [
+      body('user_img', 'please choose a picture').contains('image'),
       body('username', 'minimum 3 characters').
           not().
           isEmpty().
