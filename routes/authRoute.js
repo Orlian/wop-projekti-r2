@@ -27,7 +27,7 @@ router.post('/login', authController.login);
 
 router.get('/logout', authController.logout);
 
-router.post('/register', upload.single('user'), injectFile,
+router.post('/register', upload.single('user-image'), injectFile,
     [
       body('username', 'minimum 3 characters').
           not().

@@ -21,3 +21,14 @@ registerForm.addEventListener('submit', async (evt) => {
 
   //TODO Lisäile loppu käyttäjän rekisteröintikäyttäytyminen
 });
+
+const checkMatch = () => {
+  if (document.getElementById('password').value ===
+      document.getElementById('confirm-password').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+  }
+}
