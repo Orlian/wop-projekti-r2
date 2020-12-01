@@ -57,6 +57,22 @@ const post_delete = async (req, res) => {
   res.json(post);
 };
 
+const make_thumbnail = async (req, res, next) => {
+  try {
+    const thumbnail = await makeThumbnail(req.file.path, req.file.filename);
+    console.log('thumbnail', thumbnail);
+    if (thumbnail) {
+      next();
+    }
+  } catch (e) {
+    res.status(400).json({errors: e.message});
+  }
+};
+
+
+
+
+
 
 
 
