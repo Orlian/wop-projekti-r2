@@ -15,20 +15,8 @@ const user_get = async (req, res) => {
   res.json(user);
 };
 
-const user_create = async (req, res) => {
-  console.log('Created user: ', req.body, req.file);
-
-  //TODO Tarkista tietojen järjestys ja tarpeellisuus
-  const {email, password, birthdate, desc, username} = req.body;
-  const params = [email, password, birthdate, desc, username, req.file.filename];
-  await userModel.addUser(params);
-
-  res.json({message: 'upload oukelidoukeli'});
-};
-
 
 module.exports = {
   user_list_get,
   user_get,
-  user_create,
 }
