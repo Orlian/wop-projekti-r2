@@ -8,8 +8,10 @@ const multer = require('multer');
 
 const fileFilter = (req, file, seppo) => {
   if(file.mimetype.includes('image')) {
+    console.log('Seppo on true');
     seppo(null, true);
   } else {
+    console.log('Seppo on false');
     seppo(null, false);
   }
 };
@@ -18,7 +20,7 @@ const upload = multer({dest: './uploads/', fileFilter}); //app.js suhteen
 
 const injectFile = (req, res, next) => {
   if (req.file) {
-    req.body.user_image = req.file.mimetype;
+    req.body.mimetype = req.file.mimetype;
   }
   next();
 };
@@ -29,7 +31,7 @@ router.get('/logout', authController.logout);
 
 router.post('/register', upload.single('user_image'), injectFile,
     [
-      body('user_image', 'please choose a picture').contains('image'),
+      body('mimetype', 'please choose a picture').contains('image'),
       body('username', 'minimum 3 characters').
           not().
           isEmpty().
