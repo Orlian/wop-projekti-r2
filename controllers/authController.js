@@ -26,7 +26,7 @@ const login = (req, res) => {
   })(req, res);
 };
 
-const user_create_post = async (req, res, next) => {
+const user_register = async (req, res, next) => {
   // Extract the validation errors from a request.
   const errors = validationResult(req);
 
@@ -57,6 +57,6 @@ const logout = (req, res) => {
 
 module.exports = {
   login,
-  user_create_post,
+  user_register,
   logout,
 };
