@@ -1,7 +1,7 @@
 'use strict';
 
 const {validationResult} = require('express-validator');
-const userModel = require('/models/userModel');
+const userModel = require('../models/userModel');
 //TODO Tänne loput controllerin vaatimat requiret sun muut
 
 const user_list_get = async (req, res) => {
