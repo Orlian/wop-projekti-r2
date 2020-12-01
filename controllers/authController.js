@@ -9,14 +9,14 @@ const userModel = require('../models/userModel');
 const login = (req, res) => {
   passport.authenticate('local', {session: false}, (err, user, info) => {
     console.log('login', info);
-    if(err || !user) {
+    if (err || !user) {
       return res.status(400).json({
         message: 'Something went wrong',
-        user: user
+        user: user,
       });
     }
     req.login(user, {session: false}, (err) => {
-      if(err) {
+      if (err) {
         res.send(err.message);
       }
       const token = jwt.sign(user, 'this_is_a_mega_secret');
@@ -29,9 +29,10 @@ const login = (req, res) => {
 const user_register = async (req, res, next) => {
   // Extract the validation errors from a request.
   const errors = validationResult(req);
-
+  console.log('user register filename', req.file.filename,
+      '\n user register mimetype', req.body.mimetype);
   if (!errors.isEmpty()) {
-    console.log('user create error', errors);
+    console.log('user register error', errors);
     res.send(errors.array());
   } else {
     const salt = bcrypt.genSaltSync(12);
