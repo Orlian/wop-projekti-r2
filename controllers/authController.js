@@ -43,6 +43,7 @@ const user_register = async (req, res, next) => {
       req.body.description,
       req.body.username,
     ];
+    console.log('user_register params', params);
 
     if (await userModel.addUser(params)) {
       next();
