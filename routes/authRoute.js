@@ -29,7 +29,7 @@ router.get('/logout', authController.logout);
 
 router.post('/register', upload.single('user_image'), injectFile,
     [
-      body('user_img', 'please choose a picture').contains('image'),
+      body('user_image', 'please choose a picture').contains('image'),
       body('username', 'minimum 3 characters').
           not().
           isEmpty().
