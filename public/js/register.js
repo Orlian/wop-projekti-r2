@@ -8,6 +8,7 @@ registerForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   console.log('registerForm event Listener aktivoitunut');
   const data = serializeJson(registerForm);
+  console.log('Serialized data', data);
   const fetchOptions = {
     method: 'POST',
     headers: {

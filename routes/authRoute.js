@@ -3,8 +3,8 @@
 const express = require('express');
 const router = express.Router();
 const {body} = require('express-validator');
-const authController = require('../controllers/authController');
 const multer = require('multer');
+const authController = require('../controllers/authController');
 
 const fileFilter = (req, file, seppo) => {
   if(file.mimetype.includes('image')) {
@@ -31,7 +31,7 @@ router.get('/logout', authController.logout);
 
 router.post('/register', upload.single('user_image'), injectFile,
     [
-      body('mimetype', 'please choose a picture').contains('image'),
+      body('mimetype', 'File needs to be an image').contains('image'),
       body('username', 'minimum 3 characters').
           not().
           isEmpty().
