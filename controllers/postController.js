@@ -69,7 +69,15 @@ const make_thumbnail = async (req, res, next) => {
   }
 };
 
-
+module.exports = {
+  post_list_get,
+  post_get,
+  user_post_get,
+  create_new_post,
+  post_update_put,
+  post_delete,
+  make_thumbnail,
+};
 
 
 
