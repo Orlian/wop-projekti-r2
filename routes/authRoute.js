@@ -41,6 +41,7 @@ router.post('/register', upload.single('user-image'), injectFile,
           isEmpty().
           trim().
           matches('(?=.*[A-Ö]).{8,}'),
+        body('description', '').trim().escape(),
     ],
     authController.user_register,
     authController.login,

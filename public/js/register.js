@@ -6,6 +6,7 @@ const registerForm = document.querySelector('#register-form');
 
 registerForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
+  console.log('registerForm event Listener aktivoitunut');
   const data = serializeJson(registerForm);
   const fetchOptions = {
     method: 'POST',
