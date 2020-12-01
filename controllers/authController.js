@@ -29,20 +29,18 @@ const login = (req, res) => {
 const user_register = async (req, res, next) => {
   // Extract the validation errors from a request.
   const errors = validationResult(req);
-  console.log('user register filename', req.file.filename,
-      '\n user register mimetype', req.body.mimetype);
   if (!errors.isEmpty()) {
     console.log('user register error', errors);
     res.send(errors.array());
   } else {
     const salt = bcrypt.genSaltSync(12);
     const hash = bcrypt.hashSync(req.body.password, salt);
-    const {username, email, description} = req.body;
+    const {mimetype ,username, email, description} = req.body;
     const params = [
       //req.body.email,
       email,
       hash,
-      req.file.filename,
+      mimetype,
       description,
       username,
       //req.body.user_image,
