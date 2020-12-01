@@ -12,7 +12,9 @@ const app2 = express();
 const port = 3001; //Huomaa porttinumero
 
 app2.use(cors());
+app2.use(express.static('uploads'));
 app2.use(express.static('public'));
+app2.use('/thumbnails', express.static('thumbnails'));
 
 app2.use(bodyParser.urlencoded({extended: false}));
 app2.use(bodyParser.json());
