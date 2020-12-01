@@ -19,6 +19,7 @@ app2.use(bodyParser.json());
 
 //app2.use('/auth', authRoute);
 //app2.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
+//app2.use('/post', passport.authenticate('jwt', {session: false}), postRoute);
 //TODO Tänne autentikointi hommat sun muut use-lauseet
 
 
