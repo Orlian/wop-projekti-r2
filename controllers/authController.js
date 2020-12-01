@@ -38,7 +38,7 @@ const user_register = async (req, res, next) => {
     const params = [
       req.body.email,
       hash,
-      req.file.filename,
+      file.filename,
       req.body.description,
       req.body.username,
     ];
