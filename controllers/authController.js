@@ -36,12 +36,17 @@ const user_register = async (req, res, next) => {
   } else {
     const salt = bcrypt.genSaltSync(12);
     const hash = bcrypt.hashSync(req.body.password, salt);
+    const {username, email, description} = req.body;
     const params = [
-      req.body.email,
+      //req.body.email,
+      email,
       hash,
-      req.body.user_image,
-      req.body.description,
-      req.body.username,
+      req.file.filename,
+      description,
+      username,
+      //req.body.user_image,
+      //req.body.description,
+      //req.body.username,
     ];
     console.log('user_register params', params);
 
