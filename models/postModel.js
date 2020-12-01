@@ -5,11 +5,13 @@ const promisePool = pool.promise();
 
 const getAllPosts = async () => {
   try {
+    //TODO: Inner join user table
     const [rows] = await promisePool.query(
         'SELECT postid, imgfile, caption, email, timestamp FROM post');
     return rows;
   } catch (err) {
     console.log('postModel error', err.message);
+    return {error: 'DB Error'};
   }
 };
 
@@ -21,6 +23,7 @@ const getPost = async (postId) => {
     return rows;
   } catch (err) {
     console.log('postModel error', err.message);
+    return {error: 'DB Error'};
   }
 };
 
@@ -31,6 +34,7 @@ const getUserPosts = async (email) => {
     return rows;
   } catch (err) {
     console.log('postModel error', err.message);
+    return {error: 'DB Error'};
   }
 };
 
@@ -42,6 +46,7 @@ const addPost = async (params) => {
     return rows;
   } catch (err) {
     console.log('postModel error', err.message);
+    return {error: 'DB Error'};
   }
 };
 
@@ -53,6 +58,7 @@ const updatePost = async (params) => {
     return rows;
   } catch (err) {
     console.log('postModel error', err.message);
+    return {error: 'DB Error'};
   }
 };
 
