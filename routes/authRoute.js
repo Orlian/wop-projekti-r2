@@ -31,7 +31,7 @@ router.get('/logout', authController.logout);
 
 router.post('/register', upload.single('user_image'), injectFile,
     [
-      body('mimetype', 'File needs to be an image').contains('image'),
+      body('user_image', 'File needs to be an image').contains('image'),
       body('username', 'minimum 3 characters').
           not().
           isEmpty().
