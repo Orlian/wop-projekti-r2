@@ -7,14 +7,14 @@ const registerForm = document.querySelector('#register-form');
 registerForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   console.log('registerForm event Listener aktivoitunut');
-  const data = serializeJson(registerForm);
+  const data = new FormData(registerForm);
   console.log('Serialized data', data);
   const fetchOptions = {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Authorization': 'Bearer' + sessionStorage.getItem('token'),
     },
-    body: JSON.stringify(data),
+    body: data,
   };
   const response = await fetch(url + '/auth/register', fetchOptions);
   const json = await response.json();
