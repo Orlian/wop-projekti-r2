@@ -38,8 +38,10 @@ const user_register = async (req, res, next) => {
     const hash = bcrypt.hashSync(req.body.password, salt);
     const params = [
       req.body.email,
-      req.body.username,
       hash,
+      req.body.file,
+      req.body.description,
+      req.body.username,
     ];
 
     if (await userModel.addUser(params)) {
