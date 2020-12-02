@@ -28,6 +28,16 @@ header {
     font-family: "Lobster Two", sans-serif;
 }
 
+header > ion-icon {
+    font-size: 2.25em;
+    padding-bottom: 0.25em;
+}
+
+header > p {
+    font-size: 1.2em;
+}
+
+/*
 @keyframes swing {
     15% {
         transform: translateY(5px);
@@ -55,20 +65,7 @@ header:hover
     animation-iteration-count: 1;
 }
 
-
-
-header > a > ion-icon{
-    color: whitesmoke;
-}
-
-header > a > ion-icon:hover {
-color: palevioletred;
-}
-
-header > p {
-    font-size: 1.2em;
-}
-
+ */
 
 #background {
     margin-top: 1em;
@@ -76,11 +73,6 @@ header > p {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    opacity: 0.8;
-}
-
-#background:hover {
-    opacity: 1;
 }
 
 .image-container {
@@ -130,10 +122,13 @@ main {
 
 .main-logo > ion-icon {
     color: slateblue;
+    font-size: 2em;
 }
 
 form {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     height: auto;
 }
 
@@ -146,6 +141,7 @@ form > a:hover {
 }
 
 input {
+    width: 100%;
     background: rgba(150, 150, 150, 0.1);
     padding: 1em;
     border: 0.1em solid darkgrey;
@@ -205,9 +201,8 @@ button:hover {
         width: 5em;
     }
 
-    header > a > ion-icon{
-        height: 0.5em;
-        width: 0.5em;
+    header > ion-icon{
+        font-size: 1.5em;
     }
 
     header > p{
@@ -218,6 +213,5 @@ button:hover {
         height: 30em;
         width: 20em;
     }
-
 
 }
