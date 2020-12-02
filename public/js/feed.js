@@ -1,11 +1,8 @@
-
 'use strict';
-
+const url = '/app2/';
 const imageFeed = document.querySelector('.card-container');
 const imagesOnLoad = 3;
 let loadedImgN = 0;
-
-
 
 const createCards = (images) => {
   while (loadedImgN < images.length) {
