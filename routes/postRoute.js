@@ -28,10 +28,10 @@ router.get('/:id', postController.post_get);
 
 router.get('/:userid', postController.user_post_get);
 
-router.post('/', upload.single('user-image'), injectFile, postController.make_thumbnail, [
+router.post('/', upload.single('user-image'), injectFile [
   body('caption', 'Add caption').isLength({min: 1}),
   body('genres', 'Add genres').not().isEmpty(),
-  body('mimetype', 'Not an image').contains('image'),
+  body('mimetype', 'Not an image').contains('image')
 ], postController.create_new_post);
 
 router.put('/', [
