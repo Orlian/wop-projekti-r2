@@ -5,42 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Feed</title>
     <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&family=Montserrat&display=swap" rel="stylesheet">
+    <link href="css/profile.css" rel="stylesheet">
     <link href="css/feed.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
-    <nav>
-        <ul>
-            <li>
-                <img src="#" alt="Logo of the app2">
-                <p class="logo-caption">app2 name</p>
-            </li>
-            <li>
-                <ion-icon name="search-outline"></ion-icon>
-                <input type="text" class="search-bar" placeholder="Search..">
-            </li>
-            <li class="dropdown">
-                <button class="dropbtn">Dropdown</button>
-                <div class="dropdown-content">
-                    <a href="#">Edit</a>
-                    <a href="#">Log out</a>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li class="logo">
+                    <ion-icon id="logo-img" name="color-palette-outline"></ion-icon>
+                    <h1 class="logo-caption">Artgram</h1>
+                </li>
+                <li class="item" id="search-field">
+                    <form>
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                    </form>
+                </li>
+                <li class="item" id="add-pic-button">
+                    <a href="#">Add picture</a>
+                </li>
+                <li class="item item-has-submenu" id="profile-button">
+                    <a tabindex="0" style="outline: none">Profile
+                        <ion-icon name="chevron-down-outline"></ion-icon>
+                    </a>
+                    <ul class="submenu">
+                        <li class="subitem"><a href="#">View</a></li>
+                        <li class="subitem"><a href="#" id="edit-link">Edit</a></li>
+                        <li class="subitem"><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+                <li class="toggle"><a href="#">
+                    <ion-icon id="menu-img" name="menu-outline"></ion-icon>
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="card-container">
+
+    </section>
+    <button class="top-btn" type="button">
+        <ion-icon name="arrow-up-outline"></ion-icon>
+    </button>
+    <aside>
+        <div class="modal" id="post-modal">
+            <div class="post-wrapper">
+                <div class="content-modal">
+                    <form enctype="multipart/form-data">
+                        <span class="close">&times;</span>
+                        <img src="http://placekitten.com/200/200" alt="art-img" id="art-img">
+                        <div class="upload-btn-wrapper">
+                            <button class="btn">
+                                <ion-icon name="add-circle-sharp" id="plus-icon"></ion-icon>
+                            </button>
+                            <input type="file" name="user-image" accept="image/*" onchange="previewImage(event)">
+                        </div>
+                        <textarea name="caption" style="resize: none" rows="8" cols="40"
+                                  placeholder="Add caption (optional)"></textarea>
+                        <section class="genre-selection genres">
+                            <h2>Choose genres (1 required)</h2>
+                            <!-- TODO Korjaile genret oikeiksi, kunhan ne päätetään -->
+                            <div class="check">
+                                <label for="genre1">Photography</label>
+                                <input type="checkbox" id="genre1" name="genres" value="photography" checked>
+                            </div>
+                            <div class="check">
+                                <label for="genre2">Painting</label>
+                                <input type="checkbox" id="genre2" name="genres" value="painting">
+                            </div>
+                            <div class="check">
+                                <label for="genre3">Drawing</label>
+                                <input type="checkbox" id="genre3" name="genres" value="drawing">
+                            </div>
+                            <div class="check">
+                                <label for="genre4">Other</label>
+                                <input type="checkbox" id="genre4" name="genres" value="other">
+                            </div>
+                        </section>
+                        <button type="submit" class="modal-button" id="post-button">Publish</button>
+                        <button type="submit" class="modal-button" id="cancel-button">Cancel</button>
+                    </form>
                 </div>
-            </li>
-        </ul>
-    </nav>
-
-        <section class="card-container">
-
-        </section>
-        <button class="post-btn">
-            <p>New post</p>
-        </button>
-        <button class="top-btn" type="button">
-            <ion-icon name="arrow-up-outline"></ion-icon>
-        </button>
-
+            </div>
+        </div>
+    </aside>
+    <aside>
+        <div class="modal" id="edit-user-modal">
+            <div class="edit-user-wrapper">
+                <div class="content-modal">
+                    <form id="edit-user-form">
+                        <span class="close">&times;</span>
+                        <img src="http://placekitten.com/200/200" alt="user-picture" id="user-picture">
+                        <div class="upload-btn-wrapper">
+                            <button class="btn">
+                                <ion-icon name="add-circle-sharp" id="plus-icon"></ion-icon>
+                            </button>
+                            <input type="file" name="user-image" accept="image/*" id="user-picture-input"
+                                   onchange="previewImage(event)">
+                        </div>
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="password" name="password" placeholder="Password" pattern="(?=.*[A-Z]).{8,}"
+                               required>
+                        <textarea name="desc" placeholder="Description" style="resize: none" rows="8"
+                                  cols="40"></textarea>
+                        <button type="submit" class="modal-button" id="save-button">Save changes</button>
+                        <button type="reset" class="modal-button">Cancel</button>
+                        <button type="reset" class="modal-button" id="delete-button">Delete user</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </aside>
 </div>
 <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/load-image.js"></script>
 <script src="js/feed.js"></script>
 </body>
 </html>

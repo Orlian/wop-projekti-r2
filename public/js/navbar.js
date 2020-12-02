@@ -4,7 +4,7 @@ const menu = document.querySelector('.menu');
 const items = document.querySelectorAll('.item');
 const postModal = document.getElementById("post-modal");
 const editModal = document.getElementById('edit-user-modal');
-const postButton = document.getElementById("add-pic-button");
+const postButtonNav = document.getElementById("add-pic-button");
 const span1 = document.getElementsByClassName("close")[0];
 const span2 = document.getElementsByClassName("close")[1];
 const editLink = document.getElementById('edit-link');
@@ -50,7 +50,7 @@ function closeSubmenu(e) {
   }
 }
 
-postButton.onclick = function() {
+postButtonNav.onclick = function() {
   postModal.style.display = "flex";
 }
 

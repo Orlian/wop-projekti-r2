@@ -16,19 +16,6 @@ body {
 }
 
 
-nav {
-    width: 100vw;
-    padding: 2em 3em 2em 3em;
-
-}
-
- nav > ul {
-    display: flex;
-    justify-content: space-between;
-    list-style-type: none;
-}
-
-
 .card-container {
     display: flex;
     flex-wrap: wrap;
