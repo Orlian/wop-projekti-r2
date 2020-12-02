@@ -5,7 +5,7 @@ const addForm = document.getElementById('add-image');
 const imagesOnLoad = 3;
 let loadedImgN = 0;
 
-const createCards = (images) => {
+/*const createCards = (images) => {
   while (loadedImgN < images.length) {
     imageFeed.innerHTML += `<div class="card">
                             <img src="${url + '/uploads/' + images[loadedImgN].filename}" class="image" alt="User post">
@@ -41,7 +41,7 @@ const createCards = (images) => {
 };
 
 createCards();
-
+*/
 //AJAX call: tuleeko tänne getPost token
 
 const getImages = async () => {
@@ -61,7 +61,7 @@ const getImages = async () => {
   }
 };
 
-getImages();
+//getImages();
 
 window.addEventListener('scroll', () => {
   let scrollHeight = document.documentElement.scrollHeight;
