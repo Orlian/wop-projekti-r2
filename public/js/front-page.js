@@ -1,5 +1,6 @@
 'use strict';
 const loginForm = document.getElementById('login-form');
+const bgGallery = document.getElementById('background');
 
 const imagesArray = [
 
@@ -77,8 +78,7 @@ const imagesArray = [
 
 ];
 
-'use strict';
-const bgGallery = document.getElementById('background');
+
 
 
 /*const width = window.outerWidth;
@@ -120,7 +120,7 @@ if (width < 1000 && width >= 750) {
 
 loginForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  const data = serializeJson(loginForm);
+  const data = new FormData(loginForm);
   const fetchOptions = {
     method: 'POST',
     headers: {
