@@ -110,5 +110,5 @@ addForm.addEventListener('submit', async (evt) => {
   const response = await fetch(url + '/post', fetchOptions);
   const json = await response.json();
   console.log('add response', json);
-  getImages();
+  //getImages();
 });
