@@ -1,4 +1,5 @@
 'use strict';
+const url = '/app2/';
 const loginForm = document.getElementById('login-form');
 const bgGallery = document.getElementById('background');
 
@@ -126,7 +127,7 @@ loginForm.addEventListener('submit', async (evt) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data),
+    body: data,
   };
 
   const response = await fetch(url + '/auth/login', fetchOptions);
