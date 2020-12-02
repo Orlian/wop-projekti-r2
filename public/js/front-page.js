@@ -1,3 +1,6 @@
+'use strict';
+const loginForm = document.getElementById('login-form');
+
 const imagesArray = [
 
   {
@@ -115,4 +118,25 @@ if (width < 1000 && width >= 750) {
   }
 
 
+loginForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  const data = serializeJson(loginForm);
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  };
 
+  const response = await fetch(url + '/auth/login', fetchOptions);
+  const json = await response.json();
+  console.log('login response', json);
+  if (!json.user) {
+    alert(json.message);
+  } else {
+    // save token
+    sessionStorage.setItem('token', json.token);
+    location.href = 'feed.html';
+  }
+});
