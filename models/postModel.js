@@ -7,7 +7,7 @@ const getAllPosts = async () => {
   try {
     //TODO: Inner join user table
     const [rows] = await promisePool.query(
-        'SELECT postid, imgfile, caption, email, timestamp FROM post');
+        'SELECT postid, imgfile, caption, email, timestamp FROM Post');
     return rows;
   } catch (err) {
     console.log('postModel error', err.message);
@@ -15,10 +15,19 @@ const getAllPosts = async () => {
   }
 };
 
+const getRecentPosts = async () => {
+  try {
+    const [rows] = await promisePool.execute('SELECT postid, imgfile, caption, User.username, timestamp FROM Post INNER JOIN User ON Post.email = User.email ORDER BY timestamp LIMIT 50');
+  } catch(err) {
+    console.log('postModel error', err.message);
+    return {error: 'DB Error'};
+  }
+}
+
 const getPost = async (postId) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT imgfile, caption, email, timestamp FROM post WHERE postid = ?',
+        'SELECT imgfile, caption, email, timestamp FROM Post WHERE postid = ?',
         [postId]);
     return rows;
   } catch (err) {
@@ -30,7 +39,7 @@ const getPost = async (postId) => {
 const getUserPosts = async (email) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT postid, imgfile, caption, timestamp FROM post WHERE email = ?', [email]);
+        'SELECT postid, imgfile, caption, timestamp FROM Post WHERE email = ?', [email]);
     return rows;
   } catch (err) {
     console.log('postModel error', err.message);
@@ -41,7 +50,7 @@ const getUserPosts = async (email) => {
 const addPost = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'INSERT INTO post (imgfile, caption, email, timestamp) VALUES (?, ?, ?, NOW())',
+        'INSERT INTO Post (imgfile, caption, email, timestamp) VALUES (?, ?, ?, NOW())',
         params);
     return rows;
   } catch (err) {
@@ -53,7 +62,7 @@ const addPost = async (params) => {
 const updatePost = async (params) => {
   try {
     const [rows] = promisePool.execute(
-        'UPDATE post SET caption = ? WHERE postid = ?',
+        'UPDATE Post SET caption = ? WHERE postid = ?',
         params);
     return rows;
   } catch (err) {
@@ -64,7 +73,7 @@ const updatePost = async (params) => {
 
 const deletePost = async (postId) => {
   try {
-    await promisePool.execute('DELETE FROM post WHERE postid = ?', [postId]);
+    await promisePool.execute('DELETE FROM Post WHERE postid = ?', [postId]);
   } catch (err) {
     console.log('postModel error', err.message);
   }
