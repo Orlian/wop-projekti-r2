@@ -69,6 +69,8 @@ window.addEventListener('scroll', () => {
   }
 });
 
+
+
 /**Back to top button reveal and disappear on scroll**/
 const topBtn = document.querySelector('.top-btn');
 
