@@ -29,8 +29,9 @@ const create_new_post = async (req, res) => {
     return res.status(400).json({errors: errors.array()});
   }
 
-  const {caption, genres} = req.body;
-  const params = [caption, genres, req.file.filename];
+  //Saadaanko req bodysta? vai mistä?
+  const {caption, email} = req.body;
+  const params = [req.file.filename, caption, email];
   genres.forEach(genre => console.log(genre));
   const post = await postModel.addPost(params);
   res.json({message: 'Upload ok'});
