@@ -121,13 +121,15 @@ if (width < 1000 && width >= 750) {
 
 loginForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  const data = new FormData(loginForm);
+  const data = serializeJson(loginForm);
+  console.log(data);
   const fetchOptions = {
     method: 'POST',
     headers: {
+      'Content-Type': 'application/json',
       'Authorization': 'Bearer' + sessionStorage.getItem('token'),
     },
-    body: data,
+    body: JSON.stringify(data),
   };
 
   const response = await fetch(url + '/auth/login', fetchOptions);
