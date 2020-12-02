@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const passport = require('./utils/passwd');
 const userRoute = require('./routes/userRoute');
 const authRoute = require('./routes/authRoute');
+const postRoute = require('./routes/postRoute');
 //TODO Tänne lisää require lauseita sitä mukaan kun tarvetta tulee
 
 const app2 = express();
