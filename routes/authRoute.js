@@ -47,7 +47,7 @@ router.post('/register', upload.single('user_image'), injectFile,
         body('description', '').trim().escape(),
     ],
     authController.user_register,
-    authController.login,
+    //authController.login,
 );
 
 module.exports = router;

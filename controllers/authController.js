@@ -45,7 +45,7 @@ const user_register = async (req, res, next) => {
     console.log('user_register params', params);
 
     if (await userModel.addUser(params)) {
-      next();
+      res.status(200).json({message: 'register ok'});
     } else {
       res.status(400).json({error: 'register error'});
     }
