@@ -18,9 +18,10 @@ registerForm.addEventListener('submit', async (evt) => {
   const response = await fetch(url + '/auth/register', fetchOptions);
   const json = await response.json();
   console.log('user register response', json);
-  sessionStorage.setItem('token', json.token);
+  //sessionStorage.setItem('token', json.token);
 
   //TODO Lisäile loppu käyttäjän rekisteröintikäyttäytyminen
+  location.href = 'front-page.html';
 });
 
 const checkMatch = () => {

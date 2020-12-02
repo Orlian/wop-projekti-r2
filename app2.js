@@ -3,7 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const passport = require('passport');
+const passport = require('./utils/passwd');
 const userRoute = require('./routes/userRoute');
 const authRoute = require('./routes/authRoute');
 //TODO Tänne lisää require lauseita sitä mukaan kun tarvetta tulee
