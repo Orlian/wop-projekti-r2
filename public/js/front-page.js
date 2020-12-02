@@ -137,7 +137,7 @@ loginForm.addEventListener('submit', async (evt) => {
     alert(json.message);
   } else {
     // save token
-    //sessionStorage.setItem('token', json.token);
+    sessionStorage.setItem('token', json.token);
     location.href = 'feed.html';
   }
 });
