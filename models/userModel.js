@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 
 const getAllUsers = async () => {
   try {
-    const [rows] = await promisePool.query('SELECT email, username FROM user');
+    const [rows] = await promisePool.query('SELECT email, username FROM User');
     return rows;
   } catch (err) {
     console.log('userModel error', err.message);
@@ -15,7 +15,7 @@ const getAllUsers = async () => {
 const getUser = async (email) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT email, username, description, userimg FROM user WHERE email = ?',
+        'SELECT email, username, description, userimg FROM User WHERE email = ?',
         [email]);
     return rows;
   } catch (err) {
@@ -39,7 +39,7 @@ const getUserLogin = async (params) => {
   try {
     console.log('getUserLogin params', params);
     const [rows] = await promisePool.execute(
-        'SELECT * FROM user WHERE email = ?;', params);
+        'SELECT * FROM User WHERE email = ?;', params);
     return rows;
   } catch(e) {
     console.log('userModel error', e.message);
@@ -49,7 +49,7 @@ const getUserLogin = async (params) => {
 const updateUser = async (params) => {
   try {
     const [rows] = promisePool.execute(
-        'UPDATE user SET password = ?, userimg = ?, description = ?, username = ? WHERE email = ?',
+        'UPDATE User SET password = ?, userimg = ?, description = ?, username = ? WHERE email = ?',
         params);
     return rows;
   } catch (err) {
@@ -59,7 +59,7 @@ const updateUser = async (params) => {
 
 const deleteUser = async (email) => {
   try {
-    await promisePool.execute('DELETE FROM user WHERE email = ?', [email]);
+    await promisePool.execute('DELETE FROM User WHERE email = ?', [email]);
   } catch (err) {
     console.log('userModel error', err.message);
   }
