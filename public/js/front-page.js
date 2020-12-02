@@ -126,7 +126,7 @@ loginForm.addEventListener('submit', async (evt) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer' + sessionStorage.getItem('token'),
+      //'Authorization': 'Bearer' + sessionStorage.getItem('token'),
     },
     body: data,
   };
@@ -138,7 +138,7 @@ loginForm.addEventListener('submit', async (evt) => {
     alert(json.message);
   } else {
     // save token
-    sessionStorage.setItem('token', json.token);
+    //sessionStorage.setItem('token', json.token);
     location.href = 'feed.html';
   }
 });
