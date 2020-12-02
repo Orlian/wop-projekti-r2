@@ -1,4 +1,5 @@
 'use strict';
+const url = '/app2/';
 const loginForm = document.getElementById('login-form');
 const bgGallery = document.getElementById('background');
 
