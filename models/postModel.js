@@ -17,7 +17,8 @@ const getAllPosts = async () => {
 
 const getRecentPosts = async () => {
   try {
-    const [rows] = await promisePool.execute('SELECT postid, imgfile, caption, User.username, timestamp FROM Post INNER JOIN User ON Post.email = User.email ORDER BY timestamp LIMIT 50');
+    const [rows] = await promisePool.execute('SELECT postid, imgfile, caption, User.username, timestamp FROM Post INNER JOIN User ON Post.email = User.email ORDER BY timestamp DESC LIMIT 50');
+    return rows;
   } catch(err) {
     console.log('postModel error', err.message);
     return {error: 'DB Error'};
@@ -86,4 +87,5 @@ module.exports = {
   addPost,
   updatePost,
   deletePost,
+  getRecentPosts,
 };
