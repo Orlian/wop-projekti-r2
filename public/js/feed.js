@@ -42,6 +42,13 @@ let loadedImgN = 0;
 
 createCards();
 */
+
+window.addEventListener('scroll', () => {
+  let scrollHeight = document.documentElement.scrollHeight;
+  if (window.scrollY + window.innerHeight > scrollHeight - 100) {
+    createCards();
+  }
+});
 //AJAX call: tuleeko tänne getPost token
 
 const getImages = async () => {
@@ -63,12 +70,7 @@ const getImages = async () => {
 
 //getImages();
 
-window.addEventListener('scroll', () => {
-  let scrollHeight = document.documentElement.scrollHeight;
-  if (window.scrollY + window.innerHeight > scrollHeight - 100) {
-    createCards();
-  }
-});
+
 
 
 
