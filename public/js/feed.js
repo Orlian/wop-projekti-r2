@@ -1,6 +1,7 @@
 'use strict';
 const url = '/app2/';
 const imageFeed = document.querySelector('.card-container');
+const addForm = document.getElementById('add-image');
 const imagesOnLoad = 3;
 let loadedImgN = 0;
 
@@ -94,4 +95,20 @@ window.addEventListener('scroll', () => {
 
 topBtn.addEventListener('click', () => {
   window.scrollTo(0, 0);
+});
+
+addForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  const fd = new FormData(addForm);
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+    },
+    body: fd,
+  };
+  const response = await fetch(url + '/post', fetchOptions);
+  const json = await response.json();
+  console.log('add response', json);
+  getImages();
 });
