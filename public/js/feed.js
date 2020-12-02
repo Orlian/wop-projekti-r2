@@ -99,13 +99,13 @@ topBtn.addEventListener('click', () => {
 
 addForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  const fd = new FormData(addForm);
+  const fd = serializeJson(addForm);
   const fetchOptions = {
     method: 'POST',
     headers: {
       'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
     },
-    body: fd,
+    body: JSON.stringify(fd),
   };
   const response = await fetch(url + '/post', fetchOptions);
   const json = await response.json();
