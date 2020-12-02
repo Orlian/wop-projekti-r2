@@ -7,7 +7,7 @@ const promisePool = pool.promise();
 const getSearchResult = async (input) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT DISTINCT postid, imgfile, caption, timestamp FROM Post INNER JOIN categorise ON Post.postid = Categorise.postid INNER JOIN Category ON Category.categoryid = Categorise.categoryid INNER JOIN User ON User.email = Post.email WHERE caption LIKE "%?%" OR username LIKE "%?%" OR categoryname LIKE "%?%"',
+        'SELECT DISTINCT postid, imgfile, caption, timestamp FROM Post INNER JOIN Categorise ON Post.postid = Categorise.postid INNER JOIN Category ON Category.categoryid = Categorise.categoryid INNER JOIN User ON User.email = Post.email WHERE caption LIKE "%?%" OR username LIKE "%?%" OR categoryname LIKE "%?%"',
         [input]);
     return rows;
   } catch (err) {
