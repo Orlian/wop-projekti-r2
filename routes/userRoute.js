@@ -10,7 +10,7 @@ const upload = multer({ dest: './uploads/' }); //app.js suhteen
 router.get('/', userController.user_list_get);
 
 
-router.get('/:id', userController.user_get);
+router.get('/:email', userController.user_get);
 
 
 router.put('/', (req,res) =>{
