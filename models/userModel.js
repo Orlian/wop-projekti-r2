@@ -27,7 +27,7 @@ const addUser = async (params) => {
   try {
     //TODO Varmista sql-lauseen toimivuus valinnaisen datan kanssa
     const [rows] = await promisePool.execute(
-        'INSERT INTO user (email, password, userimg, description, username) VALUES (?, ?, ?, ?, ?)',
+        'INSERT INTO User (email, password, userimg, description, username) VALUES (?, ?, ?, ?, ?)',
         params);
     return rows;
   } catch (err) {
