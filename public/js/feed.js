@@ -1,137 +1,16 @@
-const imagesArray = [
-
-  {
-    img: 'images/front-page/placeholder1.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder2.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder3.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder4.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder5.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder6.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder7.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder8.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder9.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder10.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder11.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder12.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder13.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder14.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder15.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder16.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder17.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder18.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder19.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder20.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder21.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder22.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder23.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder24.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder25.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder26.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder27.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder28.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder29.jpg',
-  },
-
-  {
-    img: 'images/front-page/placeholder30.jpg',
-  },
-
-];
 
 'use strict';
-/**Loading 7 images on scroll, for as long as all images in the array are loaded**/
+
 const imageFeed = document.querySelector('.card-container');
 const imagesOnLoad = 3;
 let loadedImgN = 0;
 
-const loadImages = () => {
-  while (loadedImgN < imagesArray.length) {
+
+
+const createCards = (images) => {
+  while (loadedImgN < images.length) {
     imageFeed.innerHTML += `<div class="card">
-                            <img src="${imagesArray[loadedImgN].img}" class="image" alt="User post">
+                            <img src="${url + '/uploads/' + images[loadedImgN].filename}" class="image" alt="User post">
                             <div class="aside">
                                 <div class="comments-container">
                                     <div class="img-caption"><p>Caption from db</p></div>
@@ -163,12 +42,33 @@ const loadImages = () => {
   }
 };
 
-loadImages();
+createCards();
+
+//AJAX call: tuleeko tänne getPost token
+
+const getImages = async () => {
+  console.log('getPost token ', sessionStorage.getItem('token'));
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/post', options);
+    const images = await response.json();
+    createCards(images);
+  }
+  catch (e) {
+    console.log(e.message);
+  }
+};
+
+getImages();
 
 window.addEventListener('scroll', () => {
   let scrollHeight = document.documentElement.scrollHeight;
   if (window.scrollY + window.innerHeight > scrollHeight - 100) {
-    loadImages();
+    createCards();
   }
 });
 
