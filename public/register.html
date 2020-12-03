@@ -16,7 +16,7 @@
                     <button class="btn"><ion-icon name="add-circle-sharp"></ion-icon></button>
                     <input type="file" name="user_image" accept="image/*" onchange="previewImage(event)">
                 </div>
-                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" id="username-input" name="username" placeholder="Username" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" id="password" name="password" placeholder="Password" pattern=".{8,}" onkeyup="checkMatch();" required>
                 <input type="password" id="confirm-password" name="confirm-password" placeholder="Retype password" onkeyup="checkMatch();"

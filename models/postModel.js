@@ -5,7 +5,6 @@ const promisePool = pool.promise();
 
 const getAllPosts = async () => {
   try {
-    //TODO: Inner join user table
     const [rows] = await promisePool.query(
         'SELECT postid, imgfile, caption, email, timestamp FROM Post');
     return rows;

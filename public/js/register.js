@@ -4,6 +4,7 @@ const url = '/app2/';
 
 const registerForm = document.querySelector('#register-form');
 const registerButton = document.querySelector('#register-button');
+const usernameInput = document.querySelector('#username-input');
 
 registerForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
@@ -23,6 +24,21 @@ registerForm.addEventListener('submit', async (evt) => {
 
   //TODO Lisäile loppu käyttäjän rekisteröintikäyttäytyminen
   location.href = 'front-page.html';
+});
+
+usernameInput.addEventListener('blur', async (evt) => {
+  evt.preventDefault();
+  const data = serializeJson(usernameInput);
+  const fetchOptions = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+    },
+    body: JSON.stringify(data),
+  };
+  const response = await fetch(url + '/checkuser', fetchOptions);
+  const json = await response.json();
 });
 
 const passwd = document.getElementById('password');

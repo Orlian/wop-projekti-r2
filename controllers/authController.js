@@ -26,7 +26,7 @@ const login = (req, res) => {
   })(req, res);
 };
 
-const user_register = async (req, res, next) => {
+const user_register = async (req, res) => {
   // Extract the validation errors from a request.
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -57,8 +57,15 @@ const logout = (req, res) => {
   res.json({message: 'logout'});
 };
 
+const user_check = async (req, res) => {
+  if(await userModel.getAllUsers()){
+    req.params.
+  }
+}
+
 module.exports = {
   login,
   user_register,
   logout,
+  user_check,
 };
