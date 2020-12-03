@@ -32,15 +32,14 @@ registerForm.addEventListener('submit', async (evt) => {
 
 usernameInput.addEventListener('blur', async (evt) => {
   evt.preventDefault();
-  const data = serializeJson(usernameInput);
+  const data = usernameInput.value;
   console.log('register blur event data', data);
   const fetchOptions = {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
     },
-    body: JSON.stringify(data),
+    body: data,
   };
   const response = await fetch(url + '/auth/checkuser', fetchOptions);
   const json = await response.json();

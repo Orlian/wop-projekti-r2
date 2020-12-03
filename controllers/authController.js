@@ -58,10 +58,10 @@ const logout = (req, res) => {
 };
 
 const user_check = async (req, res) => {
+  const param = [
+    req.body.username,
+  ];
   try {
-    const param = [
-        req.body.username,
-    ]
     const check = await userModel.getUsername(param);
     console.log('username_check', check, '\nreq.body.username', req.body.username);
       if(!check.empty()) {
