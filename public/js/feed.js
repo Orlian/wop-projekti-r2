@@ -60,10 +60,10 @@ const getPosts = async () => {
   }
 };
 
-document.onload = () => {
+
   console.log('whats with onload');
   getPosts();
-};
+
 
 
 /*const createCards = (images) => {
