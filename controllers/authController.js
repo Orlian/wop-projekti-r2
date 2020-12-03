@@ -58,16 +58,13 @@ const logout = (req, res) => {
 };
 
 const user_check = async (req, res) => {
-  console.log('user_check req.body', req.body);
   try {
     const rows = await userModel.getUsername(req.body.username);
-    console.log('username_check', rows);
       if(rows.length !== 0) {
         return res.json({message: 'username unavailable'});
       }
       return res.json({message: 'username ok'});
   } catch (err){
-    console.log('user_check error', err.message);
     res.send({error: 'Something went wrong'});
   }
 
