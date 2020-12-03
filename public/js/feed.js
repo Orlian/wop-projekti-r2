@@ -31,7 +31,7 @@ const createImageCards = (images) => {
                                  </div>
                                  <form>
                                     <textarea name="comment" placeholder="Write a comment" cols="56" rows="5"
-                                    ></textarea>
+                                     style="resize: none"></textarea>
                                     <div class="btn-container">
                                     <button type="submit" class="like-btn"><ion-icon name="heart-outline"></ion-icon> </button>
                                     <button type="submit" class="comment-btn">Comment</button> 
