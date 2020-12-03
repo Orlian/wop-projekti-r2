@@ -40,7 +40,7 @@ const createImageCards = (images) => {
   });
 };
 
-const getImages = async () => {
+const getPosts = async () => {
   console.log('getPost token ', sessionStorage.getItem('token'));
   try {
     const options = {
@@ -56,6 +56,9 @@ const getImages = async () => {
   }
 };
 
+document.onload = () => {
+  getPosts();
+};
 
 
 /*const createCards = (images) => {
