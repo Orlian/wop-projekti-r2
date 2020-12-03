@@ -32,7 +32,7 @@ registerForm.addEventListener('submit', async (evt) => {
 
 usernameInput.addEventListener('blur', async (evt) => {
   evt.preventDefault();
-  const data = usernameInput.value;
+  const data = new FormData(usernameInput.value);
   console.log('register blur event data', data);
   const fetchOptions = {
     method: 'POST',
