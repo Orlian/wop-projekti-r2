@@ -8,7 +8,11 @@ const usernameInput = document.querySelector('#username-input');
 const passwd = document.getElementById('password');
 const confirmPasswd = document.getElementById('confirm-password');
 const passwdMessage = document.getElementById('pwmessage');
-const usernameMessage = document.getElementById('unmessage')
+const usernameMessage = document.getElementById('unmessage');
+
+document.onload = () => {
+  registerForm.reset();
+};
 
 registerForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
