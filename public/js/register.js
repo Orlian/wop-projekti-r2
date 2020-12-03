@@ -10,53 +10,49 @@ const confirmPasswd = document.getElementById('confirm-password');
 const passwdMessage = document.getElementById('pwmessage');
 const usernameMessage = document.getElementById('unmessage');
 
-window.onload = () => {
-  registerForm.reset();
+registerForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  const data = new FormData(registerForm);
+  console.log('Serialized data', data);
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer' + sessionStorage.getItem('token'),
+    },
+    body: data,
+  };
+  const response = await fetch(url + '/auth/register', fetchOptions);
+  const json = await response.json();
+  console.log('user register response', json);
+  //sessionStorage.setItem('token', json.token);
 
-  registerForm.addEventListener('submit', async (evt) => {
-    evt.preventDefault();
-    const data = new FormData(registerForm);
-    console.log('Serialized data', data);
-    const fetchOptions = {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer' + sessionStorage.getItem('token'),
-      },
-      body: data,
-    };
-    const response = await fetch(url + '/auth/register', fetchOptions);
-    const json = await response.json();
-    console.log('user register response', json);
-    //sessionStorage.setItem('token', json.token);
+  //TODO Lisäile loppu käyttäjän rekisteröintikäyttäytyminen
+  location.href = 'front-page.html';
+});
 
-    //TODO Lisäile loppu käyttäjän rekisteröintikäyttäytyminen
-    location.href = 'front-page.html';
-  });
-
-  usernameInput.addEventListener('blur', async (evt) => {
-    evt.preventDefault();
-    const data = serializeJson(registerForm);
-    const fetchOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-      },
-      body: JSON.stringify(data),
-    };
-    const response = await fetch(url + '/auth/checkuser', fetchOptions);
-    const json = await response.json();
-    if (json.message === 'username ok') {
-      usernameInput.style.borderColor = 'green';
-      usernameMessage.innerHTML = 'Username ok';
-      registerButton.disabled = false;
-    } else {
-      usernameInput.style.borderColor = 'red';
-      usernameMessage.innerHTML = 'Username unavailable';
-      registerButton.disabled = true;
-    }
-  });
-};
+usernameInput.addEventListener('blur', async (evt) => {
+  evt.preventDefault();
+  const data = serializeJson(registerForm);
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+    },
+    body: JSON.stringify(data),
+  };
+  const response = await fetch(url + '/auth/checkuser', fetchOptions);
+  const json = await response.json();
+  if (json.message === 'username ok') {
+    usernameInput.style.borderColor = 'green';
+    usernameMessage.innerHTML = 'Username ok';
+    registerButton.disabled = false;
+  } else {
+    usernameInput.style.borderColor = 'red';
+    usernameMessage.innerHTML = 'Username unavailable';
+    registerButton.disabled = true;
+  }
+});
 
 const checkMatch = () => {
   if (passwd.value !== confirmPasswd.value) {
