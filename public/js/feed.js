@@ -10,6 +10,8 @@ let loadedImgN = 0;
 const createImageCards = (images) => {
 
   imageFeed.innerHTML = "";
+
+  console.log('whats wrong');
   images.forEach((image) => {
 
     imageFeed.innerHTML += `<div class="card">
@@ -59,6 +61,7 @@ const getPosts = async () => {
 };
 
 document.onload = () => {
+  console.log('whats with onload');
   getPosts();
 };
 
