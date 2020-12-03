@@ -29,7 +29,7 @@ router.post('/login', authController.login);
 
 router.get('/logout', authController.logout);
 
-router.get('/checkuser', authController.user_check);
+//router.get('/checkuser', authController.user_check);
 
 router.post('/register', upload.single('user_image'), injectFile,
     [
