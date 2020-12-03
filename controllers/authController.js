@@ -57,15 +57,15 @@ const logout = (req, res) => {
   res.json({message: 'logout'});
 };
 
-const user_check = async (req, res) => {
+/*const user_check = async (req, res) => {
   if(await userModel.getAllUsers()){
     req.params.
   }
-}
+}*/
 
 module.exports = {
   login,
   user_register,
   logout,
-  user_check,
+  //user_check,
 };
