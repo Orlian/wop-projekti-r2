@@ -30,11 +30,12 @@ const create_new_post = async (req, res) => {
   }
 
   //Saadaanko req bodysta? vai mistä?
-  const {caption, email} = req.body;
-  const params = [req.file.filename, caption, email];
-  genres.forEach(genre => console.log(genre));
+  const {caption} = req.body;
+  const params = [req.file.filename, caption, req.user.email];
   const post = await postModel.addPost(params);
-  res.json({message: 'Upload ok'});
+  if(post){
+    res.json({message: 'Upload ok'});
+  }
 };
 
 const post_update_put = async (req, res) => {
