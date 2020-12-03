@@ -10,7 +10,7 @@ const confirmPasswd = document.getElementById('confirm-password');
 const passwdMessage = document.getElementById('pwmessage');
 const usernameMessage = document.getElementById('unmessage');
 
-document.onload = () => {
+window.onload = () => {
   registerForm.reset();
 };
 
