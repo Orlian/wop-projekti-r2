@@ -34,7 +34,7 @@ usernameInput.addEventListener('blur', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(usernameInput.value);
   const fetchOptions = {
-    method: 'GET',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
