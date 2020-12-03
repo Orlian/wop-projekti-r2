@@ -60,7 +60,7 @@ const logout = (req, res) => {
 const user_check = async (req, res) => {
   console.log('user_check req.body', req.body);
   try {
-    const check = await userModel.getUsername(req.body.value);
+    const check = await userModel.getUsername(req.body.username);
     console.log('username_check', check);
       if(!check.empty()) {
         res.json({message: 'username unavailable'});
