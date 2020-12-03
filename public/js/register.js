@@ -39,3 +39,5 @@ const checkMatch = () => {
     registerButton.disabled = false;
   }
 }
+
+//event blur
