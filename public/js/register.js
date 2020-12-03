@@ -46,9 +46,11 @@ usernameInput.addEventListener('blur', async (evt) => {
   if(json.message === 'username ok'){
     usernameInput.style.borderColor = 'green';
     usernameMessage.innerHTML = 'Username ok';
+    registerButton.disabled = false;
   } else {
     usernameInput.style.borderColor = 'red';
     usernameMessage.innerHTML = 'Username unavailable';
+    registerButton.disabled = true;
   }
 });
 
