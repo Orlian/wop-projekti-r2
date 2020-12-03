@@ -32,7 +32,7 @@ registerForm.addEventListener('submit', async (evt) => {
 
 usernameInput.addEventListener('blur', async (evt) => {
   evt.preventDefault();
-  const data = serializeJson(usernameInput.value);
+  const data = serializeJson(usernameInput);
   console.log('register blur event data', data);
   const fetchOptions = {
     method: 'POST',

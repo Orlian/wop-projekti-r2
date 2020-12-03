@@ -30,7 +30,7 @@ router.post('/login', authController.login);
 router.get('/logout', authController.logout);
 
 router.post('/checkuser',[
-    body('username', '').trim().escape(),
+    body('username', 'username trim').trim().escape(),
 ], authController.user_check);
 
 router.post('/register', upload.single('user_image'), injectFile,
