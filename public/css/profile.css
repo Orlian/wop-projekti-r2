@@ -253,6 +253,13 @@ input[type='checkbox']{
 #plus-icon:hover{
     color: darkgreen;
 }
+
+@-moz-document url-prefix() {
+    textarea{
+        overflow-y:scroll;
+    }
+}
+
 /*Tablet menu*/
 
 @media only screen and (min-width: 769px){
@@ -320,3 +327,4 @@ section h2, .desc{
     border: 0.1em solid black;
     border-radius: 0;
 }
+
