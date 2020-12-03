@@ -45,7 +45,7 @@ usernameInput.addEventListener('blur', async (evt) => {
   const response = await fetch(url + '/auth/checkuser', fetchOptions);
   const json = await response.json();
   console.log('blur event response', json);
-  if(json.message.value.contains('ok')){
+  if(json.message.contains('ok')){
     usernameInput.style.borderColor = 'green';
     usernameMessage.innerHTML = 'Username ok';
   } else {
