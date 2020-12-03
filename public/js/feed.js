@@ -5,6 +5,59 @@ const addForm = document.getElementById('add-image');
 const imagesOnLoad = 3;
 let loadedImgN = 0;
 
+//Create image cards
+
+const createImageCards = (images) => {
+  images.forEach((image) => {
+
+    imageFeed.innerHTML += `<div class="card">
+                            <img src="${url + '/uploads/' + image.filename}" class="image" alt="User post">
+                            <div class="aside">
+                                <div class="comments-container">
+                                    <div class="img-caption"><p>Caption from db</p></div>
+                                    <div class="likes">
+                                        <p>N Likes</p>
+                                    </div>
+                                    <h4>Comments</h4>
+                                    <ul class="comments">
+                                        <li>Comment</li>
+                                        <li>Comment2</li>
+                                        <li>Comment3</li>
+                                    </ul>
+                                 </div>
+                                 <form>
+                                    <textarea name="comment" placeholder="Write a comment" cols="56" rows="5"
+                                    ></textarea>
+                                    <div class="btn-container">
+                                    <button type="submit" class="like-btn"><ion-icon name="heart-outline"></ion-icon> </button>
+                                    <button type="submit" class="comment-btn">Comment</button> 
+                                    </div>
+                                </form>
+                            </div>
+                          
+</div>`;
+
+  });
+};
+
+const getImages = async () => {
+  console.log('getPost token ', sessionStorage.getItem('token'));
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/post', options);
+    const images = await response.json();
+    createImageCards(images);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+
+
 /*const createCards = (images) => {
   while (loadedImgN < images.length) {
     imageFeed.innerHTML += `<div class="card">
@@ -43,35 +96,12 @@ let loadedImgN = 0;
 createCards();
 */
 
-window.addEventListener('scroll', () => {
+/*window.addEventListener('scroll', () => {
   let scrollHeight = document.documentElement.scrollHeight;
   if (window.scrollY + window.innerHeight > scrollHeight - 100) {
     createCards();
   }
-});
-//AJAX call: tuleeko tänne getPost token
-
-const getImages = async () => {
-  console.log('getPost token ', sessionStorage.getItem('token'));
-  try {
-    const options = {
-      headers: {
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-      },
-    };
-    const response = await fetch(url + '/post', options);
-    const images = await response.json();
-    createCards(images);
-  }
-  catch (e) {
-    console.log(e.message);
-  }
-};
-
-//getImages();
-
-
-
+}); */
 
 
 /**Back to top button reveal and disappear on scroll**/
