@@ -15,7 +15,7 @@ const createImageCards = (images) => {
   images.forEach((image) => {
 
     imageFeed.innerHTML += `<div class="card">
-                            <img src="${url + '/uploads/' + image.filename}" class="image" alt="User post">
+                            <img src="${url + '/uploads/' + image.imgfile}" class="image" alt="User post">
                             <div class="aside">
                                 <div class="comments-container">
                                     <div class="img-caption"><p>Caption from db</p></div>
