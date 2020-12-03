@@ -57,15 +57,25 @@ const logout = (req, res) => {
   res.json({message: 'logout'});
 };
 
-/*const user_check = async (req, res) => {
-  if(await userModel.getAllUsers()){
-    req.params.
+const user_check = async (req, res) => {
+  try {
+    const usernames = await userModel.getAllUsernames();
+    console.log('username_check', usernames, '\nreq.body.username', req.body.username);
+    usernames.forEach((username) => {
+      if(username === req.body.username) {
+        res.json({message: 'username unavailable'});
+      }
+    });
+    res.json({message: 'username ok'});
+  } catch (err){
+    res.send({error: 'Something went wrong'});
   }
-}*/
+
+}
 
 module.exports = {
   login,
   user_register,
   logout,
-  //user_check,
+  user_check,
 };

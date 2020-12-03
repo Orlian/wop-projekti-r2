@@ -5,6 +5,10 @@ const url = '/app2/';
 const registerForm = document.querySelector('#register-form');
 const registerButton = document.querySelector('#register-button');
 const usernameInput = document.querySelector('#username-input');
+const passwd = document.getElementById('password');
+const confirmPasswd = document.getElementById('confirm-password');
+const passwdMessage = document.getElementById('pwmessage');
+const usernameMessage = document.getElementById('unmessage')
 
 registerForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
@@ -28,7 +32,7 @@ registerForm.addEventListener('submit', async (evt) => {
 
 usernameInput.addEventListener('blur', async (evt) => {
   evt.preventDefault();
-  const data = serializeJson(usernameInput);
+  const data = serializeJson(usernameInput.value);
   const fetchOptions = {
     method: 'GET',
     headers: {
@@ -39,11 +43,14 @@ usernameInput.addEventListener('blur', async (evt) => {
   };
   const response = await fetch(url + '/checkuser', fetchOptions);
   const json = await response.json();
+  if(json.message.contains('ok')){
+    usernameInput.style.borderColor = 'green';
+    usernameMessage.innerHTML = 'Username ok';
+  } else {
+    usernameInput.style.borderColor = 'red';
+    usernameMessage.innerHTML = 'Username unavailable';
+  }
 });
-
-const passwd = document.getElementById('password');
-const confirmPasswd = document.getElementById('confirm-password');
-const passwdMessage = document.getElementById('message');
 
 const checkMatch = () => {
   if (passwd.value !== confirmPasswd.value) {
