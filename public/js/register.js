@@ -59,7 +59,7 @@ const checkMatch = () => {
     passwdMessage.style.color = 'red';
     passwdMessage.innerHTML = 'not matching';
     registerButton.disabled = true;
-  } else if (passwd.value === '' || confirmPasswd.value === '') {
+  } else if (passwd.value === '') {
     passwdMessage.style.color = 'red';
     passwdMessage.innerHTML = 'password can\'t be empty';
     registerButton.disabled = true;
