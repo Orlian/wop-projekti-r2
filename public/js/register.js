@@ -3,6 +3,7 @@
 const url = '/app2/';
 
 const registerForm = document.querySelector('#register-form');
+const registerButton = document.querySelector('#register-button');
 
 registerForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
@@ -24,13 +25,17 @@ registerForm.addEventListener('submit', async (evt) => {
   location.href = 'front-page.html';
 });
 
+const passwd = document.getElementById('password');
+const confirmPasswd = document.getElementById('confirm-password');
+const passwdMessage = document.getElementById('message');
+
 const checkMatch = () => {
-  if (document.getElementById('password').value ===
-      document.getElementById('confirm-password').value) {
-    document.getElementById('message').style.color = 'green';
-    document.getElementById('message').innerHTML = 'matching';
+  if (passwd.value !== confirmPasswd.value) {
+    passwdMessage.style.color = 'red';
+    passwdMessage.innerHTML = 'not matching';
   } else {
-    document.getElementById('message').style.color = 'red';
-    document.getElementById('message').innerHTML = 'not matching';
+    passwdMessage.style.color = 'green';
+    passwdMessage.innerHTML = 'matching';
+    registerButton.disabled = false;
   }
 }
