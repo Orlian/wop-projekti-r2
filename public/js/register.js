@@ -33,6 +33,7 @@ registerForm.addEventListener('submit', async (evt) => {
 usernameInput.addEventListener('blur', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(usernameInput.value);
+  console.log('register blur event data', data);
   const fetchOptions = {
     method: 'POST',
     headers: {
@@ -43,7 +44,8 @@ usernameInput.addEventListener('blur', async (evt) => {
   };
   const response = await fetch(url + '/auth/checkuser', fetchOptions);
   const json = await response.json();
-  if(json.message.includes('ok')){
+  console.log('blur event response', json);
+  if(json.includes('ok')){
     usernameInput.style.borderColor = 'green';
     usernameMessage.innerHTML = 'Username ok';
   } else {

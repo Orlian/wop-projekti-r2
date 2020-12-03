@@ -59,14 +59,15 @@ const logout = (req, res) => {
 
 const user_check = async (req, res) => {
   try {
-    const usernames = await userModel.getAllUsernames();
-    console.log('username_check', usernames, '\nreq.body.username', req.body.username);
-    usernames.forEach((username) => {
-      if(username === req.body.username) {
+    const param = [
+        req.body.username,
+    ]
+    const check = await userModel.getUsername(param);
+    console.log('username_check', check, '\nreq.body.username', req.body.username);
+      if(!check.empty()) {
         res.json({message: 'username unavailable'});
       }
-    });
-    res.json({message: 'username ok'});
+      res.json({message: 'username ok'});
   } catch (err){
     res.send({error: 'Something went wrong'});
   }
