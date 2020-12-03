@@ -123,6 +123,12 @@ ion-icon:hover{
     color: darkgreen;
 }
 
+@-moz-document url-prefix() {
+    textarea{
+        overflow-y:scroll;
+    }
+}
+
 @media only screen and (max-width: 500px){
     body{
         background-image: none;
@@ -136,8 +142,3 @@ ion-icon:hover{
 @media only screen and (max-width: 424px){
 }
 
-@-moz-document url-prefix() {
-    textarea{
-    overflow-y:scroll;
-    }
-}
