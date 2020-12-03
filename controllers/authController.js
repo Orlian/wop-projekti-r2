@@ -62,11 +62,12 @@ const user_check = async (req, res) => {
   try {
     const rows = await userModel.getUsername(req.body.username);
     console.log('username_check', rows);
-      if(!rows.empty()) {
+      if(!rows.isEmpty()) {
         return res.json({message: 'username unavailable'});
       }
       return res.json({message: 'username ok'});
   } catch (err){
+    console.log('user_check error', err.message);
     res.send({error: 'Something went wrong'});
   }
 
