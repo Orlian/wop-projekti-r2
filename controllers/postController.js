@@ -16,8 +16,8 @@ const post_get = async (req, res) => {
 };
 
 const user_post_get = async (req, res) => {
-  const email = req.params.email;
-  const userPosts = await postModel.getUserPosts(email);
+  const username = req.params.username;
+  const userPosts = await postModel.getUserPosts(username);
   res.json(userPosts);
 };
 
