@@ -76,14 +76,15 @@ const createUserGrid = (images) => {
 };
 
 const getUserPosts = async () => {
-  console.log(sessionStorage.getItem('token'));
+  const parsedToken = parseJwt(sessionStorage.getItem('token'))
+  console.log(parsedToken);
   try {
     const fetchOptions = {
       headers: {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/post/' + sessionStorage.getItem('token').email, fetchOptions);
+    const response = await fetch(url + '/post/' + user.email, fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
     const posts = await response.json();
     console.log('getUserPost json', posts);
     createUserGrid(posts);
@@ -93,3 +94,13 @@ const getUserPosts = async () => {
 };
 
 getUserPosts();
+
+function parseJwt (token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+
+  return JSON.parse(jsonPayload);
+}
