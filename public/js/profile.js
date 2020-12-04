@@ -33,7 +33,7 @@ const createUserPosts = (images) => {
   images.forEach((image) => {
     const gridItem = document.createElement('div');
     const postImage = document.createElement('img');
-    gridItem.classList.add = 'grid-item';
+    gridItem.classList.add('grid-item');
     postImage.src = url + '/thumbnails/' + image.imgfile;
     postImage.alt = image.caption.slice(0, 10);
     //lisää luokkia jos tarve
