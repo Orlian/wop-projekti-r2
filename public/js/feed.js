@@ -69,28 +69,31 @@ const createImageCards = (images) => {
     const likeIcon = document.createElement('ion-icon');
     likeIcon.name = 'heart-outline';
 
-    commentsContainer.appendChild(captionContainer);
-    captionContainer.appendChild(imageCaption);
 
-    commentsContainer.appendChild(likesContainer);
+    captionContainer.appendChild(imageCaption);
+    commentsContainer.appendChild(captionContainer);
+
     likesContainer.appendChild(likes);
+    commentsContainer.appendChild(likesContainer);
 
     commentsContainer.appendChild(commentsTitle);
 
-    commentsContainer.appendChild(commentsUl);
     commentsUl.appendChild(commentLi);
+    commentsContainer.appendChild(commentsUl);
 
     commentForm.appendChild(input);
     commentForm.appendChild(btnContainer);
+
+    likeBtn.appendChild(likeIcon);
     btnContainer.appendChild(commentBtn);
     btnContainer.appendChild(likeBtn);
-    likeBtn.appendChild(likeIcon);
 
     aside.appendChild(commentsContainer);
     aside.appendChild(commentForm);
 
-    card.appendChild(aside);
     card.appendChild(img);
+    card.appendChild(aside);
+
     imageFeed.appendChild(card);
 
   });
