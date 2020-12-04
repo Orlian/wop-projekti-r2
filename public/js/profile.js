@@ -1,7 +1,6 @@
 'use strict';
 const url = '/app2/';
 
-const jwt = require('jsonwebtoken');
 const userPosts = document.querySelector('.grid-item');
 const modalImage = document.getElementById('user-post-image');
 const imageFigure = document.querySelector('figure');
@@ -84,9 +83,7 @@ const getUserPosts = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const decodedEmail = jwt.decode(sessionStorage.getItem('token'), 'this_is_a_mega_secret').email;
-    console.log('Decoded email', decodedEmail);
-    const response = await fetch(url + '/post/' + decodedEmail, fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
+    const response = await fetch(url + '/post/' + req.user.email, fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
     const posts = await response.json();
     console.log('getUserPost json', posts);
     createUserGrid(posts);
