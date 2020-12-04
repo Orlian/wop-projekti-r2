@@ -2,11 +2,11 @@
 const url = '/app2/';
 const userPosts = document.querySelector('.grid-item');
 const modalImage = document.getElementById('user-post-image');
-const  imageModal = document.querySelector('.image-user-modal');
 const imageFigure = document.querySelector('figure');
 const figureFigcaption = document.querySelector('figcaption');
 const deleteImgButton = document.getElementById('delete-image');
 const commentSection = document.querySelector('.comments');
+const imageModal = document.getElementById('image-user-modal');
 
 
 const getPostComments = async (postid) => {

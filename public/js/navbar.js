@@ -4,7 +4,7 @@ const menu = document.querySelector('.menu');
 const items = document.querySelectorAll('.item');
 const postModal = document.getElementById("post-modal");
 const editModal = document.getElementById('edit-user-modal');
-const imageModal = document.getElementById('image-user-modal');
+const  imageModal = document.querySelector('.image-user-modal');
 const postButtonNav = document.getElementById("add-pic-button");
 const span1 = document.getElementsByClassName("close")[0];
 const span2 = document.getElementsByClassName("close")[1];
@@ -71,6 +71,8 @@ span2.onclick = function() {
 span3.onclick = function() {
   imageModal.style.display = "none";
 }
+
+
 
 window.onclick = function(event) {
   if (event.target === editModal || event.target === postModal) {
