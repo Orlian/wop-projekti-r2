@@ -17,8 +17,7 @@ const getPostComments = async (postid) => {
       },
     };
     const response = await fetch(url + '/comment/' + postid, options);
-    const comments = await response.json();
-    return comments;
+    return await response.json();
   }
   catch (e) {
     console.log(e.message);
