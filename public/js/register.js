@@ -4,6 +4,7 @@ const url = '/app2/';
 
 const registerForm = document.querySelector('#register-form');
 const registerButton = document.querySelector('#register-button');
+const cancelButton = document.querySelector('#cancel-button');
 const usernameInput = document.querySelector('#username-input');
 const passwd = document.getElementById('password');
 const confirmPasswd = document.getElementById('confirm-password');
@@ -52,6 +53,11 @@ usernameInput.addEventListener('blur', async (evt) => {
     registerButton.disabled = true;
   }
 });
+
+cancelButton.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  location.href = 'front-page.html';
+})
 
 const checkMatch = () => {
   if (passwd.value !== confirmPasswd.value) {
