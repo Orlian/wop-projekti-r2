@@ -82,9 +82,9 @@ const getUserPosts = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const parsedToken = parseJwt(sessionStorage.getItem('token'));
+    const parsedTokenEmail = parseJwt(sessionStorage.getItem('token')).email.escape();
     console.log('current user email', parsedToken.email)
-    const response = await fetch(url + '/post/' + parsedToken.email, fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
+    const response = await fetch(url + '/post/' + parsedTokenEmail, fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
     const posts = await response.json();
     console.log('getUserPost json', posts);
     createUserGrid(posts);
