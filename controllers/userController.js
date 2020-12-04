@@ -9,9 +9,10 @@ const user_list_get = async (req, res) => {
   res.json(users);
 };
 
+//Täytyy hakea emaililla
 const user_get = async (req, res) => {
-  const userid = req.params.userid;
-  const user = await userModel.getUser(userid);
+  const email = req.params.email;
+  const user = await userModel.getUser(email);
   res.json(user);
 };
 
