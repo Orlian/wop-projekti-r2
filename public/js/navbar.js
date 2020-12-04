@@ -10,6 +10,7 @@ const span1 = document.getElementsByClassName("close")[0];
 const span2 = document.getElementsByClassName("close")[1];
 const span3 = document.getElementsByClassName("close")[2];
 const editLink = document.getElementById('edit-link');
+const logoutLink = document.getElementById('logout-link');
 
 
 function toggleMenu() {
@@ -81,6 +82,26 @@ window.onclick = function(event) {
     imageModal.style.display = "none";
   }
 }
+
+logoutLink.addEventListener('click',  async (evt) => {
+  evt.preventDefault();
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/auth/logout', options);
+    const json = await response.json();
+    console.log('logout json', json);
+
+    sessionStorage.removeItem('token');
+    location.href = 'front-page.html'
+    alert('You have logged out');
+  } catch(err) {
+    console.log(err.message);
+  }
+});
 
 
 document.addEventListener('click', closeSubmenu, false);

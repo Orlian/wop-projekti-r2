@@ -14,7 +14,7 @@ const fillSearchList = (hits) => {
   hits.forEach((hit) => {
     const li = document.createElement('li');
     const img = document.createElement('img');
-    img.src = url + '/images/' + hit.filename;
+    img.src = url + '/thumbnails/' + hit.imgfile;
     img.alt = hit.desc;
     li.appendChild(img);
     searchList.appendChild(li);
