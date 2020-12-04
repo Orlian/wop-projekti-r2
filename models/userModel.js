@@ -21,11 +21,11 @@ const getUsername = async (userid) => {
   }
 }
 //Täytyy hakea emaililla tämä
-const getUser = async (userid) => {
+const getUser = async (email) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT email, username, description, userimg FROM User WHERE userid = ?',
-        [userid]);
+        'SELECT userid, email, username, description, userimg FROM User WHERE email = ?',
+        [email]);
     return rows;
   } catch (err) {
     console.log('userModel error', err.message);
