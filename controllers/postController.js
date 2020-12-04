@@ -1,7 +1,7 @@
 'use strict';
 const {validationResult} = require('express-validator');
 const postModel = require('../models/postModel');
-//const {makeThumbnail} = require('../utils/resize');
+const {makeThumbnail} = require('../utils/resize');
 
 
 const post_list_get = async (req, res) => {
@@ -59,7 +59,7 @@ const post_delete = async (req, res) => {
   res.json(post);
 };
 
-/*const make_thumbnail = async (req, res, next) => {
+const make_thumbnail = async (req, res, next) => {
   try {
     const thumbnail = await makeThumbnail(req.file.path, req.file.filename);
     console.log('thumbnail', thumbnail);
@@ -69,7 +69,7 @@ const post_delete = async (req, res) => {
   } catch (e) {
     res.status(400).json({errors: e.message});
   }
-};*/
+};
 
 module.exports = {
   post_list_get,
@@ -78,7 +78,7 @@ module.exports = {
   create_new_post,
   post_update_put,
   post_delete,
-  //make_thumbnail,
+  make_thumbnail,
 };
 
 
