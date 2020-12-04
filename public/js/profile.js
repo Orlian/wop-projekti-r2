@@ -77,7 +77,7 @@ const createUserGrid = (images) => {
 
 const getUserPosts = async () => {
   const parsedToken = parseJwt(sessionStorage.getItem('token'))
-  console.log(parsedToken);
+  console.log(parsedToken.email);
   try {
     const fetchOptions = {
       headers: {
@@ -89,16 +89,16 @@ const getUserPosts = async () => {
     console.log('getUserPost json', posts);
     createUserGrid(posts);
   } catch (err) {
-    console.log(err.message);
+    console.error(err.message);
   }
 };
 
 getUserPosts();
 
 function parseJwt (token) {
-  var base64Url = token.split('.')[1];
-  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
   }).join(''));
 
