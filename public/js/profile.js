@@ -83,7 +83,7 @@ const getUserPosts = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/post/' + sessionStorage.getItem('token').user.email, fetchOptions);
+    const response = await fetch(url + '/post/' + sessionStorage.getItem('token').email, fetchOptions);
     const posts = await response.json();
     console.log('getUserPost json', posts);
     createUserGrid(posts);
