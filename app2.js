@@ -7,6 +7,7 @@ const passport = require('./utils/passwd');
 const userRoute = require('./routes/userRoute');
 const authRoute = require('./routes/authRoute');
 const postRoute = require('./routes/postRoute');
+const commentRoute = require('./routes/commentRoute');
 //TODO Tänne lisää require lauseita sitä mukaan kun tarvetta tulee
 
 const app2 = express();
@@ -24,6 +25,7 @@ app2.use(bodyParser.json());
 app2.use('/auth', authRoute);
 app2.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 app2.use('/post', passport.authenticate('jwt', {session: false}), postRoute);
+app2.use('/comment', passport.authenticate('jwt', {session: false}), commentRoute);
 //TODO Tänne autentikointi hommat sun muut use-lauseet
 
 
