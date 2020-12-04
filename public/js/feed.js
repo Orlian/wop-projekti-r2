@@ -13,7 +13,7 @@ const createImageCards = (images) => {
   images.forEach((image) => {
 
     const card = document.createElement('div');
-    imageFeed.appendChild(card);
+
 
     const img = document.createElement('img');
     img.src = url + '/uploads/' + image.imgfile;
@@ -58,6 +58,8 @@ const createImageCards = (images) => {
     const likeIcon = document.createElement('ion-icon');
     likeIcon.name = 'heart-outline';
 
+
+    imageFeed.appendChild(card);
     card.append(img);
     card.appendChild(aside);
 
