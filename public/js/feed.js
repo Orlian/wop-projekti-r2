@@ -12,7 +12,7 @@ const createImageCards = (images) => {
   imageFeed.innerHTML = '';
   images.forEach((image) => {
 
-    const card = document.createElement('figure');
+    const card = document.createElement('div');
     imageFeed.appendChild(card);
 
     const img = document.createElement('img');
