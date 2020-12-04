@@ -11,8 +11,8 @@ const user_list_get = async (req, res) => {
 
 //Täytyy hakea emaililla
 const user_get = async (req, res) => {
-  const email = req.params.email;
-  const user = await userModel.getUser(email);
+  const userid = req.user.userid;
+  const user = await userModel.getUser(userid);
   res.json(user);
 };
 
