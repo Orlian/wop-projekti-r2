@@ -18,22 +18,32 @@ const createImageCards = (images) => {
     const img = document.createElement('img');
     img.src = url + '/uploads/' + image.imgfile;
     img.alt = image.caption.slice(0, 20);
-    img.classListAdd = 'image';
+    img.classList.add("image");
 
     const aside = document.createElement('div');
+    aside.classList.add("aside");
 
     const commentsContainer = document.createElement('div');
+    commentsContainer.classList.add("comments-container");
+
     const captionContainer = document.createElement('div');
+    captionContainer.classList.add("img-caption");
+
     const imageCaption = document.createElement('p');
     imageCaption.innerHTML = image.caption;
 
     const likesContainer = document.createElement('div');
+    likesContainer.classList.add("likes");
+
     const likes = document.createElement('p');
     likes.innerHTML = `N of likes`;
 
     const commentsTitle = document.createElement('h4');
-    const comments = document.createElement('ul');
-    const comment = document.createElement('li');
+
+    const commentsUl = document.createElement('ul');
+    commentsUl.classList.add("comments");
+
+    const commentLi = document.createElement('li');
     //TODO fetch all comments from database
 
     const commentForm = document.createElement('form');
@@ -45,40 +55,41 @@ const createImageCards = (images) => {
     input.style.resize = 'none';
 
     const btnContainer = document.createElement('button');
-    btnContainer.classListAdd = 'btn-container';
+    btnContainer.classList.add("btn-container");
 
     const commentBtn = document.createElement('button');
     commentBtn.type = 'submit';
-    commentBtn.classListAdd = 'comment-btn';
+    commentBtn.classList.add("comment-btn");
 
     const likeBtn = document.createElement('button');
     likeBtn.type = 'submit';
-    likeBtn.classListAdd = 'like-btn';
+    likeBtn.classList.add("like-btn");
 
     const likeIcon = document.createElement('ion-icon');
     likeIcon.name = 'heart-outline';
 
-
-
-    captionContainer.appendChild(imageCaption);
-    likesContainer.appendChild(likes);
-    likeBtn.appendChild(likeIcon);
-
     commentsContainer.appendChild(captionContainer);
+    captionContainer.appendChild(imageCaption);
+
     commentsContainer.appendChild(likesContainer);
+    likesContainer.appendChild(likes);
+
     commentsContainer.appendChild(commentsTitle);
-    commentsContainer.appendChild(comments);
-    comments.appendChild(comment);
+
+    commentsContainer.appendChild(commentsUl);
+    commentsUl.appendChild(commentLi);
 
     commentForm.appendChild(input);
     commentForm.appendChild(btnContainer);
-    commentForm.appendChild(commentBtn);
-    commentForm.appendChild(likeBtn);
+    btnContainer.appendChild(commentBtn);
+    btnContainer.appendChild(likeBtn);
+    likeBtn.appendChild(likeIcon);
 
     aside.appendChild(commentsContainer);
     aside.appendChild(commentForm);
-    card.appendChild(img);
+
     card.appendChild(aside);
+    card.appendChild(img);
     imageFeed.appendChild(card);
 
   });
