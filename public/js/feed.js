@@ -40,6 +40,7 @@ const createImageCards = (images) => {
     likes.innerHTML = `N of likes`;
 
     const commentsTitle = document.createElement('h4');
+    commentsTitle.innerHTML = `Comments`;
 
     const commentsUl = document.createElement('ul');
     commentsUl.classList.add("comments");
@@ -55,7 +56,7 @@ const createImageCards = (images) => {
     input.rows = 5;
     input.style.resize = 'none';
 
-    const btnContainer = document.createElement('button');
+    const btnContainer = document.createElement('div');
     btnContainer.classList.add("btn-container");
 
     const commentBtn = document.createElement('button');
