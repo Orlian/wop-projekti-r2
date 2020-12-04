@@ -17,7 +17,7 @@ const createImageCards = (images) => {
 
     const img = document.createElement('img');
     img.src = url + '/uploads/' + image.imgfile;
-    img.alt = image.caption.splice(0, 20);
+    img.alt = image.caption.slice(0, 20);
     img.class = 'image';
 
     const aside = document.createElement('div');
