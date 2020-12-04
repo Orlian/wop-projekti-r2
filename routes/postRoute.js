@@ -28,7 +28,7 @@ router.get('/:id', postController.post_get);
 
 router.get('/:userid', postController.user_post_get);
 
-router.post('/', upload.single('user-image'), injectFile, [
+router.post('/', upload.single('user-image'), injectFile, postController.make_thumbnail, [
   body('caption', 'Add caption').isLength({min: 1}),
   body('mimetype', 'Not an image').contains('image')
 ], postController.create_new_post);
