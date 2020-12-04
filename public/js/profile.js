@@ -78,6 +78,7 @@ const createUserGrid = (images) => {
 const getUserPosts = async () => {
   try {
     const fetchOptions = {
+      method: 'POST',
       headers: {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
