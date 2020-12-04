@@ -17,14 +17,15 @@
                     <input type="file" name="user_image" accept="image/*" onchange="previewImage(event)">
                 </div>
                 <input type="text" id="username-input" name="username" placeholder="Username" required>
+                <span id="unmessage"></span>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" id="password" name="password" placeholder="Password" pattern=".{8,}" onkeyup="checkMatch();" required>
                 <input type="password" id="confirm-password" name="confirm-password" placeholder="Retype password" onkeyup="checkMatch();"
-                       required><span id="message"></span>
+                       required><span id="pwmessage"></span>
                 <textarea name="description" placeholder="Describe yourself (optional)" cols="40" rows="12"
                           style="resize: none"></textarea>
                 <button type="submit" id="register-button" disabled>Create User</button>
-                <button type="reset" id="cancel-button">Cancel</button>
+                <button type="button" id="cancel-button">Cancel</button>
             </form>
         </div>
     </main>

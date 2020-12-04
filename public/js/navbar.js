@@ -4,10 +4,13 @@ const menu = document.querySelector('.menu');
 const items = document.querySelectorAll('.item');
 const postModal = document.getElementById("post-modal");
 const editModal = document.getElementById('edit-user-modal');
+const  imageModal = document.querySelector('.image-user-modal');
 const postButtonNav = document.getElementById("add-pic-button");
 const span1 = document.getElementsByClassName("close")[0];
 const span2 = document.getElementsByClassName("close")[1];
+const span3 = document.getElementsByClassName("close")[2];
 const editLink = document.getElementById('edit-link');
+const logoutLink = document.getElementById('logout-link');
 
 
 function toggleMenu() {
@@ -66,14 +69,41 @@ span2.onclick = function() {
   editModal.style.display = "none";
 }
 
+span3.onclick = function() {
+  imageModal.style.display = "none";
+}
+
+
+
 window.onclick = function(event) {
   if (event.target === editModal || event.target === postModal) {
     editModal.style.display = "none";
     //userPicture.src = ; //TODO hae tietokannasta käyttäjän profiilikuva oletuksena
     postModal.style.display = "none";
     postPicture.src = "http://placekitten.com/200/200";
+    imageModal.style.display = "none";
   }
 }
+
+logoutLink.addEventListener('click',  async (evt) => {
+  evt.preventDefault();
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/auth/logout', options);
+    const json = await response.json();
+    console.log('logout json', json);
+
+    sessionStorage.removeItem('token');
+    location.href = 'front-page.html'
+    alert('You have logged out');
+  } catch(err) {
+    console.log(err.message);
+  }
+});
 
 
 document.addEventListener('click', closeSubmenu, false);
