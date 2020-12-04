@@ -34,10 +34,14 @@ body {
     display: flex;
 }
 
-.card > img {
+.image {
     flex: 1;
     width: 100%;
+    height: auto;
     max-width: 640px;
+    border-radius: 0;
+    border: none;
+    margin: 0;
 
 }
 
@@ -55,7 +59,7 @@ body {
 
 }
 
-.comments-container> h4 {
+.comments-container > h4 {
     padding-top: 1em;
 }
 
@@ -77,6 +81,12 @@ body {
     padding: 0 0 0.5em 1em;
 }
 
+.comment-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .btn-container {
     display: flex;
     justify-content: space-between;
@@ -89,7 +99,13 @@ body {
     cursor: pointer;
 }
 
+.like-btn > ion-icon {
+    color: #1e1e1e;
+}
+
 .comment-btn {
+    height: 1.5em;
+    width: 3em;
     border: none;
     background-image: linear-gradient(to bottom right, mediumslateblue, palevioletred);
     border-radius: 2em;
@@ -97,6 +113,7 @@ body {
     outline: none;
     cursor: pointer;
     font-family: "Montserrat", sans-serif;
+    font-size: 1em;
     color: whitesmoke;
 }
 
@@ -145,8 +162,8 @@ textarea {
 }
 
 @-moz-document url-prefix() {
-    textarea{
-        overflow-y:scroll;
+    textarea {
+        overflow-y: scroll;
     }
 }
 
@@ -206,9 +223,9 @@ textarea {
         flex-direction: column;
     }
 
-    .card > img {
+    .image {
         width: 100%;
-        max-width: 640px;
+        max-width: 1050px;
         align-self: center;
     }
 }

@@ -49,6 +49,7 @@ const createImageCards = (images) => {
     //TODO fetch all comments from database
 
     const commentForm = document.createElement('form');
+    commentForm.ClassList.add("comment-form")
     const input = document.createElement('textarea');
     input.name = 'comment';
     input.placeholder = 'Write a comment';
@@ -62,6 +63,7 @@ const createImageCards = (images) => {
     const commentBtn = document.createElement('button');
     commentBtn.type = 'submit';
     commentBtn.classList.add("comment-btn");
+    commentForm.innerHTML = `Comment`;
 
     const likeBtn = document.createElement('button');
     likeBtn.type = 'submit';
