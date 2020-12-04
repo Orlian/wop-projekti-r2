@@ -297,9 +297,9 @@ input[type='checkbox']{
 }
 
 /*muuta kuin navbar*/
-section{
- display: flex;
- flex-direction: column;
+.profile-info{
+    display: flex;
+    flex-direction: column;
 }
 img{
     margin: 1em auto;
