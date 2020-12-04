@@ -59,25 +59,27 @@ const createImageCards = (images) => {
     likeIcon.name = 'heart-outline';
 
 
-    imageFeed.appendChild(card);
-    card.appendChild(img);
-    card.appendChild(aside);
 
-    aside.appendChild(commentsContainer);
+    captionContainer.appendChild(imageCaption);
+    likesContainer.appendChild(likes);
+    likeBtn.appendChild(likeIcon);
+
     commentsContainer.appendChild(captionContainer);
     commentsContainer.appendChild(likesContainer);
     commentsContainer.appendChild(commentsTitle);
     commentsContainer.appendChild(comments);
     comments.appendChild(comment);
-    captionContainer.appendChild(imageCaption);
-    likesContainer.appendChild(likes);
 
-    aside.appendChild(commentForm);
     commentForm.appendChild(input);
     commentForm.appendChild(btnContainer);
     commentForm.appendChild(commentBtn);
     commentForm.appendChild(likeBtn);
-    likeBtn.appendChild(likeIcon);
+
+    aside.appendChild(commentsContainer);
+    aside.appendChild(commentForm);
+    card.appendChild(img);
+    card.appendChild(aside);
+    imageFeed.appendChild(card);
 
   });
 };
