@@ -83,8 +83,8 @@ const getUserPosts = async () => {
       },
     };
     const parsedToken = parseJwt(sessionStorage.getItem('token'));
-    console.log('current user email', parsedToken.email)
-    const response = await fetch(url + '/post/' + parsedToken.email, fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
+    console.log('current user email', parsedToken.email.escape())
+    const response = await fetch(url + '/post/' + parsedToken.email.escape(), fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
     const posts = await response.json();
     console.log('getUserPost json', posts);
     createUserGrid(posts);
