@@ -18,7 +18,7 @@ const getPostComments = async (postid) => {
     };
     const response = await fetch(url + '/comment/' + postid, options);
     const comments = await response.json();
-    createUserPosts(comments);
+    return comments;
   }
   catch (e) {
     console.log(e.message);
@@ -38,13 +38,13 @@ const createUserPosts = (images) => {
     postImage.alt = image.caption.slice(0, 10);
     //lisää luokkia jos tarve
 
-    postImage.addEventListener('click', () => {
+    postImage.addEventListener('click', async () => {
       imageModal.style.display = 'flex';
       modalImage.src = url + '/uploads/' + image.imgfile;
       modalImage.alt = image.caption.slice(0, 10);
       figureFigcaption.innerHTML = image.caption;
-
-
+      const comments = await getPostComments(image.postid);
+      console.log(comments);
     });
 
     deleteImgButton.addEventListener('click', async () => {
@@ -66,7 +66,6 @@ const createUserPosts = (images) => {
       }
     });
 
-    getPostComments(image.postid);
 
     const comment = document.createElement('li');
     /*comment.innerHTML = ;
