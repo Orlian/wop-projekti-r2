@@ -17,8 +17,7 @@ const getPostComments = async (postid) => {
       },
     };
     const response = await fetch(url + '/comment/' + postid, options);
-    const comments = await response.json();
-    return comments;
+    return await response.json();
   }
   catch (e) {
     console.log(e.message);
@@ -26,7 +25,7 @@ const getPostComments = async (postid) => {
 };
 
 
-const createUserPosts = (images) => {
+const createUserGrid = (images) => {
 
   userPosts.innerHTML = '';
 
@@ -59,7 +58,6 @@ const createUserPosts = (images) => {
             fetchOptions);
         const json = await response.json();
         console.log('delete response', json);
-        createUserPosts();
       }
       catch (e) {
         console.log(e.message());
@@ -76,3 +74,22 @@ const createUserPosts = (images) => {
     imageFigure.appendChild(figureFigcaption);
   });
 };
+
+const getUserPosts = async () => {
+  console.log(sessionStorage.getItem('token'));
+  try {
+    const fetchOptions = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/post/' + sessionStorage.getItem('token').email, fetchOptions);
+    const posts = await response.json();
+    console.log('getUserPost json', posts);
+    createUserGrid(posts);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+getUserPosts();
