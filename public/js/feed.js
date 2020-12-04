@@ -17,8 +17,8 @@ const createImageCards = (images) => {
 
     const img = document.createElement('img');
     img.src = url + '/uploads/' + image.imgfile;
-    img.alt = image.caption.splice(0, 20);
-    img.class = 'image';
+    img.alt = image.caption.slice(0, 20);
+    img.classListAdd = 'image';
 
     const aside = document.createElement('div');
 
@@ -45,39 +45,41 @@ const createImageCards = (images) => {
     input.style.resize = 'none';
 
     const btnContainer = document.createElement('button');
-    btnContainer.class = 'btn-container';
+    btnContainer.classListAdd = 'btn-container';
 
     const commentBtn = document.createElement('button');
     commentBtn.type = 'submit';
-    commentBtn.class = 'comment-btn';
+    commentBtn.classListAdd = 'comment-btn';
 
     const likeBtn = document.createElement('button');
     likeBtn.type = 'submit';
-    likeBtn.class = 'like-btn';
+    likeBtn.classListAdd = 'like-btn';
 
     const likeIcon = document.createElement('ion-icon');
     likeIcon.name = 'heart-outline';
 
 
-    imageFeed.appendChild(card);
-    card.append(img);
-    card.appendChild(aside);
 
-    aside.appendChild(commentsContainer);
+    captionContainer.appendChild(imageCaption);
+    likesContainer.appendChild(likes);
+    likeBtn.appendChild(likeIcon);
+
     commentsContainer.appendChild(captionContainer);
     commentsContainer.appendChild(likesContainer);
     commentsContainer.appendChild(commentsTitle);
     commentsContainer.appendChild(comments);
     comments.appendChild(comment);
-    captionContainer.appendChild(imageCaption);
-    likesContainer.append(likes);
 
-    aside.appendChild(commentForm);
     commentForm.appendChild(input);
     commentForm.appendChild(btnContainer);
-    commentForm.append(commentBtn);
-    commentForm.append(likeBtn);
-    likeBtn.appendChild(likeIcon);
+    commentForm.appendChild(commentBtn);
+    commentForm.appendChild(likeBtn);
+
+    aside.appendChild(commentsContainer);
+    aside.appendChild(commentForm);
+    card.appendChild(img);
+    card.appendChild(aside);
+    imageFeed.appendChild(card);
 
   });
 };
