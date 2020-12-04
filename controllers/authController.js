@@ -19,6 +19,7 @@ const login = (req, res) => {
       if (err) {
         res.send(err.message);
       }
+      console.log('login user', user);
       const token = jwt.sign(user, 'this_is_a_mega_secret');
       return res.json({user, token});
     });
