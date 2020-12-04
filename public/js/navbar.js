@@ -4,9 +4,11 @@ const menu = document.querySelector('.menu');
 const items = document.querySelectorAll('.item');
 const postModal = document.getElementById("post-modal");
 const editModal = document.getElementById('edit-user-modal');
+const imageModal = document.getElementById('image-user-modal');
 const postButtonNav = document.getElementById("add-pic-button");
 const span1 = document.getElementsByClassName("close")[0];
 const span2 = document.getElementsByClassName("close")[1];
+const span3 = document.getElementsByClassName("close")[2];
 const editLink = document.getElementById('edit-link');
 
 
@@ -66,12 +68,17 @@ span2.onclick = function() {
   editModal.style.display = "none";
 }
 
+span3.onclick = function() {
+  imageModal.style.display = "none";
+}
+
 window.onclick = function(event) {
   if (event.target === editModal || event.target === postModal) {
     editModal.style.display = "none";
     //userPicture.src = ; //TODO hae tietokannasta käyttäjän profiilikuva oletuksena
     postModal.style.display = "none";
     postPicture.src = "http://placekitten.com/200/200";
+    imageModal.style.display = "none";
   }
 }
 
