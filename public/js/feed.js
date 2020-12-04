@@ -131,7 +131,7 @@ getPosts();
 }); */
 
 /**Back to top button reveal and disappear on scroll**/
-const topBtn = document.querySelector('.top-btn');
+const topBtn = document.getElementById('top-btn');
 
 window.addEventListener('scroll', () => {
   if (window.pageYOffset > 300) {
