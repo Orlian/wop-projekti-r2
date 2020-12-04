@@ -1,6 +1,6 @@
 'use strict';
 const userPicture = document.getElementById('user-picture');
-const postPicture = document.getElementById('art-img');
+const postedImage = document.getElementById('art-img');
 const uploadButton = document.querySelector('input[type="file"]');
 
 uploadButton.addEventListener("mouseover", () =>{
@@ -22,7 +22,7 @@ function previewImage(event) {
 
     if(reader.readyState === 2){
       userPicture.src = reader.result;
-      postPicture.src = reader.result;
+      postedImage.src = reader.result;
     }
   }
 
