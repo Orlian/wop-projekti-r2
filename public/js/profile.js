@@ -83,7 +83,7 @@ const getUserPosts = async () => {
       },
     };
     const parsedToken = parseJwt(sessionStorage.getItem('token'));
-    console.log(parsedToken.email)
+    console.log('current user email', parsedToken.email)
     const response = await fetch(url + '/post/' + parsedToken.email, fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
     const posts = await response.json();
     console.log('getUserPost json', posts);
