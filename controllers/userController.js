@@ -10,8 +10,8 @@ const user_list_get = async (req, res) => {
 };
 
 const user_get = async (req, res) => {
-  const email = req.params.email;
-  const user = await userModel.getUser(email);
+  const userid = req.params.userid;
+  const user = await userModel.getUser(userid);
   res.json(user);
 };
 

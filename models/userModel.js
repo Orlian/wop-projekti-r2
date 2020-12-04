@@ -5,27 +5,27 @@ const promisePool = pool.promise();
 
 const getAllUsers = async () => {
   try {
-    const [rows] = await promisePool.query('SELECT email, username FROM User');
+    const [rows] = await promisePool.query('SELECT userid, email, username FROM User');
     return rows;
   } catch (err) {
     console.log('userModel error', err.message);
   }
 };
 
-const getUsername = async (username) => {
+const getUsername = async (userid) => {
   try {
-    const [rows] = await promisePool.execute('SELECT username FROM User WHERE username = ?', [username]);
+    const [rows] = await promisePool.execute('SELECT username FROM User WHERE userid = ?', [userid]);
     return rows;
   } catch (err) {
     console.log('userModel error', err.message);
   }
 }
 
-const getUser = async (email) => {
+const getUser = async (userid) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT email, username, description, userimg FROM User WHERE email = ?',
-        [email]);
+        'SELECT email, username, description, userimg FROM User WHERE userid = ?',
+        [userid]);
     return rows;
   } catch (err) {
     console.log('userModel error', err.message);
@@ -48,7 +48,7 @@ const getUserLogin = async (params) => {
   try {
     console.log('getUserLogin params', params);
     const [rows] = await promisePool.execute(
-        'SELECT * FROM User WHERE email = ?;', params);
+        'SELECT * FROM User WHERE userid = ?;', params);
     return rows;
   } catch(e) {
     console.log('userModel error', e.message);
@@ -58,7 +58,7 @@ const getUserLogin = async (params) => {
 const updateUser = async (params) => {
   try {
     const [rows] = promisePool.execute(
-        'UPDATE User SET password = ?, userimg = ?, description = ?, username = ? WHERE email = ?',
+        'UPDATE User SET password = ?, userimg = ?, description = ?, username = ? WHERE userid = ?',
         params);
     return rows;
   } catch (err) {
@@ -66,9 +66,9 @@ const updateUser = async (params) => {
   }
 };
 
-const deleteUser = async (email) => {
+const deleteUser = async (userid) => {
   try {
-    await promisePool.execute('DELETE FROM User WHERE email = ?', [email]);
+    await promisePool.execute('DELETE FROM User WHERE userid = ?', [userid]);
   } catch (err) {
     console.log('userModel error', err.message);
   }

@@ -17,7 +17,7 @@ const getComment = async (commentId) => {
 const getPostComments = async (postId) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT commentid, commentcontent, email, timestamp FROM Comment WHERE postid = ? ORDER BY timestamp DESC LIMIT 20',
+        'SELECT commentid, commentcontent, userid, timestamp FROM Comment WHERE postid = ? ORDER BY timestamp DESC LIMIT 20',
         [postId]);
     return rows;
   } catch (err) {
@@ -26,10 +26,10 @@ const getPostComments = async (postId) => {
 };
 
 //Hakee yhden käyttäjän kaikki kommentit
-const getUserComments = async (email) => {
+const getUserComments = async (userid) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT commentid, commentcontent, postid, timestamp FROM Comment WHERE email = ?', [email]);
+        'SELECT commentid, commentcontent, postid, timestamp FROM Comment WHERE userid = ?', [userid]);
     return rows;
   } catch (err) {
     console.log('commentModel error', err.message);
@@ -40,7 +40,7 @@ const getUserComments = async (email) => {
 const addComment = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'INSERT INTO Comment (commentcontent, postid, email, timestamp) VALUES (?, ?, ?, NOW())',
+        'INSERT INTO Comment (commentcontent, postid, userid, timestamp) VALUES (?, ?, ?, NOW())',
         params);
     return rows;
   } catch (err) {

@@ -16,8 +16,8 @@ const post_get = async (req, res) => {
 };
 
 const user_post_get = async (req, res) => {
-  const email = req.params.email;
-  const userPosts = await postModel.getUserPosts(email);
+  const userId = req.params.userid;
+  const userPosts = await postModel.getUserPosts(userId);
   res.json(userPosts);
 };
 
@@ -31,7 +31,7 @@ const create_new_post = async (req, res) => {
 
   //Saadaanko req bodysta? vai mistä?
   const {caption} = req.body;
-  const params = [req.file.filename, caption, req.user.email];
+  const params = [req.file.filename, caption, req.user.userid];
   const post = await postModel.addPost(params);
   if(post){
     res.json({message: 'Upload ok'});
@@ -54,7 +54,7 @@ const post_update_put = async (req, res) => {
 };
 
 const post_delete = async (req, res) => {
-  const postId = req.params.postId;
+  const postId = req.params.postid;
   const post = await postModel.deletePost(postId);
   res.json(post);
 };

@@ -6,7 +6,7 @@ const promisePool = pool.promise();
 const getAllPosts = async () => {
   try {
     const [rows] = await promisePool.query(
-        'SELECT postid, imgfile, caption, email, timestamp FROM Post');
+        'SELECT postid, imgfile, caption, userid, timestamp FROM Post');
     return rows;
   } catch (err) {
     console.log('postModel error', err.message);
@@ -16,7 +16,7 @@ const getAllPosts = async () => {
 
 const getRecentPosts = async () => {
   try {
-    const [rows] = await promisePool.execute('SELECT postid, imgfile, caption, User.username, timestamp FROM Post INNER JOIN User ON Post.email = User.email ORDER BY timestamp DESC LIMIT 50');
+    const [rows] = await promisePool.execute('SELECT postid, imgfile, caption, User.username, timestamp FROM Post INNER JOIN User ON Post.userid = User.userid ORDER BY timestamp DESC LIMIT 50');
     return rows;
   } catch(err) {
     console.log('postModel error', err.message);
@@ -27,7 +27,7 @@ const getRecentPosts = async () => {
 const getPost = async (postId) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT imgfile, caption, email, timestamp FROM Post WHERE postid = ?',
+        'SELECT imgfile, caption, userid, timestamp FROM Post WHERE postid = ?',
         [postId]);
     return rows;
   } catch (err) {
@@ -36,10 +36,10 @@ const getPost = async (postId) => {
   }
 };
 
-const getUserPosts = async (email) => {
+const getUserPosts = async (userid) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT postid, imgfile, caption, timestamp FROM Post WHERE username = ?', [email]);
+        'SELECT postid, imgfile, caption, timestamp FROM Post WHERE userid = ?', [userid]);
     return rows;
   } catch (err) {
     console.log('postModel error', err.message);
@@ -50,7 +50,7 @@ const getUserPosts = async (email) => {
 const addPost = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'INSERT INTO Post (imgfile, caption, email, timestamp) VALUES (?, ?, ?, NOW())',
+        'INSERT INTO Post (imgfile, caption, userid, timestamp) VALUES (?, ?, ?, NOW())',
         params);
     return rows;
   } catch (err) {

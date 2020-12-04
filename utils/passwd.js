@@ -33,11 +33,12 @@ passport.use(new JWTStrategy({
     async (jwtPayload, done) => {
       try{
         console.log('jwtPayload', jwtPayload);
-        const [user] = await userModel.getUser(jwtPayload.email); //TODO Tarkista muuttujien nimet
+        const [user] = await userModel.getUser(jwtPayload.userid); //TODO Tarkista muuttujien nimet
         if(user === undefined) {
           return done(null, false, {message: 'Username not found'});
         }
         const plainUser = {...user};
+        console.log('passwd plainUser', plainUser);
         return done(null, plainUser)
       } catch (err) {
         return done(err);
