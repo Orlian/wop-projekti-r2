@@ -51,6 +51,7 @@ const createImageCards = (images) => {
     const commentForm = document.createElement('form');
     commentForm.classList.add("comment-form");
     const input = document.createElement('textarea');
+    input.classList.add("comment-input");
     input.name = 'comment';
     input.placeholder = 'Write a comment';
     input.cols = 56;
@@ -63,7 +64,7 @@ const createImageCards = (images) => {
     const commentBtn = document.createElement('button');
     commentBtn.type = 'submit';
     commentBtn.classList.add("comment-btn");
-    commentForm.innerHTML = `Comment`;
+    commentBtn.innerHTML = `Comment`;
 
     const likeBtn = document.createElement('button');
     likeBtn.type = 'submit';
@@ -88,8 +89,8 @@ const createImageCards = (images) => {
     commentForm.appendChild(btnContainer);
 
     likeBtn.appendChild(likeIcon);
-    btnContainer.appendChild(commentBtn);
     btnContainer.appendChild(likeBtn);
+    btnContainer.appendChild(commentBtn);
 
     aside.appendChild(commentsContainer);
     aside.appendChild(commentForm);
