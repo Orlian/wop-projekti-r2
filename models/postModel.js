@@ -39,7 +39,7 @@ const getPost = async (postId) => {
 const getUserPosts = async (email) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT postid, imgfile, caption, timestamp FROM Post WHERE email = ?', [email]);
+        'SELECT postid, imgfile, caption, timestamp FROM Post WHERE username = ?', [email]);
     return rows;
   } catch (err) {
     console.log('postModel error', err.message);
