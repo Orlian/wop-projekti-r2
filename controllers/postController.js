@@ -23,6 +23,7 @@ const user_post_get = async (req, res) => {
 
 const create_new_post = async (req, res) => {
   console.log('create_new_post', req.body, req.file);
+  console.log('create_new_post req.user', req.user);
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -47,8 +48,8 @@ const post_update_put = async (req, res) => {
 
   }
   //TODO: Add edit and delete post options in frontend too. You need to add name=id to html and dd id to params
-  const {caption, genres} = req.body;
-  const params = [caption, genres];
+  const {caption} = req.body;
+  const params = [caption];
   const post = await postModel.updatePost(params);
   res.json({message: 'Update ok'});
 };
