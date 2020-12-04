@@ -104,7 +104,8 @@ body {
 }
 
 .comment-btn {
-    height: 2em;
+    height: 1.5em;
+    width: 3em;
     border: none;
     background-image: linear-gradient(to bottom right, mediumslateblue, palevioletred);
     border-radius: 2em;
@@ -112,11 +113,8 @@ body {
     outline: none;
     cursor: pointer;
     font-family: "Montserrat", sans-serif;
-    line-height: 0.5;
-    text-align: center;
+    font-size: 1em;
     color: whitesmoke;
-    margin-top: 1em;
-
 }
 
 .comment-btn:hover {
@@ -131,6 +129,8 @@ body {
     border: 1px solid lightgrey;
     margin: 0 0 0.1em 0;
 }
+
+
 
 
 .top-btn {
