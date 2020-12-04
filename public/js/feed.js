@@ -60,7 +60,7 @@ const createImageCards = (images) => {
 
 
     imageFeed.appendChild(card);
-    card.append(img);
+    card.appendChild(img);
     card.appendChild(aside);
 
     aside.appendChild(commentsContainer);
@@ -70,13 +70,13 @@ const createImageCards = (images) => {
     commentsContainer.appendChild(comments);
     comments.appendChild(comment);
     captionContainer.appendChild(imageCaption);
-    likesContainer.append(likes);
+    likesContainer.appendChild(likes);
 
     aside.appendChild(commentForm);
     commentForm.appendChild(input);
     commentForm.appendChild(btnContainer);
-    commentForm.append(commentBtn);
-    commentForm.append(likeBtn);
+    commentForm.appendChild(commentBtn);
+    commentForm.appendChild(likeBtn);
     likeBtn.appendChild(likeIcon);
 
   });
