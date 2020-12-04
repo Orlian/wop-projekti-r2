@@ -5,45 +5,83 @@ const addForm = document.getElementById('add-image');
 const imagesOnLoad = 3;
 let loadedImgN = 0;
 
-//Create image cards
 
+/**Create image cards**/
 const createImageCards = (images) => {
 
-  imageFeed.innerHTML = "";
-
-  console.log('whats wrong');
+  imageFeed.innerHTML = '';
   images.forEach((image) => {
 
-    imageFeed.innerHTML += `<div class="card">
-                            <img src="${url + '/uploads/' + image.imgfile}" class="image" alt="User post">
-                            <div class="aside">
-                                <div class="comments-container">
-                                    <div class="img-caption"><p>Caption from db</p></div>
-                                    <div class="likes">
-                                        <p>N Likes</p>
-                                    </div>
-                                    <h4>Comments</h4>
-                                    <ul class="comments">
-                                        <li>Comment</li>
-                                        <li>Comment2</li>
-                                        <li>Comment3</li>
-                                    </ul>
-                                 </div>
-                                 <form>
-                                    <textarea name="comment" placeholder="Write a comment" cols="56" rows="5"
-                                     style="resize: none"></textarea>
-                                    <div class="btn-container">
-                                    <button type="submit" class="like-btn"><ion-icon name="heart-outline"></ion-icon> </button>
-                                    <button type="submit" class="comment-btn">Comment</button> 
-                                    </div>
-                                </form>
-                            </div>
-                          
-</div>`;
+    const card = document.createElement('figure');
+    imageFeed.appendChild(card);
+
+    const img = document.createElement('img');
+    img.src = url + '/uploads/' + image.imgfile;
+    img.alt = image.caption.splice(0, 20);
+    img.class = 'image';
+
+    const aside = document.createElement('div');
+
+    const commentsContainer = document.createElement('div');
+    const captionContainer = document.createElement('div');
+    const imageCaption = document.createElement('p');
+    imageCaption.innerHTML = image.caption;
+
+    const likesContainer = document.createElement('div');
+    const likes = document.createElement('p');
+    likes.innerHTML = `N of likes`;
+
+    const commentsTitle = document.createElement('h4');
+    const comments = document.createElement('ul');
+    const comment = document.createElement('li');
+    //TODO fetch all comments from database
+
+    const commentForm = document.createElement('form');
+    const input = document.createElement('textarea');
+    input.name = 'comment';
+    input.placeholder = 'Write a comment';
+    input.cols = 56;
+    input.rows = 5;
+    input.style.resize = 'none';
+
+    const btnContainer = document.createElement('button');
+    btnContainer.class = 'btn-container';
+
+    const commentBtn = document.createElement('button');
+    commentBtn.type = 'submit';
+    commentBtn.class = 'comment-btn';
+
+    const likeBtn = document.createElement('button');
+    likeBtn.type = 'submit';
+    likeBtn.class = 'like-btn';
+
+    const likeIcon = document.createElement('ion-icon');
+    likeIcon.name = 'heart-outline';
+
+    card.append(img);
+    card.appendChild(aside);
+
+    aside.appendChild(commentsContainer);
+    commentsContainer.appendChild(captionContainer);
+    commentsContainer.appendChild(likesContainer);
+    commentsContainer.appendChild(commentsTitle);
+    commentsContainer.appendChild(comments);
+    comments.appendChild(comment);
+    captionContainer.appendChild(imageCaption);
+    likesContainer.append(likes);
+
+    aside.appendChild(commentForm);
+    commentForm.appendChild(input);
+    commentForm.appendChild(btnContainer);
+    commentForm.append(commentBtn);
+    commentForm.append(likeBtn);
+    likeBtn.appendChild(likeIcon);
 
   });
 };
 
+
+/**Fetching all posts data from database**/
 const getPosts = async () => {
   console.log('getPost token ', sessionStorage.getItem('token'));
   try {
@@ -60,49 +98,7 @@ const getPosts = async () => {
   }
 };
 
-
-  console.log('whats with onload');
-  getPosts();
-
-
-
-/*const createCards = (images) => {
-  while (loadedImgN < images.length) {
-    imageFeed.innerHTML += `<div class="card">
-                            <img src="${url + '/uploads/' + images[loadedImgN].filename}" class="image" alt="User post">
-                            <div class="aside">
-                                <div class="comments-container">
-                                    <div class="img-caption"><p>Caption from db</p></div>
-                                    <div class="likes">
-                                        <p>N Likes</p>
-                                    </div>
-                                    <h4>Comments</h4>
-                                    <ul class="comments">
-                                        <li>Comment</li>
-                                        <li>Comment2</li>
-                                        <li>Comment3</li>
-                                    </ul>
-                                 </div>
-                                 <form>
-                                    <textarea name="comment" placeholder="Write a comment" cols="56" rows="5"
-                                    ></textarea>
-                                    <div class="btn-container">
-                                    <button type="submit" class="like-btn"><ion-icon name="heart-outline"></ion-icon> </button>
-                                    <button type="submit" class="comment-btn">Comment</button> 
-                                    </div>
-                                </form>
-                            </div>
-                          
-</div>`;
-    loadedImgN++;
-    if (loadedImgN % imagesOnLoad === 0) {
-      break;
-    }
-  }
-};
-
-createCards();
-*/
+getPosts();
 
 /*window.addEventListener('scroll', () => {
   let scrollHeight = document.documentElement.scrollHeight;
@@ -110,7 +106,6 @@ createCards();
     createCards();
   }
 }); */
-
 
 /**Back to top button reveal and disappear on scroll**/
 const topBtn = document.querySelector('.top-btn');
@@ -150,5 +145,4 @@ addForm.addEventListener('submit', async (evt) => {
   const response = await fetch(url + '/post', fetchOptions);
   const json = await response.json();
   console.log('add response', json);
-  //getImages();
 });
