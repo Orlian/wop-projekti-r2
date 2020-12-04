@@ -4,7 +4,6 @@ const menu = document.querySelector('.menu');
 const items = document.querySelectorAll('.item');
 const postModal = document.getElementById('post-modal');
 const editModal = document.getElementById('edit-user-modal');
-const imageModal = document.querySelector('.image-user-modal');
 const postButtonNav = document.getElementById('add-pic-button');
 const postPicture = document.getElementById('art-img');
 const spans = document.querySelectorAll('.close');
