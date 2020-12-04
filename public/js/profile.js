@@ -1,5 +1,6 @@
 'use strict';
 const url = '/app2/';
+
 const userPosts = document.querySelector('.grid-item');
 const modalImage = document.getElementById('user-post-image');
 const imageFigure = document.querySelector('figure');
@@ -82,9 +83,7 @@ const getUserPosts = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const parsedToken = parseJwt(sessionStorage.getItem('token')).username;
-    console.log('current username', parsedToken);
-    const response = await fetch(url + '/post/' + parsedToken, fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
+    const response = await fetch(url + '/post/' + email, fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
     const posts = await response.json();
     console.log('getUserPost json', posts);
     createUserGrid(posts);
@@ -94,13 +93,3 @@ const getUserPosts = async () => {
 };
 
 getUserPosts();
-
-function parseJwt (token) {
-  const base64Url = token.split('.')[1];
-  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-  }).join(''));
-
-  return JSON.parse(jsonPayload);
-}
