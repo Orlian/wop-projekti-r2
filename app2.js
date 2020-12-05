@@ -26,7 +26,7 @@ app2.use('/auth', authRoute);
 app2.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 app2.use('/post', passport.authenticate('jwt', {session: false}), postRoute);
 app2.use('/comment', passport.authenticate('jwt', {session: false}), commentRoute);
-app2.use('like', passport.authenticate('jwt', {session: false}), likeRoute);
+app2.use('/like', passport.authenticate('jwt', {session: false}), likeRoute);
 //TODO Tänne autentikointi hommat sun muut use-lauseet
 
 
