@@ -28,7 +28,7 @@ router.get('/recent', postController.recent_post_list_get);
 
 router.get('/:id', postController.post_get);
 
-router.get('/:userid', postController.user_post_get);
+router.get('/userposts', postController.user_post_get);
 
 router.post('/', upload.single('user-image'), injectFile, postController.make_thumbnail, [
   body('caption', 'Add caption').isLength({min: 1}),
