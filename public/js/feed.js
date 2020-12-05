@@ -10,7 +10,7 @@ let loadedImgN = 0;
 const createImageCards = (images) => {
 
   imageFeed.innerHTML = '';
-  images.forEach((image) => {
+  images.forEach( async (image) => {
 
     const card = document.createElement('div');
     card.classList.add("card");
@@ -39,7 +39,7 @@ const createImageCards = (images) => {
     const likesContainer = document.createElement('div');
     likesContainer.classList.add("likes");
 
-    const likesCount = getLikes(image.postid);
+    const likesCount = await getLikes(image.postid);
     console.log('forEach likecount', likesCount);
     const likes = document.createElement('p');
     likes.innerHTML = `${likesCount}`;
