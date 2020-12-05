@@ -40,19 +40,28 @@ const createImageCards = (images) => {
     likesContainer.classList.add("likes");
 
     const likesCount = await getLikes(image.postid);
-    console.log('forEach likecount', likesCount);
     const likes = document.createElement('p');
     likes.innerHTML = `${likesCount}`;
-
     const commentsTitle = document.createElement('h4');
     commentsTitle.innerHTML = `Comments`;
 
     const commentsUl = document.createElement('ul');
     commentsUl.classList.add("comments");
 
-    const commentLi = document.createElement('li');
-    //TODO fetch all comments from database
-
+    const comments = await getComments(image.postid);
+    comments.forEach((comment) => {
+      const commentLi = document.createElement('li');
+      const commentContent = document.createElement('p');
+      commentContent.innerHTML = `${comment[0]}`;
+      const commentAuthor = document.createElement('h6');
+      commentAuthor.innerHTML = `${comment[1]}`;
+      const commentTime = document.createElement('h6')
+      commentTime.innerHTML = `${comment[2]}`;
+      commentLi.appendChild(commentAuthor);
+      commentLi.appendChild(commentContent);
+      commentLi.appendChild(commentTime);
+      commentsUl.appendChild(commentLi);
+    });
     const commentForm = document.createElement('form');
     commentForm.classList.add("comment-form");
     const input = document.createElement('textarea');
@@ -88,7 +97,7 @@ const createImageCards = (images) => {
     });
 
 
-
+    commentsContainer.appendChild(username);
     captionContainer.appendChild(imageCaption);
     commentsContainer.appendChild(captionContainer);
 
@@ -96,10 +105,6 @@ const createImageCards = (images) => {
     commentsContainer.appendChild(likesContainer);
 
     commentsContainer.appendChild(commentsTitle);
-
-    commentsContainer.appendChild(username);
-
-    commentsUl.appendChild(commentLi);
     commentsContainer.appendChild(commentsUl);
 
     commentForm.appendChild(input);
@@ -150,12 +155,25 @@ const getLikes = async (postId) => {
     };
     const response = await fetch(url + '/like/' + postId,  options);
     const [likes] = await response.json();
-    console.log('getLikes response', likes);
     return likes.likecount;
   } catch (e) {
     console.log(e.message);
   }
 };
+
+const getComments = async (postid) => {
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/comment/' + postid,  options);
+    return await response.json();
+  } catch (e) {
+    console.log(e.message);
+  }
+}
 
 
 

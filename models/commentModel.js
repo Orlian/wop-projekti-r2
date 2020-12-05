@@ -17,7 +17,7 @@ const getComment = async (commentId) => {
 const getPostComments = async (postId) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT commentid, commentcontent, userid, timestamp FROM Comment WHERE postid = ? ORDER BY timestamp DESC LIMIT 20',
+        'SELECT commentcontent, User.username, timestamp FROM Comment INNER JOIN User ON Comment.userid = User.userid WHERE postid = ? ORDER BY timestamp DESC',
         [postId]);
     return rows;
   } catch (err) {
