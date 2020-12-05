@@ -90,7 +90,10 @@ editUserCancel.onclick = () =>{
 
 deleteUserButton.onclick = () => {
   const confirm = window.confirm('Are you sure you want leave us ;(');
-  console.log(confirm);
+  if(confirm){
+    // TODO poista uskoton käyttäjä, petturi
+    console.log(confirm);
+  }
 };
 
 window.onclick = function(event) {
