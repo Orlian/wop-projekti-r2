@@ -7,7 +7,7 @@ const promisePool = pool.promise();
 const getPostLikesCount = async (postId) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT COUNT(*) from Likes WHERE postid = ?',
+        'SELECT COUNT(*) AS likecount from Likes WHERE postid = ?',
         [postId]);
     return rows;
   } catch (err) {
