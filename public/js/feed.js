@@ -171,7 +171,7 @@ const getComments = async (postid) => {
       },
     };
     const response = await fetch(url + '/comment/' + postid,  options);
-    const [comments] = await response.json();
+    const comments = await response.json();
     console.log('getComments response', comments);
     if(comments !== undefined && comments !== ''){
       return comments;
