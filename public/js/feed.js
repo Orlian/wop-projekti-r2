@@ -169,7 +169,9 @@ const getComments = async (postid) => {
       },
     };
     const response = await fetch(url + '/comment/' + postid,  options);
-    return await response.json();
+    const comments = await response.json();
+    console.log('getComments response', comments);
+    return comments;
   } catch (e) {
     console.log(e.message);
   }
