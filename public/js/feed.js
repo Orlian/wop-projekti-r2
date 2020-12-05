@@ -52,11 +52,11 @@ const createImageCards = (images) => {
     comments.forEach((comment) => {
       const commentLi = document.createElement('li');
       const commentContent = document.createElement('p');
-      commentContent.innerHTML = `${comment[0]}`;
+      commentContent.innerHTML = `${comment.commentcontent}`;
       const commentAuthor = document.createElement('h6');
-      commentAuthor.innerHTML = `${comment[1]}`;
+      commentAuthor.innerHTML = `${comment.username}`;
       const commentTime = document.createElement('h6')
-      commentTime.innerHTML = `${comment[2]}`;
+      commentTime.innerHTML = `${comment.timestamp}`;
       commentLi.appendChild(commentAuthor);
       commentLi.appendChild(commentContent);
       commentLi.appendChild(commentTime);
