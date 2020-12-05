@@ -92,4 +92,4 @@ const getUserPosts = async () => {
   }
 };
 
-getUserPosts()
+//getUserPosts(); //TODO Selvitä onkelma
