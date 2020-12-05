@@ -40,9 +40,9 @@ const createImageCards = (images) => {
     likesContainer.classList.add("likes");
 
     const likesCount = getLikes(image.postid);
-
+    console.log('forEach likecount', likesCount);
     const likes = document.createElement('p');
-    likes.innerHTML = `${likesCount.likecount}`;
+    likes.innerHTML = `${likesCount}`;
 
     const commentsTitle = document.createElement('h4');
     commentsTitle.innerHTML = `Comments`;
@@ -151,7 +151,7 @@ const getLikes = async (postId) => {
     const response = await fetch(url + '/like/' + postId,  options);
     const [likes] = await response.json();
     console.log('getLikes response', likes);
-    return likes;
+    return likes.likecount;
   } catch (e) {
     console.log(e.message);
   }
