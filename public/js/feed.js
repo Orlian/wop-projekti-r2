@@ -49,19 +49,21 @@ const createImageCards = (images) => {
     commentsUl.classList.add("comments");
 
     const comments = await getComments(image.postid);
-    comments.forEach((comment) => {
-      const commentLi = document.createElement('li');
-      const commentContent = document.createElement('p');
-      commentContent.innerHTML = `${comment.commentcontent}`;
-      const commentAuthor = document.createElement('h6');
-      commentAuthor.innerHTML = `${comment.username}`;
-      const commentTime = document.createElement('h6')
-      commentTime.innerHTML = `${comment.timestamp}`;
-      commentLi.appendChild(commentAuthor);
-      commentLi.appendChild(commentContent);
-      commentLi.appendChild(commentTime);
-      commentsUl.appendChild(commentLi);
-    });
+    if(comments !== undefined){
+      comments.forEach((comment) => {
+        const commentLi = document.createElement('li');
+        const commentContent = document.createElement('p');
+        commentContent.innerHTML = `${comment.commentcontent}`;
+        const commentAuthor = document.createElement('h6');
+        commentAuthor.innerHTML = `${comment.username}`;
+        const commentTime = document.createElement('h6')
+        commentTime.innerHTML = `${comment.timestamp}`;
+        commentLi.appendChild(commentAuthor);
+        commentLi.appendChild(commentContent);
+        commentLi.appendChild(commentTime);
+        commentsUl.appendChild(commentLi);
+      });
+    }
     const commentForm = document.createElement('form');
     commentForm.classList.add("comment-form");
     const input = document.createElement('textarea');
