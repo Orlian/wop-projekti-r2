@@ -10,6 +10,7 @@ const post_list_get = async (req, res) => {
 };
 
 const recent_post_list_get = async (req, res) => {
+  console.log('recent_post_list_get req.user', req.user);
   const posts = await postModel.getRecentPosts();
   res.json(posts);
 };
