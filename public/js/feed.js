@@ -49,19 +49,21 @@ const createImageCards = (images) => {
     commentsUl.classList.add("comments");
 
     const comments = await getComments(image.postid);
-    comments.forEach((comment) => {
-      const commentLi = document.createElement('li');
-      const commentContent = document.createElement('p');
-      commentContent.innerHTML = `${comment[0].commentcontent}`;
-      const commentAuthor = document.createElement('h6');
-      commentAuthor.innerHTML = `${comment[0].username}`;
-      const commentTime = document.createElement('h6')
-      commentTime.innerHTML = `${comment[0].timestamp}`;
-      commentLi.appendChild(commentAuthor);
-      commentLi.appendChild(commentContent);
-      commentLi.appendChild(commentTime);
-      commentsUl.appendChild(commentLi);
-    });
+    if(comments !== false){
+      comments.forEach((comment) => {
+        const commentLi = document.createElement('li');
+        const commentContent = document.createElement('p');
+        commentContent.innerHTML = `${comment.commentcontent}`;
+        const commentAuthor = document.createElement('h6');
+        commentAuthor.innerHTML = `${comment.username}`;
+        const commentTime = document.createElement('h6')
+        commentTime.innerHTML = `${comment.timestamp}`;
+        commentLi.appendChild(commentAuthor);
+        commentLi.appendChild(commentContent);
+        commentLi.appendChild(commentTime);
+        commentsUl.appendChild(commentLi);
+      });
+    }
     const commentForm = document.createElement('form');
     commentForm.classList.add("comment-form");
     const input = document.createElement('textarea');
@@ -169,9 +171,13 @@ const getComments = async (postid) => {
       },
     };
     const response = await fetch(url + '/comment/' + postid,  options);
-    const comments = await response.json();
+    const [comments] = await response.json();
     console.log('getComments response', comments);
-    return comments;
+    if(comments !== undefined){
+      return comments;
+    } else {
+      return false;
+    }
   } catch (e) {
     console.log(e.message);
   }
