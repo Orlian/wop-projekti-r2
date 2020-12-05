@@ -172,7 +172,12 @@ addForm.addEventListener('submit', async (evt) => {
     },
     body: fd,
   };
-  const response = await fetch(url + '/post', fetchOptions);
-  const json = await response.json();
-  console.log('add response', json);
+  try{
+    const response = await fetch(url + '/post', fetchOptions);
+    const json = await response.json();
+    console.log('add response', json);
+  }catch (e) {
+    console.log(e.message);
+  }
+  getPosts();
 });

@@ -10,6 +10,11 @@ const spans = document.querySelectorAll('.close');
 const modals = document.querySelectorAll('.modal');
 const editLink = document.getElementById('edit-link');
 const logoutLink = document.getElementById('logout-link');
+const addImageButton = document.getElementById('post-button');
+const addImageCancel = document.getElementById('cancel-button');
+const editUserButton = document.getElementById('save-button');
+const editUserCancel = document.getElementById('user-cancel-button');
+const deleteUserButton = document.getElementById('delete-button');
 
 function toggleMenu() {
   if (menu.classList.contains('active')) {
@@ -59,6 +64,14 @@ postButtonNav.onclick = function() {
   postModal.style.display = 'flex';
 };
 
+addImageButton.onclick = () => {
+  postModal.style.display = 'none';
+};
+
+addImageCancel.onclick = () => {
+  postModal.style.display = 'none';
+};
+
 spans.forEach((span) => {
   span.addEventListener('click', () => {
     span.parentNode.parentNode.parentNode.parentNode.style.display = 'none';
@@ -67,6 +80,20 @@ spans.forEach((span) => {
 
 editLink.onclick = function() {
   editModal.style.display = 'flex';
+};
+editUserButton.onclick = () =>{
+  editModal.style.display = 'none';
+};
+editUserCancel.onclick = () =>{
+  editModal.style.display = 'none';
+};
+
+deleteUserButton.onclick = () => {
+  const confirm = window.confirm('Are you sure you want leave us ;(');
+  if(confirm){
+    // TODO poista uskoton käyttäjä, petturi
+    console.log(confirm);
+  }
 };
 
 window.onclick = function(event) {
