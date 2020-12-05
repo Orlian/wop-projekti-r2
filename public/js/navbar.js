@@ -89,7 +89,7 @@ editUserCancel.onclick = () =>{
 };
 
 deleteUserButton.onclick = () => {
-  const confirm = window.confirm();
+  const confirm = window.confirm('Are you sure you want leave us ;(');
   console.log(confirm);
 };
 
