@@ -16,7 +16,7 @@ const recent_post_list_get = async (req, res) => {
 };
 
 const post_get = async (req, res) => {
-  const postId = req.params.postId;
+  const postId = req.params.id;
   const post = await postModel.getPost(postId);
   res.json(post);
 };
