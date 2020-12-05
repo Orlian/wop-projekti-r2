@@ -10,6 +10,7 @@ const spans = document.querySelectorAll('.close');
 const modals = document.querySelectorAll('.modal');
 const editLink = document.getElementById('edit-link');
 const logoutLink = document.getElementById('logout-link');
+const addImageButton = document.getElementById('post-button');
 
 function toggleMenu() {
   if (menu.classList.contains('active')) {
@@ -57,6 +58,10 @@ function closeSubmenu(e) {
 
 postButtonNav.onclick = function() {
   postModal.style.display = 'flex';
+};
+
+addImageButton.onclick = () => {
+  postModal.style.display = 'none';
 };
 
 spans.forEach((span) => {

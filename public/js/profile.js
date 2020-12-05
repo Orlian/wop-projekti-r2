@@ -93,3 +93,19 @@ const getUserPosts = async () => {
 };
 
 getUserPosts();
+
+const getPosts = async () => {
+  console.log('getPost token ', sessionStorage.getItem('token'));
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/post/recent', options);
+    const images = await response.json();
+    createImageCards(images);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
