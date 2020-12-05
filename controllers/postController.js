@@ -9,6 +9,11 @@ const post_list_get = async (req, res) => {
   res.json(posts);
 };
 
+const recent_post_list_get = async (req, res) => {
+  const posts = await postModel.getRecentPosts();
+  res.json(posts);
+};
+
 const post_get = async (req, res) => {
   const postId = req.params.postId;
   const post = await postModel.getPost(postId);
@@ -74,6 +79,7 @@ const make_thumbnail = async (req, res, next) => {
 
 module.exports = {
   post_list_get,
+  recent_post_list_get,
   post_get,
   user_post_get,
   create_new_post,

@@ -24,6 +24,8 @@ const injectFile = (req, res, next) => {
 
 router.get('/', postController.post_list_get);
 
+router.get('/recent', postController.recent_post_list_get);
+
 router.get('/:id', postController.post_get);
 
 router.get('/:userid', postController.user_post_get);

@@ -27,6 +27,9 @@ const createImageCards = (images) => {
     const commentsContainer = document.createElement('div');
     commentsContainer.classList.add("comments-container");
 
+    const username = document.createElement('h5');
+    username.innerHTML = `${image.username}`;
+
     const captionContainer = document.createElement('div');
     captionContainer.classList.add("img-caption");
 
@@ -74,6 +77,7 @@ const createImageCards = (images) => {
     likeIcon.name = 'heart-outline';
 
 
+
     captionContainer.appendChild(imageCaption);
     commentsContainer.appendChild(captionContainer);
 
@@ -81,6 +85,8 @@ const createImageCards = (images) => {
     commentsContainer.appendChild(likesContainer);
 
     commentsContainer.appendChild(commentsTitle);
+
+    commentsContainer.appendChild(username);
 
     commentsUl.appendChild(commentLi);
     commentsContainer.appendChild(commentsUl);
@@ -113,7 +119,7 @@ const getPosts = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/post', options);
+    const response = await fetch(url + '/recent', options);
     const images = await response.json();
     createImageCards(images);
   } catch (e) {
