@@ -21,7 +21,8 @@ const post_get = async (req, res) => {
 };
 
 const user_post_get = async (req, res) => {
-  const userId = req.params.userid;
+  console.log('user_post_get userInfo', req.user);
+  const userId = req.user.userid;
   const userPosts = await postModel.getUserPosts(userId);
   res.json(userPosts);
 };
