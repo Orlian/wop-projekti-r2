@@ -119,7 +119,7 @@ const getPosts = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/recent', options);
+    const response = await fetch(url + '/post/recent', options);
     const images = await response.json();
     createImageCards(images);
   } catch (e) {
