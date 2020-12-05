@@ -151,6 +151,7 @@ const getLikes = async (postId) => {
     const response = await fetch(url + '/like/' + postId,  options);
     const [likes] = await response.json();
     console.log('getLikes response', likes);
+    return likes;
   } catch (e) {
     console.log(e.message);
   }
