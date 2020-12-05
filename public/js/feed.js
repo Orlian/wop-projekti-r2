@@ -149,7 +149,7 @@ const getLikes = async (postId) => {
       },
     };
     const response = await fetch(url + '/like/' + postId,  options);
-    const likes = await response.json();
+    return await response.json();
   } catch (e) {
     console.log(e.message);
   }
