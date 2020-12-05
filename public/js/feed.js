@@ -71,6 +71,7 @@ const createImageCards = (images) => {
 
     const likeBtn = document.createElement('button');
     likeBtn.type = 'submit';
+    likeBtn.name = 'like';
     likeBtn.classList.add("like-btn");
 
     const likeIcon = document.createElement('ion-icon');
