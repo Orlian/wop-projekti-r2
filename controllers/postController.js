@@ -10,12 +10,13 @@ const post_list_get = async (req, res) => {
 };
 
 const recent_post_list_get = async (req, res) => {
+  console.log('recent_post_list_get req.user', req.user);
   const posts = await postModel.getRecentPosts();
   res.json(posts);
 };
 
 const post_get = async (req, res) => {
-  const postId = req.params.postId;
+  const postId = req.params.id;
   const post = await postModel.getPost(postId);
   res.json(post);
 };
