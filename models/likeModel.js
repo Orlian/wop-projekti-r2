@@ -7,20 +7,7 @@ const promisePool = pool.promise();
 const getPostLikesCount = async (postId) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT COUNT(*) from Likes INNER JOIN Post ON Likes.postid = Post.postid WHERE Likes.postid = ?',
-        [postId]);
-    return rows;
-  } catch (err) {
-    console.log('likeModel error', err.message);
-    return {error: 'DB Error'};
-  }
-};
-
-/**Users who liked a post**/
-const getPostLikesAuthors = async (postId) => {
-  try {
-    const [rows] = await promisePool.execute(
-        'SELECT username from Likes INNER JOIN User ON Likes.userid = User.userid WHERE postid = ?',
+        'SELECT COUNT(*) from Likes WHERE postid = ?',
         [postId]);
     return rows;
   } catch (err) {
@@ -33,7 +20,7 @@ const getPostLikesAuthors = async (postId) => {
 const addLike = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'INSERT INTO Likes (userid, postid) VALUES (?, ?) where postid = ?',
+        'INSERT INTO Likes (userid, postid) VALUES (?, ?)',
         [params]);
     return rows;
   } catch (err) {
@@ -58,7 +45,6 @@ const deleteLike = async (params) => {
 
 module.exports = {
   getPostLikesCount,
-  getPostLikesAuthors,
   addLike,
   deleteLike,
 };

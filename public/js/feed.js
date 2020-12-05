@@ -40,7 +40,7 @@ const createImageCards = (images) => {
     likesContainer.classList.add("likes");
 
     const likes = document.createElement('p');
-    likes.innerHTML = `N of likes`;
+    likes.innerHTML = `${image.likes}`;
 
     const commentsTitle = document.createElement('h4');
     commentsTitle.innerHTML = `Comments`;
@@ -71,11 +71,19 @@ const createImageCards = (images) => {
 
     const likeBtn = document.createElement('button');
     likeBtn.type = 'submit';
-    likeBtn.name = 'like';
     likeBtn.classList.add("like-btn");
 
     const likeIcon = document.createElement('ion-icon');
     likeIcon.name = 'heart-outline';
+
+    likeBtn.addEventListener('click', (evt) => {
+        //evt.preventDefault();
+        try {
+
+      } catch {
+
+        }
+    });
 
 
 
@@ -130,6 +138,23 @@ const getPosts = async () => {
 
 getPosts();
 
+const getLikes = async (postId) => {
+  console.log('getPost token ', sessionStorage.getItem('token'));
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/like/' + postId,  options);
+    const likes = await response.json();
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+
+
 /*window.addEventListener('scroll', () => {
   let scrollHeight = document.documentElement.scrollHeight;
   if (window.scrollY + window.innerHeight > scrollHeight - 100) {
@@ -181,3 +206,4 @@ addForm.addEventListener('submit', async (evt) => {
   }
   getPosts();
 });
+
