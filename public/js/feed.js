@@ -5,39 +5,37 @@ const addForm = document.getElementById('add-image');
 const imagesOnLoad = 3;
 let loadedImgN = 0;
 
-
 /**Create image cards**/
 const createImageCards = (images) => {
 
   imageFeed.innerHTML = '';
-  images.forEach( async (image) => {
+  images.forEach(async (image) => {
 
     const card = document.createElement('div');
-    card.classList.add("card");
-
+    card.classList.add('card');
 
     const img = document.createElement('img');
     img.src = url + '/uploads/' + image.imgfile;
     img.alt = image.caption.slice(0, 20);
-    img.classList.add("image");
+    img.classList.add('image');
 
     const aside = document.createElement('div');
-    aside.classList.add("aside");
+    aside.classList.add('aside');
 
     const commentsContainer = document.createElement('div');
-    commentsContainer.classList.add("comments-container");
+    commentsContainer.classList.add('comments-container');
 
     const username = document.createElement('h5');
     username.innerHTML = `${image.username}`;
 
     const captionContainer = document.createElement('div');
-    captionContainer.classList.add("img-caption");
+    captionContainer.classList.add('img-caption');
 
     const imageCaption = document.createElement('p');
     imageCaption.innerHTML = image.caption;
 
     const likesContainer = document.createElement('div');
-    likesContainer.classList.add("likes");
+    likesContainer.classList.add('likes');
 
     const likesCount = await getLikes(image.postid);
     const likes = document.createElement('p');
@@ -46,28 +44,28 @@ const createImageCards = (images) => {
     commentsTitle.innerHTML = `Comments`;
 
     const commentsUl = document.createElement('ul');
-    commentsUl.classList.add("comments");
+    commentsUl.classList.add('comments');
 
     const comments = await getComments(image.postid);
-    if(comments !== false){
-      comments.forEach((comment) => {
-        const commentLi = document.createElement('li');
-        const commentContent = document.createElement('p');
-        commentContent.innerHTML = `${comment.commentcontent}`;
-        const commentAuthor = document.createElement('h6');
-        commentAuthor.innerHTML = `${comment.username}`;
-        const commentTime = document.createElement('h6')
-        commentTime.innerHTML = `${comment.timestamp}`;
-        commentLi.appendChild(commentAuthor);
-        commentLi.appendChild(commentContent);
-        commentLi.appendChild(commentTime);
-        commentsUl.appendChild(commentLi);
-      });
-    }
+
+    comments.forEach((comment) => {
+      const commentLi = document.createElement('li');
+      const commentContent = document.createElement('p');
+      commentContent.innerHTML = `${comment.commentcontent}`;
+      const commentAuthor = document.createElement('h6');
+      commentAuthor.innerHTML = `${comment.username}`;
+      const commentTime = document.createElement('h6');
+      commentTime.innerHTML = `${comment.timestamp}`;
+      commentLi.appendChild(commentAuthor);
+      commentLi.appendChild(commentContent);
+      commentLi.appendChild(commentTime);
+      commentsUl.appendChild(commentLi);
+    });
+
     const commentForm = document.createElement('form');
-    commentForm.classList.add("comment-form");
+    commentForm.classList.add('comment-form');
     const input = document.createElement('textarea');
-    input.classList.add("comment-input");
+    input.classList.add('comment-input');
     input.name = 'comment';
     input.placeholder = 'Write a comment';
     input.cols = 56;
@@ -75,29 +73,28 @@ const createImageCards = (images) => {
     input.style.resize = 'none';
 
     const btnContainer = document.createElement('div');
-    btnContainer.classList.add("btn-container");
+    btnContainer.classList.add('btn-container');
 
     const commentBtn = document.createElement('button');
     commentBtn.type = 'submit';
-    commentBtn.classList.add("comment-btn");
+    commentBtn.classList.add('comment-btn');
     commentBtn.innerHTML = `Comment`;
 
     const likeBtn = document.createElement('button');
     likeBtn.type = 'submit';
-    likeBtn.classList.add("like-btn");
+    likeBtn.classList.add('like-btn');
 
     const likeIcon = document.createElement('ion-icon');
     likeIcon.name = 'heart-outline';
 
     likeBtn.addEventListener('click', (evt) => {
-        //evt.preventDefault();
-        try {
+      //evt.preventDefault();
+      try {
 
       } catch {
 
-        }
+      }
     });
-
 
     commentsContainer.appendChild(username);
     captionContainer.appendChild(imageCaption);
@@ -127,7 +124,6 @@ const createImageCards = (images) => {
   });
 };
 
-
 /**Fetching all posts data from database**/
 const getPosts = async () => {
   console.log('getPost token ', sessionStorage.getItem('token'));
@@ -155,7 +151,7 @@ const getLikes = async (postId) => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/like/' + postId,  options);
+    const response = await fetch(url + '/like/' + postId, options);
     const [likes] = await response.json();
     return likes.likecount;
   } catch (e) {
@@ -170,10 +166,10 @@ const getComments = async (postid) => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/comment/' + postid,  options);
+    const response = await fetch(url + '/comment/' + postid, options);
     const comments = await response.json();
     console.log('getComments response', comments);
-    if(comments !== undefined && comments !== ''){
+    if (comments !== undefined && comments !== '') {
       return comments;
     } else {
       return false;
@@ -181,9 +177,7 @@ const getComments = async (postid) => {
   } catch (e) {
     console.log(e.message);
   }
-}
-
-
+};
 
 /*window.addEventListener('scroll', () => {
   let scrollHeight = document.documentElement.scrollHeight;
@@ -227,11 +221,11 @@ addForm.addEventListener('submit', async (evt) => {
     },
     body: fd,
   };
-  try{
+  try {
     const response = await fetch(url + '/post', fetchOptions);
     const json = await response.json();
     console.log('add response', json);
-  }catch (e) {
+  } catch (e) {
     console.log(e.message);
   }
   getPosts();
