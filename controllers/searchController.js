@@ -9,7 +9,7 @@ const search_get_posts = async (req, res) => {
     return res.status(400).json({errors: errors.array()});
   }
 
-  const params = [req.body.search, req.body.search];
+  const params = [req.params.inputs, req.params.inputs];
   const posts = await searchModel.getSearchResult(params);
   res.json(posts);
 };
