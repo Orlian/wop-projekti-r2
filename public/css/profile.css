@@ -232,7 +232,8 @@ form::after {
 }
 
 #delete-button:hover {
-    background-color: darkred;
+    background-color: #ff2b39;
+    border: 0.1em solid #ff2b39;
     color: whitesmoke;
 }
 
