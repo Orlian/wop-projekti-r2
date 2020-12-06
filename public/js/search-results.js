@@ -38,5 +38,6 @@ searchForm.addEventListener('submit', async (evt) => {
   };
   const response = await fetch(url + '/search/' + searchInput.value, fetchOptions);
   const searchData = response.json();
+  console.log('search-result response', searchData);
   fillSearchList(searchData);
 });
