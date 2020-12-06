@@ -8,8 +8,8 @@ const search_get_posts = async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({errors: errors.array()});
   }
-
-  const params = [req.params.inputs, req.params.inputs];
+  const wildCardParam = '%' + req.params.inputs + '%';
+  const params = [wildCardParam, wildCardParam];
   const posts = await searchModel.getSearchResult(params);
   res.json(posts);
 };
