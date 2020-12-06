@@ -87,6 +87,14 @@ body {
     font-size: 0.75em;
 }
 
+.comment-content {
+    padding: 0.5em 0 0.5em 0;
+}
+
+.comment-time {
+    color: darkgrey;
+}
+
 .comment-form {
     display: flex;
     justify-content: center;
