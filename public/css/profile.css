@@ -178,6 +178,7 @@ form::after {
     align-items: center;
     position: relative;
     background-color: whitesmoke;
+    border-radius: 2em;
 }
 .upload-btn-wrapper {
     position: relative;
