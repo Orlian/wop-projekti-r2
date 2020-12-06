@@ -40,6 +40,7 @@ const fillSearchList = (hits) => {
       searchModalFigImg.alt = hit.caption.slice(0,20);
       searchModalFigCap.innerHTML = hit.caption;
       searchModalFigUser.innerHTML = hit.username;
+      searchModalFeedbackComments.innerHTML = '';
       const comments = await getComments(hit.postid);
       comments.forEach((comment) => {
         const commentLi = document.createElement('li');
