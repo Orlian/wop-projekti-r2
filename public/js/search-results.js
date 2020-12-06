@@ -12,13 +12,18 @@ const fillSearchList = (hits) => {
   searchResultsFor.innerHTML = `Search results for "${searchInput.value}"`
   searchList.innerHTML = '';
   hits.forEach((hit) => {
-    const li = document.createElement('li');
+    const gridItem = document.createElement('div');
+    gridItem.classList.add('grid-item');
     const img = document.createElement('img');
     img.src = url + '/thumbnails/' + hit.imgfile;
     img.alt = hit.description;
-    li.appendChild(img);
-    searchList.appendChild(li);
+    gridItem.appendChild(img);
+    searchList.appendChild(gridItem);
 
     //TODO Tänne vielä modaalina avaamiset ja muiden elementtien luomiset per hakutulos
   });
+}
+
+const getSearchData = async () => {
+
 }
