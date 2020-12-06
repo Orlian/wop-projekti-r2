@@ -1,6 +1,6 @@
 'use strict';
 
-const url = '/app/'; //TODO Varmista että url on oikein
+const url = '/app2/'; //TODO Varmista että url on oikein
 
 const searchList = document.querySelector('.search-result-list');
 const searchInput = document.querySelector('.search-bar');
@@ -15,7 +15,7 @@ const fillSearchList = (hits) => {
     const li = document.createElement('li');
     const img = document.createElement('img');
     img.src = url + '/thumbnails/' + hit.imgfile;
-    img.alt = hit.desc;
+    img.alt = hit.description;
     li.appendChild(img);
     searchList.appendChild(li);
 
