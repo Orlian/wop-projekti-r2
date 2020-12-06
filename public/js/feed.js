@@ -227,7 +227,3 @@ addForm.addEventListener('submit', async (evt) => {
   }
   getPosts();
 });
-
-export {
-  getComments, getLikes,
-}
