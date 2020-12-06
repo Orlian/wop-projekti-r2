@@ -19,8 +19,8 @@ body {
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-
+    justify-content: center;
+    margin-top: 2em;
 }
 
 .card {
@@ -63,6 +63,10 @@ body {
     padding-top: 1em;
 }
 
+.img-caption {
+    padding-top: 0.5em;
+}
+
 
 .likes {
     padding-top: 1em;
@@ -71,6 +75,7 @@ body {
 .comments {
 
     background-color: whitesmoke;
+    height: 10em;
     padding-top: 1em;
     list-style: none;
     box-shadow: 2px 5px 5px lightgray;
@@ -122,17 +127,19 @@ body {
     background: slateblue;
 }
 
+.like-btn:hover {
+    background:whitesmoke;
+}
+
 .like-btn > ion-icon {
     font-size: 2em;
 }
+
 
 .comment-input {
     border: 1px solid lightgrey;
     margin: 0 0 0.1em 0;
 }
-
-
-
 
 .top-btn {
     height: 5em;
