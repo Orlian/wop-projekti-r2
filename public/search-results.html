@@ -73,6 +73,37 @@
             <img src="http://placekitten.com/200/200" alt="thumbnail">
         </div>
     </section>
+    <aside>
+        <div class="modal" id="image-user-modal">
+            <div class="image-user-wrapper">
+                <div class="image-user-content-modal">
+                    <span class="close">&times;</span>
+                    <figure>
+                        <img src="" alt="" class="" id="user-post-image">
+                        <figcaption></figcaption>
+                    </figure>
+                    <div class="feedback">
+                        <div class="likes">
+                            <ion-icon name="heart-outline"></ion-icon>
+                            <p>N Likes</p>
+                        </div>
+                        <div class="comment-section">
+                            <h4>Comments</h4>
+                            <ul class="comments">
+                            </ul>
+                        </div>
+                    </div>
+                    <button type="submit" class="like-btn">
+                        <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+                    <form class="add-comment">
+                        <textarea name="comment" id="comment-text"></textarea>
+                        <button class="modal-button" id="delete-image">Delete image</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </aside>
 </div>
 <div class="loader-ripple"><div></div><div></div></div>
 <script src="js/serialize.js"></script>
