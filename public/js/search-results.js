@@ -14,11 +14,15 @@ const fillSearchList = (hits) => {
   searchList.innerHTML = '';
   hits.forEach((hit) => {
     const gridItem = document.createElement('div');
+    const gridUser = document.createElement('h3');
     gridItem.classList.add('grid-item');
+    gridUser.classList.add('grid-poster');
+    gridUser.innerHTML = hit.username;
     const img = document.createElement('img');
     img.src = url + '/thumbnails/' + hit.imgfile;
     img.alt = hit.caption.slice(0, 20);
     gridItem.appendChild(img);
+    gridItem.appendChild(gridUser);
     searchList.appendChild(gridItem);
 
     //TODO Tänne vielä modaalina avaamiset ja muiden elementtien luomiset per hakutulos
