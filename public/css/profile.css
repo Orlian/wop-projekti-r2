@@ -140,10 +140,9 @@ form::after {
 }
 .content-modal {
     margin: auto;
-    background: white;
-    border: 0.1em solid black;
-    border-radius: 3%;
-    box-shadow: 5px 10px 18px #888888;
+    background: whitesmoke;
+    border: none;
+    border-radius: 2em;
 }
 .close {
     color: #aaaaaa;
@@ -187,7 +186,7 @@ form::after {
 }
 .btn, .btn:hover {
     border: none;
-    background-color: white;
+    background-color: whitesmoke;
     background-image: none;
     margin-bottom: 0;
 }
@@ -205,12 +204,20 @@ form::after {
     background-image: linear-gradient(to bottom right, mediumslateblue, palevioletred);
     border: none;
     border-radius: 2em;
+    box-shadow: 3px 5px 5px lightgray;
 }
 .modal-button:hover{
     background: slateblue;
 }
 .modal-button:focus{
     outline: none;
+    border: none;
+}
+
+#cancel-button {
+    background: whitesmoke;
+    color: #1e1e1e;
+    border: 0.1em solid slateblue;
 }
 textarea{
     margin: 1.0em;
