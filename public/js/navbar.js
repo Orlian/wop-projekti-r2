@@ -15,6 +15,13 @@ const addImageCancel = document.getElementById('cancel-button');
 const editUserButton = document.getElementById('save-button');
 const editUserCancel = document.getElementById('user-cancel-button');
 const deleteUserButton = document.getElementById('delete-button');
+const logo = document.getElementById('logo-img');
+
+
+logo.onclick = () => {
+  location.href = 'feed.html';
+};
+
 
 function toggleMenu() {
   if (menu.classList.contains('active')) {
