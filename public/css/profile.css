@@ -223,7 +223,7 @@ form::after {
 
 #cancel-button:hover {
     background-color: slateblue;
-    border: none;
+    color: whitesmoke;
 }
 textarea{
     margin: 1.0em;
