@@ -102,6 +102,7 @@ const getUserPosts = async () => {
       },
     };
     const response = await fetch(url + '/post/user' , fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
+    console.log('getUserPost response', response);
     const posts = await response.json();
     console.log('getUserPost json', posts);
     createUserGrid(posts);
