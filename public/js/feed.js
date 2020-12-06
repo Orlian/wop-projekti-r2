@@ -127,7 +127,6 @@ const createImageCards = (images) => {
 
 /**Fetching all posts data from database**/
 const getPosts = async () => {
-  console.log('getPost token ', sessionStorage.getItem('token'));
   try {
     const options = {
       headers: {
@@ -145,7 +144,6 @@ const getPosts = async () => {
 getPosts();
 
 const getLikes = async (postId) => {
-  console.log('getPost token ', sessionStorage.getItem('token'));
   try {
     const options = {
       headers: {
