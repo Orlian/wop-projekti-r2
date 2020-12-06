@@ -1,6 +1,7 @@
 'use strict';
 
 const url = '/app2/'; //TODO Varmista että url on oikein
+const {getLikes, getComments} = require('./feed');
 
 const searchList = document.querySelector('.search-result-wrapper');
 const searchForm = document.querySelector('#search-form');
@@ -78,36 +79,3 @@ searchForm.addEventListener('submit', async (evt) => {
   console.log('search-result response', searchData);
   fillSearchList(searchData);
 });
-
-
-const getLikes = async (postId) => {
-  console.log('getPost token ', sessionStorage.getItem('token'));
-  try {
-    const options = {
-      headers: {
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-      },
-    };
-    const response = await fetch(url + '/like/' + postId, options);
-    const [likes] = await response.json();
-    return likes.likecount;
-  } catch (e) {
-    console.log(e.message);
-  }
-};
-
-const getComments = async (postid) => {
-  try {
-    const options = {
-      headers: {
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-      },
-    };
-    const response = await fetch(url + '/comment/' + postid, options);
-    const comments = await response.json();
-    console.log('getComments response', comments);
-    return comments;
-  } catch (e) {
-    console.log(e.message);
-  }
-};

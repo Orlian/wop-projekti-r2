@@ -228,3 +228,7 @@ addForm.addEventListener('submit', async (evt) => {
   getPosts();
 });
 
+module.exports = {
+  getLikes,
+  getComments,
+}
