@@ -104,6 +104,7 @@ body {
 .btn-container {
     display: flex;
     justify-content: space-between;
+    position: relative
 }
 
 .like-btn {
@@ -115,6 +116,11 @@ body {
 
 .like-btn > ion-icon {
     color: #1e1e1e;
+}
+
+.likes {
+    position: absolute;
+    left: 15%;
 }
 
 .comment-btn {
