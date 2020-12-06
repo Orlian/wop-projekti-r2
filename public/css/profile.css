@@ -169,7 +169,7 @@ form::after {
     justify-content: center;
 }
 .content-modal>form{
-    height: 39em;
+    height: 40em;
     width: 30em;
     max-width: 90vw;
     margin: auto;
@@ -178,6 +178,7 @@ form::after {
     flex-direction: column;
     align-items: center;
     position: relative;
+    background-color: whitesmoke;
 }
 .upload-btn-wrapper {
     position: relative;
@@ -200,20 +201,20 @@ form::after {
 }
 .modal-button{
     margin: 0.5em;
-    padding: 0.2em 1em;
-    background-image: linear-gradient(to bottom right, red, #2c2ce5);
-    border: 0.1em solid black;
-    border-radius: 1em;
+    padding: 0.4em 1em;
+    background-image: linear-gradient(to bottom right, mediumslateblue, palevioletred);
+    border: none;
+    border-radius: 2em;
 }
 .modal-button:hover{
-    background-image: linear-gradient(to bottom right, #ea6969, #4646c9);
+    background: slateblue;
 }
 .modal-button:focus{
     outline: none;
 }
 textarea{
     margin: 1.0em;
-    border: 0.1em solid black;
+    border: 0.1em solid grey;
     width: 100%;
 }
 
@@ -302,12 +303,10 @@ input[type='checkbox']{
     flex-direction: column;
 }
 img{
-    margin: 1em auto;
     max-width: 100%;
     width: 200px;
-    height: 200px;
+    height: auto;
     border-radius: 50%;
-    border: 0.1em solid black;
 }
 section h2, .desc{
     text-align: center;
