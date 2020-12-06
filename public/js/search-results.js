@@ -34,6 +34,7 @@ const fillSearchList = (hits) => {
 
     img.addEventListener('click', async (evt) => {
       evt.preventDefault();
+      searchModalFeedbackComments.innerHTML = '';
       searchModal.style.display = 'flex';
       //kuva, postaaja, kuvateksti, kommentit, liket
       searchModalFigImg.src = url + '/uploads/' + hit.imgfile;
