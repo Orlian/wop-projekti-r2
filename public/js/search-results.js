@@ -37,7 +37,7 @@ searchForm.addEventListener('submit', async (evt) => {
     body: JSON.stringify(data),
   };
   const response = await fetch(url + '/search/' + searchInput.value, fetchOptions);
-  const searchData = response.json();
+  const searchData = await response.json();
   console.log('search-result response', searchData);
   fillSearchList(searchData);
 });
