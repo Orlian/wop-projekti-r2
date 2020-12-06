@@ -238,9 +238,6 @@ form::after {
 }
 
 
-
-
-
 textarea{
     margin: 1.0em;
     border: 0.1em solid grey;
@@ -261,13 +258,21 @@ input[type='checkbox']{
     width: 10%;
 }
 .edit-user-wrapper input{
-    margin: 0.6em;
-    width: 100%;
-    border: none;
-    border-bottom: 0.1em solid black;
+    margin: 1em;
+    width: 80%;
+    border: 0.1em solid darkgrey;
+    background: rgba(150, 150, 150, 0.2);
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 2px 5px 5px lightgray;
 }
+
+.edit-user-wrapper input:hover{
+    border: 0.1em solid slateblue;
+}
+
 .edit-user-wrapper input::placeholder, .edit-user-wrapper textarea::placeholder{
-    text-align: center;
+
 }
 .edit-user-wrapper input:active, .edit-user-wrapper input:focus{
     outline: none;
