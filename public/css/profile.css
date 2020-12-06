@@ -281,7 +281,7 @@ input[type='checkbox']{
     color: palevioletred;
 }
 #plus-icon:hover{
-    background: slateblue;
+    background: whitesmoke;
 }
 
 @-moz-document url-prefix() {
