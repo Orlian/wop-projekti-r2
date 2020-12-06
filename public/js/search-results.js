@@ -1,5 +1,6 @@
-'use strict';
 import {getLikes, getComments} from './feed';
+
+'use strict';
 
 const url = '/app2/'; //TODO Varmista että url on oikein
 
