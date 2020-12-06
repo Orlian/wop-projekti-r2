@@ -8,6 +8,24 @@ const figureFigcaption = document.querySelector('figcaption');
 const deleteImgButton = document.getElementById('delete-image');
 const commentSection = document.querySelector('.comments');
 const imageModal = document.getElementById('image-user-modal');
+const profileSection = document.querySelector('.profile-info');
+const profileImg = document.querySelector('.profile-info img');
+const profileName = document.querySelector('.profile-info h2');
+const profileDesc = document.querySelector('.desc p');
+
+const getUserProfile = async () => {
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/user', options); //TODO Tänne kanssa aktiivisen käyttäjän tai klikatun käyttäjän email tai userid tms
+    const userData = await response.json();
+  } catch(err) {
+    console.error(err.message);
+  }
+};
 
 
 const getPostComments = async (postid) => {
@@ -92,4 +110,4 @@ const getUserPosts = async () => {
   }
 };
 
-//getUserPosts(); //TODO Selvitä onkelma
+getUserPosts(); //TODO Selvitä onkelma
