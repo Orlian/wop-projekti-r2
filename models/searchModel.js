@@ -9,7 +9,7 @@ const getSearchResult = async (params) => {
     console.log('searchModel params', params);
     const [rows] = await promisePool.execute(
         'SELECT DISTINCT imgfile, caption, User.username, timestamp FROM Post INNER JOIN User ON User.userid = Post.userid WHERE caption LIKE "%?%" OR username LIKE "%?%"',
-        params);
+        [params, params]);
     console.log('searchModel rows', rows);
     return rows;
   } catch (err) {

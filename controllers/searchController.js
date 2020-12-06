@@ -8,9 +8,7 @@ const search_get_posts = async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({errors: errors.array()});
   }
-  const {inputs} = req.params;
-  const params = [inputs, inputs]
-  const posts = await searchModel.getSearchResult(params);
+  const posts = await searchModel.getSearchResult(req.params.inputs);
   res.json(posts);
 };
 
