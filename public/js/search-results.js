@@ -34,13 +34,13 @@ const fillSearchList = (hits) => {
 
     img.addEventListener('click', async (evt) => {
       evt.preventDefault();
-      searchModalFeedbackComments.innerHTML = '';
       searchModal.style.display = 'flex';
       //kuva, postaaja, kuvateksti, kommentit, liket
       searchModalFigImg.src = url + '/uploads/' + hit.imgfile;
       searchModalFigImg.alt = hit.caption.slice(0,20);
       searchModalFigCap.innerHTML = hit.caption;
       searchModalFigUser.innerHTML = hit.username;
+      searchModalFeedbackComments.innerHTML = '';
       const comments = await getComments(hit.postid);
       comments.forEach((comment) => {
         const commentLi = document.createElement('li');
