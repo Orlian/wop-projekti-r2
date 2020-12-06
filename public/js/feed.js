@@ -39,7 +39,7 @@ const createImageCards = (images) => {
 
     const likesCount = await getLikes(image.postid);
     const likes = document.createElement('p');
-    likes.innerHTML = `${likesCount}`;
+    likes.innerHTML = `${likesCount} likes`;
     const commentsTitle = document.createElement('h4');
     commentsTitle.innerHTML = `Comments`;
 
