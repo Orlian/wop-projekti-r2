@@ -2,7 +2,7 @@
 
 const url = '/app2/'; //TODO Varmista että url on oikein
 
-const searchList = document.querySelector('.search-result-list');
+const searchList = document.querySelector('.search-result-wrapper');
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
 const searchResultsFor = document.querySelector('#search-results-for');
