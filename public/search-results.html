@@ -24,7 +24,7 @@
                         </button>
                     </form>
                 </li>
-                <li class="item" id="post-button">
+                <li class="item" id="add-pic-button">
                     <a href="#">Add picture</a>
                 </li>
                 <li class="item item-has-submenu" id="profile-button">
@@ -104,6 +104,55 @@
                             <button class="modal-button" id="comment-btn">Comment</button>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <aside>
+        <div class="modal" id="post-modal">
+            <div class="post-wrapper">
+                <div class="content-modal">
+                    <form enctype="multipart/form-data" id="add-image">
+                        <span class="close">&times;</span>
+                        <img src="http://placekitten.com/200/200" alt="art-img" id="art-img">
+                        <div class="upload-btn-wrapper">
+                            <button class="btn">
+                                <ion-icon name="add-circle-sharp" id="plus-icon"></ion-icon>
+                            </button>
+                            <input type="file" name="user-image" accept="image/*" onchange="previewImage(event)">
+                        </div>
+                        <textarea name="caption" style="resize: none" rows="8" cols="40"
+                                  placeholder="Add caption (optional)"></textarea>
+                        <button type="submit" class="modal-button" id="post-button">Publish</button>
+                        <button type="reset" class="modal-button" id="cancel-button">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <aside>
+        <div class="modal" id="edit-user-modal">
+            <div class="edit-user-wrapper">
+                <div class="content-modal">
+                    <form id="edit-user-form">
+                        <span class="close">&times;</span>
+                        <img src="http://placekitten.com/200/200" alt="user-picture" id="user-picture">
+                        <div class="upload-btn-wrapper">
+                            <button class="btn">
+                                <ion-icon name="add-circle-sharp" id="plus-icon"></ion-icon>
+                            </button>
+                            <input type="file" name="user-image" accept="image/*" id="user-picture-input"
+                                   onchange="previewImage(event)">
+                        </div>
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="password" name="password" placeholder="Password" pattern="(?=.*[A-Z]).{8,}"
+                               required>
+                        <textarea name="desc" placeholder="Description" style="resize: none" rows="8"
+                                  cols="40"></textarea>
+                        <button type="submit" class="modal-button" id="save-button">Save changes</button>
+                        <button type="reset" class="modal-button" id="user-cancel-button">Cancel</button>
+                        <button type="button" class="modal-button" id="delete-button">Delete user</button>
+                    </form>
                 </div>
             </div>
         </div>
