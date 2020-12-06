@@ -76,34 +76,3 @@ searchForm.addEventListener('submit', async (evt) => {
   const searchData = await response.json();
   fillSearchList(searchData);
 });
-
-//Hakee tietyn postauksen kaikki kommentit
-const getComments = async (postid) => {
-  try {
-    const options = {
-      headers: {
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-      },
-    };
-    const response = await fetch(url + '/comment/' + postid, options);
-    return await response.json();
-  } catch (e) {
-    console.log(e.message);
-  }
-};
-
-//Hakee tietyn postauksen tykkäys countin
-const getLikes = async (postId) => {
-  try {
-    const options = {
-      headers: {
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-      },
-    };
-    const response = await fetch(url + '/like/' + postId, options);
-    const [likes] = await response.json();
-    return likes.likecount;
-  } catch (e) {
-    console.log(e.message);
-  }
-};
