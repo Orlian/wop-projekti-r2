@@ -8,9 +8,8 @@ const search_get_posts = async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({errors: errors.array()});
   }
-  const nakedString = req.params.inputs.slice(1, -1);
-  const params = [nakedString, nakedString];
-  const posts = await searchModel.getSearchResult(params);
+  //const params = [req.params.inputs, req.params.inputs];
+  const posts = await searchModel.getSearchResult(req.params.inputs);
   res.json(posts);
 };
 
