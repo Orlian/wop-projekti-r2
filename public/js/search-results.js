@@ -3,7 +3,8 @@
 const url = '/app2/'; //TODO Varmista että url on oikein
 
 const searchList = document.querySelector('.search-result-list');
-const searchInput = document.querySelector('.search-bar');
+const searchForm = document.querySelector('#search-form');
+const searchInput = document.querySelector('#search-input');
 const searchResultsFor = document.querySelector('#search-results-for');
 
 // Search result kentän täyttäminen
@@ -16,7 +17,7 @@ const fillSearchList = (hits) => {
     gridItem.classList.add('grid-item');
     const img = document.createElement('img');
     img.src = url + '/thumbnails/' + hit.imgfile;
-    img.alt = hit.description;
+    img.alt = hit.caption.slice(0, 20);
     gridItem.appendChild(img);
     searchList.appendChild(gridItem);
 
@@ -24,6 +25,18 @@ const fillSearchList = (hits) => {
   });
 }
 
-const getSearchData = async () => {
-
-}
+searchForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  const data = serializeJson(searchForm);
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+    },
+    body: JSON.stringify(data),
+  };
+  const response = await fetch(url + '/search/' + searchInput.value, fetchOptions);
+  const searchData = response.json();
+  fillSearchList(searchData);
+});
