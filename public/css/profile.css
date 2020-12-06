@@ -262,7 +262,7 @@ input[type='checkbox']{
     width: 80%;
     border: 0.1em solid darkgrey;
     background: rgba(150, 150, 150, 0.2);
-    padding: 1em;
+    padding: 0.75em;
     border-radius: 1em;
     box-shadow: 2px 5px 5px lightgray;
 }
