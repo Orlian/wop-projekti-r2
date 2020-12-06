@@ -83,7 +83,7 @@ body {
 }
 
 .comments > li {
-    padding: 0 0 0.5em 1em;
+    padding: 0.5em 0.5em 0.5em 1em;
     font-size: 0.75em;
 }
 
@@ -232,6 +232,11 @@ body {
 }
 
 @media only screen and (max-width: 900px) {
+
+    .comments {
+        height: 8em;
+    }
+
     .card {
         flex-direction: column;
     }
