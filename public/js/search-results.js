@@ -1,7 +1,5 @@
 'use strict';
-if(url !== undefined) {
-  const url = '/app2/';
-}
+url = '/app2/';
 
 const searchList = document.querySelector('.search-result-wrapper');
 const searchForm = document.querySelector('#search-form');
