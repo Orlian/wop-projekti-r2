@@ -15,6 +15,6 @@ const getSearchResult = async (input) => {
   }
 };
 
-module.exports(
-    getSearchResult,
-);
+module.exports = {
+  getSearchResult,
+};
