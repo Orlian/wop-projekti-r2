@@ -226,7 +226,7 @@ form::after {
     width: 9em;
 }
 
-#cancel-button, #user-cancel-button:hover {
+#cancel-button:hover, #user-cancel-button:hover {
     background-color: slateblue;
     color: whitesmoke;
 }
