@@ -334,7 +334,7 @@ input[type='checkbox']{
 img{
     max-width: 100%;
     width: 125px;
-    height: auto;
+    height: 125px;
     border-radius: 50%;
 }
 section h2, .desc{
