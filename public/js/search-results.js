@@ -1,6 +1,6 @@
 'use strict';
 
-const url = '/app2/'; //TODO Varmista että url on oikein
+const url = '/app2/';
 
 const searchList = document.querySelector('.search-result-wrapper');
 const searchForm = document.querySelector('#search-form');
@@ -35,7 +35,6 @@ const fillSearchList = (hits) => {
     img.addEventListener('click', async (evt) => {
       evt.preventDefault();
       searchModal.style.display = 'flex';
-      //kuva, postaaja, kuvateksti, kommentit, liket
       searchModalFigImg.src = url + '/uploads/' + hit.imgfile;
       searchModalFigImg.alt = hit.caption.slice(0,20);
       searchModalFigCap.innerHTML = hit.caption;
@@ -78,6 +77,7 @@ searchForm.addEventListener('submit', async (evt) => {
   fillSearchList(searchData);
 });
 
+//Hakee tietyn postauksen kaikki kommentit
 const getComments = async (postid) => {
   try {
     const options = {
@@ -92,6 +92,7 @@ const getComments = async (postid) => {
   }
 };
 
+//Hakee tietyn postauksen tykkäys countin
 const getLikes = async (postId) => {
   try {
     const options = {
