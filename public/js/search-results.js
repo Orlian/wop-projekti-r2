@@ -1,7 +1,7 @@
 'use strict';
 
 const url = '/app2/'; //TODO Varmista että url on oikein
-const {getLikes, getComments} = require('feed');
+import {getLikes, getComments} from './feed';
 
 const searchList = document.querySelector('.search-result-wrapper');
 const searchForm = document.querySelector('#search-form');
