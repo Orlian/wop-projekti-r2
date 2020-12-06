@@ -75,7 +75,6 @@ searchForm.addEventListener('submit', async (evt) => {
   };
   const response = await fetch(url + '/search/' + searchInput.value, fetchOptions);
   const searchData = await response.json();
-  console.log('search-result response', searchData);
   fillSearchList(searchData);
 });
 
@@ -87,16 +86,13 @@ const getComments = async (postid) => {
       },
     };
     const response = await fetch(url + '/comment/' + postid, options);
-    const comments = await response.json();
-    console.log('getComments response', comments);
-    return comments;
+    return await response.json();
   } catch (e) {
     console.log(e.message);
   }
 };
 
 const getLikes = async (postId) => {
-  console.log('getPost token ', sessionStorage.getItem('token'));
   try {
     const options = {
       headers: {
