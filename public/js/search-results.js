@@ -1,5 +1,5 @@
 'use strict';
-url = '/app2/';
+const searchUrl = '/app2/';
 
 const searchList = document.querySelector('.search-result-wrapper');
 const searchForm = document.querySelector('#search-form');
@@ -25,7 +25,7 @@ const fillSearchList = (hits) => {
     gridUser.classList.add('grid-poster');
     gridUser.innerHTML = hit.username;
     const img = document.createElement('img');
-    img.src = url + '/thumbnails/' + hit.imgfile;
+    img.src = searchUrl + '/thumbnails/' + hit.imgfile;
     img.alt = hit.caption.slice(0, 20);
     gridItem.appendChild(img);
     gridItem.appendChild(gridUser);
@@ -34,7 +34,7 @@ const fillSearchList = (hits) => {
     img.addEventListener('click', async (evt) => {
       evt.preventDefault();
       searchModal.style.display = 'flex';
-      searchModalFigImg.src = url + '/uploads/' + hit.imgfile;
+      searchModalFigImg.src = searchUrl + '/uploads/' + hit.imgfile;
       searchModalFigImg.alt = hit.caption.slice(0,20);
       searchModalFigCap.innerHTML = hit.caption;
       searchModalFigUser.innerHTML = hit.username;
@@ -71,7 +71,7 @@ searchForm.addEventListener('submit', async (evt) => {
     },
     body: JSON.stringify(data),
   };
-  const response = await fetch(url + '/search/' + searchInput.value, fetchOptions);
+  const response = await fetch(searchUrl + '/search/' + searchInput.value, fetchOptions);
   const searchData = await response.json();
   fillSearchList(searchData);
 });
