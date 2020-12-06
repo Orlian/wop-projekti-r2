@@ -1,6 +1,6 @@
 'use strict';
 
-//const url = '/app2/';
+const url = '/app2/';
 
 const searchList = document.querySelector('.search-result-wrapper');
 const searchForm = document.querySelector('#search-form');
