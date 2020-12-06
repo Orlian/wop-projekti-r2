@@ -1,4 +1,5 @@
 'use strict';
+//Samaan html:ään linkattujen skriptien url muuttujat ei voi olla saman nimisiä koska ne yrittää ylikirjottaa toisiaan muuten virheellisesti!
 const searchUrl = '/app2/';
 
 const searchList = document.querySelector('.search-result-wrapper');
