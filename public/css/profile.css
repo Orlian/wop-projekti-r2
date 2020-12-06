@@ -278,7 +278,7 @@ input[type='checkbox']{
 }
 #plus-icon{
     font-size: 2.25em;
-    background-image: linear-gradient(to bottom right, mediumslateblue, palevioletred);
+    color: whitesmoke;
 }
 #plus-icon:hover{
     background: slateblue;

@@ -5,13 +5,13 @@ const uploadButton = document.querySelector('input[type="file"]');
 
 uploadButton.addEventListener("mouseover", () =>{
   const icon = document.querySelector('ion-icon[name=add-circle-sharp]');
-  icon.style.color = 'darkgreen';
+  icon.style.color = 'slateblue';
   uploadButton.style.cursor = 'pointer';
 });
 
 uploadButton.addEventListener("mouseout", () =>{
   const icon = document.querySelector('ion-icon[name=add-circle-sharp]');
-  icon.style.color = 'green';
+  icon.style.color = 'palevioletred';
 });
 
 function previewImage(event) {
