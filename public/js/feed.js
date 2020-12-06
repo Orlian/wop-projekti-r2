@@ -102,17 +102,16 @@ const createImageCards = (images) => {
     captionContainer.appendChild(imageCaption);
     commentsContainer.appendChild(captionContainer);
 
-    likesContainer.appendChild(likes);
-    commentsContainer.appendChild(likesContainer);
-
     commentsContainer.appendChild(commentsTitle);
     commentsContainer.appendChild(commentsUl);
 
     commentForm.appendChild(input);
     commentForm.appendChild(btnContainer);
 
+    likesContainer.appendChild(likes);
     likeBtn.appendChild(likeIcon);
     btnContainer.appendChild(likeBtn);
+    btnContainer.appendChild(likesContainer);
     btnContainer.appendChild(commentBtn);
 
     aside.appendChild(commentsContainer);
