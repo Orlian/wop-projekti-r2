@@ -111,24 +111,8 @@ deleteUserButton.onclick = async() => {
       const json = await response.json();
       console.log('delete response', json);
 
-      try{
-        const options = {
-          headers: {
-            'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-          },
-        };
-        const response = await fetch(navbarUrl + '/auth/logout', options);
-        const json = await response.json();
-        console.log('logout json', json);
-
-        sessionStorage.removeItem('token');
-        sessionStorage.removeItem('user');
-        location.href = 'front-page.html';
-        alert('You have logged out');
-      }
-      catch (err) {
-        console.log(err.message);
-      }
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('user');
     }
     catch (e) {
       console.log(e.message());
