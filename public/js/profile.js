@@ -23,7 +23,7 @@ const getLikes = async (postId) => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(searchUrl + '/like/' + postId, options);
+    const response = await fetch(url + '/like/' + postId, options);
     const [likes] = await response.json();
     return likes.likecount;
   } catch (e) {
