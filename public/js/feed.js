@@ -162,14 +162,13 @@ const getPosts = async () => {
 getPosts();
 
 //Miten ladataan vaan kerran?
-window.addEventListener('scroll', lazyScroll);
-
-const lazyScroll = debounce(async () => {
+window.addEventListener('scroll', debounce(async () => {
   let scrollHeight = document.documentElement.scrollHeight;
   if (window.scrollY + window.innerHeight >= scrollHeight - 100) {
     await getPosts;
   }
-}, 400);
+}, 400));
+
 
 function debounce(func, wait, immediate) {
   var timeout;
