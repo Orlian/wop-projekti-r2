@@ -20,6 +20,8 @@ const getUsername = async (username) => {
     console.log('userModel error', err.message);
   }
 }
+
+
 //Täytyy hakea emaililla tämä
 const getUser = async (email) => {
   try {
@@ -82,4 +84,5 @@ module.exports = {
   updateUser,
   deleteUser,
   getUserLogin,
+  getPassword,
 }

@@ -13,6 +13,11 @@ const user = JSON.parse(sessionStorage.getItem('user'));
 const imageModalFeedbackLikes = document.querySelector('.likes p');
 const imageModalOwner = document.getElementById('image-owner');
 const commentsUl = document.querySelector('.comments');
+const passwordInput = document.getElementById('password-input');
+const editUserform = document.querySelector('.edit-user-form');
+const saveButton = document.getElementById('save-button');
+const userModalPicture = document.getElementById('user-picture');
+const userModalDescription = document.getElementById('user-description');
 
 const getLikes = async (postId) => {
   try {
@@ -29,6 +34,27 @@ const getLikes = async (postId) => {
   }
 };
 
+passwordInput.addEventListener('blur', async (evt) => {
+  evt.preventDefault();
+  const data = serializeJson(editUserform);
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+    },
+    body: JSON.stringify(data),
+  };
+  const response = await fetch(url + '/auth/checkpassword', fetchOptions);
+  const json = await response.json();
+  if (json.message === 'password ok') {
+    console.log('password ok');
+    saveButton.disabled = false;
+  } else {
+    console.log('wrong password');
+    saveButton.disabled = true;
+  }
+});
 
 const getComments = async (postid) => {
   try {
@@ -49,7 +75,12 @@ const getUserProfile = () =>{
   profileImg.src = url + '/thumbnails/' + user.userimg;
   profileName.innerHTML = user.username;
   profileDesc.innerHTML = user.description;
-}
+};
+
+const getUserProfileModal = () => {
+  userModalPicture.src = url + '/thumbnails/' + user.userimg;
+  userModalDescription.value = user.description;
+};
 
 const createUserGrid = (images) => {
 
@@ -131,6 +162,7 @@ const getUserPosts = async () => {
     const posts = await response.json();
     console.log('getUserPost json', posts);
     getUserProfile();
+    getUserProfileModal();
     createUserGrid(posts);
   } catch (err) {
     console.error(err.message);
