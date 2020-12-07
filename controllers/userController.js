@@ -35,7 +35,7 @@ const user_delete = async (req, res) => {
 };
 
 const user_update = async (req, res) => {
-  const params = [password, userimg, description, userid]
+  const params = [req.body.password, req.body.userimg, req.body.description, req.params.userid]
   const user = await userModel.updateUser(params);
   res.json(user);
 }
