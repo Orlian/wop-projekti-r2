@@ -64,6 +64,9 @@ const createImageCards = (images) => {
       commentsUl.appendChild(commentLi);
     });
 
+    const formsContainer = document.createElement('div');
+    formsContainer.classList.add('forms-container');
+
     const commentForm = document.createElement('form');
     commentForm.classList.add('comment-form');
 
@@ -114,9 +117,12 @@ const createImageCards = (images) => {
     likeForm.appendChild(likeBtn);
     likeForm.appendChild(likesContainer);
 
+    formsContainer.appendChild(commentForm);
+    formsContainer.appendChild(likeForm);
+
     aside.appendChild(commentsContainer);
-    aside.appendChild(commentForm);
-    aside.appendChild(likeForm);
+    aside.appendChild(formsContainer);
+
 
     card.appendChild(img);
     card.appendChild(aside);
