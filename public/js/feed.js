@@ -5,6 +5,7 @@ const addForm = document.getElementById('add-image');
 const imagesOnLoad = 3;
 let loadedImgN = 0;
 let limitstart = 0;
+const feedUser = JSON.parse(sessionStorage.getItem('user'));
 /**Create image cards**/
 const createImageCards = (images) => {
 
@@ -202,7 +203,7 @@ addForm.addEventListener('submit', async (evt) => {
     body: fd,
   };
   try {
-    const response = await fetch(url + '/post', fetchOptions);
+    const response = await fetch(url + '/post/' + feedUser.userid, fetchOptions);
     const json = await response.json();
     console.log('add response', json);
   } catch (e) {

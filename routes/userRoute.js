@@ -28,7 +28,7 @@ router.get('/', userController.user_list_get);
 router.get('/:email', userController.user_get);
 
 
-router.put('/', upload.single('user_image'), injectFile, userController.make_thumbnail, [
+router.put('/:id', upload.single('user_image'), injectFile, userController.make_thumbnail, [
   body('mimetype', 'File needs to be an image').contains('image'),
   body('username', 'minimum 3 characters').
       not().
@@ -42,7 +42,7 @@ router.put('/', upload.single('user_image'), injectFile, userController.make_thu
       trim().
       matches('(?=.*[A-Ö]).{8,}'),
   body('description', '').trim().escape(),
-]);
+]), userController.user_update();
 
 router.delete('/:id', userController.user_delete);
 

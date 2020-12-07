@@ -34,9 +34,16 @@ const user_delete = async (req, res) => {
   res.json(user);
 };
 
+const user_update = async (req, res) => {
+  const params = [password, userimg, description, userid]
+  const user = await userModel.updateUser(params);
+  res.json(user);
+}
+
 module.exports = {
   user_list_get,
   user_get,
   make_thumbnail,
   user_delete,
+  user_update,
 }

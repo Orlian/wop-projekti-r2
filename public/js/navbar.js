@@ -18,6 +18,7 @@ const editUserCancel = document.getElementById('user-cancel-button');
 const deleteUserButton = document.getElementById('delete-button');
 const logo = document.getElementById('logo-img');
 const navbarUser = JSON.parse(sessionStorage.getItem('user'));
+const editUserForm = document.getElementById('edit-user-form');
 
 
 logo.onclick = () => {
@@ -157,6 +158,27 @@ logoutLink.addEventListener('click', async (evt) => {
     console.log(err.message);
   }
 });
+
+
+editUserForm.addEventListener('submit', async() =>{
+  evt.preventDefault();
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(navbarUrl + '/user/' + navbarUser.userid, options);
+    const json = await response.json();
+    console.log('editform json', json);
+
+  }
+  catch (err) {
+    console.log(err.message);
+  }
+});
+
+
 
 document.addEventListener('click', closeSubmenu, false);
 
