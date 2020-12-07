@@ -12,6 +12,7 @@ const searchModalFigCap = document.querySelector('#image-figcaption');
 const searchModalFigUser = document.querySelector('#image-owner');
 const searchModalFeedbackComments = document.querySelector('.comments');
 const searchModalFeedbackLikes = document.querySelector('.likes p');
+const params = new URLSearchParams(window.location.search);
 
 
 // Search result kentän täyttäminen
@@ -72,7 +73,7 @@ searchForm.addEventListener('submit', async (evt) => {
     },
     body: JSON.stringify(data),
   };
-  const response = await fetch(searchUrl + '/search/' + window.location.search, fetchOptions); //params.search
+  const response = await fetch(searchUrl + '/search/' + params, fetchOptions); //params.search
   const searchData = await response.json();
   fillSearchList(searchData);
 });
