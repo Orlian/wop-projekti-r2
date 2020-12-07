@@ -29,7 +29,7 @@ const make_thumbnail = async (req, res, next) => {
 };
 
 const user_delete = async (req, res) => {
-  const id = req.params.userid;
+  const id = req.params.id;
   const user = await userModel.deleteUser(id);
   res.json(user);
 };
