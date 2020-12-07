@@ -28,14 +28,8 @@ router.get('/', userController.user_list_get);
 router.get('/:email', userController.user_get);
 
 
-router.put('/:id', upload.single('user_image'), injectFile, userController.make_thumbnail, [
+router.put('/:id', upload.single('user-image'), injectFile, userController.make_thumbnail, [
   body('mimetype', 'File needs to be an image').contains('image'),
-  body('username', 'minimum 3 characters').
-      not().
-      isEmpty().
-      trim().
-      escape().
-      isLength({min: 3}),
   body('password', 'at least one upper case letter').
       not().
       isEmpty().

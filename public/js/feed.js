@@ -203,7 +203,7 @@ addForm.addEventListener('submit', async (evt) => {
     body: fd,
   };
   try {
-    const response = await fetch(url + '/post/' + feedUser.userid, fetchOptions);
+    const response = await fetch(url + '/post', fetchOptions);
     const json = await response.json();
     console.log('add response', json);
   } catch (e) {
