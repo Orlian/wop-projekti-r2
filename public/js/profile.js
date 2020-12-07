@@ -166,6 +166,12 @@ const getUserPosts = async () => {
     createUserGrid(posts);
   } catch (err) {
     console.error(err.message);
+    const response = await fetch(url + '/auth/logout');
+    const json = await response.json();
+    console.log('logout json', json);
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+    location.href = 'front-page.html';
   }
 };
 

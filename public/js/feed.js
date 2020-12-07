@@ -147,6 +147,11 @@ const getPosts = async () => {
     limitstart += 10;
   } catch (e) {
     console.log(e.message);
+    const response = await fetch(url + '/auth/logout');
+    const json = await response.json();
+    console.log('logout json', json);
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
     location.href = 'front-page.html';
   }
 };

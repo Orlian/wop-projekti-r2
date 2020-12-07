@@ -12,6 +12,7 @@ const searchModalFigCap = document.querySelector('#image-figcaption');
 const searchModalFigUser = document.querySelector('#image-owner');
 const searchModalFeedbackComments = document.querySelector('.comments');
 const searchModalFeedbackLikes = document.querySelector('.likes p');
+const params = new URLSearchParams(window.location.search);
 
 
 // Search result kentän täyttäminen
@@ -72,8 +73,9 @@ searchForm.addEventListener('submit', async (evt) => {
     },
     body: JSON.stringify(data),
   };
-  const response = await fetch(searchUrl + '/search/', fetchOptions); //params.search
+  const response = await fetch(searchUrl + '/search/' + params.get('search'), fetchOptions); //params.search
   const searchData = await response.json();
+  console.log('search-results searchData', searchData);
   fillSearchList(searchData);
 });
 
@@ -105,3 +107,5 @@ const getSearchLikes = async (postId) => {
     console.log(e.message);
   }
 };
+
+//Potki pois ja logout jos väärä token tai ei tokenia
