@@ -139,6 +139,7 @@ loginForm.addEventListener('submit', async (evt) => {
     alert(json.message);
   } else {
     // save token
+    sessionStorage.setItem('user', JSON.stringify(json.user));
     sessionStorage.setItem('token', json.token);
     location.href = 'feed.html';
   }

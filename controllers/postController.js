@@ -31,7 +31,7 @@ const post_get = async (req, res) => {
 
 const user_post_get = async (req, res) => {
   console.log('user_post_get userInfo', req.user);
-  const userPosts = await postModel.getUserPosts(req.user.userid);
+  const userPosts = await postModel.getUserPosts([req.params.userid]);
   res.json(userPosts);
 };
 
