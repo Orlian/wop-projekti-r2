@@ -24,11 +24,11 @@ const injectFile = (req, res, next) => {
 
 router.get('/', postController.post_list_get);
 
-router.get('/recent', postController.recent_post_list_get);
+router.get('/recent/:limitstart', postController.recent_post_list_get);
 
 router.get('/:id', postController.post_get);
 
-router.get('/user', postController.user_post_get);
+router.get('/user/:userid', postController.user_post_get);
 
 router.post('/', upload.single('user-image'), injectFile, postController.make_thumbnail, [
   body('caption', 'Add caption').isLength({min: 1}),

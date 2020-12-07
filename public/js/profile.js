@@ -12,6 +12,7 @@ const profileSection = document.querySelector('.profile-info');
 const profileImg = document.querySelector('.profile-info img');
 const profileName = document.querySelector('.profile-info h2');
 const profileDesc = document.querySelector('.desc p');
+const user = JSON.parse(sessionStorage.getItem('user'));
 
 const getUserProfile = async () => {
   try {
@@ -101,7 +102,7 @@ const getUserPosts = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/post/user' , fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
+    const response = await fetch(url + '/post/user/' + user.userid, fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
     console.log('getUserPost response', response);
     const posts = await response.json();
     console.log('getUserPost json', posts);

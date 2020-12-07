@@ -22,6 +22,7 @@ const login = (req, res) => {
       }
       console.log('login user', user);
       const token = jwt.sign(user, 'this_is_a_mega_secret');
+      delete user.password;
       return res.json({user, token});
     });
 

@@ -1,6 +1,8 @@
 'use strict';
 const {validationResult} = require('express-validator');
 const postModel = require('../models/postModel');
+const commentModel = require('../models/commentModel');
+const likeModel = require('../models/likeModel');
 const {makeThumbnail} = require('../utils/resize');
 
 
@@ -11,8 +13,14 @@ const post_list_get = async (req, res) => {
 
 const recent_post_list_get = async (req, res) => {
   console.log('recent_post_list_get req.user', req.user);
-  const posts = await postModel.getRecentPosts();
-  res.json(posts);
+  const params = [req.params.limitstart];
+  const posts = await postModel.getRecentPosts(params);
+  const uudetPostit = await Promise.all(posts.map(async (post) => {
+    post.comments = await commentModel.getPostComments(post.postid);
+    post.likes = await likeModel.getPostLikesCount(post.postid);
+    return post;
+  }));
+  res.json(uudetPostit);
 };
 
 const post_get = async (req, res) => {
@@ -23,7 +31,7 @@ const post_get = async (req, res) => {
 
 const user_post_get = async (req, res) => {
   console.log('user_post_get userInfo', req.user);
-  const userPosts = await postModel.getUserPosts(req.user.userid);
+  const userPosts = await postModel.getUserPosts([req.params.userid]);
   res.json(userPosts);
 };
 

@@ -40,7 +40,7 @@ const fillSearchList = (hits) => {
       searchModalFigCap.innerHTML = hit.caption;
       searchModalFigUser.innerHTML = hit.username;
       searchModalFeedbackComments.innerHTML = '';
-      const comments = await getComments(hit.postid);
+      const comments = await getSearchComments(hit.postid);
       comments.forEach((comment) => {
         const commentLi = document.createElement('li');
         const commentContent = document.createElement('p');
@@ -56,7 +56,7 @@ const fillSearchList = (hits) => {
         commentLi.appendChild(commentTime);
         searchModalFeedbackComments.appendChild(commentLi);
       });
-      searchModalFeedbackLikes.innerHTML = await getLikes(hit.postid);
+      searchModalFeedbackLikes.innerHTML = await getSearchLikes(hit.postid);
     });
   });
 }
@@ -76,3 +76,32 @@ searchForm.addEventListener('submit', async (evt) => {
   const searchData = await response.json();
   fillSearchList(searchData);
 });
+
+const getSearchComments = async (postid) => {
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(searchUrl + '/comment/' + postid, options);
+    return await response.json();
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+const getSearchLikes = async (postId) => {
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(searchUrl + '/like/' + postId, options);
+    const [likes] = await response.json();
+    return likes.likecount;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
