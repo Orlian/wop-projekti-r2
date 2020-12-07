@@ -16,7 +16,6 @@ const editUserButton = document.getElementById('save-button');
 const editUserCancel = document.getElementById('user-cancel-button');
 const deleteUserButton = document.getElementById('delete-button');
 const logo = document.getElementById('logo-img');
-const user = JSON.parse(sessionStorage.getItem('user'));
 
 
 logo.onclick = () => {
