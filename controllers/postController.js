@@ -17,7 +17,8 @@ const recent_post_list_get = async (req, res) => {
   posts.map(async (post) => {
     post.comments = await commentModel.getPostComments(post.postid);
     post.likes = await likeModel.getPostLikesCount(post.postid);
-  })
+    console.log('postController post',post);
+  });
   res.json(posts);
 };
 
