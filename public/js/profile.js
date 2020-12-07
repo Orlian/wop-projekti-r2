@@ -1,7 +1,7 @@
 'use strict';
 const url = '/app2/';
 
-const userPosts = document.querySelector('.grid-item');
+const userPosts = document.querySelector('.grid');
 const modalImage = document.getElementById('user-post-image');
 const imageFigure = document.querySelector('figure');
 const figureFigcaption = document.querySelector('figcaption');
@@ -108,14 +108,7 @@ const createUserGrid = (images) => {
       }
     });
 
-
-    const comment = document.createElement('li');
-    /*comment.innerHTML = ;
-    commentSection.*/
-
-
-    imageFigure.appendChild(postImage);
-    imageFigure.appendChild(figureFigcaption);
+    userPosts.appendChild(gridItem);
   });
 };
 
