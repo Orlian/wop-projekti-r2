@@ -1,11 +1,15 @@
 'use strict';
+import lozad from 'lozad';
+
 const url = '/app2/';
 const imageFeed = document.querySelector('.card-container');
 const addForm = document.getElementById('add-image');
-const imagesOnLoad = 3;
-let loadedImgN = 0;
+//const imagesOnLoad = 3;
+//let loadedImgN = 0;
 let limitstart = 0;
 const feedUser = JSON.parse(sessionStorage.getItem('user'));
+const observer = lozad();
+
 /**Create image cards**/
 const createImageCards = (images) => {
 
@@ -13,7 +17,7 @@ const createImageCards = (images) => {
   images.forEach(async (image) => {
 
     const card = document.createElement('div');
-    card.classList.add('card');
+    card.classList.add('card', 'lozad');
 
     const img = document.createElement('img');
     img.src = url + '/uploads/' + image.imgfile;
@@ -129,6 +133,7 @@ const createImageCards = (images) => {
     card.appendChild(aside);
 
     imageFeed.appendChild(card);
+    observer.observe();
 
   });
 };
