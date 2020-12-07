@@ -37,7 +37,7 @@ const createImageCards = (images) => {
     const likesContainer = document.createElement('div');
     likesContainer.classList.add('likes');
 
-    const likesCount = image.likes.likecount;
+    const likesCount = image.likes[0].likecount;
     const likes = document.createElement('p');
     likes.innerHTML = `${likesCount} likes`;
     const commentsTitle = document.createElement('h4');
