@@ -66,6 +66,10 @@ const createImageCards = (images) => {
 
     const commentForm = document.createElement('form');
     commentForm.classList.add('comment-form');
+
+    const likeForm = document.createElement('form');
+    likeForm.classList.add('like-form');
+
     const input = document.createElement('textarea');
     input.classList.add('comment-input');
     input.name = 'comment';
@@ -74,9 +78,6 @@ const createImageCards = (images) => {
     input.rows = 5;
     input.style.resize = 'none';
 
-    const btnContainer = document.createElement('div');
-    btnContainer.classList.add('btn-container');
-
     const commentBtn = document.createElement('button');
     commentBtn.type = 'submit';
     commentBtn.classList.add('comment-btn');
@@ -84,9 +85,7 @@ const createImageCards = (images) => {
 
     const likeBtn = document.createElement('button');
     likeBtn.type = 'submit';
-    likeBtn.classList.add('like-btn');
-
-    const likeIcon = document.createElement('ion-icon');
+    likeBtn.classList.add('like-btn'); const likeIcon = document.createElement('ion-icon');
     likeIcon.name = 'heart-outline';
 
     likeBtn.addEventListener('click', (evt) => {
@@ -106,16 +105,16 @@ const createImageCards = (images) => {
     commentsContainer.appendChild(commentsUl);
 
     commentForm.appendChild(input);
-    commentForm.appendChild(btnContainer);
+    commentForm.appendChild(commentBtn);
 
     likesContainer.appendChild(likes);
     likeBtn.appendChild(likeIcon);
-    btnContainer.appendChild(likeBtn);
-    btnContainer.appendChild(likesContainer);
-    btnContainer.appendChild(commentBtn);
+    likeForm.appendChild(likeBtn);
+    likeForm.appendChild(likesContainer);
 
     aside.appendChild(commentsContainer);
     aside.appendChild(commentForm);
+    aside.appendChild(likeForm);
 
     card.appendChild(img);
     card.appendChild(aside);
