@@ -45,7 +45,7 @@ passwordInput.addEventListener('blur', async (evt) => {
     },
     body: JSON.stringify(data),
   };
-  const response = await fetch(url + '/auth/checkpassword', fetchOptions);
+  const response = await fetch(url + '/auth/checkpassword/' + user.email, fetchOptions);
   const json = await response.json();
   if (json.message === 'password ok') {
     console.log('password ok');

@@ -33,7 +33,7 @@ router.post('/checkuser',[
     body('username', 'username trim').trim().escape(),
 ], authController.user_check);
 
-router.post('/checkpassword', [
+router.post('/checkpassword/:email', [
     body('password', 'password trim').trim(),
 ],authController.password_check);
 
