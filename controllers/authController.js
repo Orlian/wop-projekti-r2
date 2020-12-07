@@ -5,6 +5,7 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const {validationResult} = require('express-validator');
 const userModel = require('../models/userModel');
+const {makeThumbnail} = require('../utils/resize');
 
 const login = (req, res) => {
   passport.authenticate('local', {session: false}, (err, user, info) => {
@@ -72,9 +73,22 @@ const user_check = async (req, res) => {
 
 }
 
+const make_thumbnail = async (req, res, next) => {
+  try {
+    const thumbnail = await makeThumbnail(req.file.path, req.file.filename);
+    console.log('thumbnail', thumbnail);
+    if (thumbnail) {
+      next();
+    }
+  } catch (e) {
+    res.status(400).json({errors: e.message});
+  }
+};
+
 module.exports = {
   login,
   user_register,
   logout,
   user_check,
+  make_thumbnail,
 };
