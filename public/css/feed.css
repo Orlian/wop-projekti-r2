@@ -95,18 +95,12 @@ body {
     color: darkgrey;
 }
 
-.comment-form {
+.comment-form, .like_form {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     margin-top: 1em;
 }
 
-.btn-container {
-    display: flex;
-    justify-content: space-between;
-    position: relative
-}
 
 .like-btn {
     border: none;
@@ -126,6 +120,7 @@ body {
 
 .comment-btn {
     height: 2em;
+    width: 6em;
     border: none;
     background-image: linear-gradient(to bottom right, mediumslateblue, palevioletred);
     border-radius: 2em;
@@ -136,7 +131,8 @@ body {
     font-size: 1em;
     color: whitesmoke;
     line-height: 0.5;
-    margin-top: 1em;
+    margin-top: 0.5em;
+    align-self: flex-end;
 }
 
 .comment-btn:hover {
