@@ -6,7 +6,6 @@ const modalImage = document.getElementById('user-post-image');
 const imageFigure = document.querySelector('figure');
 const figureFigcaption = document.querySelector('figcaption');
 const deleteImgButton = document.getElementById('delete-image');
-const commentSection = document.querySelector('.comments');
 const imageModal = document.getElementById('image-user-modal');
 const profileSection = document.querySelector('.profile-info');
 const profileImg = document.querySelector('.profile-info img');
@@ -15,6 +14,7 @@ const profileDesc = document.querySelector('.desc p');
 const user = JSON.parse(sessionStorage.getItem('user'));
 const imageModalFeedbackLikes = document.querySelector('.likes p');
 const imageModalOwner = document.getElementById('image-owner');
+const commentsUl = document.querySelector('.comments');
 
 const getLikes = async (postId) => {
   try {
@@ -23,7 +23,7 @@ const getLikes = async (postId) => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(searchUrl + '/like/' + postId, options);
+    const response = await fetch(url + '/like/' + postId, options);
     const [likes] = await response.json();
     return likes.likecount;
   } catch (e) {
@@ -58,6 +58,7 @@ const createUserGrid = (images) => {
     gridItem.classList.add('grid-item');
     postImage.src = url + '/thumbnails/' + image.imgfile;
     postImage.alt = image.caption.slice(0, 10);
+    gridItem.appendChild(postImage);
     //lisää luokkia jos tarve
 
     postImage.addEventListener('click', async () => {
@@ -107,6 +108,9 @@ const createUserGrid = (images) => {
         console.log(e.message());
       }
     });
+
+
+
 
     userPosts.appendChild(gridItem);
   });
