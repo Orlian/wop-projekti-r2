@@ -129,6 +129,7 @@ logoutLink.addEventListener('click', async (evt) => {
     console.log('logout json', json);
 
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
     location.href = 'front-page.html';
     alert('You have logged out');
   }
