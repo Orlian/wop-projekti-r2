@@ -58,6 +58,7 @@ const createUserGrid = (images) => {
     gridItem.classList.add('grid-item');
     postImage.src = url + '/thumbnails/' + image.imgfile;
     postImage.alt = image.caption.slice(0, 10);
+    gridItem.appendChild(postImage);
     //lisää luokkia jos tarve
 
     postImage.addEventListener('click', async () => {
@@ -107,6 +108,9 @@ const createUserGrid = (images) => {
         console.log(e.message());
       }
     });
+
+
+
 
     userPosts.appendChild(gridItem);
   });
