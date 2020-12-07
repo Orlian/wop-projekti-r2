@@ -44,8 +44,6 @@ router.put('/', upload.single('user_image'), injectFile, userController.make_thu
   body('description', '').trim().escape(),
 ]);
 
-router.delete('/', (req,res) =>{
-  res.send('With this endpoint you can delete users.')
-});
+router.delete('/', userController.user_delete);
 
 module.exports = router;
