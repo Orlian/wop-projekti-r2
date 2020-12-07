@@ -64,7 +64,7 @@ const fillSearchList = (hits) => {
 
 searchForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  const data = serializeJson({params});
+  const data = serializeJson(params);
   const fetchOptions = {
     method: 'POST',
     headers: {
