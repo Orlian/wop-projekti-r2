@@ -61,7 +61,7 @@ const getUserLogin = async (params) => {
 const updateUser = async (params) => {
   try {
     const [rows] = promisePool.execute(
-        'UPDATE User SET (password, userimg, description) VALUES (?,?,?) WHERE userid = ?',
+        'UPDATE User SET password=?, userimg=?, description=? WHERE userid = ?',
         params);
     return rows;
   } catch (err) {
