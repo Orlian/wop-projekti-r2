@@ -13,23 +13,26 @@ const profileImg = document.querySelector('.profile-info img');
 const profileName = document.querySelector('.profile-info h2');
 const profileDesc = document.querySelector('.desc p');
 const user = JSON.parse(sessionStorage.getItem('user'));
+const imageModalFeedbackLikes = document.querySelector('.likes p');
+const imageModalOwner = document.getElementById('image-owner');
 
-const getUserProfile = async () => {
+const getLikes = async (postId) => {
   try {
     const options = {
       headers: {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/user', options); //TODO Tänne kanssa aktiivisen käyttäjän tai klikatun käyttäjän email tai userid tms
-    const userData = await response.json();
-  } catch(err) {
-    console.error(err.message);
+    const response = await fetch(searchUrl + '/like/' + postId, options);
+    const [likes] = await response.json();
+    return likes.likecount;
+  } catch (e) {
+    console.log(e.message);
   }
 };
 
 
-const getPostComments = async (postid) => {
+const getComments = async (postid) => {
   try {
     const options = {
       headers: {
@@ -62,8 +65,29 @@ const createUserGrid = (images) => {
       modalImage.src = url + '/uploads/' + image.imgfile;
       modalImage.alt = image.caption.slice(0, 10);
       figureFigcaption.innerHTML = image.caption;
-      const comments = await getPostComments(image.postid);
+      imageModalOwner.innerHTML = image.username;
+
+      const comments = await getComments(image.postid);
       console.log(comments);
+
+      comments.forEach((comment) => {
+        const commentLi = document.createElement('li');
+        const commentContent = document.createElement('p');
+        commentContent.classList.add('comment-content');
+        commentContent.innerHTML = `${comment.commentcontent}`;
+        const commentAuthor = document.createElement('h6');
+        commentAuthor.innerHTML = `${comment.username}`;
+        const commentTime = document.createElement('h6');
+        commentTime.classList.add('comment-time');
+        commentTime.innerHTML = `${comment.timestamp}`;
+        commentLi.appendChild(commentAuthor);
+        commentLi.appendChild(commentContent);
+        commentLi.appendChild(commentTime);
+        commentsUl.appendChild(commentLi);
+      });
+
+      imageModalFeedbackLikes.innerHTML = await getLikes(image.postid);
+
     });
 
     deleteImgButton.addEventListener('click', async () => {
