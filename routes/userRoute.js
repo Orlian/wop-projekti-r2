@@ -42,7 +42,7 @@ router.put('/:id', upload.single('user_image'), injectFile, userController.make_
       trim().
       matches('(?=.*[A-Ö]).{8,}'),
   body('description', '').trim().escape(),
-]), userController.user_update();
+], userController.user_update);
 
 router.delete('/:id', userController.user_delete);
 
