@@ -6,7 +6,6 @@ const modalImage = document.getElementById('user-post-image');
 const imageFigure = document.querySelector('figure');
 const figureFigcaption = document.querySelector('figcaption');
 const deleteImgButton = document.getElementById('delete-image');
-const commentSection = document.querySelector('.comments');
 const imageModal = document.getElementById('image-user-modal');
 const profileSection = document.querySelector('.profile-info');
 const profileImg = document.querySelector('.profile-info img');
