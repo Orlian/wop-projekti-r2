@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const {validationResult} = require('express-validator');
 const userModel = require('../models/userModel');
 const {makeThumbnail} = require('../utils/resize');
+const user = JSON.parse(sessionStorage.getItem('user'));
 
 const login = (req, res) => {
   passport.authenticate('local', {session: false}, (err, user, info) => {
@@ -75,7 +76,7 @@ const user_check = async (req, res) => {
 
 const password_check = async (req, res) => {
   try {
-    const [user] = await userModel.getUserLogin(req.body.email);
+    const [user] = await userModel.getUserLogin(user.email);
     if(!bcrypt.compareSync(passwordInput.value, user.password)) {
       return res.json({message: 'incorrect password'});
     }

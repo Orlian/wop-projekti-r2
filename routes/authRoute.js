@@ -34,7 +34,7 @@ router.post('/checkuser',[
 ], authController.user_check);
 
 router.post('/checkpassword', [
-    body('username', 'username trim').trim().escape(),
+    body('password', 'password trim').trim(),
 ],authController.password_check);
 
 router.post('/register', upload.single('user_image'), injectFile, authController.make_thumbnail,
