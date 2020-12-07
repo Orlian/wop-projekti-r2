@@ -7,7 +7,7 @@ const addForm = document.getElementById('add-image');
 //let loadedImgN = 0;
 let limitstart = 0;
 const feedUser = JSON.parse(sessionStorage.getItem('user'));
-const observer = lozad();
+
 
 /**Create image cards**/
 const createImageCards = (images) => {
@@ -161,13 +161,15 @@ const getPosts = async () => {
 
 getPosts();
 
-//Miten ladataan vaan kerran?
-window.addEventListener('scroll', () => {
+const lazyScroll = () => {
   let scrollHeight = document.documentElement.scrollHeight;
   if (window.scrollY + window.innerHeight > scrollHeight - 100) {
     getPosts();
   }
-});
+}
+
+//Miten ladataan vaan kerran?
+window.addEventListener('scroll', _.throttle(lazyScroll, 1000, {leading: true, trailing: false}));
 
 /**Back to top button reveal and disappear on scroll**/
 const topBtn = document.querySelector('.top-btn');
