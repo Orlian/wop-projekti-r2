@@ -64,7 +64,7 @@ const fillSearchList = (hits) => {
 
 searchForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  const data = serializeJson(searchForm);
+  const data = serializeJson({params});
   const fetchOptions = {
     method: 'POST',
     headers: {
@@ -75,6 +75,7 @@ searchForm.addEventListener('submit', async (evt) => {
   };
   const response = await fetch(searchUrl + '/search/' + params, fetchOptions); //params.search
   const searchData = await response.json();
+  console.log('search-results searchData', searchData);
   fillSearchList(searchData);
 });
 
