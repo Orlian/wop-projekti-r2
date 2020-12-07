@@ -40,7 +40,7 @@ const getUserComments = async (userid) => {
 const addComment = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'INSERT INTO Comment (commentcontent, postid, userid, timestamp) VALUES (?, ?, ?, NOW())',
+        'INSERT INTO Comment (commentcontent, postid, userid, timestamp) VALUES (?, ?, ?, DATE_FORMAT(NOW(), "%d %b %d %Y %r"))',
         params);
     return rows;
   } catch (err) {
