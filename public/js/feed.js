@@ -37,7 +37,7 @@ const createImageCards = (images) => {
     const likesContainer = document.createElement('div');
     likesContainer.classList.add('likes');
 
-    const likesCount = await getLikes(image.postid);
+    const likesCount = image.likes;
     const likes = document.createElement('p');
     likes.innerHTML = `${likesCount} likes`;
     const commentsTitle = document.createElement('h4');
@@ -46,7 +46,7 @@ const createImageCards = (images) => {
     const commentsUl = document.createElement('ul');
     commentsUl.classList.add('comments');
 
-    const comments = await getComments(image.postid);
+    const comments = image.comments;
 
     comments.forEach((comment) => {
       const commentLi = document.createElement('li');
@@ -144,34 +144,6 @@ const getPosts = async () => {
 
 getPosts();
 
-const getLikes = async (postId) => {
-  try {
-    const options = {
-      headers: {
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-      },
-    };
-    const response = await fetch(url + '/like/' + postId, options);
-    const [likes] = await response.json();
-    return likes.likecount;
-  } catch (e) {
-    console.log(e.message);
-  }
-};
-
-const getComments = async (postid) => {
-  try {
-    const options = {
-      headers: {
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-      },
-    };
-    const response = await fetch(url + '/comment/' + postid, options);
-    return await response.json();
-  } catch (e) {
-    console.log(e.message);
-  }
-};
 
 /*window.addEventListener('scroll', () => {
   let scrollHeight = document.documentElement.scrollHeight;
