@@ -80,7 +80,7 @@ searchForm.addEventListener('submit', async (evt) => {
 });
 
 document.addEventListener('load', async (evt) => {
-  evt.preventDefault();
+  //evt.preventDefault();
   const searchParams = params.get('search');
   const data = serializeJson({searchParams});
   const fetchOptions = {
