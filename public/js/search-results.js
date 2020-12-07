@@ -72,7 +72,7 @@ searchForm.addEventListener('submit', async (evt) => {
     },
     body: JSON.stringify(data),
   };
-  const response = await fetch(searchUrl + '/search/', fetchOptions); //params.search
+  const response = await fetch(searchUrl + '/search/' + window.location.search, fetchOptions); //params.search
   const searchData = await response.json();
   fillSearchList(searchData);
 });
