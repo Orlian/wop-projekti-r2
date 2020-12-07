@@ -165,6 +165,7 @@ editUserForm.addEventListener('submit', async(evt) =>{
   try {
     const data = new FormData(editUserForm);
     const options = {
+      method: 'PUT',
       headers: {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
