@@ -18,7 +18,7 @@ const params = new URLSearchParams(window.location.search);
 // Search result kentän täyttäminen
 const fillSearchList = (hits) => {
   searchResultsFor.innerHTML = '';
-  searchResultsFor.innerHTML = `Search results for "${searchInput.value}"`
+  searchResultsFor.innerHTML = `Search results for "${params.get('search')}"`
   searchList.innerHTML = '';
   hits.forEach((hit) => {
     const gridItem = document.createElement('div');
@@ -73,11 +73,31 @@ searchForm.addEventListener('submit', async (evt) => {
     },
     body: JSON.stringify(data),
   };
-  const response = await fetch(searchUrl + '/search/' + params.get('search'), fetchOptions); //params.search
+  const response = await fetch(searchUrl + '/search/' + searchInput.value, fetchOptions); //params.search
   const searchData = await response.json();
-  console.log('search-results searchData', searchData);
+  console.log('search-results onsubmit searchData', searchData);
   fillSearchList(searchData);
 });
+
+document.addEventListener('load', async (evt) => {
+  evt.preventDefault();
+  const searchParams = params.get('search');
+  const data = serializeJson({searchParams});
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+    },
+    body: JSON.stringify(data),
+  };
+  const response = await fetch(searchUrl + '/search/' + params.get('search'), fetchOptions); //params.search
+  const searchData = await response.json();
+  console.log('search-results onload searchData', searchData);
+  fillSearchList(searchData);
+})
+
+//params.get('search')
 
 const getSearchComments = async (postid) => {
   try {
