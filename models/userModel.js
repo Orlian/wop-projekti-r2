@@ -12,9 +12,9 @@ const getAllUsers = async () => {
   }
 };
 
-const getUsername = async (userid) => {
+const getUsername = async (username) => {
   try {
-    const [rows] = await promisePool.execute('SELECT username FROM User WHERE userid = ?', [userid]);
+    const [rows] = await promisePool.execute('SELECT username FROM User WHERE username = ?', [username]);
     return rows;
   } catch (err) {
     console.log('userModel error', err.message);
