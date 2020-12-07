@@ -135,6 +135,7 @@ const getPosts = async () => {
     };
     const response = await fetch(url + '/post/recent', options);
     const images = await response.json();
+    console.log('getPost images', images);
     createImageCards(images);
   } catch (e) {
     console.log(e.message);
