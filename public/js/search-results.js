@@ -79,8 +79,8 @@ searchForm.addEventListener('submit', async (evt) => {
   fillSearchList(searchData);
 });
 
-document.addEventListener('load', async (evt) => {
-  //evt.preventDefault();
+window.addEventListener('load', async (evt) => {
+  evt.preventDefault();
   const searchParams = params.get('search');
   const data = serializeJson({searchParams});
   const fetchOptions = {
