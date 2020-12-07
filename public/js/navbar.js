@@ -1,4 +1,5 @@
 'use strict';
+const navbarUrl = '/app2/';
 const toggle = document.querySelector('.toggle');
 const menu = document.querySelector('.menu');
 const items = document.querySelectorAll('.item');
@@ -116,7 +117,7 @@ deleteUserButton.onclick = async() => {
             'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
           },
         };
-        const response = await fetch(url + '/auth/logout', options);
+        const response = await fetch(navbarUrl + '/auth/logout', options);
         const json = await response.json();
         console.log('logout json', json);
 
@@ -158,7 +159,7 @@ logoutLink.addEventListener('click', async (evt) => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/auth/logout', options);
+    const response = await fetch(navbarUrl + '/auth/logout', options);
     const json = await response.json();
     console.log('logout json', json);
 
