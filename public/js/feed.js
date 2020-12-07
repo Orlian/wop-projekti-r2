@@ -165,8 +165,7 @@ getPosts();
 window.addEventListener('scroll', async () => {
   let scrollHeight = document.documentElement.scrollHeight;
   if (window.scrollY + window.innerHeight >= scrollHeight - 100) {
-    await getPosts();
-
+    setTimeout(await getPosts, 200);
     //scrollHeight - 100  document.documentElement.scrollHeight
   }
 });
