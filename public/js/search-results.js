@@ -83,6 +83,7 @@ window.addEventListener('load', async (evt) => {
   evt.preventDefault();
   const searchParams = params.get('search');
   const data = serializeJson({searchParams});
+  console.log('window onload data', data);
   const fetchOptions = {
     method: 'POST',
     headers: {
@@ -91,6 +92,7 @@ window.addEventListener('load', async (evt) => {
     },
     body: JSON.stringify(data),
   };
+  console.log('window onload body data', fetchOptions.body);
   const response = await fetch(searchUrl + '/search/' + params.get('search'), fetchOptions); //params.search
   const searchData = await response.json();
   console.log('search-results onload searchData', searchData);
