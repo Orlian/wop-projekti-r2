@@ -14,12 +14,12 @@ const post_list_get = async (req, res) => {
 const recent_post_list_get = async (req, res) => {
   console.log('recent_post_list_get req.user', req.user);
   const posts = await postModel.getRecentPosts();
-  posts.map(async (post) => {
+  const uudetPostit = posts.map(async (post) => {
     post.comments = await commentModel.getPostComments(post.postid);
     post.likes = await likeModel.getPostLikesCount(post.postid);
-    console.log('postController post',post);
+    return post;
   });
-  res.json(posts);
+  res.json(uudetPostit);
 };
 
 const post_get = async (req, res) => {
