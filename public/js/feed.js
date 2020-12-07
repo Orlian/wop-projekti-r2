@@ -4,7 +4,7 @@ const imageFeed = document.querySelector('.card-container');
 const addForm = document.getElementById('add-image');
 const imagesOnLoad = 3;
 let loadedImgN = 0;
-let limitstart = 1;
+let limitstart = 0;
 /**Create image cards**/
 const createImageCards = (images) => {
 
@@ -140,6 +140,7 @@ const getPosts = async () => {
     limitstart += 10;
   } catch (e) {
     console.log(e.message);
+    location.href = 'front-page.html';
   }
 };
 
