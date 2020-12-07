@@ -16,6 +16,7 @@ const editUserButton = document.getElementById('save-button');
 const editUserCancel = document.getElementById('user-cancel-button');
 const deleteUserButton = document.getElementById('delete-button');
 const logo = document.getElementById('logo-img');
+const user = JSON.parse(sessionStorage.getItem('user'));
 
 
 logo.onclick = () => {
@@ -95,11 +96,45 @@ editUserCancel.onclick = () =>{
   editModal.style.display = 'none';
 };
 
-deleteUserButton.onclick = () => {
+deleteUserButton.onclick = async() => {
   const confirm = window.confirm('Are you sure you want leave us ;(');
   if(confirm){
     // TODO poista uskoton käyttäjä, petturi
+    const fetchOptions = {
+      method: 'DELETE',
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    try {
+      const response = await fetch(url + '/user', fetchOptions);
+      const json = await response.json();
+      console.log('delete response', json);
+
+      try{
+        const options = {
+          headers: {
+            'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+          },
+        };
+        const response = await fetch(url + '/auth/logout', options);
+        const json = await response.json();
+        console.log('logout json', json);
+
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('user');
+        location.href = 'front-page.html';
+        alert('You have logged out');
+      }
+      catch (err) {
+        console.log(err.message);
+      }
+    }
+    catch (e) {
+      console.log(e.message());
+    }
     console.log(confirm);
+
   }
 };
 

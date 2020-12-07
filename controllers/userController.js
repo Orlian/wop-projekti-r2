@@ -28,8 +28,15 @@ const make_thumbnail = async (req, res, next) => {
   }
 };
 
+const user_delete = async (req, res) => {
+  const id = req.user.userid;
+  const user = await userModel.deleteUser(id);
+  res.json(user);
+};
+
 module.exports = {
   user_list_get,
   user_get,
   make_thumbnail,
+  user_delete,
 }
