@@ -162,12 +162,12 @@ const getPosts = async () => {
 getPosts();
 
 //Miten ladataan vaan kerran?
-window.addEventListener('scroll', _.throttle(() => {
+window.addEventListener('scroll', () => {
   let scrollHeight = document.documentElement.scrollHeight;
   if (window.scrollY + window.innerHeight > scrollHeight - 100) {
     getPosts();
   }
-}, 1000, {leading: true, trailing: false}));
+});
 
 /**Back to top button reveal and disappear on scroll**/
 const topBtn = document.querySelector('.top-btn');
