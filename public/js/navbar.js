@@ -160,13 +160,15 @@ logoutLink.addEventListener('click', async (evt) => {
 });
 
 
-editUserForm.addEventListener('submit', async() =>{
+editUserForm.addEventListener('submit', async(evt) =>{
   evt.preventDefault();
   try {
+    const data = new FormData(editUserForm);
     const options = {
       headers: {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
+      body: data,
     };
     const response = await fetch(navbarUrl + '/user/' + navbarUser.userid, options);
     const json = await response.json();
