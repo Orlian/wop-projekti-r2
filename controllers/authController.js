@@ -75,7 +75,7 @@ const user_check = async (req, res) => {
 
 const password_check = async (req, res) => {
   try {
-    const [user] = await userModel.getUserLogin(req.params.email);
+    const [user] = await userModel.getUserLogin([req.params.email]);
     if(!bcrypt.compareSync(passwordInput.value, user.password)) {
       return res.json({message: 'incorrect password'});
     }
