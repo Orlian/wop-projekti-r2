@@ -14,6 +14,14 @@ const search_get_posts = async (req, res) => {
   res.json(posts);
 };
 
+const search_get_posts_url = async (req, res) => {
+  const wildCardParam = '%' + req.params.inputs + '%';
+  const params = [wildCardParam, wildCardParam];
+  const posts = await searchModel.getSearchResult(params);
+  res.json(posts);
+}
+
 module.exports = {
   search_get_posts,
+  search_get_posts_url,
 };

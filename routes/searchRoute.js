@@ -9,5 +9,7 @@ router.post('/:inputs', [
     body('search', 'Give me something to search for').trim().escape().isLength({min: 1})
 ],searchController.search_get_posts);
 
+router.get('/params/:inputs', searchController.search_get_posts_url);
+
 
 module.exports = router;
