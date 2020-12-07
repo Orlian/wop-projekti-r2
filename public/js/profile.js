@@ -15,6 +15,7 @@ const profileDesc = document.querySelector('.desc p');
 const user = JSON.parse(sessionStorage.getItem('user'));
 const imageModalFeedbackLikes = document.querySelector('.likes p');
 const imageModalOwner = document.getElementById('image-owner');
+const commentsUl = document.querySelector('.comments');
 
 const getLikes = async (postId) => {
   try {
