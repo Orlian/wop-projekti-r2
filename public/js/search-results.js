@@ -81,15 +81,17 @@ searchForm.addEventListener('submit', async (evt) => {
 
 window.addEventListener('load', async (evt) => {
   evt.preventDefault();
-  const searchParams = params.get('search');
-  console.log('window onload data', searchParams);
+  const searchParams = {'search': params.get('search')};
+  console.log('searchParams object', searchParams);
+  const data = serializeJson(searchParams);
+  console.log('window onload data', data);
   const fetchOptions = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
     },
-    body: searchParams,
+    body: JSON.stringify(data),
   };
   console.log('window onload body data', fetchOptions.body);
   const response = await fetch(searchUrl + '/search/' + params.get('search'), fetchOptions); //params.search
