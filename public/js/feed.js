@@ -162,13 +162,29 @@ const getPosts = async () => {
 getPosts();
 
 //Miten ladataan vaan kerran?
-window.addEventListener('scroll', async () => {
+window.addEventListener('scroll', lazyScroll);
+
+const lazyScroll = debounce(async () => {
   let scrollHeight = document.documentElement.scrollHeight;
   if (window.scrollY + window.innerHeight >= scrollHeight - 100) {
-    setTimeout(await getPosts, 400);
-    //scrollHeight - 100  document.documentElement.scrollHeight
+    await getPosts;
   }
-});
+}, 400);
+
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
 
 /**Back to top button reveal and disappear on scroll**/
 const topBtn = document.querySelector('.top-btn');
