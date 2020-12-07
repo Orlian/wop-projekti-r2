@@ -163,9 +163,10 @@ getPosts();
 
 //Miten ladataan vaan kerran?
 window.addEventListener('scroll', () => {
-  let scrollHeight = document.documentElement.scrollHeight;
-  if (window.scrollY + window.innerHeight > scrollHeight - 100) {
+  let scrollHeight = document.body.scrollHeight;
+  if (window.scrollY + window.innerHeight >= scrollHeight) {
     getPosts();
+    //scrollHeight - 100  document.documentElement.scrollHeight
   }
 });
 
