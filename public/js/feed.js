@@ -4,11 +4,11 @@ const imageFeed = document.querySelector('.card-container');
 const addForm = document.getElementById('add-image');
 const imagesOnLoad = 3;
 let loadedImgN = 0;
-
+let limitstart = 1;
 /**Create image cards**/
 const createImageCards = (images) => {
 
-  imageFeed.innerHTML = '';
+  //imageFeed.innerHTML = '';
   images.forEach(async (image) => {
 
     const card = document.createElement('div');
@@ -37,7 +37,7 @@ const createImageCards = (images) => {
     const likesContainer = document.createElement('div');
     likesContainer.classList.add('likes');
 
-    const likesCount = image.likes;
+    const likesCount = image.likes.likecount;
     const likes = document.createElement('p');
     likes.innerHTML = `${likesCount} likes`;
     const commentsTitle = document.createElement('h4');
@@ -133,10 +133,11 @@ const getPosts = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/post/recent', options);
+    const response = await fetch(url + '/post/recent/' + limitstart, options);
     const images = await response.json();
     console.log('getPost images', images);
     createImageCards(images);
+    limitstart += 10;
   } catch (e) {
     console.log(e.message);
   }
@@ -145,12 +146,12 @@ const getPosts = async () => {
 getPosts();
 
 
-/*window.addEventListener('scroll', () => {
+window.addEventListener('scroll', () => {
   let scrollHeight = document.documentElement.scrollHeight;
   if (window.scrollY + window.innerHeight > scrollHeight - 100) {
-    createCards();
+    getPosts();
   }
-}); */
+});
 
 /**Back to top button reveal and disappear on scroll**/
 const topBtn = document.querySelector('.top-btn');

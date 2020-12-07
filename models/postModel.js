@@ -14,9 +14,9 @@ const getAllPosts = async () => {
   }
 };
 
-const getRecentPosts = async () => {
+const getRecentPosts = async (params) => {
   try {
-    const [rows] = await promisePool.execute('SELECT postid, imgfile, caption, User.username, timestamp FROM Post INNER JOIN User ON Post.userid = User.userid ORDER BY timestamp DESC LIMIT 50');
+    const [rows] = await promisePool.execute('SELECT postid, imgfile, caption, User.username, timestamp FROM Post INNER JOIN User ON Post.userid = User.userid ORDER BY timestamp DESC LIMIT ?, 10', params);
     return rows;
   } catch(err) {
     console.log('postModel error', err.message);

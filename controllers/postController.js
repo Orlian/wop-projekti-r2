@@ -13,7 +13,8 @@ const post_list_get = async (req, res) => {
 
 const recent_post_list_get = async (req, res) => {
   console.log('recent_post_list_get req.user', req.user);
-  const posts = await postModel.getRecentPosts();
+  const params = [req.params.limitstart];
+  const posts = await postModel.getRecentPosts(params);
   const uudetPostit = await Promise.all(posts.map(async (post) => {
     post.comments = await commentModel.getPostComments(post.postid);
     post.likes = await likeModel.getPostLikesCount(post.postid);
