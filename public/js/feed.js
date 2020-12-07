@@ -4,7 +4,7 @@ const imageFeed = document.querySelector('.card-container');
 const addForm = document.getElementById('add-image');
 const imagesOnLoad = 3;
 let loadedImgN = 0;
-let limitstart = 1;
+let limitstart = 0;
 /**Create image cards**/
 const createImageCards = (images) => {
 
@@ -37,7 +37,7 @@ const createImageCards = (images) => {
     const likesContainer = document.createElement('div');
     likesContainer.classList.add('likes');
 
-    const likesCount = image.likes.likecount;
+    const likesCount = image.likes[0].likecount;
     const likes = document.createElement('p');
     likes.innerHTML = `${likesCount} likes`;
     const commentsTitle = document.createElement('h4');
@@ -140,6 +140,7 @@ const getPosts = async () => {
     limitstart += 10;
   } catch (e) {
     console.log(e.message);
+    location.href = 'front-page.html';
   }
 };
 
