@@ -84,7 +84,7 @@ const getSearchComments = async (postid) => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/comment/' + postid, options);
+    const response = await fetch(searchUrl + '/comment/' + postid, options);
     return await response.json();
   } catch (e) {
     console.log(e.message);
@@ -98,7 +98,7 @@ const getSearchLikes = async (postId) => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/like/' + postId, options);
+    const response = await fetch(searchUrl + '/like/' + postId, options);
     const [likes] = await response.json();
     return likes.likecount;
   } catch (e) {
