@@ -81,7 +81,7 @@ searchForm.addEventListener('submit', async (evt) => {
 
 window.addEventListener('load', async (evt) => {
   evt.preventDefault();
-  const searchParams = {'search': params.get('search')};
+  const {searchParams} = params.get('search');
   console.log('searchParams object', searchParams);
   const data = serializeJson(searchParams);
   console.log('window onload data', data);
