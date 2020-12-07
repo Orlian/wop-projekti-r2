@@ -105,3 +105,5 @@ const getSearchLikes = async (postId) => {
     console.log(e.message);
   }
 };
+
+//Potki pois ja logout jos väärä token tai ei tokenia
