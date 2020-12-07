@@ -73,18 +73,6 @@ const user_check = async (req, res) => {
 
 }
 
-const password_check = async (req, res) => {
-  try {
-    const [user] = await userModel.getUserLogin([req.params.email]);
-    console.log(user, 'password check');
-    if(!bcrypt.compareSync(passwordInput.value, user.password)) {
-      return res.json({message: 'incorrect password'});
-    }
-    return res.json({message: 'password ok'});
-  } catch (err){
-    res.send({error: 'Something went wrong'});
-  }
-}
 
 const make_thumbnail = async (req, res, next) => {
   try {
@@ -104,5 +92,4 @@ module.exports = {
   logout,
   user_check,
   make_thumbnail,
-  password_check,
 };
