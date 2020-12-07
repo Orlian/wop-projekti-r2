@@ -17,6 +17,7 @@ const editUserButton = document.getElementById('save-button');
 const editUserCancel = document.getElementById('user-cancel-button');
 const deleteUserButton = document.getElementById('delete-button');
 const logo = document.getElementById('logo-img');
+const navbarUser = Json.parse(sessionStorage.getItem('user'));
 
 
 logo.onclick = () => {
@@ -107,7 +108,7 @@ deleteUserButton.onclick = async() => {
       },
     };
     try {
-      const response = await fetch(navbarUrl + '/user', fetchOptions);
+      const response = await fetch(navbarUrl + '/user/' + user.userid, fetchOptions);
       const json = await response.json();
       console.log('delete response', json);
 
