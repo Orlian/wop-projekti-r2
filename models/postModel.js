@@ -39,7 +39,7 @@ const getPost = async (postId) => {
 const getUserPosts = async (userid) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT postid,User.username, imgfile, caption, timestamp FROM Post INNER JOIN User ON Post.userid = User.userid WHERE userid = ?', userid);
+        'SELECT postid, User.username, imgfile, caption, timestamp FROM Post INNER JOIN User ON Post.userid = User.userid WHERE Post.userid = ?', userid);
     return rows;
   } catch (err) {
     console.log('postModel error', err.message);
