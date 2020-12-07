@@ -3,11 +3,9 @@ const url = '/app2/';
 
 const userPosts = document.querySelector('.grid');
 const modalImage = document.getElementById('user-post-image');
-const imageFigure = document.querySelector('figure');
 const figureFigcaption = document.querySelector('figcaption');
 const deleteImgButton = document.getElementById('delete-image');
 const imageModal = document.getElementById('image-user-modal');
-const profileSection = document.querySelector('.profile-info');
 const profileImg = document.querySelector('.profile-info img');
 const profileName = document.querySelector('.profile-info h2');
 const profileDesc = document.querySelector('.desc p');
@@ -47,6 +45,11 @@ const getComments = async (postid) => {
   }
 };
 
+const getUserProfile = () =>{
+  profileImg.src = url + '/thumbnails/' + user.userimg;
+  profileName.innerHTML = user.username;
+  profileDesc.innerHTML = user.description;
+}
 
 const createUserGrid = (images) => {
 
@@ -127,6 +130,7 @@ const getUserPosts = async () => {
     console.log('getUserPost response', response);
     const posts = await response.json();
     console.log('getUserPost json', posts);
+    getUserProfile();
     createUserGrid(posts);
   } catch (err) {
     console.error(err.message);
