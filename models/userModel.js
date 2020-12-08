@@ -64,7 +64,7 @@ const updateUser = async (params) => {
     if(params[0] !== undefined){
       lause += 'password=?, ';
     } //tilalle lause sql eliminoi viimenen pilkku
-    if(params[1] !== undefined){
+    if(params[1] !== ''){
       lause += 'userimg=?, ';
     }
     console.log('updateUser lause', lause, '\nupdateUser params', params);
