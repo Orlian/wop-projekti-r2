@@ -126,6 +126,28 @@ const createImageCards = (images) => {
       }
     });
 
+    likeForm.addEventListener('submit', async (evt) => {
+      evt.preventDefault();
+      const data = serializeJson(likeForm);
+      const fetchOptions = {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+        },
+        body: JSON.stringify(data),
+      };
+      try {
+        const response = await fetch(url + '/like/' + image.postid, fetchOptions);
+        const like = await response.json();
+        console.log('Add like', like);
+        likeIcon.style.display = 'block';
+        likeIconFill.style.display = 'none';
+      } catch (error) {
+        console.log(error.message);
+      }
+    });
+
     commentsContainer.appendChild(username);
     captionContainer.appendChild(imageCaption);
     commentsContainer.appendChild(captionContainer);

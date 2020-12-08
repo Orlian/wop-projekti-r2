@@ -16,6 +16,8 @@ const getPostLikesCount = async (postId) => {
   }
 };
 
+
+
 /**Add like to a post**/
 const addLike = async (params) => {
   console.log('add like params', params);
