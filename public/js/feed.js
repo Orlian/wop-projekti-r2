@@ -121,7 +121,7 @@ const createImageCards = (images) => {
         body: JSON.stringify(data),
       };
       try {
-        const response = await fetch(url + '/like/', fetchOptions);
+        const response = await fetch(url + '/like/' + image.postId, fetchOptions);
         const like = await response.json();
         console.log('Add like', like);
         addLike(like);
