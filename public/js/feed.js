@@ -103,12 +103,6 @@ const createImageCards = (images) => {
     likeIconFill.name = 'heart';
     likeIconFill.style.display = 'none';
 
-    const addLike = () => {
-      likeIcon.display = 'none';
-      likeIconFill.style.display = 'block';
-      likeIconFill.style.color = 'red';
-    };
-
     likeForm.addEventListener('submit', async (evt) => {
       evt.preventDefault();
       const data = serializeJson(likeForm);
@@ -124,7 +118,9 @@ const createImageCards = (images) => {
         const response = await fetch(url + '/like/' + image.postId, fetchOptions);
         const like = await response.json();
         console.log('Add like', like);
-        addLike(like);
+        likeIcon.style.display = 'none';
+        likeIconFill.style.display = 'block';
+        likeIconFill.style.color = 'red';
       } catch (error) {
         console.log(error.message);
       }
