@@ -164,7 +164,6 @@ const createImageCards = (images) => {
     commentForm.appendChild(commentBtn);
 
     likeBtn.appendChild(likeIcon);
-    likeBtn.appendChild(likeIconFill);
     likesContainer.appendChild(likes);
     likeForm.appendChild(likeBtn);
     likeForm.appendChild(likesContainer);
