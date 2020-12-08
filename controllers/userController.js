@@ -3,6 +3,7 @@
 const {validationResult} = require('express-validator');
 const userModel = require('../models/userModel');
 const {makeThumbnail} = require('../utils/resize');
+const bcrypt = require('bcryptjs');
 //TODO Tänne loput controllerin vaatimat requiret sun muut
 
 const user_list_get = async (req, res) => {
@@ -39,7 +40,21 @@ const user_delete = async (req, res) => {
 };
 
 const user_update = async (req, res) => {
-  const params = [req.body.password, req.file.filename, req.body.description, req.params.id];
+  let params = [req.body.password, '', req.body.description, req.params.id];
+  if(req.file !== undefined) {
+    params = [req.body.password, req.file.filename, req.body.description, req.params.id];
+    if(req.body.password !== undefined || req.body.password !== ''){
+      const salt = bcrypt.genSaltSync(12);
+      const hash = bcrypt.hashSync(req.body.password, salt);
+      params = [hash, req.file.filename, req.body.description, req.params.id];
+    }
+  } else {
+    if(req.body.password !== undefined || req.body.password !== ''){
+      const salt = bcrypt.genSaltSync(12);
+      const hash = bcrypt.hashSync(req.body.password, salt);
+      params = [hash, '', req.body.description, req.params.id];
+    }
+  }
   console.log('user_update params', params);
   const user = await userModel.updateUser(params);
   res.json(user);

@@ -10,7 +10,6 @@ const feedUser = JSON.parse(sessionStorage.getItem('user'));
 let loading = false;
 let viimeinen = false;
 
-
 /**Create image cards**/
 const createImageCards = (images) => {
 
@@ -98,13 +97,36 @@ const createImageCards = (images) => {
 
     const likeIcon = document.createElement('ion-icon');
     likeIcon.name = 'heart-outline';
+    likeIcon.style.display = 'block';
 
-    likeBtn.addEventListener('click', (evt) => {
-      //evt.preventDefault();
+    const likeIconFill = document.createElement('ion-icon');
+    likeIconFill.name = 'heart';
+    likeIconFill.style.display = 'none';
+
+    const addLike = () => {
+      likeIcon.display = 'none';
+      likeIconFill.style.display = 'block';
+      likeIconFill.style.color = 'red';
+    };
+
+    likeForm.addEventListener('submit', async (evt, postId) => {
+      evt.preventDefault();
+      const data = serializeJson(likeForm);
+      const fetchOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+        },
+        body: JSON.stringify(data),
+      };
       try {
-
-      } catch {
-
+        const response = await fetch(url + '/like/' + postId, fetchOptions);
+        const like = await response.json();
+        console.log('Add like', like);
+        addLike();
+      } catch (error) {
+        console.log(error.message);
       }
     });
 
@@ -119,6 +141,7 @@ const createImageCards = (images) => {
     commentForm.appendChild(commentBtn);
 
     likeBtn.appendChild(likeIcon);
+    likeBtn.appendChild(likeIconFill);
     likesContainer.appendChild(likes);
     likeForm.appendChild(likeBtn);
     likeForm.appendChild(likesContainer);
@@ -128,7 +151,6 @@ const createImageCards = (images) => {
 
     aside.appendChild(commentsContainer);
     aside.appendChild(formsContainer);
-
 
     card.appendChild(img);
     card.appendChild(aside);
