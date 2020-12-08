@@ -13,7 +13,7 @@ const getComment = async (commentId) => {
   }
 }
 
-//Hakee yhden postin viimeisimmät 20 kommentia timestampin perusteella
+//Hakee yhden postin kommentia timestampin perusteella
 const getPostComments = async (postId) => {
   try {
     const [rows] = await promisePool.execute(
@@ -40,7 +40,7 @@ const getUserComments = async (userid) => {
 const addComment = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'INSERT INTO Comment (commentcontent, postid, userid, timestamp) VALUES (?, ?, ?, DATE_FORMAT(NOW(), "%d %b %d %Y %r"))',
+        'INSERT INTO Comment (commentcontent, postid, userid, timestamp) VALUES (?, ?, ?, NOW())',
         params);
     return rows;
   } catch (err) {
@@ -49,9 +49,9 @@ const addComment = async (params) => {
 };
 
 //Poistaa yksittäisen kommentin
-const deleteComment = async (commentId) => {
+const deleteComment = async (params) => {
   try {
-    await promisePool.execute('DELETE FROM Comment WHERE commentid = ?',[commentId]);
+    await promisePool.execute('DELETE FROM Comment WHERE postid = ? AND userid = ?', params);
   } catch(err) {
     console.log('commentModel error', err.message);
   }
