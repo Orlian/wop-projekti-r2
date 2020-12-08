@@ -92,7 +92,8 @@ const createUserGrid = (images) => {
     gridItem.appendChild(postImage);
     //lisää luokkia jos tarve
 
-    postImage.addEventListener('click', async () => {
+    postImage.addEventListener('click', async (evt) => {
+      evt.preventDefault();
       imageModal.style.display = 'flex';
       modalImage.src = url + '/uploads/' + image.imgfile;
       modalImage.alt = image.caption.slice(0, 10);

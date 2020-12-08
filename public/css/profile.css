@@ -297,7 +297,7 @@ input[type='checkbox']{
 .image-user-wrapper{
     display: flex;
     align-items: center;
-    width: 100vw;
+    width: 70em;
 }
 .image-user-content-modal{
     height: auto;
