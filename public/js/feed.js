@@ -68,8 +68,8 @@ const createImageCards = (images) => {
       commentTime.classList.add('comment-time');
       const properTime = new Date(comment.timestamp);
       const formattedTime = properTime.getDate() + '.' + properTime.getMonth() +
-          '.' + properTime.getFullYear() + ' ' + properTime.getDate().getHours() + ':' +
-          properTime.getDate().getMinutes() + ':' + properTime.getDate().getSeconds();
+          '.' + properTime.getFullYear() + ' ' + properTime.getHours() + ':' +
+          properTime.getMinutes() + ':' + properTime.getSeconds();
       console.log('properTime', properTime);
       commentTime.innerHTML = `${formattedTime}`;
       commentLi.appendChild(commentAuthor);
