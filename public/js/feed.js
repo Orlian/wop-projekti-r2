@@ -131,6 +131,9 @@ const createImageCards = (images) => {
         }
       });
     } else{
+      likeIcon.style.display = 'none';
+      likeIconFill.style.display = 'block';
+      likeIconFill.style.color = 'red';
       likeForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
         const data = serializeJson(likeForm);
