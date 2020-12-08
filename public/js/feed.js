@@ -100,9 +100,8 @@ const createImageCards = (images) => {
     likeIcon.name = 'heart';
 
     if(liker.length<1){
-      likeIcon.style.display = 'none';
+      likeIcon.style.color = 'black';
     }else {
-      likeIcon.style.display = 'block';
       likeIcon.style.color = 'red';
     }
 
@@ -146,7 +145,7 @@ const createImageCards = (images) => {
           const response = await fetch(url + '/like/' + image.postid, fetchOptions);
           const like = await response.json();
           console.log('Add like', like);
-          likeIcon.style.color = 'grey';
+          likeIcon.style.color = 'black';
         } catch (error) {
           console.log(error.message);
         }
