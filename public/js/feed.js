@@ -95,15 +95,18 @@ const createImageCards = (images) => {
     likeBtn.type = 'submit';
     likeBtn.classList.add('like-btn');
 
+    const liker = await getLiker(image.postid);
     const likeIcon = document.createElement('ion-icon');
     likeIcon.name = 'heart-outline';
-    likeIcon.style.display = 'block';
-
     const likeIconFill = document.createElement('ion-icon');
     likeIconFill.name = 'heart';
-    likeIconFill.style.display = 'none';
 
-    const liker = await getLiker(image.postid);
+    if(liker.length<1){
+      likeIcon.style.display = 'none';
+    }else {
+      likeIconFill.style.display = 'block';
+      likeIconFill.style.color = 'red';
+    }
 
     console.log('feed.js', liker);
 
@@ -131,9 +134,6 @@ const createImageCards = (images) => {
         }
       });
     } else{
-      likeIcon.style.display = 'none';
-      likeIconFill.style.display = 'block';
-      likeIconFill.style.color = 'red';
       likeForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
         const data = serializeJson(likeForm);
