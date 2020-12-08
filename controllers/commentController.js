@@ -23,6 +23,7 @@ const post_comment_delete = async (req, res) => {
 const get_commenter = async (req,res) => {
   const params = [req.params.postid, req.user.userid];
   await commentModel.getCommenter(params);
+  res.json(commenter);
 }
 
 module.exports = {
