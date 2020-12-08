@@ -215,7 +215,7 @@ form::after {
     outline: none;
 }
 
-#cancel-button, #user-cancel-button, #delete-button {
+#cancel-button, #user-cancel-button, #delete-button, #delete-image {
     background: whitesmoke;
     color: #1e1e1e;
     border: 0.1em solid slateblue;
@@ -332,6 +332,12 @@ input[type='checkbox']{
     padding-left: 1em;
     color: #1e1e1e;
 }
+
+#image-caption {
+    padding: 0.5em 0.5em 1.5em 0;
+}
+
+
 .comments{
     background-color: whitesmoke;
     height: 10em;
@@ -340,6 +346,16 @@ input[type='checkbox']{
     box-shadow: 2px 5px 5px lightgrey;
     overflow-y: scroll;
 }
+
+.comment-content {
+    padding: 0.5em 0.5em 0.5em 0;
+}
+
+.comment-time {
+    color: darkgrey;
+}
+
+
 .add-comment{
     display: flex;
     flex-direction: column;
