@@ -91,6 +91,26 @@ const createImageCards = (images) => {
     commentBtn.classList.add('comment-btn');
     commentBtn.innerHTML = `Comment`;
 
+    commentForm.addEventListener('submit', async (evt) => {
+      evt.preventDefault();
+      const data = serializeJson(commentForm);
+      const fetchOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+        },
+        body: JSON.stringify(data),
+      };
+      try {
+        const response = await fetch(url + '/comment/'+ image.postid, fetchOptions);
+        const comment = await response.json();
+        await getPosts();
+      } catch (err) {
+        console.log(err.message);
+      }
+    });
+
     const likeBtn = document.createElement('button');
     likeBtn.type = 'submit';
     likeBtn.classList.add('like-btn');
@@ -122,7 +142,6 @@ const createImageCards = (images) => {
         try {
           const response = await fetch(url + '/like/' + image.postid, fetchOptions);
           const like = await response.json();
-          console.log('Add like', like);
           likeIcon.style.display = 'block';
           likeIcon.style.color = 'red';
         } catch (error) {
@@ -198,13 +217,11 @@ const getPosts = async () => {
     if(images.length < 10){
       viimeinen = true;
     }
-    console.log('getPost images', images);
     createImageCards(images);
   } catch (e) {
     console.log(e.message);
     const response = await fetch(url + '/auth/logout');
     const json = await response.json();
-    console.log('logout json', json);
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');
     location.href = 'front-page.html';
@@ -221,9 +238,7 @@ const getLiker = async (postId) => {
       },
     };
     const response = await fetch(url + '/like/author/' + postId, options);
-    console.log('feed.js', response);
     const likeStatus = await response.json();
-    console.log('getLiker feee.js ', likeStatus);
     return likeStatus;
   } catch (e) {
     console.log(e.message);

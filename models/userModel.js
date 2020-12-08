@@ -63,7 +63,7 @@ const updateUser = async (params) => {
     let lause = 'UPDATE User SET ';
     if(params[0] !== undefined){
       lause += 'password=?, ';
-    } //tilalle lause sql eliminoi viimenen pilkku
+    }
     if(params[1] !== ''){
       lause += 'userimg=?, ';
     }
