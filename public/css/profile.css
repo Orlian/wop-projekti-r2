@@ -302,7 +302,7 @@ input[type='checkbox']{
 .image-user-content-modal{
     height: auto;
     width: 100%;
-    padding: 2em;
+    padding: 1em;
     border: 1px solid lightgray;
     border-radius: 1em;
     background-color: whitesmoke;
