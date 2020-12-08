@@ -62,7 +62,7 @@ const fillSearchList = (hits) => {
   });
 }
 
-searchForm.addEventListener('submit', async (evt) => {
+/*searchForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(searchForm);
   const fetchOptions = {
@@ -77,7 +77,7 @@ searchForm.addEventListener('submit', async (evt) => {
   const searchData = await response.json();
   console.log('search-results onsubmit searchData', searchData);
   fillSearchList(searchData);
-});
+});*/
 
 window.addEventListener('load', async (evt) => {
   evt.preventDefault();
