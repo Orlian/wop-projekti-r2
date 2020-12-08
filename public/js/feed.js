@@ -68,7 +68,7 @@ const createImageCards = (images) => {
       commentTime.classList.add('comment-time');
       const properTime = new Date(comment.timestamp);
       console.log('properTime', properTime);
-      commentTime.innerHTML = `${properTime}`;
+      commentTime.innerHTML = `${properTime.getDate()}`;
       commentLi.appendChild(commentAuthor);
       commentLi.appendChild(commentContent);
       commentLi.appendChild(commentTime);
