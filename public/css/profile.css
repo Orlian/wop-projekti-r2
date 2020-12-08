@@ -311,6 +311,7 @@ input[type='checkbox']{
 
 .image-user-content-modal-wrapper{
     display: flex;
+    position: relative;
 }
 #user-post-image{
     flex: 1;
