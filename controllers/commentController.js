@@ -16,12 +16,18 @@ const post_comment_add = async (req, res) => {
 };
 
 const post_comment_delete = async (req, res) => {
-  const params = [req.params.postid, req.user.userid];
+  const params = [req.params.commentid, req.params.postid, req.user.userid];
   await commentModel.deleteComment(params);
 };
+
+const get_commenter = async (req,res) => {
+  const params = [req.params.postid, req.user.userid];
+  await commentModel.getCommenter(params);
+}
 
 module.exports = {
   post_comments_get,
   post_comment_add,
   post_comment_delete,
+  get_commenter,
 }

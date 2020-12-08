@@ -3,10 +3,10 @@
 const pool = require('../database/db');
 const promisePool = pool.promise();
 
-//Hakee yksittäisen kommentin
-const getComment = async (commentId) => {
+//Hakee kommentoijan
+const getCommenter = async (params) => {
   try {
-    const [rows] = await promisePool.execute('SELECT * FROM Comment WHERE commentid = ?', [commentId]);
+    const [rows] = await promisePool.execute('SELECT commentid FROM Comment WHERE postid = ? AND userid=?', params);
     return rows;
   } catch(err) {
     console.log('commentModel error', err.message);
@@ -17,7 +17,7 @@ const getComment = async (commentId) => {
 const getPostComments = async (postId) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT commentcontent, User.username, timestamp FROM Comment INNER JOIN User ON Comment.userid = User.userid WHERE postid = ? ORDER BY timestamp DESC',
+        'SELECT commentid, commentcontent, User.username, timestamp FROM Comment INNER JOIN User ON Comment.userid = User.userid WHERE postid = ? ORDER BY timestamp DESC',
         [postId]);
     return rows;
   } catch (err) {
@@ -51,14 +51,14 @@ const addComment = async (params) => {
 //Poistaa yksittäisen kommentin
 const deleteComment = async (params) => {
   try {
-    await promisePool.execute('DELETE FROM Comment WHERE postid = ? AND userid = ?', params);
+    await promisePool.execute('DELETE FROM Comment WHERE commentid=? AND postid = ? AND userid = ?', params);
   } catch(err) {
     console.log('commentModel error', err.message);
   }
 }
 
 module.exports = {
-  getComment,
+  getCommenter,
   getPostComments,
   getUserComments,
   addComment,
