@@ -17,14 +17,18 @@ const user_get = async (req, res) => {
 };
 
 const make_thumbnail = async (req, res, next) => {
-  try {
-    const thumbnail = await makeThumbnail(req.file.path, req.file.filename);
-    console.log('thumbnail', thumbnail);
-    if (thumbnail) {
-      next();
+  if(req.file){
+    try {
+      const thumbnail = await makeThumbnail(req.file.path, req.file.filename);
+      console.log('thumbnail', thumbnail);
+      if (thumbnail) {
+        next();
+      }
+    } catch (e) {
+      res.status(400).json({errors: e.message});
     }
-  } catch (e) {
-    res.status(400).json({errors: e.message});
+  } else {
+    next();
   }
 };
 
