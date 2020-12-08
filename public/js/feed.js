@@ -103,50 +103,56 @@ const createImageCards = (images) => {
     likeIconFill.name = 'heart';
     likeIconFill.style.display = 'none';
 
-    likeForm.addEventListener('submit', async (evt) => {
-      evt.preventDefault();
-      const data = serializeJson(likeForm);
-      const fetchOptions = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-        },
-        body: JSON.stringify(data),
-      };
-      try {
-        const response = await fetch(url + '/like/' + image.postid, fetchOptions);
-        const like = await response.json();
-        console.log('Add like', like);
-        likeIcon.style.display = 'none';
-        likeIconFill.style.display = 'block';
-        likeIconFill.style.color = 'red';
-      } catch (error) {
-        console.log(error.message);
-      }
-    });
+    const liker = await getLiker(image.postid);
 
-    likeForm.addEventListener('submit', async (evt) => {
-      evt.preventDefault();
-      const data = serializeJson(likeForm);
-      const fetchOptions = {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-        },
-        body: JSON.stringify(data),
-      };
-      try {
-        const response = await fetch(url + '/like/' + image.postid, fetchOptions);
-        const like = await response.json();
-        console.log('Add like', like);
-        likeIcon.style.display = 'block';
-        likeIconFill.style.display = 'none';
-      } catch (error) {
-        console.log(error.message);
-      }
-    });
+    console.log('feed.js', liker);
+
+    if(liker.length< 1){
+      likeForm.addEventListener('submit', async (evt) => {
+        evt.preventDefault();
+        const data = serializeJson(likeForm);
+        const fetchOptions = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+          },
+          body: JSON.stringify(data),
+        };
+        try {
+          const response = await fetch(url + '/like/' + image.postid, fetchOptions);
+          const like = await response.json();
+          console.log('Add like', like);
+          likeIcon.style.display = 'none';
+          likeIconFill.style.display = 'block';
+          likeIconFill.style.color = 'red';
+        } catch (error) {
+          console.log(error.message);
+        }
+      });
+    } else{
+      likeForm.addEventListener('submit', async (evt) => {
+        evt.preventDefault();
+        const data = serializeJson(likeForm);
+        const fetchOptions = {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+          },
+          body: JSON.stringify(data),
+        };
+        try {
+          const response = await fetch(url + '/like/' + image.postid, fetchOptions);
+          const like = await response.json();
+          console.log('Add like', like);
+          likeIcon.style.display = 'block';
+          likeIconFill.style.display = 'none';
+        } catch (error) {
+          console.log(error.message);
+        }
+      });
+    }
 
     commentsContainer.appendChild(username);
     captionContainer.appendChild(imageCaption);
@@ -210,6 +216,24 @@ const getPosts = async () => {
 
 getPosts();
 
+const getLiker = async (postId) => {
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/like/author/' + postId, options);
+    console.log('feed.js', response);
+    const likeStatus = await response.json();
+    console.log('getLiker feee.js ', likeStatus);
+    return likeStatus;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+
 //Miten ladataan vaan kerran?
 window.addEventListener('scroll', () => {
   let scrollHeight = document.documentElement.scrollHeight;
@@ -264,3 +288,4 @@ addForm.addEventListener('submit', async (evt) => {
   }
   getPosts();
 });
+

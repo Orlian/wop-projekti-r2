@@ -18,9 +18,25 @@ const post_like = async (req, res) => {
   res.json(likes);
 };
 
+const post_liker = async (req, res) => {
+  const params = [req.user.userid, req.params.postid];
+  console.log('postliker', params);
+  const like = await likeModel.getLiker(params);
+  console.log('postliker', like);
+  res.json(like);
+};
+
+const delete_like = async (req, res) => {
+  const params = [req.user.userid, req.params.postid];
+  const like = await likeModel.deleteLike(params);
+  res.json(like);
+};
+
 module.exports = {
   post_likes_count_get,
   post_like,
+  post_liker,
+  delete_like,
 };
 
 
