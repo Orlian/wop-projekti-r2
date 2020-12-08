@@ -7,6 +7,8 @@ const addForm = document.getElementById('add-image');
 //let loadedImgN = 0;
 let limitstart = 0;
 const feedUser = JSON.parse(sessionStorage.getItem('user'));
+let loading = false;
+let viimeinen = false;
 
 
 /**Create image cards**/
@@ -137,6 +139,7 @@ const createImageCards = (images) => {
 
 /**Fetching all posts data from database**/
 const getPosts = async () => {
+  loading = true;
   try {
     const options = {
       headers: {
@@ -146,6 +149,12 @@ const getPosts = async () => {
     const response = await fetch(url + '/post/recent/' + limitstart, options);
     limitstart += 10;
     const images = await response.json();
+    if(images){
+      loading = false;
+    }
+    if(images.length < 10){
+      viimeinen = true;
+    }
     console.log('getPost images', images);
     createImageCards(images);
   } catch (e) {
@@ -162,10 +171,12 @@ const getPosts = async () => {
 getPosts();
 
 //Miten ladataan vaan kerran?
-window.addEventListener('scroll', async () => {
+window.addEventListener('scroll', () => {
   let scrollHeight = document.documentElement.scrollHeight;
   if (window.scrollY + window.innerHeight >= scrollHeight - 100) {
-    await getPosts();
+    if(!loading && !viimeinen) {
+      getPosts();
+    }
   }
 });
 

@@ -60,6 +60,10 @@ const getUserLogin = async (params) => {
 
 const updateUser = async (params) => {
   try {
+    let lause = 'UPDATE User SET ';
+    if(params[0] !== undefined){
+      lause += 'password=?, ';
+    } //tilalle lause sql eliminoi viimenen pilkku
     const [rows] = promisePool.execute(
         'UPDATE User SET password=?, userimg=?, description=? WHERE userid = ?',
         params);
