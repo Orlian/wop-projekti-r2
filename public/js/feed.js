@@ -162,7 +162,7 @@ const getPosts = async () => {
 getPosts();
 
 //Miten ladataan vaan kerran?
-window.addEventListener('scroll', async () => {
+document.addEventListener('scroll', async () => {
   let scrollHeight = document.documentElement.scrollHeight;
   if (window.scrollY + window.innerHeight >= scrollHeight - 100) {
     await getPosts;
