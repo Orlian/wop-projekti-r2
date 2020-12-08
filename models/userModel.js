@@ -67,6 +67,7 @@ const updateUser = async (params) => {
     if(params[1] !== undefined){
       lause += 'userimg=?, ';
     }
+    console.log('updateUser lause', lause, '\nupdateUser params', params);
     const [rows] = promisePool.execute(
         lause +'description=? WHERE userid = ?',
         params);
