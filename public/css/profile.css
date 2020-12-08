@@ -308,7 +308,6 @@ input[type='checkbox']{
     border-radius: 1em;
     display: flex;
     background-color: whitesmoke;
-    align-items: center;
 }
 #user-post-image{
     flex: 1;
