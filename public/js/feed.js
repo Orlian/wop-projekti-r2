@@ -225,7 +225,9 @@ const getLiker = async (postId) => {
     };
     const response = await fetch(url + '/like/author/' + postId, options);
     console.log('feed.js', response);
-    return await response.json();
+    const likeStatus = await response.json();
+    console.log('getLiker feee.js ', likeStatus);
+    return likeStatus;
   } catch (e) {
     console.log(e.message);
   }
