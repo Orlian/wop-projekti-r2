@@ -157,9 +157,6 @@ const createImageCards = (images) => {
     } else {
       likeIcon.style.color = 'red';
     }
-
-    console.log('feed.js', liker);
-
     if (liker.length < 1) {
       likeForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
