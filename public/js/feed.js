@@ -53,6 +53,9 @@ const createImageCards = (images) => {
     const comments = image.comments;
     const commenters = await getCommenter(image.postid);
 
+    console.log(comments);
+    console.log(commenters);
+
     comments.forEach((comment) => {
 
       const commentLi = document.createElement('li');
