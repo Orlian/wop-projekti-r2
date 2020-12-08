@@ -87,7 +87,7 @@ const createImageCards = (images) => {
             };
             try {
               await fetch(url + '/comment/' + image.postid + '/' + comment.commentid, fetchOptions);
-              location.reload();
+              location.reload(true);
             } catch (error) {
               console.log(error.message);
             }
