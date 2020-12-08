@@ -303,18 +303,19 @@ input[type='checkbox']{
     height: auto;
     width: 100%;
     margin: 0 0 1em 0;
-    padding: 1em;
+    padding: 2em;
     border: 1px solid lightgray;
     border-radius: 1em;
-    box-shadow: 2px 5px 5px lightgrey;
     display: flex;
     background-color: whitesmoke;
+    align-items: center;
 }
 #user-post-image{
     flex: 1;
     width: 100%;
-    height: auto;
-    max-width: 640px;
+    height: 100%;
+    max-width: 500px;
+    max-height: 750px;
     border-radius: 0;
     border: none;
     margin: 0;
