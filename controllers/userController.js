@@ -39,7 +39,8 @@ const user_delete = async (req, res) => {
 };
 
 const user_update = async (req, res) => {
-  const params = [req.body.password, req.file.userimg, req.body.description, req.params.id]
+  const params = [req.body.password, req.file.filename, req.body.description, req.params.id];
+  console.log('user_update params', params);
   const user = await userModel.updateUser(params);
   res.json(user);
 }
