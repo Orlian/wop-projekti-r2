@@ -109,7 +109,7 @@ const createImageCards = (images) => {
       likeIconFill.style.color = 'red';
     };
 
-    likeForm.addEventListener('submit', async (evt, postId) => {
+    likeForm.addEventListener('submit', async (evt) => {
       evt.preventDefault();
       const data = serializeJson(likeForm);
       const fetchOptions = {
@@ -121,10 +121,10 @@ const createImageCards = (images) => {
         body: JSON.stringify(data),
       };
       try {
-        const response = await fetch(url + '/like/' + postId, fetchOptions);
+        const response = await fetch(url + '/like/', fetchOptions);
         const like = await response.json();
         console.log('Add like', like);
-        addLike();
+        addLike(like);
       } catch (error) {
         console.log(error.message);
       }
