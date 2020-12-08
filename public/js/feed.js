@@ -66,26 +66,27 @@ const createImageCards = (images) => {
       commentAuthor.innerHTML = `${comment.username}`;
       const commentTime = document.createElement('h6');
       commentTime.classList.add('comment-time');
-      const properTime = new Date(comment.timestamp.toLocaleTimeString('fi-FI', {
-        day: 'numeric',
-        month: 'numeric',
-        year: 'numeric',
-        hour: '2-digit',
-        minutes: '2-digits',
-        second: '2-digits',
-      }));
-      commentTime.innerHTML = `${properTime}`;
+      const properTime = new Date(comment.timestamp);
+      const formattedTime = properTime.getDate() + '.' + properTime.getMonth() +
+          '.' + properTime.getFullYear() + ' ' +
+          ((properTime.getHours() < 10 ? '0' : '') + properTime.getHours()) +
+          ':' +
+          ((properTime.getMinutes() < 10 ? '0' : '') +
+              properTime.getMinutes()) + ':' +
+          ((properTime.getSeconds() < 10 ? '0' : '') + properTime.getSeconds());
+      console.log('properTime', properTime);
+      commentTime.innerHTML = `${formattedTime}`;
       commentLi.appendChild(commentAuthor);
       commentLi.appendChild(commentContent);
       commentLi.appendChild(commentTime);
       commentsUl.appendChild(commentLi);
 
-      commenters.forEach((commenter)=>{
-        if(commenter.commentid === comment.commentid){
+      commenters.forEach((commenter) => {
+        if (commenter.commentid === comment.commentid) {
           const deleteCommentButton = document.createElement('button');
           commentLi.appendChild(deleteCommentButton);
           deleteCommentButton.id = 'delete-comment-button';
-          deleteCommentButton.addEventListener('click', async (evt)=>{
+          deleteCommentButton.addEventListener('click', async (evt) => {
             evt.preventDefault();
             const fetchOptions = {
               method: 'DELETE',
@@ -94,13 +95,15 @@ const createImageCards = (images) => {
               },
             };
             try {
-              await fetch(url + '/comment/' + image.postid + '/' + comment.commentid, fetchOptions);
+              await fetch(
+                  url + '/comment/' + image.postid + '/' + comment.commentid,
+                  fetchOptions);
             } catch (error) {
               console.log(error.message);
             }
-          })
+          });
         }
-      })
+      });
     });
 
     const formsContainer = document.createElement('div');
@@ -137,7 +140,8 @@ const createImageCards = (images) => {
         body: JSON.stringify(data),
       };
       try {
-        const response = await fetch(url + '/comment/'+ image.postid, fetchOptions);
+        const response = await fetch(url + '/comment/' + image.postid,
+            fetchOptions);
         const comment = await response.json();
         location.reload();
       } catch (err) {
@@ -153,15 +157,15 @@ const createImageCards = (images) => {
     const likeIcon = document.createElement('ion-icon');
     likeIcon.name = 'heart';
 
-    if(liker.length<1){
+    if (liker.length < 1) {
       likeIcon.style.color = 'black';
-    }else {
+    } else {
       likeIcon.style.color = 'red';
     }
 
     console.log('feed.js', liker);
 
-    if(liker.length< 1){
+    if (liker.length < 1) {
       likeForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
         const data = serializeJson(likeForm);
@@ -174,7 +178,8 @@ const createImageCards = (images) => {
           body: JSON.stringify(data),
         };
         try {
-          const response = await fetch(url + '/like/' + image.postid, fetchOptions);
+          const response = await fetch(url + '/like/' + image.postid,
+              fetchOptions);
           const like = await response.json();
           likeIcon.style.display = 'block';
           likeIcon.style.color = 'red';
@@ -182,7 +187,7 @@ const createImageCards = (images) => {
           console.log(error.message);
         }
       });
-    } else{
+    } else {
       likeForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
         const data = serializeJson(likeForm);
@@ -195,7 +200,8 @@ const createImageCards = (images) => {
           body: JSON.stringify(data),
         };
         try {
-          const response = await fetch(url + '/like/' + image.postid, fetchOptions);
+          const response = await fetch(url + '/like/' + image.postid,
+              fetchOptions);
           const like = await response.json();
           console.log('Add like', like);
           likeIcon.style.color = 'black';
@@ -245,10 +251,10 @@ const getPosts = async () => {
     const response = await fetch(url + '/post/recent/' + limitstart, options);
     limitstart += 10;
     const images = await response.json();
-    if(images){
+    if (images) {
       loading = false;
     }
-    if(images.length < 10){
+    if (images.length < 10) {
       viimeinen = true;
     }
     createImageCards(images);
@@ -279,12 +285,11 @@ const getLiker = async (postId) => {
   }
 };
 
-
 //Miten ladataan vaan kerran?
 window.addEventListener('scroll', () => {
   let scrollHeight = document.documentElement.scrollHeight;
   if (window.scrollY + window.innerHeight >= scrollHeight - 100) {
-    if(!loading && !viimeinen) {
+    if (!loading && !viimeinen) {
       getPosts();
     }
   }
