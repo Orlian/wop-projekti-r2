@@ -105,6 +105,8 @@ const createImageCards = (images) => {
 
     const liker = await getLiker(image.postid);
 
+    console.log('feed.js', liker);
+
     if(liker.length< 1){
       likeForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
@@ -222,6 +224,7 @@ const getLiker = async (postId) => {
       },
     };
     const response = await fetch(url + '/like/author/' + postId, options);
+    console.log('feed.js', response);
     return await response.json();
   } catch (e) {
     console.log(e.message);
