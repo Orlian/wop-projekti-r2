@@ -90,8 +90,10 @@
                             <input type="file" name="user-image" accept="image/*" id="user-picture-input"
                                    onchange="previewImage(event)">
                         </div>
-                        <input  id="password-input" type="password" name="password" placeholder="Password" pattern="(?=.*[A-Z]).{8,}" onkeyup="checkMatch();">
-                        <input id="confirm-password-input" type="password" name="confirm-password" placeholder="Retype password" pattern="(?=.*[A-Z]).{8,}"
+                        <input id="password-input" type="password" name="password" placeholder="Password"
+                               pattern="(?=.*[A-Z]).{8,}" onkeyup="checkMatch();">
+                        <input id="confirm-password-input" type="password" name="confirm-password"
+                               placeholder="Retype password" pattern="(?=.*[A-Z]).{8,}"
                                onkeyup="checkMatch();">
                         <textarea name="description" placeholder="Description" style="resize: none" rows="8"
                                   cols="40" id="user-description"></textarea>
@@ -108,33 +110,34 @@
             <div class="image-user-wrapper">
                 <div class="image-user-content-modal">
                     <span class="close">&times;</span>
-                    <figure>
-                        <img src="" alt="" class="" id="user-post-image">
-                        <h3 id="image-owner"></h3>
-                        <figcaption></figcaption>
-                    </figure>
-                    <div class="feedback">
-                        <div class="likes">
-                            <ion-icon name="heart-outline"></ion-icon>
-                            <p>N Likes</p>
-                        </div>
-                        <div class="comment-section">
+                    <img src="" alt="" class="" id="user-post-image">
+                    <aside>
+                        <div class="comment-container">
+                            <h3 id="image-owner"></h3>
+                            <p id="image-caption"></p>
                             <h4>Comments</h4>
                             <ul class="comments">
                             </ul>
                         </div>
-                    </div>
-                    <button type="submit" class="like-btn">
-                        <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-                    <form class="add-comment">
+                        <div class="forms-container">
+                            <form class="add-comment">
                             <textarea name="comment" id="comment-text" style="resize: none"
                                       placeholder="Write a comment"></textarea>
-                        <button class="modal-button" id="comment-btn">Comment</button>
-                    </form>
-                    <div class="upload-btn-wrapper">
-                        <button class="modal-button" id="delete-image">Delete image</button>
-                    </div>
+                                <button class="modal-button" id="comment-btn">Comment</button>
+                            </form>
+                            <form class="like-form">
+                                <button type="submit" class="like-btn">
+                                    <ion-icon name="heart-outline"></ion-icon>
+                                </button>
+                                <div class="likes">
+                                    <p>N Likes</p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="upload-btn-wrapper">
+                            <button class="modal-button" id="delete-image">Delete image</button>
+                        </div>
+                    </aside>
                 </div>
             </div>
         </div>
