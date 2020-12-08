@@ -21,7 +21,7 @@ const addLike = async (params) => {
   try {
     const [rows] = await promisePool.execute(
         'INSERT INTO Likes (userid, postid) VALUES (?, ?)',
-        [params]);
+        params);
     return rows;
   } catch (err) {
     console.log('likeModel error', err.message);
@@ -35,7 +35,7 @@ const deleteLike = async (params) => {
   try {
     const [rows] = await promisePool.execute(
         'DELETE FROM Likes WHERE userid = ? AND postid = ?',
-        [params]);
+        params);
     return rows;
   } catch (err) {
     console.log('likeModel error', err.message);
