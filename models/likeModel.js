@@ -18,6 +18,7 @@ const getPostLikesCount = async (postId) => {
 
 /**Add like to a post**/
 const addLike = async (params) => {
+  console.log('add like params', params);
   try {
     const [rows] = await promisePool.execute(
         'INSERT INTO Likes (userid, postid) VALUES (?, ?)',
