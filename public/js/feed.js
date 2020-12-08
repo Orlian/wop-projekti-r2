@@ -51,8 +51,13 @@ const createImageCards = (images) => {
     commentsUl.classList.add('comments');
 
     const comments = image.comments;
+    const commenters = await getCommenter(image.postid);
+
+    console.log(comments);
+    console.log(commenters);
 
     comments.forEach((comment) => {
+
       const commentLi = document.createElement('li');
       const commentContent = document.createElement('p');
       commentContent.classList.add('comment-content');
@@ -61,11 +66,41 @@ const createImageCards = (images) => {
       commentAuthor.innerHTML = `${comment.username}`;
       const commentTime = document.createElement('h6');
       commentTime.classList.add('comment-time');
-      commentTime.innerHTML = `${comment.timestamp}`;
+      const properTime = new Date(comment.timestamp.toLocaleTimeString('fi-FI', {
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric',
+        hour: '2-digit',
+        minutes: '2-digits',
+        second: '2-digits',
+      }));
+      commentTime.innerHTML = `${properTime}`;
       commentLi.appendChild(commentAuthor);
       commentLi.appendChild(commentContent);
       commentLi.appendChild(commentTime);
       commentsUl.appendChild(commentLi);
+
+      commenters.forEach((commenter)=>{
+        if(commenter.commentid === comment.commentid){
+          const deleteCommentButton = document.createElement('button');
+          commentLi.appendChild(deleteCommentButton);
+          deleteCommentButton.id = 'delete-comment-button';
+          deleteCommentButton.addEventListener('click', async (evt)=>{
+            evt.preventDefault();
+            const fetchOptions = {
+              method: 'DELETE',
+              headers: {
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+              },
+            };
+            try {
+              await fetch(url + '/comment/' + image.postid + '/' + comment.commentid, fetchOptions);
+            } catch (error) {
+              console.log(error.message);
+            }
+          })
+        }
+      })
     });
 
     const formsContainer = document.createElement('div');
@@ -300,3 +335,17 @@ addForm.addEventListener('submit', async (evt) => {
   getPosts();
 });
 
+const getCommenter = async (postId) => {
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/comment/author/' + postId, options);
+    const commentStatus = await response.json();
+    return commentStatus;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
