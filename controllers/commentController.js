@@ -9,6 +9,19 @@ const post_comments_get = async (req, res) => {
   res.json(post);
 };
 
+const post_comment_add = async (req, res) => {
+  const params = [req.body.comment, req.params.postid, req.user.userid];
+  const post = await commentModel.addComment(params);
+  res.json(post);
+};
+
+const post_comment_delete = async (req, res) => {
+  const params = [req.params.postid, req.user.userid];
+  await commentModel.deleteComment(params);
+};
+
 module.exports = {
   post_comments_get,
+  post_comment_add,
+  post_comment_delete,
 }
