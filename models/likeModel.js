@@ -16,6 +16,18 @@ const getPostLikesCount = async (postId) => {
   }
 };
 
+//**Get user who liked picture**//
+const getLiker = async (params) => {
+  try {
+    const [rows] = await promisePool.execute(
+        'SELECT userid FROM Likes WHERE userid=? AND postid=?',
+        params);
+    return rows;
+  } catch (err) {
+    console.log('likeModel error', err.message);
+    return {error: 'DB Error'};
+  }
+};
 
 
 /**Add like to a post**/
@@ -50,4 +62,5 @@ module.exports = {
   getPostLikesCount,
   addLike,
   deleteLike,
+  getLiker,
 };
