@@ -344,6 +344,7 @@ input[type='checkbox']{
 #comment-text{
     border: 1px solid lightgray;
     resize: none;
+    margin: 1.0em 1.0em 1.0em 0
 }
 #comment-btn{
     height: 2em;
@@ -379,6 +380,11 @@ input[type='checkbox']{
     left: 15%;
     padding-top: 1em;
 }
+.aside-bottom{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
 /*Tablet menu*/
 
 @media only screen and (min-width: 769px){
@@ -413,6 +419,22 @@ input[type='checkbox']{
 /*Desktop*/
 @media only screen and (min-width: 960px){
 
+}
+@media only screen and (max-width: 900px) {
+
+    .comments {
+        height: 8em;
+    }
+
+    .image-user-content-modal {
+        flex-direction: column;
+    }
+
+    #user-post-image {
+        width: 100%;
+        max-width: 1050px;
+        align-self: center;
+    }
 }
 
 /*muuta kuin navbar*/
