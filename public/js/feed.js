@@ -214,7 +214,7 @@ const getPosts = async () => {
 
 getPosts();
 
-const getLiker = (postId) => {
+const getLiker = async (postId) => {
   try {
     const options = {
       headers: {
@@ -222,8 +222,7 @@ const getLiker = (postId) => {
       },
     };
     const response = await fetch(url + '/like/author/' + postId, options);
-    const liker = await response.json();
-    return liker;
+    return await response.json();
   } catch (e) {
     console.log(e.message);
   }
