@@ -13,7 +13,7 @@ let viimeinen = false;
 /**Create image cards**/
 const createImageCards = (images) => {
 
-  //imageFeed.innerHTML = '';
+  imageFeed.innerHTML = '';
   images.forEach(async (image) => {
 
     const card = document.createElement('div');
