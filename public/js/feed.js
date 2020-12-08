@@ -95,15 +95,15 @@ const createImageCards = (images) => {
     likeBtn.type = 'submit';
     likeBtn.classList.add('like-btn');
 
-    const likeIcon = document.createElement('ion-icon');
-    likeIcon.name = 'heart-outline';
-    likeIcon.style.display = 'block';
-
-    const likeIconFill = document.createElement('ion-icon');
-    likeIconFill.name = 'heart';
-    likeIconFill.style.display = 'none';
-
     const liker = await getLiker(image.postid);
+    const likeIcon = document.createElement('ion-icon');
+    likeIcon.name = 'heart';
+
+    if(liker.length<1){
+      likeIcon.style.color = 'black';
+    }else {
+      likeIcon.style.color = 'red';
+    }
 
     console.log('feed.js', liker);
 
@@ -123,9 +123,8 @@ const createImageCards = (images) => {
           const response = await fetch(url + '/like/' + image.postid, fetchOptions);
           const like = await response.json();
           console.log('Add like', like);
-          likeIcon.style.display = 'none';
-          likeIconFill.style.display = 'block';
-          likeIconFill.style.color = 'red';
+          likeIcon.style.display = 'block';
+          likeIcon.style.color = 'red';
         } catch (error) {
           console.log(error.message);
         }
@@ -146,8 +145,7 @@ const createImageCards = (images) => {
           const response = await fetch(url + '/like/' + image.postid, fetchOptions);
           const like = await response.json();
           console.log('Add like', like);
-          likeIcon.style.display = 'block';
-          likeIconFill.style.display = 'none';
+          likeIcon.style.color = 'black';
         } catch (error) {
           console.log(error.message);
         }
@@ -165,7 +163,6 @@ const createImageCards = (images) => {
     commentForm.appendChild(commentBtn);
 
     likeBtn.appendChild(likeIcon);
-    likeBtn.appendChild(likeIconFill);
     likesContainer.appendChild(likes);
     likeForm.appendChild(likeBtn);
     likeForm.appendChild(likesContainer);
