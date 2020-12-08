@@ -306,8 +306,11 @@ input[type='checkbox']{
     padding: 2em;
     border: 1px solid lightgray;
     border-radius: 1em;
-    display: flex;
     background-color: whitesmoke;
+}
+
+.image-user-content-modal-wrapper{
+    display: flex;
 }
 #user-post-image{
     flex: 1;
@@ -426,7 +429,7 @@ input[type='checkbox']{
         height: 8em;
     }
 
-    .image-user-content-modal {
+    .image-user-content-modal-wrapper {
         flex-direction: column;
     }
 
