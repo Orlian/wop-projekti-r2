@@ -433,7 +433,9 @@ input[type='checkbox']{
 
     #user-post-image {
         width: 100%;
-        max-width: 1050px;
+        height: 100%;
+        max-width: 800px;
+        max-height: 1200px;
         align-self: center;
     }
 }
