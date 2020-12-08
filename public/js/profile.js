@@ -3,7 +3,7 @@ const url = '/app2/';
 
 const userPosts = document.querySelector('.grid');
 const modalImage = document.getElementById('user-post-image');
-const figureFigcaption = document.querySelector('figcaption');
+const imageCaption = document.getElementById('image-caption');
 const deleteImgButton = document.getElementById('delete-image');
 const imageModal = document.getElementById('image-user-modal');
 const profileImg = document.querySelector('.profile-info img');
@@ -96,7 +96,7 @@ const createUserGrid = (images) => {
       imageModal.style.display = 'flex';
       modalImage.src = url + '/uploads/' + image.imgfile;
       modalImage.alt = image.caption.slice(0, 10);
-      figureFigcaption.innerHTML = image.caption;
+      imageCaption.innerHTML = image.caption;
       imageModalOwner.innerHTML = image.username;
 
       const comments = await getComments(image.postid);

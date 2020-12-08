@@ -111,7 +111,7 @@
                 <div class="image-user-content-modal">
                     <span class="close">&times;</span>
                     <img src="" alt="" class="" id="user-post-image">
-                    <aside>
+                    <aside id="user-post-image-aside">
                         <div class="comment-container">
                             <h3 id="image-owner"></h3>
                             <p id="image-caption"></p>
@@ -125,17 +125,17 @@
                                       placeholder="Write a comment"></textarea>
                                 <button class="modal-button" id="comment-btn">Comment</button>
                             </form>
-                            <form class="like-form">
-                                <button type="submit" class="like-btn">
-                                    <ion-icon name="heart-outline"></ion-icon>
-                                </button>
-                                <div class="likes">
-                                    <p>N Likes</p>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="upload-btn-wrapper">
-                            <button class="modal-button" id="delete-image">Delete image</button>
+                            <div class="aside-bottom">
+                                <form class="like-form">
+                                    <button type="submit" class="like-btn">
+                                        <ion-icon name="heart-outline"></ion-icon>
+                                    </button>
+                                    <div class="likes">
+                                        <p>N Likes</p>
+                                    </div>
+                                </form>
+                                <button class="modal-button" id="delete-image">Delete image</button>
+                            </div>
                         </div>
                     </aside>
                 </div>
