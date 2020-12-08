@@ -66,14 +66,8 @@ const createImageCards = (images) => {
       commentAuthor.innerHTML = `${comment.username}`;
       const commentTime = document.createElement('h6');
       commentTime.classList.add('comment-time');
-      const properTime = new Date(comment.timestamp.toLocaleTimeString('fi-FI', {
-        day: 'numeric',
-        month: 'numeric',
-        year: 'numeric',
-        hour: '2-digit',
-        minutes: '2-digits',
-        second: '2-digits',
-      }));
+      const properTime = new Date(comment.timestamp);
+      console.log('properTime', properTime);
       commentTime.innerHTML = `${properTime}`;
       commentLi.appendChild(commentAuthor);
       commentLi.appendChild(commentContent);
