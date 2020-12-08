@@ -53,11 +53,7 @@ const createImageCards = (images) => {
     const comments = image.comments;
     const commenters = await getCommenter(image.postid);
 
-    console.log(comments);
-    console.log(commenters);
-
     comments.forEach((comment) => {
-
       const commentLi = document.createElement('li');
       const commentContent = document.createElement('p');
       commentContent.classList.add('comment-content');
@@ -74,7 +70,6 @@ const createImageCards = (images) => {
           ((properTime.getMinutes() < 10 ? '0' : '') +
               properTime.getMinutes()) + ':' +
           ((properTime.getSeconds() < 10 ? '0' : '') + properTime.getSeconds());
-      console.log('properTime', properTime);
       commentTime.innerHTML = `${formattedTime}`;
       commentLi.appendChild(commentAuthor);
       commentLi.appendChild(commentContent);
