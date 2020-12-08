@@ -104,7 +104,7 @@ const createImageCards = (images) => {
       try {
         const response = await fetch(url + '/comment/'+ image.postid, fetchOptions);
         const comment = await response.json();
-        window.reload();
+        document.reload(true);
       } catch (err) {
         console.log(err.message);
       }
