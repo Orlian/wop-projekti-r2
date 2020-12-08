@@ -12,7 +12,7 @@ let viimeinen = false;
 
 /**Create image cards**/
 const createImageCards = (images) => {
-
+  limitstart=0;
   imageFeed.innerHTML = '';
   images.forEach(async (image) => {
 
