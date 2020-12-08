@@ -12,8 +12,7 @@ let viimeinen = false;
 
 /**Create image cards**/
 const createImageCards = (images) => {
-  limitstart=0;
-  imageFeed.innerHTML = '';
+  //imageFeed.innerHTML = '';
   images.forEach(async (image) => {
 
     const card = document.createElement('div');
@@ -105,7 +104,7 @@ const createImageCards = (images) => {
       try {
         const response = await fetch(url + '/comment/'+ image.postid, fetchOptions);
         const comment = await response.json();
-        await getPosts();
+        window.reload();
       } catch (err) {
         console.log(err.message);
       }
