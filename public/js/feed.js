@@ -144,10 +144,10 @@ const getPosts = async () => {
       },
     };
     const response = await fetch(url + '/post/recent/' + limitstart, options);
+    limitstart += 10;
     const images = await response.json();
     console.log('getPost images', images);
     createImageCards(images);
-    limitstart += 10;
   } catch (e) {
     console.log(e.message);
     const response = await fetch(url + '/auth/logout');
