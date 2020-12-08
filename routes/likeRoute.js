@@ -9,7 +9,7 @@ router.get('/:postid', likeController.post_likes_count_get);
 
 router.post('/:postid', likeController.post_like);
 
-router.delete('/:postid', likeController.user_delete);
+router.delete('/:postid', likeController.delete_like);
 
 module.exports = router;
 
