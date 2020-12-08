@@ -302,11 +302,11 @@ input[type='checkbox']{
 .image-user-content-modal{
     height: auto;
     width: 100%;
-    margin: 0 0 1em 0;
     padding: 2em;
     border: 1px solid lightgray;
     border-radius: 1em;
     background-color: whitesmoke;
+    margin: auto;
 }
 
 .image-user-content-modal-wrapper{
