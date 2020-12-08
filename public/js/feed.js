@@ -8,6 +8,7 @@ const addForm = document.getElementById('add-image');
 let limitstart = 0;
 const feedUser = JSON.parse(sessionStorage.getItem('user'));
 let loading = false;
+let viimeinen = false;
 
 
 /**Create image cards**/
@@ -151,6 +152,9 @@ const getPosts = async () => {
     if(images){
       loading = false;
     }
+    if(images.length < 10){
+      viimeinen = true;
+    }
     console.log('getPost images', images);
     createImageCards(images);
   } catch (e) {
@@ -170,10 +174,9 @@ getPosts();
 window.addEventListener('scroll', () => {
   let scrollHeight = document.documentElement.scrollHeight;
   if (window.scrollY + window.innerHeight >= scrollHeight - 100) {
-    if(!loading) {
+    if(!loading && !viimeinen) {
       getPosts();
     }
-
   }
 });
 
