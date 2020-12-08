@@ -8,7 +8,6 @@ const addForm = document.getElementById('add-image');
 let limitstart = 0;
 const feedUser = JSON.parse(sessionStorage.getItem('user'));
 
-
 /**Create image cards**/
 const createImageCards = (images) => {
 
@@ -97,12 +96,31 @@ const createImageCards = (images) => {
     const likeIcon = document.createElement('ion-icon');
     likeIcon.name = 'heart-outline';
 
-    likeBtn.addEventListener('click', (evt) => {
-      //evt.preventDefault();
+    const likeIconFill = document.createElement('ion-icon');
+    likeIconFill.name = 'heart';
+    likeIconFill.style.display = 'none';
+
+    const addLike = () => {
+
+    };
+
+    likeForm.addEventListener('submit', async (evt) => {
+      evt.preventDefault();
+      const data = serializeJson(likeForm);
+      const fetchOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+        },
+        body: JSON.stringify(data),
+      };
       try {
-
-      } catch {
-
+        const response = await fetch(url + '/like/', fetchOptions);
+        const like = await response.json();
+        console.log('Add like', like);
+      } catch (error) {
+        console.log(error.message);
       }
     });
 
@@ -117,6 +135,7 @@ const createImageCards = (images) => {
     commentForm.appendChild(commentBtn);
 
     likeBtn.appendChild(likeIcon);
+    likeBtn.appendChild(likeIconFill);
     likesContainer.appendChild(likes);
     likeForm.appendChild(likeBtn);
     likeForm.appendChild(likesContainer);
@@ -126,7 +145,6 @@ const createImageCards = (images) => {
 
     aside.appendChild(commentsContainer);
     aside.appendChild(formsContainer);
-
 
     card.appendChild(img);
     card.appendChild(aside);
