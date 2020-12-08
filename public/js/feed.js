@@ -97,15 +97,13 @@ const createImageCards = (images) => {
 
     const liker = await getLiker(image.postid);
     const likeIcon = document.createElement('ion-icon');
-    likeIcon.name = 'heart-outline';
-    const likeIconFill = document.createElement('ion-icon');
-    likeIconFill.name = 'heart';
+    likeIcon.name = 'heart';
 
     if(liker.length<1){
       likeIcon.style.display = 'none';
     }else {
-      likeIconFill.style.display = 'block';
-      likeIconFill.style.color = 'red';
+      likeIcon.style.display = 'block';
+      likeIcon.style.color = 'red';
     }
 
     console.log('feed.js', liker);
@@ -126,9 +124,8 @@ const createImageCards = (images) => {
           const response = await fetch(url + '/like/' + image.postid, fetchOptions);
           const like = await response.json();
           console.log('Add like', like);
-          likeIcon.style.display = 'none';
-          likeIconFill.style.display = 'block';
-          likeIconFill.style.color = 'red';
+          likeIcon.style.display = 'block';
+          likeIcon.style.color = 'red';
         } catch (error) {
           console.log(error.message);
         }
@@ -149,8 +146,7 @@ const createImageCards = (images) => {
           const response = await fetch(url + '/like/' + image.postid, fetchOptions);
           const like = await response.json();
           console.log('Add like', like);
-          likeIcon.style.display = 'block';
-          likeIconFill.style.display = 'none';
+          likeIcon.style.color = 'grey';
         } catch (error) {
           console.log(error.message);
         }
