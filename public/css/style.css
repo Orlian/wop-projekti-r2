@@ -16,6 +16,7 @@ body {
     height: 100vh;
     display: flex;
     background-image: url("../images/front-page/bg.jpg");
+    overflow-x: hidden;
 }
 main{
     margin: auto;
