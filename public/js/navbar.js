@@ -190,26 +190,28 @@ editUserForm.addEventListener('submit', async(evt) =>{
 
 addForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  if(addImageInput.value !== ''){
-  const fd = new FormData(addForm);
-  const fetchOptions = {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-    },
-    body: fd,
-  };
-  try {
-    const response = await fetch(url + '/post', fetchOptions);
-    const json = await response.json();
-    console.log('add response', json);
-  } catch (e) {
-    console.log(e.message);
+  if (addImageInput.value !== '') {
+    const fd = new FormData(addForm);
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+      body: fd,
+    };
+    try {
+      const response = await fetch(url + '/post', fetchOptions);
+      const json = await response.json();
+      console.log('add response', json);
+    }
+    catch (e) {
+      console.log(e.message);
+    }
   }
-  location.reload();
-  }else{
+  else {
     addImageButton.disabled = true;
   }
+  location.reload();
 });
 
 
