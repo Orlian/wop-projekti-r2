@@ -22,6 +22,8 @@ const logo = document.getElementById('logo-img');
 const navbarUser = JSON.parse(sessionStorage.getItem('user'));
 const editUserForm = document.getElementById('edit-user-form');
 const addForm = document.getElementById('add-image');
+const passwordInput = document.getElementById('password-input');
+const passwordConfirmInput = document.getElementById('confirm-password-input');
 
 logo.onclick = () => {
   location.href = 'feed.html';
@@ -30,6 +32,19 @@ logo.onclick = () => {
 plusButton.addEventListener('click', (evt)=>{
   evt.preventDefault();
 });
+
+const checkMatch = () => {
+  if (passwordInput.value !== passwordConfirmInput.value) {
+    saveButton.disabled = true;
+  }
+  else if (passwordInput.value === '') {
+    saveButton.disabled = true;
+  }
+  else {
+    saveButton.disabled = false;
+  }
+};
+
 
 function toggleMenu() {
   if (menu.classList.contains('active')) {

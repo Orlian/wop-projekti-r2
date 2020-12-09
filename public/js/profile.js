@@ -17,24 +17,8 @@ const editUserform = document.querySelector('.edit-user-form');
 const saveButton = document.getElementById('save-button');
 const userModalPicture = document.getElementById('user-picture');
 const userModalDescription = document.getElementById('user-description');
-const passwordInput = document.getElementById('password-input');
-const passwordConfirmInput = document.getElementById('confirm-password-input');
 
-const checkMatch = () => {
-  if (passwordInput.value !== passwordConfirmInput.value) {
-    //passwdMessage.style.color = 'red';
-    //passwdMessage.innerHTML = 'not matching';
-    saveButton.disabled = true;
-  } else if (passwordInput.value === '') {
-    //passwdMessage.style.color = 'red';
-    //passwdMessage.innerHTML = 'password can\'t be empty';
-    saveButton.disabled = true;
-  } else {
-    //passwdMessage.style.color = 'green';
-    //passwdMessage.innerHTML = 'matching';
-    saveButton.disabled = false;
-  }
-};
+
 
 
 const getLikes = async (postId) => {
@@ -47,11 +31,11 @@ const getLikes = async (postId) => {
     const response = await fetch(url + '/like/' + postId, options);
     const [likes] = await response.json();
     return likes.likecount;
-  } catch (e) {
+  }
+  catch (e) {
     console.log(e.message);
   }
 };
-
 
 const getComments = async (postid) => {
   try {
@@ -68,7 +52,7 @@ const getComments = async (postid) => {
   }
 };
 
-const getUserProfile = () =>{
+const getUserProfile = () => {
   profileImg.src = url + '/thumbnails/' + user.userimg;
   profileName.innerHTML = user.username;
   profileDesc.innerHTML = user.description;
@@ -112,13 +96,48 @@ const createUserGrid = (images) => {
         commentAuthor.innerHTML = `${comment.username}`;
         const commentTime = document.createElement('h6');
         commentTime.classList.add('comment-time');
-        commentTime.innerHTML = `${comment.timestamp}`;
+        const properTime = new Date(comment.timestamp); //Tästä mallia sortaukseen
+        const formattedTime = properTime.getDate() + '.' +
+            properTime.getMonth() +
+            '.' + properTime.getFullYear() + ' ' +
+            ((properTime.getHours() < 10 ? '0' : '') + properTime.getHours()) +
+            ':' +
+            ((properTime.getMinutes() < 10 ? '0' : '') +
+                properTime.getMinutes()) + ':' +
+            ((properTime.getSeconds() < 10 ? '0' : '') +
+                properTime.getSeconds());
+        commentTime.innerHTML = `${formattedTime}`;
         commentLi.appendChild(commentAuthor);
         commentLi.appendChild(commentContent);
         commentLi.appendChild(commentTime);
         commentsUl.appendChild(commentLi);
-      });
 
+        commenters.forEach((commenter) => {
+              if (commenter.commentid === comment.commentid) {
+                const deleteCommentButton = document.createElement('button');
+                commentLi.appendChild(deleteCommentButton);
+                deleteCommentButton.id = 'delete-comment-button';
+                deleteCommentButton.addEventListener('click', async (evt) => {
+                  evt.preventDefault();
+                  const fetchOptions = {
+                    method: 'DELETE',
+                    headers: {
+                      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+                    },
+                  };
+                  try {
+                    await fetch(
+                        url + '/comment/' + image.postid + '/' + comment.commentid,
+                        fetchOptions);
+                  }
+                  catch (error) {
+                    console.log(error.message);
+                  }
+                });
+              }
+            },
+        );
+      });
       imageModalFeedbackLikes.innerHTML = await getLikes(image.postid);
 
       deleteImgButton.addEventListener('click', async (evt) => {
@@ -130,7 +149,7 @@ const createUserGrid = (images) => {
           },
         };
         try {
-          console.log('deleteimage button', image.postid)
+          console.log('deleteimage button', image.postid);
           const response = await fetch(url + '/post/' + image.postid,
               fetchOptions);
           //const json = await response.json();
@@ -142,18 +161,11 @@ const createUserGrid = (images) => {
           console.log(e.message);
         }
       });
-
-
     });
-
-
-
-
-
-
-    userPosts.appendChild(gridItem);
   });
+  userPosts.appendChild(gridItem);
 };
+
 
 const getUserPosts = async () => {
   try {
@@ -162,14 +174,16 @@ const getUserPosts = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/post/user/' + user.userid, fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
+    const response = await fetch(url + '/post/user/' + user.userid,
+        fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
     console.log('getUserPost response', response);
     const posts = await response.json();
     console.log('getUserPost json', posts);
     getUserProfile();
     getUserProfileModal();
     createUserGrid(posts);
-  } catch (err) {
+  }
+  catch (err) {
     console.error(err.message);
     const response = await fetch(url + '/auth/logout');
     const json = await response.json();
@@ -181,3 +195,28 @@ const getUserPosts = async () => {
 };
 
 getUserPosts(); //TODO Selvitä onkelma
+
+
+const topBtn = document.querySelector('.top-btn');
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {
+    if (!topBtn.classList.contains('btn-entrance')) {
+      topBtn.classList.remove('btn-exit');
+      topBtn.classList.add('btn-entrance');
+      topBtn.style.display = 'block';
+    }
+  } else {
+    if (topBtn.classList.contains('btn-entrance')) {
+      topBtn.classList.remove('btn-entrance');
+      topBtn.classList.add('btn-exit');
+      setTimeout(() => {
+        topBtn.style.display = 'none';
+      }, 250);
+    }
+  }
+});
+
+topBtn.addEventListener('click', () => {
+  window.scrollTo(0, 0);
+});
