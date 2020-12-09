@@ -13,12 +13,11 @@ let viimeinen = false;
 /**Create image cards**/
 const createImageCards = (images) => {
   //imageFeed.innerHTML = '';
-  let cardNumber = 1;
   images.forEach(async (image) => {
 
     const card = document.createElement('div');
     card.classList.add('card');
-    card.id = `card-${cardNumber}`
+    card.id = `card-${images[image]}`
 
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('img-container');
@@ -232,7 +231,6 @@ const createImageCards = (images) => {
     imgContainer.appendChild(img);
     card.appendChild(imgContainer);
     card.appendChild(aside);
-    cardNumber += 1;
     imageFeed.appendChild(card);
   });
 
