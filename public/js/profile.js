@@ -99,7 +99,7 @@ const createUserGrid = (images) => {
       modalImage.alt = image.caption.slice(0, 10);
       imageCaption.innerHTML = image.caption;
       imageModalOwner.innerHTML = image.username;
-
+      commentsUl.innerHTML = '';
       const comments = await getComments(image.postid);
       console.log(comments);
 

@@ -91,7 +91,6 @@ addImageCancel.onclick = () => {
 spans.forEach((span) => {
   span.addEventListener('click', () => {
     postPicture.src = 'http://placekitten.com/200/200';
-    addImageCaption.value = '';
     span.parentNode.parentNode.parentNode.parentNode.style.display = 'none';
   });
 });
@@ -138,7 +137,6 @@ window.onclick = function(event) {
     if(event.target === modal){
       if(modal.id === 'post-modal'){
         postPicture.src = 'http://placekitten.com/200/200';
-        addImageCaption.value = '';
         modal.style.display = 'none';
       }
       modal.style.display = 'none';
@@ -188,6 +186,7 @@ editUserForm.addEventListener('submit', async(evt) =>{
   catch (err) {
     console.log(err.message);
   }
+  location.reload();
 });
 
 addForm.addEventListener('submit', async (evt) => {
