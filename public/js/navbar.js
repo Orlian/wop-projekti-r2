@@ -15,6 +15,7 @@ const addImageButton = document.getElementById('post-button');
 const addImageCancel = document.getElementById('cancel-button');
 const addImageCaption = document.getElementById('add-image-caption');
 const plusButton = document.getElementById('plus-button')
+const plusButtonEditModal = document.getElementById('plus-button-user');
 const editUserButton = document.getElementById('save-button');
 const editUserCancel = document.getElementById('user-cancel-button');
 const deleteUserButton = document.getElementById('delete-button');
@@ -32,6 +33,10 @@ logo.onclick = () => {
 };
 
 plusButton.addEventListener('click', (evt)=>{
+  evt.preventDefault();
+});
+
+plusButtonEditModal.addEventListener('click', (evt)=>{
   evt.preventDefault();
 });
 
@@ -157,10 +162,6 @@ window.onclick = function(event) {
         postPicture.src = 'http://placekitten.com/200/200';
         modal.style.display = 'none';
       }
-      if(modal.id === 'image-user-modal'){
-        const addCommentForm = document.querySelector('.add-comment');
-        addCommentForm.reset();
-      }
       modal.style.display = 'none';
     }
   })
@@ -200,7 +201,7 @@ const getUserProfileNavbar = async () => {
         fetchOptions);
     const userData = await response.json();
     console.log(userData, 'jotain');
-    userPictureNavbar.src = url + '/thumbnails/' + userData[0].userimg;
+    userPictureNavbar.src = navbarUrl + '/thumbnails/' + userData[0].userimg;
     userDescription.value = userData[0].description;
   } catch (err) {
     console.log(err.message);
