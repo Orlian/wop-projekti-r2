@@ -133,7 +133,7 @@ window.onclick = function(event) {
     if(event.target === modal){
       if(modal.id === 'post-modal'){
         postPicture.src = 'http://placekitten.com/200/200';
-        imageCaption.value = '';
+        addImageCaption.value = '';
         modal.style.display = 'none';
       }
       modal.style.display = 'none';
