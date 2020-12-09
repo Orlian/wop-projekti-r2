@@ -207,11 +207,11 @@ addForm.addEventListener('submit', async (evt) => {
     catch (e) {
       console.log(e.message);
     }
+    location.reload();
   }
   else {
     addImageButton.disabled = true;
   }
-  location.reload();
 });
 
 
