@@ -186,6 +186,7 @@ editUserForm.addEventListener('submit', async(evt) =>{
   catch (err) {
     console.log(err.message);
   }
+  location.reload();
 });
 
 addForm.addEventListener('submit', async (evt) => {
