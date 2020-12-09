@@ -24,7 +24,7 @@ const editUserForm = document.getElementById('edit-user-form');
 const addForm = document.getElementById('add-image');
 const passwordInput = document.getElementById('password-input');
 const passwordConfirmInput = document.getElementById('confirm-password-input');
-const userPicture = document.getElementById('user-picture');
+const userPictureNavbar = document.getElementById('user-picture');
 const userDescription = document.getElementById('user-description');
 
 logo.onclick = () => {
@@ -113,7 +113,7 @@ spans.forEach((span) => {
 });
 
 editLink.onclick = function() {
-  getUserProfile();
+  getUserProfileNavbar();
   editModal.style.display = 'flex';
 };
 editUserButton.onclick = () =>{
@@ -184,7 +184,7 @@ logoutLink.addEventListener('click', async (evt) => {
   }
 });
 
-const getUserProfile = async () => {
+const getUserProfileNavbar = async () => {
 
   const fetchOptions = {
     headers: {
@@ -196,7 +196,7 @@ const getUserProfile = async () => {
         fetchOptions);
     const userData = await response.json();
     console.log(userData, 'jotain');
-    userPicture.src = url + '/thumbnails/' + userData[0].userimg;
+    userPictureNavbar.src = url + '/thumbnails/' + userData[0].userimg;
     userDescription.innerHTML = userData[0].description;
   } catch (err) {
     console.log(err.message);
