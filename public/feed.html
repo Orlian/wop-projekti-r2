@@ -59,14 +59,14 @@
                         <span class="close">&times;</span>
                         <img src="http://placekitten.com/200/200" alt="art-img" id="art-img">
                         <div class="upload-btn-wrapper">
-                            <button class="btn">
+                            <button id="plus-button" class="btn">
                                 <ion-icon name="add-circle-sharp" id="plus-icon"></ion-icon>
                             </button>
                             <input type="file" name="user-image" accept="image/*" onchange="previewImage(event)" id="art-img-file">
                         </div>
                         <textarea id="add-image-caption" name="caption" style="resize: none" rows="8" cols="40"
                                   placeholder="Add caption (optional)"></textarea>
-                        <button type="submit" class="modal-button" id="post-button">Publish</button>
+                        <button type="submit" class="modal-button" id="post-button" disabled>Publish</button>
                         <button type="reset" class="modal-button" id="cancel-button">Cancel</button>
                     </form>
                 </div>

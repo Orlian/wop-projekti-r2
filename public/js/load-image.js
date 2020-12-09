@@ -2,7 +2,6 @@
 const userPicture = document.getElementById('user-picture');
 const postedImage = document.getElementById('art-img');
 const uploadButton = document.querySelector('input[type="file"]');
-const addImageInput = document.getElementById('art-img-file');
 const addImageModalButton = document.getElementById('post-button');
 
 uploadButton.addEventListener("mouseover", () =>{
@@ -18,6 +17,9 @@ uploadButton.addEventListener("mouseout", () =>{
 
 function previewImage(event) {
 
+
+  addImageModalButton.disabled = false;
+
   const reader = new FileReader();
 
   reader.onload = function() {
@@ -29,11 +31,5 @@ function previewImage(event) {
   }
 
   reader.readAsDataURL(event.target.files[0]);
-
-  if(addImageInput.value !== ''){
-    addImageModalButton.disabled = false;
-  }else{
-    addImageModalButton.disabled = true;
-  }
 
 }
