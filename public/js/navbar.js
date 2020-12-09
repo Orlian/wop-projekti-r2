@@ -187,7 +187,13 @@ editUserForm.addEventListener('submit', async(evt) =>{
   }
 });
 
-addImageButton.disabled = addImageInput.value === '';
+addForm.addEventListener('change'), () => {
+  if(addImageInput.value !== ''){
+  addImageButton.disabled = false;
+}else{
+  addImageButton.disabled = true;
+}
+};
 
 addForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
