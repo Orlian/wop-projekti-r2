@@ -121,26 +121,30 @@ const createUserGrid = (images) => {
 
       imageModalFeedbackLikes.innerHTML = await getLikes(image.postid);
 
+      deleteImgButton.addEventListener('click', async (evt) => {
+        evt.preventDefault();
+        const fetchOptions = {
+          method: 'DELETE',
+          headers: {
+            'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+          },
+        };
+        try {
+          const response = await fetch(url + '/post/' + image.postid,
+              fetchOptions);
+          const json = await response.json();
+          console.log('delete response', json);
+          await getUserPosts();
+        }
+        catch (e) {
+          console.log(e.message);
+        }
+      });
+
+
     });
 
-    deleteImgButton.addEventListener('click', async () => {
-      const fetchOptions = {
-        method: 'DELETE',
-        headers: {
-          'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-        },
-      };
-      try {
-        const response = await fetch(url + '/post/' + image.postid,
-            fetchOptions);
-        const json = await response.json();
-        console.log('delete response', json);
-        await getUserPosts();
-      }
-      catch (e) {
-        console.log(e.message);
-      }
-    });
+
 
 
 
