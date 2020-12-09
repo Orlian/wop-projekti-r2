@@ -20,9 +20,7 @@ const post_like = async (req, res) => {
 
 const post_liker = async (req, res) => {
   const params = [req.user.userid, req.params.postid];
-  console.log('postliker', params);
   const like = await likeModel.getLiker(params);
-  console.log('postliker', like);
   res.json(like);
 };
 

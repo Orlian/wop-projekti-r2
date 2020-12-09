@@ -24,11 +24,12 @@ registerForm.addEventListener('submit', async (evt) => {
   };
   const response = await fetch(url + '/auth/register', fetchOptions);
   const json = await response.json();
-  console.log('user register response', json);
-  //sessionStorage.setItem('token', json.token);
-
-  //TODO Lisäile loppu käyttäjän rekisteröintikäyttäytyminen
-  location.href = 'front-page.html';
+  console.log('register response', response, '\n register json', json);
+  if(json.status === 200 || response.status === 200){
+    location.href = 'front-page.html';
+  } else {
+    alert('Something went wrong... Make sure you have a profile picture');
+  }
 });
 
 usernameInput.addEventListener('blur', async (evt) => {
@@ -57,7 +58,7 @@ usernameInput.addEventListener('blur', async (evt) => {
 cancelButton.addEventListener('click', (evt) => {
   evt.preventDefault();
   location.href = 'front-page.html';
-})
+});
 
 const checkMatch = () => {
   if (passwd.value !== confirmPasswd.value) {

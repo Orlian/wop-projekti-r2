@@ -187,29 +187,36 @@ editUserForm.addEventListener('submit', async(evt) =>{
   }
 });
 
+const postImageSrc = postPicture.src;
+
+postImageSrc.addEventListener('change', () => {
+  if(addImageInput.value !== ''){
+  addImageButton.disabled = false;
+}else{
+  addImageButton.disabled = true;
+}
+});
 
 addForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  if(addImageInput.value !== ''){
-  const fd = new FormData(addForm);
-  const fetchOptions = {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-    },
-    body: fd,
-  };
-  try {
-    const response = await fetch(url + '/post', fetchOptions);
-    const json = await response.json();
-    console.log('add response', json);
-  } catch (e) {
-    console.log(e.message);
-  }
-  location.reload();
-  }else{
-    addImageButton.disabled = true;
-  }
+
+    const fd = new FormData(addForm);
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+      body: fd,
+    };
+    try {
+      const response = await fetch(url + '/post', fetchOptions);
+      const json = await response.json();
+      console.log('add response', json);
+    }
+    catch (e) {
+      console.log(e.message);
+    }
+    location.reload();
 });
 
 
