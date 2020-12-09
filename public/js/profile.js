@@ -96,6 +96,7 @@ const getUserProfile = async () => {
     const response = await fetch(url + '/user/' + user.email,
         fetchOptions);
     const userData = await response.json();
+    console.log(userData, 'jotain');
     profileImg.src = url + '/thumbnails/' + userData.userimg;
     profileName.innerHTML = userData.username;
     profileDesc.innerHTML = userData.description;
