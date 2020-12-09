@@ -168,6 +168,7 @@ const createUserGrid = (images) => {
                   catch (error) {
                     console.log(error.message);
                   }
+                  await getUserPosts();
                 });
               }
             },
@@ -189,7 +190,7 @@ const createUserGrid = (images) => {
           const response = await fetch(url + '/comment/' + image.postid,
               fetchOptions);
           const comment = await response.json();
-          location.reload();
+          await getUserPosts();
         } catch (err) {
           console.log(err.message);
         }
@@ -227,7 +228,7 @@ const createUserGrid = (images) => {
           catch (error) {
             console.log(error.message);
           }
-          location.reload();
+          await getUserPosts();
         });
       } else {
         likeForm.addEventListener('submit', async (evt) => {
@@ -251,7 +252,7 @@ const createUserGrid = (images) => {
           } catch (error) {
             console.log(error.message);
           }
-          location.reload();
+          await getUserPosts();
         });
       }
 
