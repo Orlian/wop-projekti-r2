@@ -24,7 +24,7 @@ registerForm.addEventListener('submit', async (evt) => {
   };
   const response = await fetch(url + '/auth/register', fetchOptions);
   const json = await response.json();
-  if(json.status(200)){
+  if(json.errors === ''){
     location.href = 'front-page.html';
   } else {
     alert('Something went wrong... Make sure you have a profile picture');
