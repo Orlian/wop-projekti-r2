@@ -200,6 +200,16 @@ form::after {
     transform: translate(-25%, -25%);
     opacity: 0;
 }
+
+#art-img-file {
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    left: 1.8em;
+    top: 1.8em;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
 .modal-button{
     margin: 0.5em;
     padding: 0.4em 1em;
