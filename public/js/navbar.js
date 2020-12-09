@@ -24,6 +24,8 @@ const editUserForm = document.getElementById('edit-user-form');
 const addForm = document.getElementById('add-image');
 const passwordInput = document.getElementById('password-input');
 const passwordConfirmInput = document.getElementById('confirm-password-input');
+const userPicture = document.getElementById('user-picture');
+const userDescription = document.getElementById('user-description');
 
 logo.onclick = () => {
   location.href = 'feed.html';
@@ -111,6 +113,7 @@ spans.forEach((span) => {
 });
 
 editLink.onclick = function() {
+  getUserProfile();
   editModal.style.display = 'flex';
 };
 editUserButton.onclick = () =>{
@@ -180,6 +183,26 @@ logoutLink.addEventListener('click', async (evt) => {
     console.log(err.message);
   }
 });
+
+const getUserProfile = async () => {
+
+  const fetchOptions = {
+    headers: {
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+    },
+  };
+  try {
+    const response = await fetch(navbarUrl + '/user/' + navbarUser.email,
+        fetchOptions);
+    const userData = await response.json();
+    console.log(userData, 'jotain');
+    userPicture.src = url + '/thumbnails/' + userData[0].userimg;
+    userDescription.innerHTML = userData[0].description;
+  } catch (err) {
+    console.log(err.message);
+  }
+
+};
 
 
 editUserForm.addEventListener('submit', async(evt) =>{
