@@ -13,10 +13,12 @@ let viimeinen = false;
 /**Create image cards**/
 const createImageCards = (images) => {
   //imageFeed.innerHTML = '';
+  let cardNumber = 1;
   images.forEach(async (image) => {
 
     const card = document.createElement('div');
     card.classList.add('card');
+    card.id = `card-${cardNumber}`
 
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('img-container');
@@ -230,9 +232,10 @@ const createImageCards = (images) => {
     imgContainer.appendChild(img);
     card.appendChild(imgContainer);
     card.appendChild(aside);
-
+    cardNumber += 1;
     imageFeed.appendChild(card);
   });
+
 };
 
 /**Fetching all posts data from database**/
@@ -245,7 +248,6 @@ const getPosts = async () => {
       },
     };
     const response = await fetch(url + '/post/recent/' + limitstart, options);
-    limitstart += 10;
     const images = await response.json();
     if (images) {
       loading = false;
@@ -253,6 +255,7 @@ const getPosts = async () => {
     if (images.length < 10) {
       viimeinen = true;
     }
+    limitstart += 10;
     createImageCards(images);
   } catch (e) {
     console.log(e.message);
