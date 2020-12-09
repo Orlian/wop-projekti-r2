@@ -2,7 +2,7 @@
 const userPicture = document.getElementById('user-picture');
 const postedImage = document.getElementById('art-img');
 const uploadButton = document.querySelector('input[type="file"]');
-const addImageButton = document.getElementById('post-button');
+const addImageModalButton = document.getElementById('post-button');
 
 uploadButton.addEventListener("mouseover", () =>{
   const icon = document.querySelector('ion-icon[name=add-circle-sharp]');
@@ -24,9 +24,9 @@ function previewImage(event) {
     if (reader.readyState === 2) {
       userPicture.src = reader.result;
       postedImage.src = reader.result;
-      addImageButton.disabled = false;
+      addImageModalButton.disabled = true;
     }else {
-      addImageButton.disabled = true;
+      addImageModalButton.disabled = false;
     }
   }
 
