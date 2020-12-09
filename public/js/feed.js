@@ -333,7 +333,7 @@ addForm.addEventListener('submit', async (evt) => {
   } catch (e) {
     console.log(e.message);
   }
-  getPosts();
+  location.reload();
 });
 
 const getCommenter = async (postId) => {
