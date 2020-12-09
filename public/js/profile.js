@@ -164,11 +164,11 @@ const createUserGrid = (images) => {
                     await fetch(
                         url + '/comment/' + image.postid + '/' + comment.commentid,
                         fetchOptions);
-                    location.reload();
                   }
                   catch (error) {
                     console.log(error.message);
                   }
+                  location.reload();
                 });
               }
             },
