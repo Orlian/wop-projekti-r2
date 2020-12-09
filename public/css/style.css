@@ -4,6 +4,13 @@
     padding: 0;
 }
 
+body {
+    overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+
+}
+
 .container{
     width: 100vw;
     height: 100vh;
@@ -91,6 +98,8 @@ button{
     border-radius: 2em;
     box-shadow: 3px 5px 5px lightgray;
     height: 2em;
+    width: 8em;
+    color: whitesmoke;
 }
 
 #cancel-button {
@@ -98,6 +107,7 @@ button{
     color: #1e1e1e;
     border: 0.1em solid slateblue;
 }
+
 button:hover{
     background:slateblue;
 }
