@@ -71,9 +71,9 @@ const updatePost = async (params) => {
   }
 };
 
-const deletePost = async (postId) => {
+const deletePost = async (postid) => {
   try {
-    await promisePool.execute('DELETE FROM Post WHERE postid = ?', [postId]);
+    await promisePool.execute('DELETE FROM Post WHERE postid = ?', [postid]);
   } catch (err) {
     console.log('postModel error', err.message);
   }
