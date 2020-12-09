@@ -59,8 +59,8 @@ const getUserLogin = async (params) => {
 };
 
 const updateUser = async (params) => {
-  const newParams = [];
   try {
+    const newParams = [];
     let lause = 'UPDATE User SET ';
     if(params[0] !== undefined){
       lause += 'password=?, ';
@@ -72,7 +72,7 @@ const updateUser = async (params) => {
     }
     newParams.push(params[2]);
     newParams.push(params[3]);
-    console.log('updateUser lause', lause, '\nupdateUser params', params);
+    console.log('updateUser lause', lause, '\nupdateUser newparams', newParams);
     const [rows] = promisePool.execute(
         lause +'description=? WHERE userid = ?', newParams);
     return rows;
