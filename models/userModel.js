@@ -77,7 +77,7 @@ const updateUser = async (params) => {
         lause +'description=? WHERE userid = ?', newParams);
     return rows;
   } catch (err) {
-    console.log('userModel error', err.message);
+    console.log('userModel error', err);
   }
 };
 
