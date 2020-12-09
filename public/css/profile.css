@@ -482,12 +482,15 @@ input[type='checkbox']{
 .profile-info{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    color: #1e1e1e;
 }
-img{
+.profile-info > img{
     max-width: 100%;
     width: 125px;
     height: 125px;
     border-radius: 50%;
+    margin: 2em 0 0.75em 0;
 }
 section h2, .desc{
     text-align: center;
@@ -504,7 +507,7 @@ section h2, .desc{
     margin: 4em;
     max-width: 100%;
     height: auto;
-    border: 0.1em solid black;
+    width: 200px;
     border-radius: 0;
 }
 
