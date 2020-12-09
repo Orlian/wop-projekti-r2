@@ -8,11 +8,12 @@ const searchInput = document.querySelector('#search-input');
 const searchResultsFor = document.querySelector('#search-results-for');
 const searchModal = document.querySelector('#image-search-modal');
 const searchModalFigImg = document.querySelector('#search-post-image');
-const searchModalFigCap = document.querySelector('#image-figcaption');
-const searchModalFigUser = document.querySelector('#image-owner');
+const searchModalCaption = document.querySelector('#image-caption');
+const searchModalUser = document.querySelector('#image-owner');
 const searchModalFeedbackComments = document.querySelector('.comments');
 const searchModalFeedbackLikes = document.querySelector('.likes p');
 const params = new URLSearchParams(window.location.search);
+const topBtn = document.querySelector('.top-btn');
 
 
 // Search result kentän täyttäminen
@@ -38,8 +39,8 @@ const fillSearchList = (hits) => {
       searchModal.style.display = 'flex';
       searchModalFigImg.src = searchUrl + '/uploads/' + hit.imgfile;
       searchModalFigImg.alt = hit.caption.slice(0,20);
-      searchModalFigCap.innerHTML = hit.caption;
-      searchModalFigUser.innerHTML = hit.username;
+      searchModalCaption.innerHTML = hit.caption;
+      searchModalUser.innerHTML = hit.username;
       searchModalFeedbackComments.innerHTML = '';
       const comments = await getSearchComments(hit.postid);
       comments.forEach((comment) => {
@@ -126,3 +127,25 @@ const getSearchLikes = async (postId) => {
 };
 
 //Potki pois ja logout jos väärä token tai ei tokenia
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {
+    if (!topBtn.classList.contains('btn-entrance')) {
+      topBtn.classList.remove('btn-exit');
+      topBtn.classList.add('btn-entrance');
+      topBtn.style.display = 'block';
+    }
+  } else {
+    if (topBtn.classList.contains('btn-entrance')) {
+      topBtn.classList.remove('btn-entrance');
+      topBtn.classList.add('btn-exit');
+      setTimeout(() => {
+        topBtn.style.display = 'none';
+      }, 250);
+    }
+  }
+});
+
+topBtn.addEventListener('click', () => {
+  window.scrollTo(0, 0);
+});
