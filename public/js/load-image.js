@@ -24,9 +24,9 @@ function previewImage(event) {
     if (reader.readyState === 2) {
       userPicture.src = reader.result;
       postedImage.src = reader.result;
-      addImageModalButton.disabled = false;
-    }else {
       addImageModalButton.disabled = true;
+    }else {
+      addImageModalButton.disabled = false;
     }
   }
 
