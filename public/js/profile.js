@@ -180,8 +180,8 @@ const createUserGrid = (images) => {
         }
       });
     });
+    userPosts.appendChild(gridItem);
   });
-  userPosts.appendChild(gridItem);
 };
 
 
