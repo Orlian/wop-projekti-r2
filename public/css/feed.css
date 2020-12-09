@@ -67,11 +67,6 @@ body {
     padding-top: 0.5em;
 }
 
-
-.likes {
-    padding-top: 1em;
-}
-
 .comments {
 
     background-color: whitesmoke;
@@ -123,6 +118,7 @@ body {
 .likes {
     position: absolute;
     left: 15%;
+    padding-top: 1em;
 }
 
 .comment-btn {
