@@ -187,7 +187,9 @@ editUserForm.addEventListener('submit', async(evt) =>{
   }
 });
 
-postPicture.src.addEventListener('change', () => {
+const postImageSrc = postPicture.src;
+
+postImageSrc.addEventListener('change', () => {
   if(addImageInput.value !== ''){
   addImageButton.disabled = false;
 }else{
