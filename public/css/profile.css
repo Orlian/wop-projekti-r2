@@ -492,6 +492,14 @@ input[type='checkbox']{
     border-radius: 50%;
     margin: 2em 0 0.75em 0;
 }
+
+.edit-user-modal img {
+    max-width: 100%;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+}
+
 section h2, .desc{
     text-align: center;
     padding: 0.2em;
@@ -504,7 +512,7 @@ section h2, .desc{
     justify-content: center;
 }
 .grid-item img{
-    margin: 4em;
+    margin: 1em;
     max-width: 100%;
     height: auto;
     width: 200px;
