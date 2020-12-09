@@ -187,16 +187,6 @@ editUserForm.addEventListener('submit', async(evt) =>{
   }
 });
 
-const postImageSrc = postPicture.src;
-
-postImageSrc.addEventListener('change', () => {
-  if(addImageInput.value !== ''){
-  addImageButton.disabled = false;
-}else{
-  addImageButton.disabled = true;
-}
-});
-
 addForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
 
@@ -209,7 +199,7 @@ addForm.addEventListener('submit', async (evt) => {
       body: fd,
     };
     try {
-      const response = await fetch(url + '/post', fetchOptions);
+      const response = await fetch(navbarUrl + '/post', fetchOptions);
       const json = await response.json();
       console.log('add response', json);
     }
