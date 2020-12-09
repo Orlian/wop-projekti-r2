@@ -60,17 +60,21 @@ const getUserLogin = async (params) => {
 
 const updateUser = async (params) => {
   try {
+    const newParams = [];
     let lause = 'UPDATE User SET ';
     if(params[0] !== undefined){
       lause += 'password=?, ';
+      newParams.push(params[0]);
     }
     if(params[1] !== ''){
       lause += 'userimg=?, ';
+      newParams.push(params[1]);
     }
-    console.log('updateUser lause', lause, '\nupdateUser params', params);
-    const [rows] = promisePool.execute(
-        lause +'description=? WHERE userid = ?',
-        params);
+    newParams.push(params[2]);
+    newParams.push(params[3]);
+    console.log('updateUser lause', lause, '\nupdateUser newparams', newParams);
+    const rows = promisePool.execute(
+        lause +'description=? WHERE userid = ?', newParams);
     return rows;
   } catch (err) {
     console.log('userModel error', err.message);

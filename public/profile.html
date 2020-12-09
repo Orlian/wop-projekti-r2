@@ -91,9 +91,9 @@
                                    onchange="previewImage(event)">
                         </div>
                         <input id="password-input" type="password" name="password" placeholder="Password"
-                               pattern="(?=.*[A-Z]).{8,}" onkeyup="checkMatch();">
+                               pattern="^(|(?=.*[A-Z]).{8,})$" onkeyup="checkMatch();">
                         <input id="confirm-password-input" type="password" name="confirm-password"
-                               placeholder="Retype password" pattern="(?=.*[A-Z]).{8,}"
+                               placeholder="Retype password" pattern="^(|(?=.*[A-Z]).{8,})$"
                                onkeyup="checkMatch();">
                         <textarea name="description" placeholder="Description" style="resize: none" rows="8"
                                   cols="40" id="user-description"></textarea>

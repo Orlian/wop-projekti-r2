@@ -57,6 +57,7 @@ const user_update = async (req, res) => {
   }
   console.log('user_update params', params);
   const user = await userModel.updateUser(params);
+  console.log('user_update user', user);
   res.json(user);
 }
 
