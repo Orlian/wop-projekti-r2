@@ -20,6 +20,7 @@ const recent_post_list_get = async (req, res) => {
     post.likes = await likeModel.getPostLikesCount(post.postid);
     return post;
   }));
+  uudetPostit.sort((a, b) => parseInt(b.commentid) - parseInt(a.commentid));
   res.json(uudetPostit);
 };
 
