@@ -162,10 +162,6 @@ window.onclick = function(event) {
         postPicture.src = 'http://placekitten.com/200/200';
         modal.style.display = 'none';
       }
-      if(modal.id === 'image-user-modal'){
-        const addCommentForm = document.querySelector('.add-comment');
-        addCommentForm.reset();
-      }
       modal.style.display = 'none';
     }
   })
