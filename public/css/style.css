@@ -13,19 +13,17 @@ body{
 }
 main{
     margin: auto;
-    background: white;
-    border: 0.1em solid black;
-    border-radius: 3%;
-    box-shadow: 5px 10px 18px #888888;
+    background: whitesmoke;
+    border-radius: 2em;
+    box-shadow: 5px 10px 10px lightgrey;
 }
 .edit-user-wrapper, .register-wrapper, .post-wrapper{
     display: flex;
     flex-wrap: wrap;
-    max-width: 50vh;
     height: auto;
 }
 form{
-    height: 35em;
+    height: 40em;
     width: 30em;
     margin: auto;
     padding: 0.8em 3em;
@@ -38,7 +36,6 @@ img{
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 0.1em solid black;
 }
 #art-img{
     max-width: 100%;
@@ -48,21 +45,27 @@ img{
     border: 0.1em solid black;
 }
 input{
-    margin: 0.6em;
-    width: 100%;
-    border: none;
-    border-bottom: 0.1em solid black;
+    margin: 0.5em;
+    width: 80%;
+    border: 0.1em solid darkgrey;
+    background: rgba(150, 150, 150, 0.2);
+    padding: 0.5em;
+    border-radius:  1em;
+    box-shadow: 2px 5px 5px lightgrey;
 }
 input::placeholder, textarea::placeholder{
-    text-align: center;
+
 }
 input:active, input:focus{
     outline: none;
 }
 textarea{
     margin: 1.0em;
-    border: 0.1em solid black;
+    border: 0.1em solid grey;
     width: 100%;
+    padding: 0.5em;
+    box-shadow: 2px 5px 5px lightgrey;
+    color: lightgrey;
 }
 
 .genre-selection h2{
