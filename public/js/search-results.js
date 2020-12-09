@@ -88,7 +88,7 @@ const fillSearchList = (hits) => {
                   };
                   try {
                     await fetch(
-                        url + '/comment/' + image.postid + '/' + comment.commentid,
+                        searchUrl + '/comment/' + image.postid + '/' + comment.commentid,
                         fetchOptions);
                   } catch (error) {
                     console.log(error.message);
@@ -112,7 +112,7 @@ const fillSearchList = (hits) => {
           body: JSON.stringify(data),
         };
         try {
-          const response = await fetch(url + '/comment/' + image.postid,
+          const response = await fetch(searchUrl + '/comment/' + image.postid,
               fetchOptions);
           const comment = await response.json();
         } catch (err) {
@@ -143,7 +143,7 @@ const fillSearchList = (hits) => {
             body: JSON.stringify(data),
           };
           try {
-            const response = await fetch(url + '/like/' + image.postid,
+            const response = await fetch(searchUrl + '/like/' + image.postid,
                 fetchOptions);
             const like = await response.json();
             likeIcon.style.display = 'block';
@@ -167,7 +167,7 @@ const fillSearchList = (hits) => {
             body: JSON.stringify(data),
           };
           try {
-            const response = await fetch(url + '/like/' + image.postid,
+            const response = await fetch(searchUrl + '/like/' + image.postid,
                 fetchOptions);
             const like = await response.json();
             console.log('Add like', like);
@@ -254,7 +254,7 @@ const getLiker = async (postId) => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/like/author/' + postId, options);
+    const response = await fetch(searchUrl + '/like/author/' + postId, options);
     const likeStatus = await response.json();
     return likeStatus;
   } catch (e) {
@@ -269,7 +269,7 @@ const getCommenter = async (postId) => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/comment/author/' + postId, options);
+    const response = await fetch(searchUrl + '/comment/author/' + postId, options);
     const commentStatus = await response.json();
     return commentStatus;
   } catch (e) {
