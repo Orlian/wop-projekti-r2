@@ -17,7 +17,7 @@ const createImageCards = (images) => {
 
     const card = document.createElement('div');
     card.classList.add('card');
-    card.id = `card-${images.indexOf(image)}`
+    card.id = `${images.indexOf(image) +1}`
 
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('img-container');
@@ -233,6 +233,7 @@ const createImageCards = (images) => {
     card.appendChild(aside);
     imageFeed.appendChild(card);
   });
+  imageFeed.sort((a,b) => parseInt(a.id) - parseInt(b.id));
 
 };
 
