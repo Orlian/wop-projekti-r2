@@ -91,7 +91,6 @@ addImageCancel.onclick = () => {
 spans.forEach((span) => {
   span.addEventListener('click', () => {
     postPicture.src = 'http://placekitten.com/200/200';
-    addImageCaption.value = '';
     span.parentNode.parentNode.parentNode.parentNode.style.display = 'none';
   });
 });
