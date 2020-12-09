@@ -88,7 +88,7 @@ const fillSearchList = (hits) => {
                   };
                   try {
                     await fetch(
-                        searchUrl + '/comment/' + image.postid + '/' + comment.commentid,
+                        searchUrl + '/comment/' + hit.postid + '/' + comment.commentid,
                         fetchOptions);
                   } catch (error) {
                     console.log(error.message);
@@ -112,7 +112,7 @@ const fillSearchList = (hits) => {
           body: JSON.stringify(data),
         };
         try {
-          const response = await fetch(searchUrl + '/comment/' + image.postid,
+          const response = await fetch(searchUrl + '/comment/' + hit.postid,
               fetchOptions);
           const comment = await response.json();
         } catch (err) {
@@ -143,7 +143,7 @@ const fillSearchList = (hits) => {
             body: JSON.stringify(data),
           };
           try {
-            const response = await fetch(searchUrl + '/like/' + image.postid,
+            const response = await fetch(searchUrl + '/like/' + hit.postid,
                 fetchOptions);
             const like = await response.json();
             likeIcon.style.display = 'block';
@@ -167,7 +167,7 @@ const fillSearchList = (hits) => {
             body: JSON.stringify(data),
           };
           try {
-            const response = await fetch(searchUrl + '/like/' + image.postid,
+            const response = await fetch(searchUrl + '/like/' + hit.postid,
                 fetchOptions);
             const like = await response.json();
             console.log('Add like', like);
