@@ -85,11 +85,27 @@ const getComments = async (postid) => {
   }
 };
 
-const getUserProfile = () => {
-  profileImg.src = url + '/thumbnails/' + user.userimg;
-  profileName.innerHTML = user.username;
-  profileDesc.innerHTML = user.description;
+const getUserProfile = async () => {
+
+  const fetchOptions = {
+    headers: {
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+    },
+  };
+  try {
+    const response = await fetch(url + '/user/' + user.email,
+        fetchOptions);
+    const userData = await response.json();
+    console.log(userData, 'jotain');
+    profileImg.src = url + '/thumbnails/' + userData.userimg;
+    profileName.innerHTML = userData.username;
+    profileDesc.innerHTML = userData.description;
+  } catch (err) {
+    console.log(err.message);
+  }
+
 };
+
 
 const getUserProfileModal = () => {
   userModalPicture.src = url + '/thumbnails/' + user.userimg;
@@ -168,7 +184,6 @@ const createUserGrid = (images) => {
                   catch (error) {
                     console.log(error.message);
                   }
-                  location.reload();
                 });
               }
             },
