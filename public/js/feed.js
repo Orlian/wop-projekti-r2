@@ -62,7 +62,7 @@ const createImageCards = (images) => {
       commentAuthor.innerHTML = `${comment.username}`;
       const commentTime = document.createElement('h6');
       commentTime.classList.add('comment-time');
-      const properTime = new Date(comment.timestamp);
+      const properTime = new Date(comment.timestamp); //Tästä mallia sortaukseen
       const formattedTime = properTime.getDate() + '.' + properTime.getMonth() +
           '.' + properTime.getFullYear() + ' ' +
           ((properTime.getHours() < 10 ? '0' : '') + properTime.getHours()) +
