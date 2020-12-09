@@ -73,7 +73,7 @@ const updateUser = async (params) => {
     newParams.push(params[2]);
     newParams.push(params[3]);
     console.log('updateUser lause', lause, '\nupdateUser newparams', newParams);
-    const [rows] = promisePool.execute(
+    const rows = promisePool.execute(
         lause +'description=? WHERE userid = ?', newParams);
     return rows;
   } catch (err) {
