@@ -97,8 +97,8 @@ editUserButton.onclick = () =>{
   editModal.style.display = 'none';
 };
 editUserCancel.onclick = () =>{
-  editModal.style.display = 'none';
   postPicture.src = 'http://placekitten.com/200/200';
+  editModal.style.display = 'none';
 };
 
 deleteUserButton.onclick = async() => {
