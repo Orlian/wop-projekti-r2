@@ -80,6 +80,7 @@ body {
 .comments > li {
     padding: 0.5em 0.5em 0.5em 1em;
     font-size: 0.75em;
+    position: relative;
 }
 
 .comment-content {
@@ -88,6 +89,17 @@ body {
 
 .comment-time {
     color: darkgrey;
+}
+
+.delete-comment-button {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    height: 1em;
+    width: 1em;
+    border: none;
+    border-radius: 50%;
+    background-color: lightgray;
 }
 
 .comment-form {
