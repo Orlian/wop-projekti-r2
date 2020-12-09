@@ -22,7 +22,6 @@ const commentForm = document.querySelector('.add-comment');
 const likeForm = document.querySelector('.like-form');
 const likeIcon = document.getElementById('like-icon');
 
-
 const getLikes = async (postId) => {
   try {
     const options = {
@@ -33,8 +32,7 @@ const getLikes = async (postId) => {
     const response = await fetch(url + '/like/' + postId, options);
     const [likes] = await response.json();
     return likes.likecount;
-  }
-  catch (e) {
+  } catch (e) {
     console.log(e.message);
   }
 };
@@ -69,7 +67,6 @@ const getCommenter = async (postId) => {
   }
 };
 
-
 const getComments = async (postid) => {
   try {
     const options = {
@@ -79,8 +76,7 @@ const getComments = async (postid) => {
     };
     const response = await fetch(url + '/comment/' + postid, options);
     return await response.json();
-  }
-  catch (e) {
+  } catch (e) {
     console.log(e.message);
   }
 };
@@ -95,21 +91,11 @@ const getUserProfile = async () => {
   try {
     const response = await fetch(url + '/user/' + user.email,
         fetchOptions);
-    const userData = await response.json();
-    console.log(userData, 'jotain');
-    profileImg.src = url + '/thumbnails/' + userData[0].userimg;
-    profileName.innerHTML = userData[0].username;
-    profileDesc.innerHTML = userData[0].description;
+    return await response.json();
   } catch (err) {
     console.log(err.message);
   }
 
-};
-
-
-const getUserProfileModal = () => {
-  userModalPicture.src = url + '/thumbnails/' + user.userimg;
-  userModalDescription.value = user.description;
 };
 
 const createUserGrid = (images) => {
@@ -136,7 +122,6 @@ const createUserGrid = (images) => {
       const comments = await getComments(image.postid);
       const commenters = await getCommenter(image.postid);
       console.log(comments);
-
 
       comments.forEach((comment) => {
         const commentLi = document.createElement('li');
@@ -180,8 +165,7 @@ const createUserGrid = (images) => {
                     await fetch(
                         url + '/comment/' + image.postid + '/' + comment.commentid,
                         fetchOptions);
-                  }
-                  catch (error) {
+                  } catch (error) {
                     console.log(error.message);
                   }
                 });
@@ -205,10 +189,10 @@ const createUserGrid = (images) => {
           const response = await fetch(url + '/comment/' + image.postid,
               fetchOptions);
           const comment = await response.json();
-          location.reload();
         } catch (err) {
           console.log(err.message);
         }
+        location.reload();
       });
 
       const liker = await getLiker(image.postid);
@@ -239,8 +223,7 @@ const createUserGrid = (images) => {
             likeIcon.style.display = 'block';
             likeIcon.style.color = 'red';
 
-          }
-          catch (error) {
+          } catch (error) {
             console.log(error.message);
           }
           location.reload();
@@ -271,7 +254,6 @@ const createUserGrid = (images) => {
         });
       }
 
-
       deleteImgButton.addEventListener('click', async (evt) => {
         evt.preventDefault();
         const fetchOptions = {
@@ -288,8 +270,7 @@ const createUserGrid = (images) => {
           //console.log('delete response', json);
           imageModal.style.display = 'none';
           await getUserPosts();
-        }
-        catch (e) {
+        } catch (e) {
           console.log(e.message);
         }
       });
@@ -297,7 +278,6 @@ const createUserGrid = (images) => {
     userPosts.appendChild(gridItem);
   });
 };
-
 
 const getUserPosts = async () => {
   try {
@@ -307,15 +287,18 @@ const getUserPosts = async () => {
       },
     };
     const response = await fetch(url + '/post/user/' + user.userid,
-        fetchOptions); //TODO Selvitä miten haettiin aktiivinen käyttäjä
+        fetchOptions);
     console.log('getUserPost response', response);
     const posts = await response.json();
     console.log('getUserPost json', posts);
-     getUserProfile();
-     getUserProfileModal();
-     createUserGrid(posts);
-  }
-  catch (err) {
+    const userData = await getUserProfile();
+    profileImg.src = url + '/thumbnails/' + userData[0].userimg;
+    profileName.innerHTML = userData[0].username;
+    profileDesc.innerHTML = userData[0].description;
+    userModalPicture.src = url + '/thumbnails/' + userData[0].userimg;
+    userModalDescription.value = userData[0].description;
+    createUserGrid(posts);
+  } catch (err) {
     console.error(err.message);
     const response = await fetch(url + '/auth/logout');
     const json = await response.json();
@@ -327,9 +310,6 @@ const getUserPosts = async () => {
 };
 
 getUserPosts(); //TODO Selvitä onkelma
-
-
-
 
 window.addEventListener('scroll', () => {
   if (window.pageYOffset > 300) {

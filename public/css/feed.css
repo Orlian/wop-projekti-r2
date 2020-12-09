@@ -81,6 +81,11 @@ body {
     padding: 0.5em 0.5em 0.5em 1em;
     font-size: 0.75em;
     position: relative;
+    border-bottom: 0.1em solid lightgrey;
+}
+
+.comments > li:hover {
+    background-color: lightgray;
 }
 
 .comment-content {
@@ -99,7 +104,7 @@ body {
     width: 1.5em;
     border: none;
     outline: none;
-    border-radius: 50%;
+    border-radius: 40%;
     background-color: lightgray;
     line-height: 0.5em;
     cursor: pointer;
