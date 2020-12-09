@@ -195,8 +195,9 @@ form::after {
     width: 2em;
     height: 2em;
     position: absolute;
-    left: 1.0em;
-    top: 0.9em;
+    left: 0.5em;
+    top: 0.5em;
+    transform: translate(-25%, -25%);
     opacity: 0;
 }
 .modal-button{
