@@ -13,6 +13,7 @@ const searchModalUser = document.querySelector('#image-owner');
 const searchModalFeedbackComments = document.querySelector('.comments');
 const searchModalFeedbackLikes = document.querySelector('.likes p');
 const params = new URLSearchParams(window.location.search);
+const topBtn = document.querySelector('.top-btn');
 
 
 // Search result kentän täyttäminen
@@ -126,3 +127,25 @@ const getSearchLikes = async (postId) => {
 };
 
 //Potki pois ja logout jos väärä token tai ei tokenia
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {
+    if (!topBtn.classList.contains('btn-entrance')) {
+      topBtn.classList.remove('btn-exit');
+      topBtn.classList.add('btn-entrance');
+      topBtn.style.display = 'block';
+    }
+  } else {
+    if (topBtn.classList.contains('btn-entrance')) {
+      topBtn.classList.remove('btn-entrance');
+      topBtn.classList.add('btn-exit');
+      setTimeout(() => {
+        topBtn.style.display = 'none';
+      }, 250);
+    }
+  }
+});
+
+topBtn.addEventListener('click', () => {
+  window.scrollTo(0, 0);
+});
