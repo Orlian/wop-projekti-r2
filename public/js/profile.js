@@ -134,7 +134,7 @@ const createUserGrid = (images) => {
           const response = await fetch(url + '/post/' + image.postid,
               fetchOptions);
           //const json = await response.json();
-          console.log('delete response', json);
+          //console.log('delete response', json);
           imageModal.style.display = 'none';
           await getUserPosts();
         }
