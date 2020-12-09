@@ -18,7 +18,9 @@ const saveButton = document.getElementById('save-button');
 const userModalPicture = document.getElementById('user-picture');
 const userModalDescription = document.getElementById('user-description');
 const topBtn = document.querySelector('.top-btn');
-
+const commentForm = document.querySelector('.add-comment');
+const likeForm = document.querySelector('.like-form');
+const likeIcon = document.getElementById('like-icon');
 
 
 const getLikes = async (postId) => {
@@ -33,6 +35,21 @@ const getLikes = async (postId) => {
     return likes.likecount;
   }
   catch (e) {
+    console.log(e.message);
+  }
+};
+
+const getLiker = async (postId) => {
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/like/author/' + postId, options);
+    const likeStatus = await response.json();
+    return likeStatus;
+  } catch (e) {
     console.log(e.message);
   }
 };
@@ -156,7 +173,83 @@ const createUserGrid = (images) => {
             },
         );
       });
+
+      commentForm.addEventListener('submit', async (evt) => {
+        evt.preventDefault();
+        const data = serializeJson(commentForm);
+        const fetchOptions = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+          },
+          body: JSON.stringify(data),
+        };
+        try {
+          const response = await fetch(url + '/comment/' + image.postid,
+              fetchOptions);
+          const comment = await response.json();
+          location.reload();
+        } catch (err) {
+          console.log(err.message);
+        }
+      });
+
+      const liker = await getLiker(image.postid);
       imageModalFeedbackLikes.innerHTML = await getLikes(image.postid);
+
+      if (liker.length < 1) {
+        likeIcon.style.color = 'black';
+      } else {
+        likeIcon.style.color = 'red';
+      }
+
+      if (liker.length < 1) {
+        likeForm.addEventListener('submit', async (evt) => {
+          evt.preventDefault();
+          const data = serializeJson(likeForm);
+          const fetchOptions = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+            body: JSON.stringify(data),
+          };
+          try {
+            const response = await fetch(url + '/like/' + image.postid,
+                fetchOptions);
+            const like = await response.json();
+            likeIcon.style.display = 'block';
+            likeIcon.style.color = 'red';
+          } catch (error) {
+            console.log(error.message);
+          }
+        });
+      } else {
+        likeForm.addEventListener('submit', async (evt) => {
+          evt.preventDefault();
+          const data = serializeJson(likeForm);
+          const fetchOptions = {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+            body: JSON.stringify(data),
+          };
+          try {
+            const response = await fetch(url + '/like/' + image.postid,
+                fetchOptions);
+            const like = await response.json();
+            console.log('Add like', like);
+            likeIcon.style.color = 'black';
+          } catch (error) {
+            console.log(error.message);
+          }
+        });
+      }
+
 
       deleteImgButton.addEventListener('click', async (evt) => {
         evt.preventDefault();
