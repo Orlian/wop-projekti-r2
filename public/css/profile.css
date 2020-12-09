@@ -241,6 +241,7 @@ textarea{
     margin: 1.0em;
     border: 0.1em solid grey;
     width: 100%;
+    padding: 0.5em;
 }
 
 .genre-selection h2{
