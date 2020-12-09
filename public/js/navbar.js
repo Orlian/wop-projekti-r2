@@ -197,7 +197,7 @@ const getUserProfileNavbar = async () => {
     const userData = await response.json();
     console.log(userData, 'jotain');
     userPictureNavbar.src = url + '/thumbnails/' + userData[0].userimg;
-    userDescription.innerHTML = userData[0].description;
+    userDescription.value = userData[0].description;
   } catch (err) {
     console.log(err.message);
   }
