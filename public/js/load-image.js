@@ -2,6 +2,7 @@
 const userPicture = document.getElementById('user-picture');
 const postedImage = document.getElementById('art-img');
 const uploadButton = document.querySelector('input[type="file"]');
+const addImageInput = document.getElementById('art-img-file');
 const addImageModalButton = document.getElementById('post-button');
 
 uploadButton.addEventListener("mouseover", () =>{
@@ -21,12 +22,18 @@ function previewImage(event) {
 
   reader.onload = function() {
 
-    if (reader.readyState === 2) {
+    if(reader.readyState === 2){
       userPicture.src = reader.result;
       postedImage.src = reader.result;
-      addImageModalButton.disabled = false;
+    }
   }
 
   reader.readAsDataURL(event.target.files[0]);
+
+  if(addImageInput.value !== ''){
+    addImageModalButton.disabled = false;
+  }else{
+    addImageModalButton.disabled = true;
+  }
+
 }
-};
