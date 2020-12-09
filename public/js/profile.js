@@ -222,10 +222,12 @@ const createUserGrid = (images) => {
             const like = await response.json();
             likeIcon.style.display = 'block';
             likeIcon.style.color = 'red';
-            location.reload();
-          } catch (error) {
+
+          }
+          catch (error) {
             console.log(error.message);
           }
+          location.reload();
         });
       } else {
         likeForm.addEventListener('submit', async (evt) => {
@@ -249,6 +251,7 @@ const createUserGrid = (images) => {
           } catch (error) {
             console.log(error.message);
           }
+          location.reload();
         });
       }
 
