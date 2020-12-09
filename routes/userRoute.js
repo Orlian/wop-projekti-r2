@@ -34,7 +34,7 @@ router.put('/:id', upload.single('user-image'), injectFile, userController.make_
       not().
       isEmpty().
       trim().
-      matches('(?=.*[A-Ö]).{8,}'),
+      matches('^(|(?=.*[A-Z]).{8,})$'),
   body('description', '').trim().escape(),
 ], userController.user_update);
 
