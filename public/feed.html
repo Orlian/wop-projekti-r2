@@ -87,11 +87,11 @@
                             <input type="file" name="user-image" accept="image/*" id="user-picture-input"
                                    onchange="previewImage(event)">
                         </div>
-                        <input type="text" name="username" placeholder="Username" required>
-                        <input type="password" name="password" placeholder="Password" pattern="(?=.*[A-Z]).{8,}"
-                               required>
-                        <textarea name="desc" placeholder="Description" style="resize: none" rows="8"
-                                  cols="40"></textarea>
+                        <input id="password-input"  type="password"  name="password" placeholder="Password" pattern="^(|(?=.*[A-Z]).{8,})$" onkeyup="checkMatch();">
+                        <input id="confirm-password-input" type="password" name="confirm-password" placeholder="Retype password" pattern="^(|(?=.*[A-Z]).{8,})$"
+                               onkeyup="checkMatch();">
+                        <textarea name="description" placeholder="Description" style="resize: none" rows="8"
+                                  cols="40" id="user-description"></textarea>
                         <button type="submit" class="modal-button" id="save-button">Save changes</button>
                         <button type="reset" class="modal-button" id="user-cancel-button">Cancel</button>
                         <button type="button" class="modal-button" id="delete-button">Delete user</button>
