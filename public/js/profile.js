@@ -168,6 +168,7 @@ const createUserGrid = (images) => {
                   catch (error) {
                     console.log(error.message);
                   }
+                  location.reload();
                 });
               }
             },
@@ -222,9 +223,12 @@ const createUserGrid = (images) => {
             const like = await response.json();
             likeIcon.style.display = 'block';
             likeIcon.style.color = 'red';
-          } catch (error) {
+
+          }
+          catch (error) {
             console.log(error.message);
           }
+          location.reload();
         });
       } else {
         likeForm.addEventListener('submit', async (evt) => {
@@ -244,9 +248,11 @@ const createUserGrid = (images) => {
             const like = await response.json();
             console.log('Add like', like);
             likeIcon.style.color = 'black';
+            location.reload();
           } catch (error) {
             console.log(error.message);
           }
+          location.reload();
         });
       }
 
