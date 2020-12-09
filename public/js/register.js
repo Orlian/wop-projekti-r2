@@ -22,13 +22,12 @@ registerForm.addEventListener('submit', async (evt) => {
     },
     body: data,
   };
-  try {
-    const response = await fetch(url + '/auth/register', fetchOptions);
-    const json = await response.json();
-    console.log('user register response', json);
+  const response = await fetch(url + '/auth/register', fetchOptions);
+  const json = await response.json();
+  if(json.status(200)){
     location.href = 'front-page.html';
-  } catch(err) {
-    alert('Something went wrong. Make sure to put a profile image.')
+  } else {
+    alert('Something went wrong... Make sure you have a profile picture');
   }
 });
 
@@ -58,7 +57,7 @@ usernameInput.addEventListener('blur', async (evt) => {
 cancelButton.addEventListener('click', (evt) => {
   evt.preventDefault();
   location.href = 'front-page.html';
-})
+});
 
 const checkMatch = () => {
   if (passwd.value !== confirmPasswd.value) {
