@@ -83,6 +83,10 @@ const createImageCards = (images) => {
       commenters.forEach((commenter) => {
         if (commenter.commentid === comment.commentid) {
           const deleteCommentButton = document.createElement('button');
+          const deleteCommentIcon = document.createElement('ion-icon');
+          deleteCommentIcon.classList.add('delete-comment-icon');
+          deleteCommentIcon.name = 'close-outline';
+          deleteCommentButton.appendChild(deleteCommentIcon);
           commentLi.appendChild(deleteCommentButton);
           deleteCommentButton.id = 'delete-comment-button';
           deleteCommentButton.addEventListener('click', async (evt) => {
