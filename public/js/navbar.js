@@ -14,7 +14,6 @@ const logoutLink = document.getElementById('logout-link');
 const addImageButton = document.getElementById('post-button');
 const addImageCancel = document.getElementById('cancel-button');
 const addImageCaption = document.getElementById('add-image-caption');
-const addImageInput = document.getElementById('art-img-file');
 const editUserButton = document.getElementById('save-button');
 const editUserCancel = document.getElementById('user-cancel-button');
 const deleteUserButton = document.getElementById('delete-button');
@@ -187,16 +186,6 @@ editUserForm.addEventListener('submit', async(evt) =>{
   }
 });
 
-const postImageSrc = postPicture.src;
-
-postImageSrc.addEventListener('change', () => {
-  if(addImageInput.value !== ''){
-  addImageButton.disabled = false;
-}else{
-  addImageButton.disabled = true;
-}
-});
-
 addForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
 
@@ -209,7 +198,7 @@ addForm.addEventListener('submit', async (evt) => {
       body: fd,
     };
     try {
-      const response = await fetch(url + '/post', fetchOptions);
+      const response = await fetch(navbarUrl + '/post', fetchOptions);
       const json = await response.json();
       console.log('add response', json);
     }
