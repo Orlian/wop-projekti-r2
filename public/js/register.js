@@ -22,13 +22,14 @@ registerForm.addEventListener('submit', async (evt) => {
     },
     body: data,
   };
-  const response = await fetch(url + '/auth/register', fetchOptions);
-  const json = await response.json();
-  console.log('user register response', json);
-  //sessionStorage.setItem('token', json.token);
-
-  //TODO Lisäile loppu käyttäjän rekisteröintikäyttäytyminen
-  location.href = 'front-page.html';
+  try {
+    const response = await fetch(url + '/auth/register', fetchOptions);
+    const json = await response.json();
+    console.log('user register response', json);
+    location.href = 'front-page.html';
+  } catch(err) {
+    alert('Something went wrong. Make sure to put a profile image.')
+  }
 });
 
 usernameInput.addEventListener('blur', async (evt) => {
