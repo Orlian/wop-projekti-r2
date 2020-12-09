@@ -57,30 +57,33 @@
                 <div class="image-search-content-modal">
                     <div class="image-search-content-modal-wrapper">
                         <span class="close">&times;</span>
-                        <figure id="image-figure">
-                            <img src="" alt="" class="" id="search-post-image">
-                            <h3 id="image-owner"></h3>
-                            <figcaption id="image-figcaption"></figcaption>
-                        </figure>
-                        <div class="feedback">
-                            <div class="likes">
-                                <ion-icon name="heart-outline"></ion-icon>
-                                <p>N Likes</p>
+                        <img src="" alt="" class="" id="search-post-image">
+                        <aside id="search-post-image-aside">
+                            <div class="comment-container">
+                                <h3 id="image-owner"></h3>
+                                <p id="image-caption"></p>
+                                <div class="comment-section">
+                                    <h4>Comments</h4>
+                                    <ul class="comments">
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="comment-section">
-                                <h4>Comments</h4>
-                                <ul class="comments">
-                                </ul>
-                            </div>
-                        </div>
-                        <button type="submit" class="like-btn">
-                            <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <form class="add-comment">
+                            <div class="forms-container">
+                                <form class="add-comment">
                             <textarea name="comment" id="comment-text" style="resize: none"
                                       placeholder="Write a comment"></textarea>
-                            <button class="modal-button" id="comment-btn">Comment</button>
-                        </form>
+                                    <button class="modal-button" type="submit" id="comment-btn">Comment</button>
+                                </form>
+                                <form class="like-form">
+                                    <button type="submit" class="like-btn">
+                                        <ion-icon name="heart" id="like-icon"></ion-icon>
+                                    </button>
+                                    <div class="likes">
+                                        <p>N Likes</p>
+                                    </div>
+                                </form>
+                            </div>
+                        </aside>
                     </div>
                 </div>
             </div>
@@ -101,7 +104,7 @@
                         </div>
                         <textarea name="caption" style="resize: none" rows="8" cols="40"
                                   placeholder="Add caption (optional)"></textarea>
-                        <button type="submit" class="modal-button" id="post-button">Publish</button>
+                        <button type="submit" class="modal-button" id="post-button" disabled>Publish</button>
                         <button type="reset" class="modal-button" id="cancel-button">Cancel</button>
                     </form>
                 </div>
@@ -122,11 +125,10 @@
                             <input type="file" name="user-image" accept="image/*" id="user-picture-input"
                                    onchange="previewImage(event)">
                         </div>
-                        <input type="text" name="username" placeholder="Username" required>
-                        <input type="password" name="password" placeholder="Password" pattern="(?=.*[A-Z]).{8,}"
-                               required>
-                        <textarea name="desc" placeholder="Description" style="resize: none" rows="8"
-                                  cols="40"></textarea>
+                        <input id="password-input" type="password" name="password" placeholder="Password" pattern="^(|(?=.*[A-Z]).{8,})$" onkeyup="checkMatch();">
+                        <input id="confirm-password-input" type="password" name="confirm-password" placeholder="Retype password" pattern="^(|(?=.*[A-Z]).{8,})$" onkeyup="checkMatch();">
+                        <textarea name="description" placeholder="Description" style="resize: none" rows="8"
+                                  cols="40" id="user-description"></textarea>
                         <button type="submit" class="modal-button" id="save-button">Save changes</button>
                         <button type="reset" class="modal-button" id="user-cancel-button">Cancel</button>
                         <button type="button" class="modal-button" id="delete-button">Delete user</button>
@@ -135,6 +137,9 @@
             </div>
         </div>
     </aside>
+    <button class="top-btn" type="button">
+        <ion-icon name="arrow-up-outline"></ion-icon>
+    </button>
 </div>
 <div class="loader-ripple">
     <div></div>
