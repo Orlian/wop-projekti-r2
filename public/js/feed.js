@@ -233,7 +233,7 @@ const createImageCards = (images) => {
     card.appendChild(aside);
     imageFeed.appendChild(card);
   });
-  imageFeed.sort((a,b) => parseInt(a.id) - parseInt(b.id));
+  //imageFeed.sort((a,b) => parseInt(a.id) - parseInt(b.id));
 
 };
 
