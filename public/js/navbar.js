@@ -14,7 +14,6 @@ const logoutLink = document.getElementById('logout-link');
 const addImageButton = document.getElementById('post-button');
 const addImageCancel = document.getElementById('cancel-button');
 const addImageCaption = document.getElementById('add-image-caption');
-const addImageInput = document.getElementById('art-img-file');
 const plusButton = document.getElementById('plus-button')
 const editUserButton = document.getElementById('save-button');
 const editUserCancel = document.getElementById('user-cancel-button');

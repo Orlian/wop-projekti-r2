@@ -2,7 +2,7 @@
 const userPicture = document.getElementById('user-picture');
 const postedImage = document.getElementById('art-img');
 const uploadButton = document.querySelector('input[type="file"]');
-
+const addImageModalButton = document.getElementById('post-button');
 
 uploadButton.addEventListener("mouseover", () =>{
   const icon = document.querySelector('ion-icon[name=add-circle-sharp]');
@@ -17,6 +17,8 @@ uploadButton.addEventListener("mouseout", () =>{
 
 function previewImage(event) {
 
+
+  addImageModalButton.disabled = false;
 
   const reader = new FileReader();
 
