@@ -206,7 +206,7 @@ form::after {
     height: 2em;
     position: absolute;
     left: 0;
-    top: 0.6em;
+    top: 0.5em;
     transform: translate(-25%, -25%);
     opacity: 0;
 }
