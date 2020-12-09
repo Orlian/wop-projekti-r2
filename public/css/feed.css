@@ -99,13 +99,13 @@ body {
 #delete-comment-button {
     position: absolute;
     right: 5%;
-    top: 50%;
+    top: 40%;
     height: 1.5em;
     width: 1.5em;
     border: none;
     outline: none;
-    border-radius: 40%;
-    background-color: lightgray;
+    border-radius: 50%;
+    background-color: darkgray;
     line-height: 0.5em;
     cursor: pointer;
 }
