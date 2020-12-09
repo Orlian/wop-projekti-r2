@@ -15,6 +15,7 @@ const addImageButton = document.getElementById('post-button');
 const addImageCancel = document.getElementById('cancel-button');
 const addImageCaption = document.getElementById('add-image-caption');
 const plusButton = document.getElementById('plus-button')
+const plusButtonEditModal = document.getElementById('plus-button-user');
 const editUserButton = document.getElementById('save-button');
 const editUserCancel = document.getElementById('user-cancel-button');
 const deleteUserButton = document.getElementById('delete-button');
@@ -32,6 +33,10 @@ logo.onclick = () => {
 };
 
 plusButton.addEventListener('click', (evt)=>{
+  evt.preventDefault();
+});
+
+plusButtonEditModal.addEventListener('click', (evt)=>{
   evt.preventDefault();
 });
 
