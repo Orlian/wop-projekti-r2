@@ -104,7 +104,7 @@ body {
     width: 1.5em;
     border: none;
     outline: none;
-    border-radius: 50%;
+    border-radius: 40%;
     background-color: lightgray;
     line-height: 0.5em;
     cursor: pointer;
