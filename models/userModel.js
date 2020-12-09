@@ -62,7 +62,7 @@ const updateUser = async (params) => {
   try {
     const newParams = [];
     let lause = 'UPDATE User SET ';
-    if(params[0] !== undefined){
+    if(params[0] !== ''){
       lause += 'password=?, ';
       newParams.push(params[0]);
     }

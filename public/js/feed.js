@@ -2,7 +2,7 @@
 
 const url = '/app2/';
 const imageFeed = document.querySelector('.card-container');
-const addForm = document.getElementById('add-image');
+
 //const imagesOnLoad = 3;
 //let loadedImgN = 0;
 let limitstart = 0;
@@ -65,7 +65,7 @@ const createImageCards = (images) => {
       commentAuthor.innerHTML = `${comment.username}`;
       const commentTime = document.createElement('h6');
       commentTime.classList.add('comment-time');
-      const properTime = new Date(comment.timestamp);
+      const properTime = new Date(comment.timestamp); //Tästä mallia sortaukseen
       const formattedTime = properTime.getDate() + '.' + properTime.getMonth() +
           '.' + properTime.getFullYear() + ' ' +
           ((properTime.getHours() < 10 ? '0' : '') + properTime.getHours()) +
@@ -316,25 +316,7 @@ topBtn.addEventListener('click', () => {
   window.scrollTo(0, 0);
 });
 
-addForm.addEventListener('submit', async (evt) => {
-  evt.preventDefault();
-  const fd = new FormData(addForm);
-  const fetchOptions = {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-    },
-    body: fd,
-  };
-  try {
-    const response = await fetch(url + '/post', fetchOptions);
-    const json = await response.json();
-    console.log('add response', json);
-  } catch (e) {
-    console.log(e.message);
-  }
-  getPosts();
-});
+
 
 const getCommenter = async (postId) => {
   try {
