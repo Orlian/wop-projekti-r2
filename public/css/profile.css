@@ -195,9 +195,9 @@ form::after {
     width: 2em;
     height: 2em;
     position: absolute;
-    left: 0;
-    top: 0.6em;
-    transform: translate(-25%, -25%);
+    left: 1.8em;
+    top: 1.8em;
+    transform: translate(-50%, -50%);
     opacity: 0;
 }
 
