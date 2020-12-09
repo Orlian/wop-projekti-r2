@@ -191,6 +191,7 @@ editUserForm.addEventListener('submit', async(evt) =>{
 addForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   if (addImageInput.value !== '') {
+    addImageButton.disabled = false;
     const fd = new FormData(addForm);
     const fetchOptions = {
       method: 'POST',
