@@ -13,13 +13,13 @@ const editLink = document.getElementById('edit-link');
 const logoutLink = document.getElementById('logout-link');
 const addImageButton = document.getElementById('post-button');
 const addImageCancel = document.getElementById('cancel-button');
+const addImageCaption = document.getElementById('add-image-caption');
 const editUserButton = document.getElementById('save-button');
 const editUserCancel = document.getElementById('user-cancel-button');
 const deleteUserButton = document.getElementById('delete-button');
 const logo = document.getElementById('logo-img');
 const navbarUser = JSON.parse(sessionStorage.getItem('user'));
 const editUserForm = document.getElementById('edit-user-form');
-
 
 logo.onclick = () => {
   location.href = 'feed.html';
@@ -85,6 +85,7 @@ addImageCancel.onclick = () => {
 spans.forEach((span) => {
   span.addEventListener('click', () => {
     postPicture.src = 'http://placekitten.com/200/200';
+    addImageCaption.value = 'Add caption (optional)';
     span.parentNode.parentNode.parentNode.parentNode.style.display = 'none';
   });
 });
