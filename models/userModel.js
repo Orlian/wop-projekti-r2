@@ -73,11 +73,11 @@ const updateUser = async (params) => {
     newParams.push(params[2]);
     newParams.push(params[3]);
     console.log('updateUser lause', lause, '\nupdateUser newparams', newParams);
-    const [rows] = promisePool.query(
+    const [rows] = promisePool.execute(
         lause +'description=? WHERE userid = ?', newParams);
     return rows;
   } catch (err) {
-    console.log('userModel error', err);
+    console.log('userModel error', err.message);
   }
 };
 
