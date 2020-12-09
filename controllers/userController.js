@@ -41,6 +41,7 @@ const user_delete = async (req, res) => {
 
 const user_update = async (req, res) => {
   let params = [req.body.password, '', req.body.description, req.params.id];
+  console.log('user_update password info', req.body.password)
   if(req.file !== undefined) {
     params = [req.body.password, req.file.filename, req.body.description, req.params.id];
     if(req.body.password !== undefined || req.body.password !== ''){
