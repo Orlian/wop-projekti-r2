@@ -19,11 +19,9 @@ const getPostLikesCount = async (postId) => {
 //**Get user who liked picture**//
 const getLiker = async (params) => {
   try {
-    console.log('Model getliker', params);
     const [rows] = await promisePool.execute(
         'SELECT userid FROM Likes WHERE userid=? AND postid=?',
         params);
-    console.log('model getliker', rows);
     return rows;
   } catch (err) {
     console.log('likeModel error', err.message);
@@ -34,7 +32,6 @@ const getLiker = async (params) => {
 
 /**Add like to a post**/
 const addLike = async (params) => {
-  console.log('add like params', params);
   try {
     const [rows] = await promisePool.execute(
         'INSERT INTO Likes (userid, postid) VALUES (?, ?)',
