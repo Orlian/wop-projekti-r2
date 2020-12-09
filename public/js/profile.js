@@ -192,6 +192,7 @@ const createUserGrid = (images) => {
         } catch (err) {
           console.log(err.message);
         }
+        commentForm.reset();
         location.reload();
       });
 
@@ -274,10 +275,6 @@ const createUserGrid = (images) => {
           console.log(e.message);
         }
       });
-      imageModal.addEventListener('blur', (evt) => {
-        evt.preventDefault();
-        commentForm.cancel();
-      })
     });
     userPosts.appendChild(gridItem);
   });

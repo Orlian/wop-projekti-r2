@@ -44,7 +44,7 @@ const user_update = async (req, res) => {
   console.log('user_update password info', req.body.password, '\nuser_update params[0]', params);
   if(req.file !== undefined) {
     params = [req.body.password, req.file.filename, req.body.description, req.params.id];
-    if(req.body.password !== undefined || req.body.password !== ''){
+    if(params[0] !== ''){
       const salt = bcrypt.genSaltSync(12);
       const hash = bcrypt.hashSync(req.body.password, salt);
       params = [hash, req.file.filename, req.body.description, req.params.id];
