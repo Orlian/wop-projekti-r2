@@ -14,12 +14,14 @@ const logoutLink = document.getElementById('logout-link');
 const addImageButton = document.getElementById('post-button');
 const addImageCancel = document.getElementById('cancel-button');
 const addImageCaption = document.getElementById('add-image-caption');
+const addImageInput = document.getElementById('art-img-file');
 const editUserButton = document.getElementById('save-button');
 const editUserCancel = document.getElementById('user-cancel-button');
 const deleteUserButton = document.getElementById('delete-button');
 const logo = document.getElementById('logo-img');
 const navbarUser = JSON.parse(sessionStorage.getItem('user'));
 const editUserForm = document.getElementById('edit-user-form');
+const addForm = document.getElementById('add-image');
 
 logo.onclick = () => {
   location.href = 'feed.html';
@@ -185,6 +187,30 @@ editUserForm.addEventListener('submit', async(evt) =>{
   }
 });
 
+
+addForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  if(addImageInput.value !== ''){
+  const fd = new FormData(addForm);
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+    },
+    body: fd,
+  };
+  try {
+    const response = await fetch(url + '/post', fetchOptions);
+    const json = await response.json();
+    console.log('add response', json);
+  } catch (e) {
+    console.log(e.message);
+  }
+  location.reload();
+  }else{
+    addImageButton.disabled = true;
+  }
+});
 
 
 document.addEventListener('click', closeSubmenu, false);
