@@ -135,9 +135,10 @@ const createUserGrid = (images) => {
             fetchOptions);
         const json = await response.json();
         console.log('delete response', json);
+        await getUserPosts();
       }
       catch (e) {
-        console.log(e.message());
+        console.log(e.message);
       }
     });
 
