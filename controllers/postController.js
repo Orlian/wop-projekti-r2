@@ -69,7 +69,7 @@ const post_update_put = async (req, res) => {
 };
 
 const post_delete = async (req, res) => {
-  const postId = req.params.postid;
+  const postId = req.params.id;
   const post = await postModel.deletePost(postId);
   res.json(post);
 };
