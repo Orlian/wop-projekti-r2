@@ -13,6 +13,9 @@ const searchModalUser = document.querySelector('#image-owner');
 const searchModalFeedbackComments = document.querySelector('.comments');
 const searchModalFeedbackLikes = document.querySelector('.likes p');
 const params = new URLSearchParams(window.location.search);
+const commentForm = document.querySelector('.add-comment');
+const likeForm = document.querySelector('.like-form');
+const likeIcon = document.getElementById('like-icon');
 const topBtn = document.querySelector('.top-btn');
 
 
@@ -43,6 +46,8 @@ const fillSearchList = (hits) => {
       searchModalUser.innerHTML = hit.username;
       searchModalFeedbackComments.innerHTML = '';
       const comments = await getSearchComments(hit.postid);
+      const commenters = await getCommenter(hit.postid);
+
       comments.forEach((comment) => {
         const commentLi = document.createElement('li');
         const commentContent = document.createElement('p');
@@ -52,13 +57,129 @@ const fillSearchList = (hits) => {
         commentAuthor.innerHTML = `${comment.username}`;
         const commentTime = document.createElement('h5');
         commentTime.classList.add('comment-time');
-        commentTime.innerHTML = `${comment.timestamp}`;
+        const properTime = new Date(comment.timestamp); //Tästä mallia sortaukseen
+        const formattedTime = properTime.getDate() + '.' +
+            properTime.getMonth() +
+            '.' + properTime.getFullYear() + ' ' +
+            ((properTime.getHours() < 10 ? '0' : '') + properTime.getHours()) +
+            ':' +
+            ((properTime.getMinutes() < 10 ? '0' : '') +
+                properTime.getMinutes()) + ':' +
+            ((properTime.getSeconds() < 10 ? '0' : '') +
+                properTime.getSeconds());
+        commentTime.innerHTML = `${formattedTime}`;
         commentLi.appendChild(commentAuthor);
         commentLi.appendChild(commentContent);
         commentLi.appendChild(commentTime);
         searchModalFeedbackComments.appendChild(commentLi);
+
+        commenters.forEach((commenter) => {
+              if (commenter.commentid === comment.commentid) {
+                const deleteCommentButton = document.createElement('button');
+                commentLi.appendChild(deleteCommentButton);
+                deleteCommentButton.id = 'delete-comment-button';
+                deleteCommentButton.addEventListener('click', async (evt) => {
+                  evt.preventDefault();
+                  const fetchOptions = {
+                    method: 'DELETE',
+                    headers: {
+                      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+                    },
+                  };
+                  try {
+                    await fetch(
+                        url + '/comment/' + image.postid + '/' + comment.commentid,
+                        fetchOptions);
+                  } catch (error) {
+                    console.log(error.message);
+                  }
+                });
+              }
+            },
+        );
+
       });
+
+      commentForm.addEventListener('submit', async (evt) => {
+        evt.preventDefault();
+        const data = serializeJson(commentForm);
+        const fetchOptions = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+          },
+          body: JSON.stringify(data),
+        };
+        try {
+          const response = await fetch(url + '/comment/' + image.postid,
+              fetchOptions);
+          const comment = await response.json();
+        } catch (err) {
+          console.log(err.message);
+        }
+        location.reload();
+      });
+
+      const liker = await getLiker(hit.postid);
       searchModalFeedbackLikes.innerHTML = await getSearchLikes(hit.postid);
+
+      if (liker.length < 1) {
+        likeIcon.style.color = 'black';
+      } else {
+        likeIcon.style.color = 'red';
+      }
+
+      if (liker.length < 1) {
+        likeForm.addEventListener('submit', async (evt) => {
+          evt.preventDefault();
+          const data = serializeJson(likeForm);
+          const fetchOptions = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+            body: JSON.stringify(data),
+          };
+          try {
+            const response = await fetch(url + '/like/' + image.postid,
+                fetchOptions);
+            const like = await response.json();
+            likeIcon.style.display = 'block';
+            likeIcon.style.color = 'red';
+
+          } catch (error) {
+            console.log(error.message);
+          }
+          location.reload();
+        });
+      } else {
+        likeForm.addEventListener('submit', async (evt) => {
+          evt.preventDefault();
+          const data = serializeJson(likeForm);
+          const fetchOptions = {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+            body: JSON.stringify(data),
+          };
+          try {
+            const response = await fetch(url + '/like/' + image.postid,
+                fetchOptions);
+            const like = await response.json();
+            console.log('Add like', like);
+            likeIcon.style.color = 'black';
+            location.reload();
+          } catch (error) {
+            console.log(error.message);
+          }
+          location.reload();
+        });
+      }
+
     });
   });
 }
@@ -125,6 +246,37 @@ const getSearchLikes = async (postId) => {
     console.log(e.message);
   }
 };
+
+const getLiker = async (postId) => {
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/like/author/' + postId, options);
+    const likeStatus = await response.json();
+    return likeStatus;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+const getCommenter = async (postId) => {
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/comment/author/' + postId, options);
+    const commentStatus = await response.json();
+    return commentStatus;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
 
 //Potki pois ja logout jos väärä token tai ei tokenia
 
