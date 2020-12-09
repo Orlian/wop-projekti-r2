@@ -3,19 +3,17 @@
     margin: 0;
     padding: 0;
 }
-body{
-    background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
-}
+
 .container{
     width: 100vw;
     height: 100vh;
     display: flex;
+    background-image: url("../images/front-page/bg.jpg");
 }
 main{
     margin: auto;
     background: whitesmoke;
     border-radius: 2em;
-    box-shadow: 5px 10px 10px lightgrey;
 }
 .edit-user-wrapper, .register-wrapper, .post-wrapper{
     display: flex;
@@ -87,13 +85,21 @@ input[type='checkbox']{
 }
 button{
     margin: 0.5em;
-    padding: 0.2em 1em;
-    background-image: linear-gradient(to bottom right, red, #2c2ce5);
-    border: 0.1em solid black;
-    border-radius: 1em;
+    padding: 0.4em 1em;
+    background-image: linear-gradient(to bottom right, mediumslateblue, palevioletred);
+    border: none;
+    border-radius: 2em;
+    box-shadow: 3px 5px 5px lightgray;
+    height: 2em;
+}
+
+#cancel-button {
+    background: whitesmoke;
+    color: #1e1e1e;
+    border: 0.1em solid slateblue;
 }
 button:hover{
-    background-image: linear-gradient(to bottom right, #ea6969, #4646c9);
+    background:slateblue;
 }
 button:focus{
     outline: none;
