@@ -17,7 +17,7 @@ const createImageCards = (images) => {
 
     const card = document.createElement('div');
     card.classList.add('card');
-    card.id = `card-${images[image]}`
+    card.id = `card-${images.findIndex(image)}`
 
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('img-container');
