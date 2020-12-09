@@ -18,6 +18,9 @@ const createImageCards = (images) => {
     const card = document.createElement('div');
     card.classList.add('card');
 
+    const imgContainer = document.createElement('div');
+    imgContainer.classList.add('img-container');
+
     const img = document.createElement('img');
     img.src = url + '/uploads/' + image.imgfile;
     img.alt = image.caption.slice(0, 20);
@@ -224,7 +227,8 @@ const createImageCards = (images) => {
     aside.appendChild(commentsContainer);
     aside.appendChild(formsContainer);
 
-    card.appendChild(img);
+    imgContainer.appendChild(img);
+    card.appendChild(imgContainer);
     card.appendChild(aside);
 
     imageFeed.appendChild(card);
