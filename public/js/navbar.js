@@ -96,7 +96,7 @@ editLink.onclick = function() {
 editUserButton.onclick = () =>{
   editModal.style.display = 'none';
 };
-editUserCancel.onreset = () =>{
+editUserCancel.onclick = () =>{
   postPicture.src = 'http://placekitten.com/200/200';
   editModal.style.display = 'none';
 };
