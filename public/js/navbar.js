@@ -187,11 +187,11 @@ editUserForm.addEventListener('submit', async(evt) =>{
   }
 });
 
+addImageButton.disabled = addImageInput.value === '';
 
 addForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  if (addImageInput.value !== '') {
-    addImageButton.disabled = false;
+
     const fd = new FormData(addForm);
     const fetchOptions = {
       method: 'POST',
@@ -209,10 +209,6 @@ addForm.addEventListener('submit', async (evt) => {
       console.log(e.message);
     }
     location.reload();
-  }
-  else {
-    addImageButton.disabled = true;
-  }
 });
 
 
