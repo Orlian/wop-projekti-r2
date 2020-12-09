@@ -226,6 +226,10 @@ form::after {
     outline: none;
 }
 
+#post-button:disabled {
+    background-color: lightgrey;
+}
+
 #cancel-button, #user-cancel-button, #delete-button, #delete-image {
     background: whitesmoke;
     color: #1e1e1e;
