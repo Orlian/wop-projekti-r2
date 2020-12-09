@@ -222,6 +222,7 @@ const createUserGrid = (images) => {
             const like = await response.json();
             likeIcon.style.display = 'block';
             likeIcon.style.color = 'red';
+            await getLikes(image.postid);
           } catch (error) {
             console.log(error.message);
           }
@@ -244,6 +245,7 @@ const createUserGrid = (images) => {
             const like = await response.json();
             console.log('Add like', like);
             likeIcon.style.color = 'black';
+            await getLikes(image.postid);
           } catch (error) {
             console.log(error.message);
           }
