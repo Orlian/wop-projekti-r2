@@ -544,6 +544,14 @@ input[type='checkbox']{
     }
 }
 
+
+@media only screen and (max-width: 460px)  {
+    .likes {
+        left: 50%;
+    }
+}
+
+
 /*muuta kuin navbar*/
 .profile-info{
     display: flex;
