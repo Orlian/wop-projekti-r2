@@ -115,6 +115,7 @@ spans.forEach((span) => {
     span.parentNode.parentNode.parentNode.parentNode.style.display = 'none';
     allForms.forEach((form) => {
       form.reset();
+      console.log('kävin resetoimassa ruksista');
     });
   });
 });
@@ -164,6 +165,7 @@ window.onclick = function(event) {
         modal.style.display = 'none';
         allForms.forEach((form)=>{
           form.reset();
+          console.log('kävin resetoimassa ikkunassa');
         })
       }
       modal.style.display = 'none';
