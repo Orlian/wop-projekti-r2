@@ -19,17 +19,16 @@ const likeIcon = document.getElementById('like-icon');
 let modalTarget = 0;
 let commentsActive = 0;
 
-
 // Search result kentän täyttäminen
 const fillSearchList = (hits) => {
   searchResultsFor.innerHTML = '';
-  searchResultsFor.innerHTML = `Search results for "${params.get('search')}"`
+  searchResultsFor.innerHTML = `Search results for "${params.get('search')}"`;
   searchList.innerHTML = '';
   hits.forEach((hit) => {
     const gridItem = document.createElement('div');
     const gridUser = document.createElement('h3');
     gridItem.classList.add('grid-item');
-    gridItem.id = `${hit.postid}`
+    gridItem.id = hit.postid;
     gridUser.classList.add('grid-poster');
     gridUser.innerHTML = hit.username;
     const img = document.createElement('img');
@@ -41,10 +40,10 @@ const fillSearchList = (hits) => {
 
     img.addEventListener('click', async (evt) => {
       evt.preventDefault();
-      searchModal.style.display = 'flex';
       modalTarget = gridItem.id;
+      searchModal.style.display = 'flex';
       searchModalFigImg.src = searchUrl + '/uploads/' + hit.imgfile;
-      searchModalFigImg.alt = hit.caption.slice(0,20);
+      searchModalFigImg.alt = hit.caption.slice(0, 20);
       searchModalCaption.innerHTML = hit.caption;
       searchModalUser.innerHTML = hit.username;
       searchModalFeedbackComments.innerHTML = '';
@@ -62,7 +61,7 @@ const fillSearchList = (hits) => {
         commentTime.classList.add('comment-time');
         const properTime = new Date(comment.timestamp); //Tästä mallia sortaukseen
         const formattedTime = properTime.getDate() + '.' +
-            properTime.getMonth() +
+            (properTime.getMonth() + 1) +
             '.' + properTime.getFullYear() + ' ' +
             ((properTime.getHours() < 10 ? '0' : '') + properTime.getHours()) +
             ':' +
@@ -91,7 +90,8 @@ const fillSearchList = (hits) => {
                   };
                   try {
                     await fetch(
-                        searchUrl + '/comment/' + hit.postid + '/' + comment.commentid,
+                        searchUrl + '/comment/' + hit.postid + '/' +
+                        comment.commentid,
                         fetchOptions);
                   } catch (error) {
                     console.log(error.message);
@@ -106,7 +106,9 @@ const fillSearchList = (hits) => {
       commentForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
         commentsActive++;
-        if(commentsActive < 2 && modalTarget === hit.postid){
+        console.log('commentsActive luku', commentsActive, '\nmodalTarget',
+            modalTarget, '\nhit.postid', hit.postid);
+        if (commentsActive < 2 && parseInt(modalTarget) === hit.postid) {
           const data = serializeJson(commentForm);
           const fetchOptions = {
             method: 'POST',
@@ -120,7 +122,10 @@ const fillSearchList = (hits) => {
             const response = await fetch(searchUrl + '/comment/' + modalTarget,
                 fetchOptions);
             const comment = await response.json();
-            if(comment) commentsActive = 0;
+            console.log('comment response', comment);
+            if (comment) {
+              commentsActive = 0;
+            }
           } catch (err) {
             console.log(err.message);
             commentsActive = 0;
@@ -141,7 +146,7 @@ const fillSearchList = (hits) => {
       if (liker.length < 1) {
         likeForm.addEventListener('submit', async (evt) => {
           evt.preventDefault();
-          if(modalTarget === hit.postid){
+          if (modalTarget === hit.postid) {
             const data = serializeJson(likeForm);
             const fetchOptions = {
               method: 'POST',
@@ -167,7 +172,7 @@ const fillSearchList = (hits) => {
       } else {
         likeForm.addEventListener('submit', async (evt) => {
           evt.preventDefault();
-          if(modalTarget === hit.postid) {
+          if (modalTarget === hit.postid) {
             const data = serializeJson(likeForm);
             const fetchOptions = {
               method: 'DELETE',
@@ -194,7 +199,7 @@ const fillSearchList = (hits) => {
 
     });
   });
-}
+};
 
 window.addEventListener('load', async (evt) => {
   evt.preventDefault();
@@ -205,13 +210,12 @@ window.addEventListener('load', async (evt) => {
     },
   };
   console.log('window onload body data', fetchOptions.body);
-  const response = await fetch(searchUrl + '/search/params/' + params.get('search'), fetchOptions); //params.search
+  const response = await fetch(
+      searchUrl + '/search/params/' + params.get('search'), fetchOptions); //params.search
   const searchData = await response.json();
   console.log('search-results onload searchData', searchData);
   fillSearchList(searchData);
-})
-
-//params.get('search')
+});
 
 const getSearchComments = async (postid) => {
   try {
@@ -264,13 +268,13 @@ const getCommenter = async (postId) => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(searchUrl + '/comment/author/' + postId, options);
+    const response = await fetch(searchUrl + '/comment/author/' + postId,
+        options);
     const commentStatus = await response.json();
     return commentStatus;
   } catch (e) {
     console.log(e.message);
   }
 };
-
 
 //Potki pois ja logout jos väärä token tai ei tokenia

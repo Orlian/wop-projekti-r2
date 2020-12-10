@@ -14,7 +14,6 @@ const imageModalFeedbackLikes = document.querySelector('.likes p');
 const imageModalOwner = document.getElementById('image-owner');
 const commentsUl = document.querySelector('.comments');
 const editUserform = document.querySelector('.edit-user-form');
-const saveButton = document.getElementById('save-button');
 const userModalPicture = document.getElementById('user-picture');
 const userModalDescription = document.getElementById('user-description');
 const commentForm = document.querySelector('.add-comment');
@@ -116,7 +115,6 @@ const createUserGrid = (images) => {
     postImage.addEventListener('click', async (evt) => {
       evt.preventDefault();
       modalTarget = gridItem.id;
-      console.log('modaali kohde', modalTarget);
       imageModal.style.display = 'flex';
       modalImage.src = url + '/uploads/' + image.imgfile;
       modalImage.alt = image.caption.slice(0, 10);
@@ -138,7 +136,7 @@ const createUserGrid = (images) => {
         commentTime.classList.add('comment-time');
         const properTime = new Date(comment.timestamp); //Tästä mallia sortaukseen
         const formattedTime = properTime.getDate() + '.' +
-            properTime.getMonth() +
+            (properTime.getMonth()+1) +
             '.' + properTime.getFullYear() + ' ' +
             ((properTime.getHours() < 10 ? '0' : '') + properTime.getHours()) +
             ':' +
@@ -185,7 +183,9 @@ const createUserGrid = (images) => {
       commentForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
         commentsActive++;
-        if(commentsActive < 2 && modalTarget === image.postid){
+        console.log('commentsActive luku', commentsActive, '\nmodalTarget',
+            modalTarget, '\nimage.postid', image.postid);
+        if(commentsActive < 2 && parseInt(modalTarget) === image.postid){
           const data = serializeJson(commentForm);
           const fetchOptions = {
             method: 'POST',
@@ -221,31 +221,33 @@ const createUserGrid = (images) => {
       if (liker.length < 1) {
         likeForm.addEventListener('submit', async (evt) => {
           evt.preventDefault();
-          const data = serializeJson(likeForm);
-          const fetchOptions = {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-            },
-            body: JSON.stringify(data),
-          };
-          try {
-            const response = await fetch(url + '/like/' + modalTarget,
-                fetchOptions);
-            const like = await response.json();
-            likeIcon.style.display = 'block';
-            likeIcon.style.color = 'red';
+          if(parseInt(modalTarget) === image.postid){
+            const data = serializeJson(likeForm);
+            const fetchOptions = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+              },
+              body: JSON.stringify(data),
+            };
+            try {
+              const response = await fetch(url + '/like/' + modalTarget,
+                  fetchOptions);
+              const like = await response.json();
+              likeIcon.style.display = 'block';
+              likeIcon.style.color = 'red';
 
-          } catch (error) {
-            console.log(error.message);
+            } catch (error) {
+              console.log(error.message);
+            }
+            location.reload();
           }
-          location.reload();
         });
       } else {
         likeForm.addEventListener('submit', async (evt) => {
           evt.preventDefault();
-          if(modalTarget === image.postid){
+          if(parseInt(modalTarget) === image.postid){
             const data = serializeJson(likeForm);
             const fetchOptions = {
               method: 'DELETE',
@@ -272,7 +274,7 @@ const createUserGrid = (images) => {
 
       deleteImgButton.addEventListener('click', async (evt) => {
         evt.preventDefault();
-        if(modalTarget === image.postid){
+        if(parseInt(modalTarget) === image.postid){
           const fetchOptions = {
             method: 'DELETE',
             headers: {

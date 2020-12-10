@@ -96,6 +96,7 @@
                         <input id="confirm-password-input" type="password" name="confirm-password"
                                placeholder="Retype new password" pattern="^(|(?=.*[A-Z]).{8,})$" title="Password must contain one uppercase letter and eight characters" oninvalid="this.setCustomValidity('Password must contain one uppercase letter and eight characters')"
                                onkeyup="checkMatch();">
+                        <span id="pwmessage">New password must contain one uppercase letter and eight characters</span>
                         <textarea name="description" placeholder="Description" style="resize: none" rows="8"
                                   cols="40" id="user-description"></textarea>
                         <button type="submit" class="modal-button" id="save-button">Save changes</button>

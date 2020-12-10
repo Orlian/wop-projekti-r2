@@ -237,10 +237,13 @@ const createImageCards = (images) => {
     card.appendChild(aside);
     imageFeed.appendChild(card);
   });
-  [...imageFeed.children]
-  .sort((a,b)=>b.id - a.id)
-  .forEach(node=>imageFeed.appendChild(node));
-  console.log('Organized nodelist', imageFeed.children);
+  /*const htmlArray = Array.prototype.slice().call(imageFeed.children).sort((a,b) => a.id - b.id);
+  for(let i = 0; i < htmlArray.length; i++){
+    const parent = htmlArray[i].parentNode;
+    const detachedItem = parent.removeChild(htmlArray[i]);
+    parent.appendChild(detachedItem);
+  }
+  console.log('Organized nodelist', imageFeed.children);*/
 };
 
 /**Fetching all posts data from database**/
