@@ -21,6 +21,7 @@ const recent_post_list_get = async (req, res) => {
     return post;
   }));
   uudetPostit.sort((a, b) => parseInt(b.commentid) - parseInt(a.commentid));
+  console.log('postController organized posts', uudetPostit);
   res.json(uudetPostit);
 };
 
