@@ -221,31 +221,33 @@ const createUserGrid = (images) => {
       if (liker.length < 1) {
         likeForm.addEventListener('submit', async (evt) => {
           evt.preventDefault();
-          const data = serializeJson(likeForm);
-          const fetchOptions = {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-            },
-            body: JSON.stringify(data),
-          };
-          try {
-            const response = await fetch(url + '/like/' + modalTarget,
-                fetchOptions);
-            const like = await response.json();
-            likeIcon.style.display = 'block';
-            likeIcon.style.color = 'red';
+          if(parseInt(modalTarget) === image.postid){
+            const data = serializeJson(likeForm);
+            const fetchOptions = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+              },
+              body: JSON.stringify(data),
+            };
+            try {
+              const response = await fetch(url + '/like/' + modalTarget,
+                  fetchOptions);
+              const like = await response.json();
+              likeIcon.style.display = 'block';
+              likeIcon.style.color = 'red';
 
-          } catch (error) {
-            console.log(error.message);
+            } catch (error) {
+              console.log(error.message);
+            }
+            location.reload();
           }
-          location.reload();
         });
       } else {
         likeForm.addEventListener('submit', async (evt) => {
           evt.preventDefault();
-          if(modalTarget === image.postid){
+          if(parseInt(modalTarget) === image.postid){
             const data = serializeJson(likeForm);
             const fetchOptions = {
               method: 'DELETE',
@@ -272,7 +274,7 @@ const createUserGrid = (images) => {
 
       deleteImgButton.addEventListener('click', async (evt) => {
         evt.preventDefault();
-        if(modalTarget === image.postid){
+        if(parseInt(modalTarget) === image.postid){
           const fetchOptions = {
             method: 'DELETE',
             headers: {
