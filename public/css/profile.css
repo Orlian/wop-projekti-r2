@@ -275,6 +275,7 @@ textarea{
     width: 100%;
     padding: 0.5em;
     box-shadow: 2px 5px 5px lightgrey;
+    overflow-x: scroll;
 }
 
 .genre-selection h2{
@@ -462,9 +463,14 @@ input[type='checkbox']{
     outline: none;
     cursor: pointer;
 }
+
+.like-btn > ion-icon{
+    font-size: 2em;
+}
+
 .likes{
     position: absolute;
-    left: 15%;
+    left: 25%;
     padding-top: 1em;
 }
 .aside-bottom{
