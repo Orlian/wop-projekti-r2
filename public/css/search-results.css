@@ -27,6 +27,10 @@
     width: 70em;
 }
 
+.image-search-modal {
+    overflow-x: hidden;
+}
+
 .image-search-content-modal {
     height: auto;
     width: 100%;
@@ -70,10 +74,6 @@
 
 @media only screen and (max-width: 900px) {
 
-    .comments {
-        height: 8em;
-    }
-
     .image-search-content-modal-wrapper {
         flex-direction: column;
     }
@@ -84,5 +84,9 @@
         max-width: 800px;
         max-height: 1200px;
         align-self: center;
+    }
+
+    .comments {
+        height: 8em;
     }
 }
