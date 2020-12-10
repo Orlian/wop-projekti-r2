@@ -115,7 +115,6 @@ const createUserGrid = (images) => {
     postImage.addEventListener('click', async (evt) => {
       evt.preventDefault();
       modalTarget = gridItem.id;
-      console.log('modaali kohde', modalTarget);
       imageModal.style.display = 'flex';
       modalImage.src = url + '/uploads/' + image.imgfile;
       modalImage.alt = image.caption.slice(0, 10);
@@ -184,6 +183,8 @@ const createUserGrid = (images) => {
       commentForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
         commentsActive++;
+        console.log('commentsActive luku', commentsActive, '\nmodalTarget',
+            modalTarget, '\nhit.postid', hit.postid);
         if(commentsActive < 2 && modalTarget === image.postid){
           const data = serializeJson(commentForm);
           const fetchOptions = {
