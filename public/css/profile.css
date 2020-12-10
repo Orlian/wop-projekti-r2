@@ -463,6 +463,10 @@ input[type='checkbox']{
     margin-top: 0.5em;
     align-self: flex-end;
 }
+
+#comment-btn:hover{
+    background-color: slateblue;
+}
 .like-form{
     display: flex;
     justify-content: flex-start;
