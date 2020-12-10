@@ -67,7 +67,7 @@ const createImageCards = (images) => {
       const commentTime = document.createElement('h6');
       commentTime.classList.add('comment-time');
       const properTime = new Date(comment.timestamp); //Tästä mallia sortaukseen
-      const formattedTime = properTime.getDate() + '.' + properTime.getMonth() +
+      const formattedTime = properTime.getDate() + '.' + (properTime.getMonth()+1)+
           '.' + properTime.getFullYear() + ' ' +
           ((properTime.getHours() < 10 ? '0' : '') + properTime.getHours()) +
           ':' +
@@ -238,8 +238,9 @@ const createImageCards = (images) => {
     imageFeed.appendChild(card);
   });
   [...imageFeed.children]
-  .sort((a,b)=>a.id - b.id)
+  .sort((a,b)=>b.id - a.id)
   .forEach(node=>imageFeed.appendChild(node));
+  console.log('Organized nodelist', imageFeed.children);
 };
 
 /**Fetching all posts data from database**/
