@@ -27,6 +27,7 @@ const passwordInput = document.getElementById('password-input');
 const passwordConfirmInput = document.getElementById('confirm-password-input');
 const userPictureNavbar = document.getElementById('user-picture');
 const userDescription = document.getElementById('user-description');
+const allForms = document.querySelectorAll('form');
 
 logo.onclick = () => {
   location.href = 'feed.html';
@@ -112,6 +113,9 @@ addImageCancel.onclick = () => {
 spans.forEach((span) => {
   span.addEventListener('click', () => {
     span.parentNode.parentNode.parentNode.parentNode.style.display = 'none';
+    allForms.forEach((form) => {
+      form.reset();
+    });
   });
 });
 
@@ -158,6 +162,9 @@ window.onclick = function(event) {
     if(event.target === modal){
       if(modal.id === 'post-modal'){
         modal.style.display = 'none';
+        allForms.forEach((form)=>{
+          form.reset();
+        })
       }
       modal.style.display = 'none';
     }
