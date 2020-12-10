@@ -613,3 +613,6 @@ section h2, .desc{
     border-radius: 0;
 }
 
+#pwmessage {
+    font-size: 0.75em;
+}
