@@ -20,6 +20,11 @@ nav{
     display: flex;
     padding: 7.5px 10px 7.5px 0;
 }
+
+.logo-caption {
+    font-family: "Lobster Two", sans-serif;
+}
+
 #add-pic-button, #profile-button {
     padding: 9px 5px;
 }
