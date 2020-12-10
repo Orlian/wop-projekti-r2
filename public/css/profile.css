@@ -249,8 +249,8 @@ form::after {
     background: whitesmoke;
     color: #1e1e1e;
     border: 0.1em solid slateblue;
-    width: 9em;
-    font-size: 1em;
+    width: 8em;
+    font-size: 0.75em;
     line-height: 0.5em;
 }
 
@@ -444,7 +444,7 @@ input[type='checkbox']{
 }
 #comment-btn{
     height: 2em;
-    width: 9em;
+    width: 8em;
     border: none;
     background-image: linear-gradient(to bottom right, mediumslateblue, palevioletred);
     border-radius: 2em;
@@ -452,7 +452,7 @@ input[type='checkbox']{
     outline: none;
     cursor: pointer;
     font-family: "Montserrat", sans-serif;
-    font-size: 1em;
+    font-size: 0.75em;
     color: whitesmoke;
     line-height: 0.5;
     margin-top: 0.5em;
