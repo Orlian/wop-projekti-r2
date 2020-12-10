@@ -20,6 +20,7 @@ const userModalDescription = document.getElementById('user-description');
 const commentForm = document.querySelector('.add-comment');
 const likeForm = document.querySelector('.like-form');
 const likeIcon = document.getElementById('like-icon');
+let modalTarget = 0;
 
 const getLikes = async (postId) => {
   try {
@@ -103,6 +104,7 @@ const createUserGrid = (images) => {
 
   images.forEach((image) => {
     const gridItem = document.createElement('div');
+    gridItem.id = image.postid;
     const postImage = document.createElement('img');
     gridItem.classList.add('grid-item');
     postImage.src = url + '/thumbnails/' + image.imgfile;
@@ -112,6 +114,8 @@ const createUserGrid = (images) => {
 
     postImage.addEventListener('click', async (evt) => {
       evt.preventDefault();
+      modalTarget = this.id;
+      console.log('modaali this', this.getAttribute('id'));
       imageModal.style.display = 'flex';
       modalImage.src = url + '/uploads/' + image.imgfile;
       modalImage.alt = image.caption.slice(0, 10);
