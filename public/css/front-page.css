@@ -180,8 +180,13 @@ button:hover {
 }
 
 #login-text{
-    font-size: 2em;
+    font-size: 1em;
 }
+
+input:active, button:active{
+    outline: none;
+}
+
 @media only screen and (max-width: 500px) {
     #background
     .image {
