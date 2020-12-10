@@ -146,7 +146,9 @@ button:focus{
     top: 0.6em;
     opacity: 0;
 }
-
+ion-icon{
+    font-size: 2.25em;
+}
 #register-form{
     width: auto;
 }
