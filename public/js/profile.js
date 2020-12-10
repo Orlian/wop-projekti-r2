@@ -17,7 +17,6 @@ const editUserform = document.querySelector('.edit-user-form');
 const saveButton = document.getElementById('save-button');
 const userModalPicture = document.getElementById('user-picture');
 const userModalDescription = document.getElementById('user-description');
-const topBtn = document.querySelector('.top-btn');
 const commentForm = document.querySelector('.add-comment');
 const likeForm = document.querySelector('.like-form');
 const likeIcon = document.getElementById('like-icon');
@@ -311,25 +310,3 @@ const getUserPosts = async () => {
 };
 
 getUserPosts(); //TODO Selvitä onkelma
-
-window.addEventListener('scroll', () => {
-  if (window.pageYOffset > 300) {
-    if (!topBtn.classList.contains('btn-entrance')) {
-      topBtn.classList.remove('btn-exit');
-      topBtn.classList.add('btn-entrance');
-      topBtn.style.display = 'block';
-    }
-  } else {
-    if (topBtn.classList.contains('btn-entrance')) {
-      topBtn.classList.remove('btn-entrance');
-      topBtn.classList.add('btn-exit');
-      setTimeout(() => {
-        topBtn.style.display = 'none';
-      }, 250);
-    }
-  }
-});
-
-topBtn.addEventListener('click', () => {
-  window.scrollTo(0, 0);
-});
