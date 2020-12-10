@@ -17,7 +17,7 @@ const createImageCards = (images) => {
 
     const card = document.createElement('div');
     card.classList.add('card');
-    card.id = `${images.indexOf(image) +1}`
+    card.id = `${images.indexOf(image) + (1 + limitstart)}`
 
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('img-container');
@@ -257,8 +257,8 @@ const getPosts = async () => {
     if (images.length < 10) {
       viimeinen = true;
     }
-    limitstart += 10;
     createImageCards(images);
+    limitstart += 10;
   } catch (e) {
     console.log(e.message);
     const response = await fetch(url + '/auth/logout');
