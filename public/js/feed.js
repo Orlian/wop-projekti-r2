@@ -237,7 +237,7 @@ const createImageCards = (images) => {
     card.appendChild(aside);
     imageFeed.appendChild(card);
   });
-  /*imageFeed.Array.prototype.slice().call(imageFeed.children).sort((a,b) => a.id - b.id);
+  /*const htmlArray = Array.prototype.slice().call(imageFeed.children).sort((a,b) => a.id - b.id);
   for(let i = 0; i < htmlArray.length; i++){
     const parent = htmlArray[i].parentNode;
     const detachedItem = parent.removeChild(htmlArray[i]);

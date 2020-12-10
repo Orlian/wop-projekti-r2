@@ -106,7 +106,9 @@ const fillSearchList = (hits) => {
       commentForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
         commentsActive++;
-        if (commentsActive < 2 && modalTarget === hit.postid) {
+        console.log('commentsActive luku', commentsActive, '\nmodalTarget',
+            modalTarget, '\nhit.postid', hit.postid);
+        if (commentsActive < 2 && parseInt(modalTarget) === hit.postid) {
           const data = serializeJson(commentForm);
           const fetchOptions = {
             method: 'POST',
@@ -120,6 +122,7 @@ const fillSearchList = (hits) => {
             const response = await fetch(searchUrl + '/comment/' + modalTarget,
                 fetchOptions);
             const comment = await response.json();
+            console.log('comment response', comment);
             if (comment) {
               commentsActive = 0;
             }
