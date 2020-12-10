@@ -476,6 +476,10 @@ input[type='checkbox']{
     font-size: 2em;
 }
 
+.like-btn > ion-icon:hover{
+    background-color: whitesmoke;
+}
+
 .likes{
     position: absolute;
     left: 25%;
