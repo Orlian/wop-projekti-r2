@@ -148,6 +148,7 @@ button:focus{
 }
 ion-icon{
     font-size: 2.25em;
+    color: palevioletred;
 }
 #register-form{
     width: auto;
