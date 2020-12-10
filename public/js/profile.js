@@ -199,7 +199,7 @@ const createUserGrid = (images) => {
             const response = await fetch(url + '/comment/' + modalTarget,
                 fetchOptions);
             const comment = await response.json();
-            if(comment)commentsActive--;
+            if(comment)commentsActive = 0;
           } catch (err) {
             console.log(err.message);
           }
