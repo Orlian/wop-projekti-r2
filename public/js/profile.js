@@ -115,14 +115,13 @@ const createUserGrid = (images) => {
     postImage.addEventListener('click', async (evt) => {
       evt.preventDefault();
       modalTarget = this.id;
-      console.log('modaali this', this.getAttribute('id'));
+      console.log('modaali this', this);
       imageModal.style.display = 'flex';
       modalImage.src = url + '/uploads/' + image.imgfile;
       modalImage.alt = image.caption.slice(0, 10);
       imageCaption.innerHTML = image.caption;
       imageModalOwner.innerHTML = image.username;
       commentsUl.innerHTML = '';
-      deleteImgButton.id = `${image.postid}`
       const comments = await getComments(image.postid);
       const commenters = await getCommenter(image.postid);
       console.log(comments);
