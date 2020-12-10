@@ -238,7 +238,7 @@ const createImageCards = (images) => {
     imageFeed.appendChild(card);
   });
   [...imageFeed.children]
-  .sort((a,b)=>a.id>b.id?1:-1)
+  .sort((a,b)=>a.id - b.id)
   .forEach(node=>imageFeed.appendChild(node));
 };
 
