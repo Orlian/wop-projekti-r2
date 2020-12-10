@@ -193,7 +193,7 @@ const createUserGrid = (images) => {
           body: JSON.stringify(data),
         };
         try {
-          const response = await fetch(url + '/comment/' + image.postid,
+          const response = await fetch(url + '/comment/' + modalTarget,
               fetchOptions);
           const comment = await response.json();
         } catch (err) {
@@ -249,7 +249,7 @@ const createUserGrid = (images) => {
             body: JSON.stringify(data),
           };
           try {
-            const response = await fetch(url + '/like/' + image.postid,
+            const response = await fetch(url + '/like/' + modalTarget,
                 fetchOptions);
             const like = await response.json();
             console.log('Add like', like);
