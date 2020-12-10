@@ -39,6 +39,7 @@ const fillSearchList = (hits) => {
     img.addEventListener('click', async (evt) => {
       evt.preventDefault();
       searchModal.style.display = 'flex';
+      commentForm.id = `${hit.postid}`
       searchModalFigImg.src = searchUrl + '/uploads/' + hit.imgfile;
       searchModalFigImg.alt = hit.caption.slice(0,20);
       searchModalCaption.innerHTML = hit.caption;
@@ -111,7 +112,7 @@ const fillSearchList = (hits) => {
           body: JSON.stringify(data),
         };
         try {
-          const response = await fetch(searchUrl + '/comment/' + hit.postid,
+          const response = await fetch(searchUrl + '/comment/' + commentForm.id,
               fetchOptions);
           const comment = await response.json();
         } catch (err) {
