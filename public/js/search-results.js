@@ -16,7 +16,6 @@ const params = new URLSearchParams(window.location.search);
 const commentForm = document.querySelector('.add-comment');
 const likeForm = document.querySelector('.like-form');
 const likeIcon = document.getElementById('like-icon');
-const topBtn = document.querySelector('.top-btn');
 
 
 // Search result kentän täyttäminen
@@ -279,25 +278,3 @@ const getCommenter = async (postId) => {
 
 
 //Potki pois ja logout jos väärä token tai ei tokenia
-
-window.addEventListener('scroll', () => {
-  if (window.pageYOffset > 300) {
-    if (!topBtn.classList.contains('btn-entrance')) {
-      topBtn.classList.remove('btn-exit');
-      topBtn.classList.add('btn-entrance');
-      topBtn.style.display = 'block';
-    }
-  } else {
-    if (topBtn.classList.contains('btn-entrance')) {
-      topBtn.classList.remove('btn-entrance');
-      topBtn.classList.add('btn-exit');
-      setTimeout(() => {
-        topBtn.style.display = 'none';
-      }, 250);
-    }
-  }
-});
-
-topBtn.addEventListener('click', () => {
-  window.scrollTo(0, 0);
-});
