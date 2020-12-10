@@ -14,7 +14,6 @@ const imageModalFeedbackLikes = document.querySelector('.likes p');
 const imageModalOwner = document.getElementById('image-owner');
 const commentsUl = document.querySelector('.comments');
 const editUserform = document.querySelector('.edit-user-form');
-const saveButton = document.getElementById('save-button');
 const userModalPicture = document.getElementById('user-picture');
 const userModalDescription = document.getElementById('user-description');
 const commentForm = document.querySelector('.add-comment');
