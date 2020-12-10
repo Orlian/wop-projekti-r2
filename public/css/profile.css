@@ -456,7 +456,6 @@ input[type='checkbox']{
     height: 2em;
     width: 9em;
     border: none;
-    background-image: linear-gradient(to bottom right, mediumslateblue, palevioletred);
     border-radius: 2em;
     padding: 0.5em;
     outline: none;
@@ -470,7 +469,7 @@ input[type='checkbox']{
 }
 
 #comment-btn:hover{
-    background-color: slateblue !important;
+    background-color: slateblue;
 }
 
 .like-form{
