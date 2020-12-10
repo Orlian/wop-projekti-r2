@@ -225,7 +225,7 @@ const createUserGrid = (images) => {
             body: JSON.stringify(data),
           };
           try {
-            const response = await fetch(url + '/like/' + image.postid,
+            const response = await fetch(url + '/like/' + modalTarget,
                 fetchOptions);
             const like = await response.json();
             likeIcon.style.display = 'block';
