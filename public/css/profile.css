@@ -562,6 +562,11 @@ input[type='checkbox']{
     border-radius: 50%;
 }
 
+#art-img {
+    height: 200px;
+    max-width: 100%;
+}
+
 section h2, .desc{
     text-align: center;
     padding: 0.2em;
