@@ -183,7 +183,7 @@ button:hover {
     font-size: 1em;
 }
 
-input:active, button:active{
+input, button{
     outline: none;
 }
 
