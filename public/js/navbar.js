@@ -106,13 +106,11 @@ addImageButton.onclick = () => {
 };
 
 addImageCancel.onclick = () => {
-  postPicture.src = 'http://placekitten.com/200/200';
   postModal.style.display = 'none';
 };
 
 spans.forEach((span) => {
   span.addEventListener('click', () => {
-    postPicture.src = 'http://placekitten.com/200/200';
     span.parentNode.parentNode.parentNode.parentNode.style.display = 'none';
   });
 });
@@ -159,7 +157,6 @@ window.onclick = function(event) {
   modals.forEach((modal)=>{
     if(event.target === modal){
       if(modal.id === 'post-modal'){
-        postPicture.src = 'http://placekitten.com/200/200';
         modal.style.display = 'none';
       }
       modal.style.display = 'none';

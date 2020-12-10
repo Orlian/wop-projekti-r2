@@ -17,8 +17,10 @@ uploadButton.addEventListener("mouseout", () =>{
 
 function previewImage(event) {
 
+  if(document.body.contains(addImageModalButton)){
+    addImageModalButton.disabled = false;
+  }
 
-  addImageModalButton.disabled = false;
 
   const reader = new FileReader();
 
