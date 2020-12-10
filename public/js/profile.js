@@ -202,6 +202,7 @@ const createUserGrid = (images) => {
             if(comment)commentsActive = 0;
           } catch (err) {
             console.log(err.message);
+            commentsActive = 0;
           }
           commentForm.reset();
           location.reload();
