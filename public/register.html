@@ -23,7 +23,7 @@
                 <input type="email" name="email" placeholder="Email" title="Please enter valid email"  oninvalid="this.setCustomValidity('Please enter valid email')"
                        oninput="setCustomValidity('')" required>
                 <input type="password" id="password" name="password" placeholder="Password" pattern="(?=.*[A-Z]).{8,}" title="Password must contain one uppercase letter and eight characters"  onkeyup="checkMatch();"  oninvalid="this.setCustomValidity('Password must contain one uppercase letter and eight characters')" required>
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Retype password" title="Password must contain one uppercase letter and eight characters" pattern="(?=.*[A-Z]).{8,}" oninvalid="this.setCustomValidity('Password must contain one uppercase letter and eight characters')" onkeyup="checkMatch();"
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Retype password" title="Password must contain one uppercase letter and eight characters" oninvalid="this.setCustomValidity('Password must contain one uppercase letter and eight characters')" pattern="(?=.*[A-Z]).{8,}"  onkeyup="checkMatch();"
                        required><span id="pwmessage"></span>
                 <textarea name="description" placeholder="Describe yourself (optional)" cols="40" rows="12"
                           style="resize: none"></textarea>
