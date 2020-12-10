@@ -238,9 +238,9 @@ const createImageCards = (images) => {
     card.appendChild(aside);
     imageFeed.appendChild(card);
   });
-  console.log('pre sortCards imageFeed.children', imageFeed.children);
-  sortCards();
-  console.log('after sortCards imageFeed.children', imageFeed.children, '\nimageFeed object', imageFeed);
+  //console.log('pre sortCards imageFeed.children', imageFeed.children);
+  //sortCards();
+  //console.log('after sortCards imageFeed.children', imageFeed.children, '\nimageFeed object', imageFeed);
 };
 
 /**Fetching all posts data from database**/
@@ -340,7 +340,7 @@ const getCommenter = async (postId) => {
     console.log(e.message);
   }
 };
-
+/*
 const sortCards = () => {
   let cards = imageFeed.children;
   console.log('sortCards cards', cards);
@@ -354,3 +354,5 @@ const sortCards = () => {
   }
   console.log('sortCards reconstructed imageFeed.children', imageFeed.children);
 };
+
+ */
