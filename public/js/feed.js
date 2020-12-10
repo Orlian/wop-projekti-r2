@@ -157,7 +157,7 @@ const createImageCards = (images) => {
     likeBtn.type = 'submit';
     likeBtn.classList.add('like-btn');
 
-    /*const liker = await getLiker(image.postid);
+    const liker = await getLiker(image.postid);
     const likeIcon = document.createElement('ion-icon');
     likeIcon.name = 'heart';
 
@@ -210,7 +210,7 @@ const createImageCards = (images) => {
           console.log(error.message);
         }
       });
-    }*/
+    }
 
     commentsContainer.appendChild(username);
     captionContainer.appendChild(imageCaption);
