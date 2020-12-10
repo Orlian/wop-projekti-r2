@@ -42,6 +42,7 @@ header > p {
     height: 100vh;
     display: flex;
     background-image: url("../images/front-page/bg.jpg");
+    background-size: cover;
     overflow-x: hidden;
 }
 
@@ -144,22 +145,8 @@ input, button{
     outline: none;
 }
 
-@media only screen and (max-width: 500px) {
-    #background
-    .image {
-        max-height: 440px;
-        max-width: 440px;
-        object-fit: cover;
-
-    }
-
-}
 
 @media only screen and (max-width: 1049px) {
-    .image {
-        max-height: 240px;
-        max-width: 240px;
-    }
 
     header {
         height: 5em;
