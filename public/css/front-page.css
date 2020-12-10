@@ -179,6 +179,14 @@ button:hover {
     cursor: pointer;
 }
 
+#login-text{
+    font-size: 1em;
+}
+
+input, button{
+    outline: none;
+}
+
 @media only screen and (max-width: 500px) {
     #background
     .image {
