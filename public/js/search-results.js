@@ -17,6 +17,7 @@ const commentForm = document.querySelector('.add-comment');
 const likeForm = document.querySelector('.like-form');
 const likeIcon = document.getElementById('like-icon');
 let modalTarget = 0;
+let commentsActive = 0;
 
 
 // Search result kentän täyttäminen
@@ -28,6 +29,7 @@ const fillSearchList = (hits) => {
     const gridItem = document.createElement('div');
     const gridUser = document.createElement('h3');
     gridItem.classList.add('grid-item');
+    gridItem.id = `${hit.postid}`
     gridUser.classList.add('grid-poster');
     gridUser.innerHTML = hit.username;
     const img = document.createElement('img');
@@ -40,7 +42,7 @@ const fillSearchList = (hits) => {
     img.addEventListener('click', async (evt) => {
       evt.preventDefault();
       searchModal.style.display = 'flex';
-      commentForm.id = `${hit.postid}`
+      modalTarget = gridItem.id;
       searchModalFigImg.src = searchUrl + '/uploads/' + hit.imgfile;
       searchModalFigImg.alt = hit.caption.slice(0,20);
       searchModalCaption.innerHTML = hit.caption;
@@ -103,23 +105,28 @@ const fillSearchList = (hits) => {
 
       commentForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
-        const data = serializeJson(commentForm);
-        const fetchOptions = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-          },
-          body: JSON.stringify(data),
-        };
-        try {
-          const response = await fetch(searchUrl + '/comment/' + hit.postid,
-              fetchOptions);
-          const comment = await response.json();
-        } catch (err) {
-          console.log(err.message);
+        commentsActive++;
+        if(commentsActive < 2 && modalTarget === hit.postid){
+          const data = serializeJson(commentForm);
+          const fetchOptions = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+            body: JSON.stringify(data),
+          };
+          try {
+            const response = await fetch(searchUrl + '/comment/' + modalTarget,
+                fetchOptions);
+            const comment = await response.json();
+            if(comment) commentsActive = 0;
+          } catch (err) {
+            console.log(err.message);
+            commentsActive = 0;
+          }
+          location.reload();
         }
-        location.reload();
       });
 
       const liker = await getLiker(hit.postid);
@@ -134,73 +141,60 @@ const fillSearchList = (hits) => {
       if (liker.length < 1) {
         likeForm.addEventListener('submit', async (evt) => {
           evt.preventDefault();
-          const data = serializeJson(likeForm);
-          const fetchOptions = {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-            },
-            body: JSON.stringify(data),
-          };
-          try {
-            const response = await fetch(searchUrl + '/like/' + hit.postid,
-                fetchOptions);
-            const like = await response.json();
-            likeIcon.style.display = 'block';
-            likeIcon.style.color = 'red';
+          if(modalTarget === hit.postid){
+            const data = serializeJson(likeForm);
+            const fetchOptions = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+              },
+              body: JSON.stringify(data),
+            };
+            try {
+              const response = await fetch(searchUrl + '/like/' + modalTarget,
+                  fetchOptions);
+              const like = await response.json();
+              likeIcon.style.display = 'block';
+              likeIcon.style.color = 'red';
 
-          } catch (error) {
-            console.log(error.message);
+            } catch (error) {
+              console.log(error.message);
+            }
+            location.reload();
           }
-          location.reload();
         });
       } else {
         likeForm.addEventListener('submit', async (evt) => {
           evt.preventDefault();
-          const data = serializeJson(likeForm);
-          const fetchOptions = {
-            method: 'DELETE',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-            },
-            body: JSON.stringify(data),
-          };
-          try {
-            const response = await fetch(searchUrl + '/like/' + hit.postid,
-                fetchOptions);
-            const like = await response.json();
-            console.log('Add like', like);
-            likeIcon.style.color = 'black';
+          if(modalTarget === hit.postid) {
+            const data = serializeJson(likeForm);
+            const fetchOptions = {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+              },
+              body: JSON.stringify(data),
+            };
+            try {
+              const response = await fetch(searchUrl + '/like/' + modalTarget,
+                  fetchOptions);
+              const like = await response.json();
+              console.log('Add like', like);
+              likeIcon.style.color = 'black';
+              location.reload();
+            } catch (error) {
+              console.log(error.message);
+            }
             location.reload();
-          } catch (error) {
-            console.log(error.message);
           }
-          location.reload();
         });
       }
 
     });
   });
 }
-
-/*searchForm.addEventListener('submit', async (evt) => {
-  evt.preventDefault();
-  const data = serializeJson(searchForm);
-  const fetchOptions = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-    },
-    body: JSON.stringify(data),
-  };
-  const response = await fetch(searchUrl + '/search/' + searchInput.value, fetchOptions); //params.search
-  const searchData = await response.json();
-  console.log('search-results onsubmit searchData', searchData);
-  fillSearchList(searchData);
-});*/
 
 window.addEventListener('load', async (evt) => {
   evt.preventDefault();
