@@ -106,6 +106,7 @@ const fillSearchList = (hits) => {
       commentForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
         commentsActive++;
+        console.log('commentsActive luku', commentsActive, '\nmodalTarget', modalTarget, '\nhit.postid', hit.postid);
         if (commentsActive < 2 && modalTarget === hit.postid) {
           const data = serializeJson(commentForm);
           const fetchOptions = {
