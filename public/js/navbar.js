@@ -161,12 +161,12 @@ window.onclick = function(event) {
 
   modals.forEach((modal)=>{
     if(event.target === modal){
+      allForms.forEach((form)=>{
+        form.reset();
+        console.log('kävin resetoimassa ikkunassa');
+      })
       if(modal.id === 'post-modal'){
         modal.style.display = 'none';
-        allForms.forEach((form)=>{
-          form.reset();
-          console.log('kävin resetoimassa ikkunassa');
-        })
       }
       modal.style.display = 'none';
     }
