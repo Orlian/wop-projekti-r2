@@ -153,6 +153,16 @@ ion-icon{
 ion-icon:hover{
     color: darkgreen;
 }
+#register-form{
+    width: auto;
+}
+#register-add-image{
+    box-shadow: none;
+}
+#register-add-image-input{
+    left: 3em;
+    top: 0.5em;
+}
 
 @-moz-document url-prefix() {
     textarea{

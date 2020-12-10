@@ -15,8 +15,8 @@
             <form id="register-form" enctype="multipart/form-data">
                 <img src="http://placekitten.com/200/200" alt="Chosen profile picture" id="user-picture">
                 <div class="upload-btn-wrapper">
-                    <button class="btn"><ion-icon name="add-circle-sharp"></ion-icon></button>
-                    <input type="file" name="user_image" accept="image/*" onchange="previewImage(event)">
+                    <button class="btn" id="register-add-image"><ion-icon name="add-circle-sharp"></ion-icon></button>
+                    <input id="register-add-image-input" type="file" name="user_image" accept="image/*" onchange="previewImage(event)">
                 </div>
                 <input type="text" id="username-input" name="username" placeholder="Username" required>
                 <span id="unmessage"></span>
