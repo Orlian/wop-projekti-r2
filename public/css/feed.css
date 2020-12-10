@@ -298,3 +298,9 @@ body {
     }
 }
 
+@media only screen and (max-width: 460px)  {
+    .likes {
+        left: 50%;
+    }
+}
+
