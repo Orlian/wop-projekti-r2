@@ -60,6 +60,10 @@ body {
     top: 0;
 }
 
+.delete-comment-icon {
+    font-size: 1em;
+}
+
 #search-post-image {
     flex: 1;
     width: 100%;
