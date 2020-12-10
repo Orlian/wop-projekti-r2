@@ -16,6 +16,7 @@ const params = new URLSearchParams(window.location.search);
 const commentForm = document.querySelector('.add-comment');
 const likeForm = document.querySelector('.like-form');
 const likeIcon = document.getElementById('like-icon');
+let postCommentSent = false;
 
 
 // Search result kentän täyttäminen
@@ -102,6 +103,7 @@ const fillSearchList = (hits) => {
 
       commentForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
+        postCommentSent = true;
         const data = serializeJson(commentForm);
         const fetchOptions = {
           method: 'POST',
@@ -112,9 +114,12 @@ const fillSearchList = (hits) => {
           body: JSON.stringify(data),
         };
         try {
-          const response = await fetch(searchUrl + '/comment/' + commentForm.id,
+          const response = await fetch(searchUrl + '/comment/' + hit.postid,
               fetchOptions);
           const comment = await response.json();
+          if(comment){
+            postCommentSent = false;
+          }
         } catch (err) {
           console.log(err.message);
         }

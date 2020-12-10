@@ -118,6 +118,7 @@ const createUserGrid = (images) => {
       imageCaption.innerHTML = image.caption;
       imageModalOwner.innerHTML = image.username;
       commentsUl.innerHTML = '';
+      deleteImgButton.id = `${image.postid}`
       const comments = await getComments(image.postid);
       const commenters = await getCommenter(image.postid);
       console.log(comments);
