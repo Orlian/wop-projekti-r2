@@ -368,6 +368,14 @@ input[type='checkbox']{
     color: #1e1e1e;
 }
 
+#user-picture{
+    max-width: 100%;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    margin: 2em 0 0.75em 0;
+}
+
 #image-caption {
     padding: 0.5em 0.5em 1.5em 0;
 }
