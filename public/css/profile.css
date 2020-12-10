@@ -32,6 +32,11 @@ ion-icon{
 }
 #logo-img{
     font-size: 40px;
+    padding-right: 0.5em;
+}
+
+#logo-img:hover {
+    color: slateblue;
 }
 
 /* Mobile menu */
