@@ -1,16 +1,20 @@
 .search-result-header {
     display: flex;
+    justify-content: center;
     margin: 1em auto;
 }
 
 .search-result-wrapper {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
     margin: 1em;
-    padding: 2em;
+    padding: 2em 2em 0 2em;
 }
 
 .grid-item {
 
+}
+
+.grid-item > h3 {
+    padding-left: 1em;
 }
