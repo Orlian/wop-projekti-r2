@@ -185,7 +185,7 @@ const createUserGrid = (images) => {
       commentForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
         commentsActive++;
-        if(commentsActive < 2){
+        if(commentsActive < 2 && modalTarget === image.postid){
           const data = serializeJson(commentForm);
           const fetchOptions = {
             method: 'POST',
@@ -199,9 +199,10 @@ const createUserGrid = (images) => {
             const response = await fetch(url + '/comment/' + modalTarget,
                 fetchOptions);
             const comment = await response.json();
-            if(comment)commentsActive--;
+            if(comment)commentsActive = 0;
           } catch (err) {
             console.log(err.message);
+            commentsActive = 0;
           }
           commentForm.reset();
           location.reload();
@@ -244,47 +245,51 @@ const createUserGrid = (images) => {
       } else {
         likeForm.addEventListener('submit', async (evt) => {
           evt.preventDefault();
-          const data = serializeJson(likeForm);
-          const fetchOptions = {
-            method: 'DELETE',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-            },
-            body: JSON.stringify(data),
-          };
-          try {
-            const response = await fetch(url + '/like/' + modalTarget,
-                fetchOptions);
-            const like = await response.json();
-            console.log('Add like', like);
-            likeIcon.style.color = 'black';
+          if(modalTarget === image.postid){
+            const data = serializeJson(likeForm);
+            const fetchOptions = {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+              },
+              body: JSON.stringify(data),
+            };
+            try {
+              const response = await fetch(url + '/like/' + modalTarget,
+                  fetchOptions);
+              const like = await response.json();
+              console.log('Add like', like);
+              likeIcon.style.color = 'black';
+              location.reload();
+            } catch (error) {
+              console.log(error.message);
+            }
             location.reload();
-          } catch (error) {
-            console.log(error.message);
           }
-          location.reload();
         });
       }
 
       deleteImgButton.addEventListener('click', async (evt) => {
         evt.preventDefault();
-        const fetchOptions = {
-          method: 'DELETE',
-          headers: {
-            'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-          },
-        };
-        try {
-          console.log('deleteimage button', image.postid);
-          const response = await fetch(url + '/post/' + modalTarget,
-              fetchOptions);
-          //const json = await response.json();
-          //console.log('delete response', json);
-          imageModal.style.display = 'none';
-          await getUserPosts();
-        } catch (e) {
-          console.log(e.message);
+        if(modalTarget === image.postid){
+          const fetchOptions = {
+            method: 'DELETE',
+            headers: {
+              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+          };
+          try {
+            console.log('deleteimage button', image.postid);
+            const response = await fetch(url + '/post/' + modalTarget,
+                fetchOptions);
+            //const json = await response.json();
+            //console.log('delete response', json);
+            imageModal.style.display = 'none';
+            await getUserPosts();
+          } catch (e) {
+            console.log(e.message);
+          }
         }
       });
     });
