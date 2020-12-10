@@ -114,15 +114,14 @@ const createUserGrid = (images) => {
 
     postImage.addEventListener('click', async (evt) => {
       evt.preventDefault();
-      modalTarget = this.id;
-      console.log('modaali this', this.getAttribute('id'));
+      modalTarget = gridItem.id;
+      console.log('modaali kohde', modalTarget);
       imageModal.style.display = 'flex';
       modalImage.src = url + '/uploads/' + image.imgfile;
       modalImage.alt = image.caption.slice(0, 10);
       imageCaption.innerHTML = image.caption;
       imageModalOwner.innerHTML = image.username;
       commentsUl.innerHTML = '';
-      deleteImgButton.id = `${image.postid}`
       const comments = await getComments(image.postid);
       const commenters = await getCommenter(image.postid);
       console.log(comments);
@@ -194,7 +193,7 @@ const createUserGrid = (images) => {
           body: JSON.stringify(data),
         };
         try {
-          const response = await fetch(url + '/comment/' + image.postid,
+          const response = await fetch(url + '/comment/' + modalTarget,
               fetchOptions);
           const comment = await response.json();
         } catch (err) {
@@ -226,7 +225,7 @@ const createUserGrid = (images) => {
             body: JSON.stringify(data),
           };
           try {
-            const response = await fetch(url + '/like/' + image.postid,
+            const response = await fetch(url + '/like/' + modalTarget,
                 fetchOptions);
             const like = await response.json();
             likeIcon.style.display = 'block';
@@ -250,7 +249,7 @@ const createUserGrid = (images) => {
             body: JSON.stringify(data),
           };
           try {
-            const response = await fetch(url + '/like/' + image.postid,
+            const response = await fetch(url + '/like/' + modalTarget,
                 fetchOptions);
             const like = await response.json();
             console.log('Add like', like);
@@ -273,7 +272,7 @@ const createUserGrid = (images) => {
         };
         try {
           console.log('deleteimage button', image.postid);
-          const response = await fetch(url + '/post/' + image.postid,
+          const response = await fetch(url + '/post/' + modalTarget,
               fetchOptions);
           //const json = await response.json();
           //console.log('delete response', json);
