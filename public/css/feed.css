@@ -274,6 +274,13 @@ body {
     font-size: 1em;
 }
 
+@media only screen and (max-width: 900px) and (min-width: 1150px) {
+    .likes {
+        left: 35%;
+    }
+}
+
+
 @media only screen and (max-width: 900px) {
 
     .comments {
