@@ -119,6 +119,7 @@ const createImageCards = (images) => {
     likeForm.classList.add('like-form');
 
     const input = document.createElement('textarea');
+    input.required = true;
     input.classList.add('comment-input');
     input.name = 'comment';
     input.placeholder = 'Write a comment';
