@@ -47,15 +47,11 @@ const checkMatch = () => {
     passwdMessage.style.color = 'red';
     passwdMessage.innerHTML = 'not matching';
     saveButton.disabled = true;
-  }
-  else if (passwordInput.value === '') {
-    passwdMessage.style.color = 'black';
-    passwdMessage.innerHTML = 'New password must contain one uppercase letter and eight characters';
-    saveButton.disabled = false;
-  }
-  else {
+  }else if(passwordInput.value === passwordConfirmInput.value) {
     passwdMessage.style.color = 'green';
     passwdMessage.innerHTML = 'matching';
+    saveButton.disabled = false;
+  }else {
     saveButton.disabled = false;
   }
 };
