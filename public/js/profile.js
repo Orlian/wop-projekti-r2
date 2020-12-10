@@ -185,7 +185,7 @@ const createUserGrid = (images) => {
         commentsActive++;
         console.log('commentsActive luku', commentsActive, '\nmodalTarget',
             modalTarget, '\nhit.postid', image.postid);
-        if(commentsActive < 2 && modalTarget === image.postid){
+        if(commentsActive < 2 && parseInt(modalTarget) === image.postid){
           const data = serializeJson(commentForm);
           const fetchOptions = {
             method: 'POST',

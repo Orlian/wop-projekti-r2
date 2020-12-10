@@ -108,7 +108,7 @@ const fillSearchList = (hits) => {
         commentsActive++;
         console.log('commentsActive luku', commentsActive, '\nmodalTarget',
             modalTarget, '\nhit.postid', hit.postid);
-        if (commentsActive < 2 && modalTarget === hit.postid) {
+        if (commentsActive < 2 && parseInt(modalTarget) === hit.postid) {
           const data = serializeJson(commentForm);
           const fetchOptions = {
             method: 'POST',
