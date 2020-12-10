@@ -138,7 +138,7 @@ const createUserGrid = (images) => {
         commentTime.classList.add('comment-time');
         const properTime = new Date(comment.timestamp); //Tästä mallia sortaukseen
         const formattedTime = properTime.getDate() + '.' +
-            properTime.getMonth() +
+            (properTime.getMonth()+1) +
             '.' + properTime.getFullYear() + ' ' +
             ((properTime.getHours() < 10 ? '0' : '') + properTime.getHours()) +
             ':' +
