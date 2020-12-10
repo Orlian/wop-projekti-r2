@@ -275,7 +275,7 @@ textarea{
     width: 100%;
     padding: 0.5em;
     box-shadow: 2px 5px 5px lightgrey;
-    overflow-x: scroll;
+    overflow-y: scroll;
 }
 
 .genre-selection h2{
