@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Search results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&family=Montserrat&display=swap" rel="stylesheet">
     <link href="css/profile.css" rel="stylesheet">
     <link href="css/search-results.css" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
@@ -125,8 +126,8 @@
                             <input type="file" name="user-image" accept="image/*" id="user-picture-input"
                                    onchange="previewImage(event)">
                         </div>
-                        <input id="password-input" type="password" name="password" placeholder="Password" pattern="^(|(?=.*[A-Z]).{8,})$" onkeyup="checkMatch();">
-                        <input id="confirm-password-input" type="password" name="confirm-password" placeholder="Retype password" pattern="^(|(?=.*[A-Z]).{8,})$" onkeyup="checkMatch();">
+                        <input id="password-input" type="password" name="password" placeholder="New password" pattern="^(|(?=.*[A-Z]).{8,})$" title="Password must contain one uppercase letter and eight characters" oninvalid="this.setCustomValidity('Password must contain one uppercase letter and eight characters')" onkeyup="checkMatch();">
+                        <input id="confirm-password-input" type="password" name="confirm-password" placeholder="Retype new password" pattern="^(|(?=.*[A-Z]).{8,})$" title="Password must contain one uppercase letter and eight characters" oninvalid="this.setCustomValidity('Password must contain one uppercase letter and eight characters')" onkeyup="checkMatch();">
                         <textarea name="description" placeholder="Description" style="resize: none" rows="8"
                                   cols="40" id="user-description"></textarea>
                         <button type="submit" class="modal-button" id="save-button">Save changes</button>

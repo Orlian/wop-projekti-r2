@@ -476,6 +476,10 @@ input[type='checkbox']{
     font-size: 2em;
 }
 
+.like-btn > ion-icon:hover{
+    background-color: whitesmoke;
+}
+
 .likes{
     position: absolute;
     left: 25%;
@@ -539,6 +543,14 @@ input[type='checkbox']{
         align-self: center;
     }
 }
+
+
+@media only screen and (max-width: 460px)  {
+    .likes {
+        left: 50%;
+    }
+}
+
 
 /*muuta kuin navbar*/
 .profile-info{
