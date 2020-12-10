@@ -28,6 +28,7 @@ const passwordConfirmInput = document.getElementById('confirm-password-input');
 const userPictureNavbar = document.getElementById('user-picture');
 const userDescription = document.getElementById('user-description');
 const allForms = document.querySelectorAll('form');
+const passwdMessage = document.getElementById('pwmessage');
 
 logo.onclick = () => {
   location.href = 'feed.html';
@@ -43,12 +44,18 @@ plusButtonEditModal.addEventListener('click', (evt)=>{
 
 const checkMatch = () => {
   if (passwordInput.value !== passwordConfirmInput.value) {
+    passwdMessage.style.color = 'red';
+    passwdMessage.innerHTML = 'not matching';
     saveButton.disabled = true;
   }
   else if (passwordInput.value === '') {
+    passwdMessage.style.color = 'yellow';
+    passwdMessage.innerHTML = 'New password must contain one uppercase letter and eight characters';
     saveButton.disabled = true;
   }
   else {
+    passwdMessage.style.color = 'green';
+    passwdMessage.innerHTML = 'matching';
     saveButton.disabled = false;
   }
 };
