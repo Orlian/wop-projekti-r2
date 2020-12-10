@@ -112,7 +112,7 @@ const fillSearchList = (hits) => {
           body: JSON.stringify(data),
         };
         try {
-          const response = await fetch(searchUrl + '/comment/' + hit.postid,
+          const response = await fetch(searchUrl + '/comment/' + commentForm.id,
               fetchOptions);
           const comment = await response.json();
         } catch (err) {
