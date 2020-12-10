@@ -263,6 +263,10 @@ form::after {
     width: 9em;
 }
 
+#save-button:disabled{
+    background-color: lightgrey;
+}
+
 #cancel-button:hover, #user-cancel-button:hover {
     background-color: slateblue;
     color: whitesmoke;
