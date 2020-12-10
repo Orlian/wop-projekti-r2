@@ -49,9 +49,9 @@ const checkMatch = () => {
     saveButton.disabled = true;
   }
   else if (passwordInput.value === '') {
-    passwdMessage.style.color = 'yellow';
+    passwdMessage.style.color = 'black';
     passwdMessage.innerHTML = 'New password must contain one uppercase letter and eight characters';
-    saveButton.disabled = true;
+    saveButton.disabled = false;
   }
   else {
     passwdMessage.style.color = 'green';
