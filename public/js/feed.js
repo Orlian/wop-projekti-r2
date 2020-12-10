@@ -240,6 +240,7 @@ const createImageCards = (images) => {
   [...imageFeed.children]
   .sort((a,b)=>a.id - b.id)
   .forEach(node=>imageFeed.appendChild(node));
+  console.log('Organized nodelist', imageFeed.children);
 };
 
 /**Fetching all posts data from database**/
