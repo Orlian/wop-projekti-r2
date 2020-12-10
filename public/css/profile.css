@@ -247,6 +247,7 @@ form::after {
     background: whitesmoke;
     color: #1e1e1e;
     border: 0.1em solid slateblue;
+    line-height: 0.5em;
 
 }
 
@@ -261,6 +262,10 @@ form::after {
 
 #save-button, #user-cancel-button, #delete-button {
     width: 9em;
+}
+
+#save-button:disabled{
+    background-color: lightgrey;
 }
 
 #cancel-button:hover, #user-cancel-button:hover {
@@ -465,8 +470,9 @@ input[type='checkbox']{
 }
 
 #comment-btn:hover{
-    background-color: slateblue;
+    background-color: slateblue !important;
 }
+
 .like-form{
     display: flex;
     justify-content: flex-start;
@@ -607,3 +613,6 @@ section h2, .desc{
     border-radius: 0;
 }
 
+#pwmessage {
+    font-size: 0.75em;
+}
