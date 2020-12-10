@@ -238,7 +238,7 @@ const createImageCards = (images) => {
     imageFeed.appendChild(card);
   });
   [...imageFeed.children]
-  .sort((a,b)=>a.id - b.id)
+  .sort((a,b)=>a.id>b.id?1:-1)
   .forEach(node=>imageFeed.appendChild(node));
   console.log('Organized nodelist', imageFeed.children);
 };
