@@ -249,7 +249,7 @@ form::after {
     background: whitesmoke;
     color: #1e1e1e;
     border: 0.1em solid slateblue;
-    width: 8em;
+    width: 9em;
     font-size: 0.75em;
     line-height: 0.5em;
 }
@@ -263,7 +263,7 @@ form::after {
     color: whitesmoke;
 }
 
-#delete-button:hover {
+#delete-button:hover, #delete-image:hover {
     background-color: #ff2b39;
     border: 0.1em solid #ff2b39;
     color: whitesmoke;
@@ -444,7 +444,7 @@ input[type='checkbox']{
 }
 #comment-btn{
     height: 2em;
-    width: 8em;
+    width: 9em;
     border: none;
     background-image: linear-gradient(to bottom right, mediumslateblue, palevioletred);
     border-radius: 2em;
@@ -560,6 +560,11 @@ input[type='checkbox']{
     width: 125px;
     height: 125px;
     border-radius: 50%;
+}
+
+#art-img {
+    height: 200px;
+    max-width: 100%;
 }
 
 section h2, .desc{
