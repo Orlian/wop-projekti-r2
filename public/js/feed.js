@@ -257,8 +257,8 @@ const getPosts = async () => {
     if (images.length < 10) {
       viimeinen = true;
     }
-    limitstart += 10;
     createImageCards(images);
+    limitstart += 10;
   } catch (e) {
     console.log(e.message);
     const response = await fetch(url + '/auth/logout');
