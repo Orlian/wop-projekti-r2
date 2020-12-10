@@ -470,7 +470,7 @@ input[type='checkbox']{
 }
 
 #comment-btn:hover{
-    background-color: slateblue;
+    background-color: slateblue !important;
 }
 
 .like-form{
