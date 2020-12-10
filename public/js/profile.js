@@ -115,7 +115,7 @@ const createUserGrid = (images) => {
     postImage.addEventListener('click', async (evt) => {
       evt.preventDefault();
       modalTarget = gridItem.id;
-      console.log('modaali this', gridItem.id);
+      console.log('modaali kohde', modalTarget);
       imageModal.style.display = 'flex';
       modalImage.src = url + '/uploads/' + image.imgfile;
       modalImage.alt = image.caption.slice(0, 10);
