@@ -153,6 +153,11 @@ form::after {
     top:4%;
 }
 
+.image-user-content-modal .close {
+    right: 1%;
+    top: 0;
+}
+
 .close:hover,
 .close:focus {
     color: #000;
@@ -218,6 +223,7 @@ form::after {
     border-radius: 2em;
     box-shadow: 3px 5px 5px lightgray;
     height: 2em;
+    font-family: "Montserrat", sans-serif;
 }
 .modal-button:hover{
     background: slateblue;
@@ -232,11 +238,20 @@ form::after {
 
 
 
-#cancel-button, #user-cancel-button, #delete-button, #delete-image {
+#cancel-button, #user-cancel-button, #delete-button  {
     background: whitesmoke;
     color: #1e1e1e;
     border: 0.1em solid slateblue;
 
+}
+
+#delete-image {
+    background: whitesmoke;
+    color: #1e1e1e;
+    border: 0.1em solid slateblue;
+    width: 9em;
+    font-size: 1em;
+    line-height: 0.5em;
 }
 
 #save-button, #user-cancel-button, #delete-button {
@@ -366,12 +381,45 @@ input[type='checkbox']{
     overflow-y: scroll;
 }
 
+.comments > li {
+    padding: 0.5em 0.5em 0.5em 1em;
+    font-size: 0.75em;
+    position: relative;
+    border-bottom: 0.1em solid lightgrey;
+}
+
+.comments > li:hover {
+    background-color: lightgray;
+}
 .comment-content {
     padding: 0.5em 0.5em 0.5em 0;
 }
 
 .comment-time {
     color: darkgrey;
+}
+
+#delete-comment-button {
+    position: absolute;
+    right: 5%;
+    top: 40%;
+    height: 1.5em;
+    width: 1.5em;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    background-color: darkgray;
+    line-height: 0.5em;
+    cursor: pointer;
+}
+
+#delete-comment-button:hover {
+    background-color: dimgrey;
+    color: whitesmoke;
+}
+
+.delete-comment-icon {
+    font-size: 1em;
 }
 
 
@@ -387,7 +435,7 @@ input[type='checkbox']{
 }
 #comment-btn{
     height: 2em;
-    width: 6em;
+    width: 9em;
     border: none;
     background-image: linear-gradient(to bottom right, mediumslateblue, palevioletred);
     border-radius: 2em;
