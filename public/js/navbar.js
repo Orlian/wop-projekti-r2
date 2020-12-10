@@ -29,6 +29,7 @@ const userPictureNavbar = document.getElementById('user-picture');
 const userDescription = document.getElementById('user-description');
 const allForms = document.querySelectorAll('form');
 const passwdMessage = document.getElementById('pwmessage');
+const saveButton = document.getElementById('save-button');
 
 logo.onclick = () => {
   location.href = 'feed.html';
