@@ -21,6 +21,7 @@ const commentForm = document.querySelector('.add-comment');
 const likeForm = document.querySelector('.like-form');
 const likeIcon = document.getElementById('like-icon');
 let modalTarget = 0;
+let commentsActive = 0;
 
 const getLikes = async (postId) => {
   try {
@@ -183,24 +184,29 @@ const createUserGrid = (images) => {
 
       commentForm.addEventListener('submit', async (evt) => {
         evt.preventDefault();
-        const data = serializeJson(commentForm);
-        const fetchOptions = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-          },
-          body: JSON.stringify(data),
-        };
-        try {
-          const response = await fetch(url + '/comment/' + modalTarget,
-              fetchOptions);
-          const comment = await response.json();
-        } catch (err) {
-          console.log(err.message);
+        commentsActive++;
+        if(commentsActive < 2){
+          const data = serializeJson(commentForm);
+          const fetchOptions = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+            body: JSON.stringify(data),
+          };
+          try {
+            const response = await fetch(url + '/comment/' + modalTarget,
+                fetchOptions);
+            const comment = await response.json();
+            if(comment)commentsActive = 0;
+          } catch (err) {
+            console.log(err.message);
+            commentsActive = 0;
+          }
+          commentForm.reset();
+          location.reload();
         }
-        commentForm.reset();
-        location.reload();
       });
 
       const liker = await getLiker(image.postid);
