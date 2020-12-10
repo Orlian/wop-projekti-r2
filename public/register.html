@@ -22,7 +22,7 @@
                 <span id="unmessage"></span>
                 <input type="email" name="email" placeholder="Email"  oninvalid="this.setCustomValidity('Please Enter valid email')"
                        oninput="setCustomValidity('')" required>
-                <input type="password" id="password" name="password" placeholder="Password" pattern="(?=.*[A-Z]).{8,}" onkeyup="checkMatch();" required>
+                <input type="password" id="password" name="password" placeholder="Password" pattern="(?=.*[A-Z]).{8,}" title="Username should only contain lowercase letters. e.g. john" onkeyup="checkMatch();" required>
                 <input type="password" id="confirm-password" name="confirm-password" placeholder="Retype password" pattern="(?=.*[A-Z]).{8,}" onkeyup="checkMatch();"
                        required><span id="pwmessage"></span>
                 <textarea name="description" placeholder="Describe yourself (optional)" cols="40" rows="12"
