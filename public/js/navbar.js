@@ -27,6 +27,7 @@ const passwordInput = document.getElementById('password-input');
 const passwordConfirmInput = document.getElementById('confirm-password-input');
 const userPictureNavbar = document.getElementById('user-picture');
 const userDescription = document.getElementById('user-description');
+const allForms = document.querySelectorAll('form');
 
 logo.onclick = () => {
   location.href = 'feed.html';
@@ -112,6 +113,10 @@ addImageCancel.onclick = () => {
 spans.forEach((span) => {
   span.addEventListener('click', () => {
     span.parentNode.parentNode.parentNode.parentNode.style.display = 'none';
+    allForms.forEach((form) => {
+      form.reset();
+      console.log('kävin resetoimassa ruksista');
+    });
   });
 });
 
@@ -156,6 +161,10 @@ window.onclick = function(event) {
 
   modals.forEach((modal)=>{
     if(event.target === modal){
+      allForms.forEach((form)=>{
+        form.reset();
+        console.log('kävin resetoimassa ikkunassa');
+      })
       if(modal.id === 'post-modal'){
         modal.style.display = 'none';
       }
