@@ -147,6 +147,7 @@ deleteUserButton.onclick = async() => {
     };
     try {
       const response = await fetch(navbarUrl + '/user/' + navbarUser.userid + '/' + navbarUser.userimg, fetchOptions);
+      console.log('delete user response', response);
       const json = await response.json();
       console.log('delete response', json);
 
