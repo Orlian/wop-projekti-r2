@@ -285,7 +285,7 @@ const createUserGrid = (images) => {
             };
             try {
               console.log('deleteimage button', image.postid);
-              const response = await fetch(url + '/post/' + modalTarget,
+              const response = await fetch(url + '/post/' + modalTarget + '/' + image.imgfile,
                   fetchOptions);
               //const json = await response.json();
               //console.log('delete response', json);

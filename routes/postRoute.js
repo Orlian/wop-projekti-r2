@@ -40,6 +40,6 @@ router.put('/', [
   body('genres', 'Add genres').not().isEmpty(),
 ], postController.post_update_put);
 
-router.delete('/:id', postController.post_delete);
+router.delete('/:id/:file', postController.post_delete);
 
 module.exports = router;

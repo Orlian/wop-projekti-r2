@@ -4,6 +4,7 @@ const postModel = require('../models/postModel');
 const commentModel = require('../models/commentModel');
 const likeModel = require('../models/likeModel');
 const {makeThumbnail} = require('../utils/resize');
+const fs = require('fs/promises');
 
 
 const post_list_get = async (req, res) => {
@@ -71,6 +72,8 @@ const post_update_put = async (req, res) => {
 };
 
 const post_delete = async (req, res) => {
+  const filename = req.params.file;
+  await fileDelete(filename);
   const postId = req.params.id;
   const post = await postModel.deletePost(postId);
   res.json(post);
@@ -87,6 +90,16 @@ const make_thumbnail = async (req, res, next) => {
     res.status(400).json({errors: e.message});
   }
 };
+
+const fileDelete = async (filename) => {
+  try {
+    await fs.unlink('/app2/uploads/' + filename);
+    console.log('filename', filename);
+  } catch(err)
+  {
+    console.error(err.message);
+  }
+}
 
 module.exports = {
   post_list_get,
