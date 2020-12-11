@@ -3,6 +3,11 @@ body {
     color: #1e1e1e;
 }
 
+.logo-caption {
+    font-family: "Lobster Two", sans-serif;
+}
+
+
 .search-result-header {
     display: flex;
     justify-content: center;
@@ -53,6 +58,10 @@ body {
 .image-search-content-modal .close {
     right: 1%;
     top: 0;
+}
+
+.delete-comment-icon {
+    font-size: 1em;
 }
 
 #search-post-image {

@@ -20,6 +20,11 @@ nav{
     display: flex;
     padding: 7.5px 10px 7.5px 0;
 }
+
+.logo-caption {
+    font-family: "Lobster Two", sans-serif;
+}
+
 #add-pic-button, #profile-button {
     padding: 9px 5px;
 }
@@ -247,7 +252,6 @@ form::after {
     background: whitesmoke;
     color: #1e1e1e;
     border: 0.1em solid slateblue;
-    line-height: 0.5em;
 
 }
 

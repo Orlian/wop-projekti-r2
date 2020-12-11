@@ -15,6 +15,9 @@ body {
 
 }
 
+.logo-caption {
+    font-family: "Lobster Two", sans-serif;
+}
 
 .card-container {
     display: flex;
