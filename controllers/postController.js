@@ -93,7 +93,7 @@ const make_thumbnail = async (req, res, next) => {
 
 const fileDelete = async (filename) => {
   try {
-    await fs.unlink('/uploads/' + filename);
+    await fs.unlink('./uploads/' + filename);
     console.log('filename', filename);
   } catch(err)
   {
