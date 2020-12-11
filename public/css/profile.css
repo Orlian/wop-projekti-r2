@@ -252,6 +252,7 @@ form::after {
     background: whitesmoke;
     color: #1e1e1e;
     border: 0.1em solid slateblue;
+    line-height: 1em;
 
 }
 
