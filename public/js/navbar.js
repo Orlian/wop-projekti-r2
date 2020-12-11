@@ -156,7 +156,7 @@ deleteUserButton.onclick = async() => {
       console.log(e.message);
     }
     console.log(confirm);
-    location.reload();
+    location.href = 'front-page.html';
   }
 };
 
