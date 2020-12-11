@@ -38,6 +38,6 @@ router.put('/:id', upload.single('user-image'), injectFile, userController.make_
   body('description', '').trim().escape(),
 ], userController.user_update);
 
-router.delete('/:id', userController.user_delete);
+router.delete('/:id/:file', userController.user_delete);
 
 module.exports = router;

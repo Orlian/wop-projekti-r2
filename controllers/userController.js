@@ -4,7 +4,7 @@ const {validationResult} = require('express-validator');
 const userModel = require('../models/userModel');
 const {makeThumbnail} = require('../utils/resize');
 const bcrypt = require('bcryptjs');
-//TODO Tänne loput controllerin vaatimat requiret sun muut
+const fs = require('fs/promises');
 
 const user_list_get = async (req, res) => {
   const users = await userModel.getAllUsers();
@@ -35,6 +35,8 @@ const make_thumbnail = async (req, res, next) => {
 
 const user_delete = async (req, res) => {
   const id = req.params.id;
+  const filepath = req.params.file;
+  await fileDelete(filepath);
   const user = await userModel.deleteUser(id);
   res.json(user);
 };
@@ -62,6 +64,16 @@ const user_update = async (req, res) => {
   res.json(user);
 }
 
+const fileDelete = async (filename) => {
+  try {
+    await fs.unlink('./uploads/' + filename);
+    await fs.unlink('./thumbnails/' + filename);
+    console.log('filename', filename);
+  } catch(err)
+  {
+    console.error(err.message);
+  }
+};
 module.exports = {
   user_list_get,
   user_get,

@@ -94,12 +94,13 @@ const make_thumbnail = async (req, res, next) => {
 const fileDelete = async (filename) => {
   try {
     await fs.unlink('./uploads/' + filename);
+    await fs.unlink('./thumbnails/' + filename);
     console.log('filename', filename);
   } catch(err)
   {
     console.error(err.message);
   }
-}
+};
 
 module.exports = {
   post_list_get,
