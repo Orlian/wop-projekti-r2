@@ -274,23 +274,26 @@ const createUserGrid = (images) => {
 
       deleteImgButton.addEventListener('click', async (evt) => {
         evt.preventDefault();
-        if(parseInt(modalTarget) === image.postid){
-          const fetchOptions = {
-            method: 'DELETE',
-            headers: {
-              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-            },
-          };
-          try {
-            console.log('deleteimage button', image.postid);
-            const response = await fetch(url + '/post/' + modalTarget,
-                fetchOptions);
-            //const json = await response.json();
-            //console.log('delete response', json);
-            imageModal.style.display = 'none';
-            await getUserPosts();
-          } catch (e) {
-            console.log(e.message);
+        const confirmation = window.confirm(`Are you sure you want delete image?`);
+        if(confirmation){
+          if(parseInt(modalTarget) === image.postid){
+            const fetchOptions = {
+              method: 'DELETE',
+              headers: {
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+              },
+            };
+            try {
+              console.log('deleteimage button', image.postid);
+              const response = await fetch(url + '/post/' + modalTarget,
+                  fetchOptions);
+              //const json = await response.json();
+              //console.log('delete response', json);
+              imageModal.style.display = 'none';
+              await getUserPosts();
+            } catch (e) {
+              console.log(e.message);
+            }
           }
         }
       });
